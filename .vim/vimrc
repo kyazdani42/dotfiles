@@ -1,0 +1,30 @@
+filetype on
+syntax on
+set nu
+colorscheme tender
+
+"vim plugins
+set runtimepath^=~/.vim/bundle/*
+
+"nerd tree
+map <C-n> :NERDTreeToggle<CR>
+
+"black zone after 80
+set colorcolumn=80
+let &colorcolumn=join(range(81,999),",")
+
+"disable keys
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+
+"shortcuts moving between windows
+noremap <C-h> <C-W>h
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-l> <C-W>l
