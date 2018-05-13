@@ -7,6 +7,7 @@ fi
 vimplug=${HOME}/.vim/bundle/
 
 git clone https://github.com/scrooloose/nerdtree.git ${vimplug}/nerdtree
+git clone https://github.com/tpop/vim-fugitive.git ${vimplug}/vim-fugitive
 
 #need clang to run YouCompleteMe installation
 if [ `which clang` = "/usr/bin/clang" ]; then
