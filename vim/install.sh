@@ -1,19 +1,12 @@
 cp -r .vim ${HOME}/.vim
-vimplug=${HOME}/.vim/bundle/
 
-if [ ! -d "${HOME}/.vim/bundle" ]; then
-	mkdir -p $vimplug
-fi
+# plugins
+mkdir -p ${HOME}/.vim/autoload ${HOME}/.vim/bundle && \
+git clone https://github.com/scrooloose/nerdtree.git ${HOME}/.vim/bundle/nerdtree && \
+git clone https://github.com/fatih/vim-go.git ${HOME}/.vim/bundle/vim-go && \
+curl -LSso ${HOME}/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-git clone https://github.com/scrooloose/nerdtree.git ${vimplug}nerdtree
 
-#need clang to run YouCompleteMe installation
-if [ `which clang` = "/usr/bin/clang" ]; then
-	git clone https://github.com/Valloric/YouCompleteMe.git ${vimplug}/YouCompleteMe;
-	cd ${vimplug}/YouCompleteMe;
-	git submodule update --init --recursive;
-	./install.py --clang-completer --systeme-libclang
-	cd - >&-;
-fi
-
+# vimrc
 ln -s ${HOME}/.vim/vimrc ${HOME}/.vimrc
+
