@@ -1,10 +1,15 @@
-# Should you change your keyboard layout some time, delete
-# this file and re-run i3-config-wizard(1).
-
+# Mod1 is Alt, Mod4 is Windows
 set $mod Mod1
-bindsym $mod+Return exec $TERMINAL
+
 bindsym $mod+d exec dmenu_run
 bindsym $mod+Shift+w exec $BROWSER
+bindsym $mod+r exec $TERMINAL ranger
+
+bindsym $mod+Return split h, exec $TERMINAL
+bindsym $mod+Shift+Return split v, exec $TERMINAL
+# go to mode
+bindsym $mod+Shift+z split h
+bindsym $mod+Shift+v split v
 
 # font for titles
 font pango: mono 11
@@ -16,17 +21,13 @@ bar {
 	font pango:mono 11
 	position top
 	height 20
-	colors {
-		background #00000000
-	}
 }
 
 # gaps
-gaps inner 10
-
 bindsym $mod+Shift+m gaps inner all plus 5
 bindsym $mod+Shift+n gaps inner all minus 5
 bindsym $mod+Shift+d gaps inner all set 0
+bindsym $mod+Shift+f gaps inner all set 15
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -37,29 +38,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# split in horizontal orientation
-bindsym $mod+Shift+z split h
-# split in vertical orientation
-bindsym $mod+Shift+v split v
-
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
@@ -126,22 +109,14 @@ bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Escape mode "default"
+	bindsym h resize shrink width 5 px or 10 ppt
+	bindsym j resize grow height 5 px or 10 ppt
+	bindsym k resize shrink height 5 px or 10 ppt
+	bindsym l resize grow width 5 px or 10 ppt
+	bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $mod+Shift+r mode "resize"
 
 # set XResources colors
 set_from_resource $black    i3wm.color0  #000000
@@ -169,7 +144,8 @@ set_from_resource $grey     i3wm.color7  #BFBFBF
 set_from_resource $grey_h   i3wm.color15 #E6E6E6
 
 # class                 border  backgr. text  indicator child_border
-client.focused          $blue_h $black $white $blue_h   $yellow
-client.focused_inactive $pink_h $black $white $pink_h   $pink
-client.unfocused        $grey   $black $white $grey     $purple
-client.urgent           $red    $black $white $red      $red_h
+client.focused          $blue_h $black #FFFFFF $blue_h   $yellow
+client.focused_inactive $pink_h $black #FFFFFF $pink_h   $pink
+client.unfocused        $grey   $black #FFFFFF $grey     $purple
+client.urgent           $red    $black #FFFFFF $red      $red_h
+
