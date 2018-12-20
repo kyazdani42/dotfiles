@@ -4,10 +4,11 @@
 set $mod Mod1
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+d exec dmenu_run
+bindsym $mod+Shift+w exec $BROWSER
 
 # font for titles
 font pango: mono 11
-new_window 1pixel
+new_window pixel 2
 
 # bar options
 bar {
@@ -142,3 +143,33 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# set XResources colors
+set_from_resource $black    i3wm.color0  #000000
+set_from_resource $black_h  i3wm.color8  #4D4D4D
+
+set_from_resource $red      i3wm.color1  #FF5555
+set_from_resource $red_h    i3wm.color9  #FF6E67
+
+set_from_resource $green    i3wm.color2  #50FA7B
+set_from_resource $green_h  i3wm.color10 #5AF78E
+
+set_from_resource $yellow   i3wm.color3  #F1FA8C
+set_from_resource $yellow_h i3wm.color11 #F4F99D
+
+set_from_resource $purple   i3wm.color4  #BD93F9
+set_from_resource $purple_h i3wm.color12 #CAA9FA
+
+set_from_resource $pink     i3wm.color5  #FF79C6
+set_from_resource $pink_h   i3wm.color13 #FF92D0
+
+set_from_resource $blue     i3wm.color6  #8BE9FD
+set_from_resource $blue_h   i3wm.color14 #9AEDFE
+
+set_from_resource $grey     i3wm.color7  #BFBFBF
+set_from_resource $grey_h   i3wm.color15 #E6E6E6
+
+# class                 border  backgr. text  indicator child_border
+client.focused          $blue_h $black $white $blue_h   $yellow
+client.focused_inactive $pink_h $black $white $pink_h   $pink
+client.unfocused        $grey   $black $white $grey     $purple
+client.urgent           $red    $black $white $red      $red_h

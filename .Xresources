@@ -1,9 +1,10 @@
-URxvt.font: xft:Inconsolata:size=12
 URxvt.perl-ext-common: default,matcher
 URxvt.url-launcher: firefox
-URxvt.letterSpace: -1
 URxvt.matcher.button: 2
 URxvt.scrollBar: false
+
+URxvt.font: xft:Inconsolata:size=12
+URxvt.letterSpace: -1
 *.foreground: #F8F8F2
 *.background: #282A36
 *.color0:     #000000
@@ -22,3 +23,4 @@ URxvt.scrollBar: false
 *.color14:    #9AEDFE
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
+*.alpha: 	  180
