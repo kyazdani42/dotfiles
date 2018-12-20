@@ -23,4 +23,4 @@ URxvt.letterSpace: -1
 *.color14:    #9AEDFE
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
-*.alpha: 	  180
+*.alpha: 	  220

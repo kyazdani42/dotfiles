@@ -20,8 +20,10 @@ set cursorline
 set encoding=utf-8
 set nocompatible
 set wildmode=longest,list,full
-"|gruvbox||jellybeans|dracula
+"|gruvbox|hybrid_reverse|jellybeans|snazzy|tender
 colorscheme dracula
+" bg transparent
+hi Normal ctermbg=none guibg=NONE
 " disable autocommenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 "Activate indentation
