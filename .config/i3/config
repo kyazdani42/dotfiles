@@ -14,20 +14,11 @@ bindsym $mod+Shift+v split v
 # font for titles
 font pango: mono 11
 new_window pixel 2
-
-# bar options
-bar {
-	status_command i3status
-	font pango:mono 11
-	position top
-	height 20
-}
-
 # gaps
-bindsym $mod+Shift+m gaps inner all plus 5
-bindsym $mod+Shift+n gaps inner all minus 5
-bindsym $mod+Shift+d gaps inner all set 0
-bindsym $mod+Shift+f gaps inner all set 15
+bindsym $mod+m gaps inner current plus 5
+bindsym $mod+n gaps inner current minus 5
+bindsym $mod+Shift+d gaps inner current set 0
+bindsym $mod+Shift+f gaps inner current set 15
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -61,7 +52,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -148,4 +139,22 @@ client.focused          $blue_h $black #FFFFFF $blue_h   $yellow
 client.focused_inactive $pink_h $black #FFFFFF $pink_h   $pink
 client.unfocused        $grey   $black #FFFFFF $grey     $purple
 client.urgent           $red    $black #FFFFFF $red      $red_h
+
+# bar options
+bar {
+	status_command i3status
+	font pango:mono 10
+	position top
+	height 23
+	colors {
+		background $black
+		statusline $white
+		separator $yellow
+
+		focused_workspace  $blue $yellow $black
+		active_workspace   $blue $yellow $black
+		inactive_workspace $black $black $grey
+		urgent_workspace   $red $black $red
+	}
+}
 
