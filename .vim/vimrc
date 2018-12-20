@@ -1,0 +1,80 @@
+" My   "
+" Vim  "
+" Rc   "
+" File "
+
+let mapleader =" "
+
+call plug#begin('~/.vim/plugged')
+	Plug 'junegunn/goyo.vim'
+	Plug 'PotatoesMaster/i3-vim-syntax'
+	Plug 'jreybert/vimagit'
+	Plug 'vimwiki/vimwiki'
+	Plug 'scrooloose/nerdtree'
+call plug#end()
+
+syntax on
+set number relativenumber
+set ruler
+set cursorline
+set encoding=utf-8
+set nocompatible
+set wildmode=longest,list,full
+"|gruvbox||jellybeans|dracula
+colorscheme dracula
+" disable autocommenting on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"Activate indentation
+filetype off
+filetype plugin indent on
+set smartindent
+"Disable vi-compatibility
+set nocompatible
+"Non-expanded, 4-wide tabulations
+set tabstop=4
+set shiftwidth=4
+set noexpandtab
+"Don't bother throttling tty
+set ttyfast
+"More useful backspace behavior
+set backspace=indent,eol,start
+"Use statusbar on all windows
+set laststatus=2
+"Better search
+set ignorecase
+set smartcase
+set incsearch
+set showmatch
+set hlsearch
+"
+" Automatically deletes all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
+" Run xrdb whenever Xdefaults or Xresources are updated.
+autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
+
+
+" goyo plugin to read text better
+map <leader>f :Goyo \| set linebreak<CR>
+"nerd tree
+map <C-n> :NERDTreeToggle<CR>
+
+" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+set splitbelow splitright
+
+"disable arrow keys
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+
+"map control hjkl to move between windows (no need for w)
+noremap <C-h> <C-W>h
+noremap <C-j> <C-W>j
+noremap <C-k> <C-W>k
+noremap <C-l> <C-W>l
+
+
