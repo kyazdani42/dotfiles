@@ -1,13 +1,13 @@
-# vim install
-cp -r .vim ${HOME}/.vim
-ln -sf ${HOME}/.vim/vimrc ${HOME}/.vimrc
+# making links
+ln -sf $(pwd)/.config $HOME/.config
+ln -sf $(pwd)/.vim/vimrc $HOME/.vimrc
+ln -sf $(pwd)/.gitconfig $HOME/.gitconfig
+ln -sf $(pwd)/.profile $HOME/.profile
+ln -sf $(pwd)/.vim $HOME/.vim
+ln -sf $(pwd)/.xinitrc $HOME/.xinitrc
+ln -sf $(pwd)/.Xresources $HOME/.Xresources
+ln -sf $(pwd)/.zshrc $HOME/.zshrc
 
 # st install
 cd ./st && make && sudo make install
-
-# copy configs
-cp -r .config $HOME
-
-# copy home dotfiles
-cp .gitconfig .profile .Xresources .zshrc $HOME
 

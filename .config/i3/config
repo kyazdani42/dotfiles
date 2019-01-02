@@ -96,8 +96,7 @@ bindsym $mod+F2 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+F2 restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+x exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
+bindsym $mod+Shift+x exec "[ $(echo -e 'No\nYes' | dmenu -i -p 'Do you want to exit?') == 'Yes' ] && i3-msg exit"
 # resize window (you can also use the mouse for that)
 mode "resize" {
 	bindsym h resize shrink width 5 px or 10 ppt
@@ -142,6 +141,7 @@ client.urgent           $red    $black #FFFFFF $red      $red_h
 
 # bar options
 bar {
+	# status_command i3blocks
 	status_command i3status
 	font pango:mono 10
 	position top
