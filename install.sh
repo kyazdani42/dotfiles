@@ -12,3 +12,4 @@ ln -sf $(pwd)/.zshrc $HOME/.zshrc
 # st install
 cd ./st && make && sudo make install
 
+sudo cp $(pwd)/add /usr/bin/add

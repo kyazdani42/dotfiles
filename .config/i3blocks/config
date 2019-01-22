@@ -1,34 +1,24 @@
-separator_block_width=20
+separator_block_width=30
+separator=false
 align=center
 
-[world-ip]
-command=curl https://ipinfo.io/ip
-interval=once
-
-[ip-wifi]
-command=hostname --ip-address | awk '{print $1}'
+[ips]
+command=$HOME/.scripts/ips
+markup=pango
 interval=once
 
 [battery]
-command=echo battery $(acpi | awk '{print $4}') therm $(acpi -t | awk '{print $4}') °C
+command=$HOME/.scripts/battery
+markup=pango
 interval=300
 
-[cpu usage]
-command=echo cpu $(add $(ps au | awk '{print $3}' | sed -s s/%CPU//g | sort | sed 's/0.*//g'))%
+[memory swap cpu usage]
+command=$HOME/.scripts/usageinfo
 interval=3
 
-[memory usage]
-command=echo mem $(free -h | sed -n '2p' | awk '{print $3"/"$2}') swap $(free -h | sed -n '3p' | awk '{print $3"/"$2}')
-interval=3
-
-[root space]
-command=echo 💻 $(df -H /dev/sda3 | awk '{print $3}' | sed -n '2p')/$(df -H /dev/sda3 | awk '{print $2}' | sed -n '2p')
+[space]
+command=$HOME/.scripts/spaceondevice
 interval=once
-
-[home space]
-command=echo 🏠 $(df -H /dev/sda4 | awk '{print $3}' | sed -n '2p')/$(df -H /dev/sda4 | awk '{print $2}' | sed -n '2p')
-interval=once
-
 
 [datetime]
 command=echo '🗓 ' $(date +"%F %T")

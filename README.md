@@ -26,3 +26,4 @@
 
 > fontconfig handles my fonts
 
+- the add binary is a little C program to sum entry strings translated to float (with atof) and outputs the result
