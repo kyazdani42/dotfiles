@@ -139,21 +139,21 @@ client.focused_inactive $pink_h $black #FFFFFF $pink_h   $pink
 client.unfocused        $grey   $black #FFFFFF $grey     $purple
 client.urgent           $red    $black #FFFFFF $red      $red_h
 
-# bar options
+# i3 bar config
 bar {
-	# status_command i3blocks
-	status_command i3status
-	font pango:mono 10
+#	status_command i3status
+	status_command i3blocks
+	font pango:mono 11
 	position top
-	height 23
+	height 27
 	colors {
 		background $black
 		statusline $white
-		separator $yellow
+		separator $white
 
-		focused_workspace  $blue $yellow $black
-		active_workspace   $blue $yellow $black
-		inactive_workspace $black $black $grey
+		focused_workspace  $yellow $blue #FFFFFF
+		active_workspace   $yellow $blue #FFFFFF
+		inactive_workspace $black $black #FFFFFF
 		urgent_workspace   $red $black $red
 	}
 }
