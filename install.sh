@@ -1,4 +1,5 @@
 # making links
+ln -sf $(pwd)/.scripts $HOME/.scripts
 ln -sf $(pwd)/.config $HOME/.config
 ln -sf $(pwd)/.vim/vimrc $HOME/.vimrc
 ln -sf $(pwd)/.gitconfig $HOME/.gitconfig

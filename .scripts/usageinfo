@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# cpu: add is a c program i wrote to sum entries. located under /bin or /usr/bin \
+echo \
+cpu $(add $(ps au | awk '{print $3}' | sed -s s/%CPU//g | sort | sed 's/0.*//g'))% \| \
+mem $(free -h | sed -n '2p' | awk '{print $3"/"$2}') \| \
+swap $(free -h | sed -n '3p' | awk '{print $3"/"$2}')
+
