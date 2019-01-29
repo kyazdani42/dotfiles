@@ -11,6 +11,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'jreybert/vimagit'
 	Plug 'vimwiki/vimwiki'
 	Plug 'scrooloose/nerdtree'
+	Plug 'Quramy/tsuquyomi'
+	Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 syntax on
