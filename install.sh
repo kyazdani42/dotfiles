@@ -9,7 +9,7 @@ ln -sf $(pwd)/.xinitrc $HOME/.xinitrc
 ln -sf $(pwd)/.Xresources $HOME/.Xresources
 ln -sf $(pwd)/.zshrc $HOME/.zshrc
 
-# st install
-cd ./st && make && sudo make install
-
 sudo cp $(pwd)/add /usr/bin/add
+
+# must add install ohmyzsh, modify zsh key binding, npm + pure prompt
+# must add alacritty install

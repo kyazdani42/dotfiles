@@ -71,5 +71,7 @@ alias gitbeauty="git log --all --graph --oneline"
 alias ls="exa"
 alias cat="bat"
 
+bindkey -v
 autoload -U promptinit; promptinit
 prompt pure
+cat ~/.todo.md

@@ -9,11 +9,11 @@
 ## i3:
 ### wm - i3-gaps, i3status
 
+# alacritty
+### the best shell
+
 ## compton
 ### display manager (handles URxvt pretty well)
-
-## st
-### the suckless terminal ! the simple terminal ! the perfect terminal !
 
 ## zsh
 ### with pure prompt (git support and very basic)
