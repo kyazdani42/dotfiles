@@ -63,15 +63,10 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 alias pacman="sudo pacman"
 alias gitbeauty="git log --all --graph --oneline"
-alias ls="exa"
-alias cat="bat"
+#alias ls="exa"
+#alias cat="bat"
 
-bindkey -v
-autoload -U promptinit; promptinit
-prompt pure
-cat ~/.todo.md
+#autoload -U promptinit; promptinit
+#prompt pure

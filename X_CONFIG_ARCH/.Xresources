@@ -3,10 +3,12 @@ URxvt.url-launcher: firefox
 URxvt.matcher.button: 2
 URxvt.scrollBar: false
 
-URxvt.font: xft:Inconsolata:size=12
+URXft.font: xfr:monospace:size=10
 URxvt.letterSpace: -1
+URxvt*depth: 32
+URxvt*background: [100]#000000
+
 *.foreground: #F8F8F2
-*.background: #282A36
 *.color0:     #000000
 *.color8:     #4D4D4D
 *.color1:     #FF5555
@@ -23,4 +25,5 @@ URxvt.letterSpace: -1
 *.color14:    #9AEDFE
 *.color7:     #BFBFBF
 *.color15:    #E6E6E6
-*.alpha: 	  220
+
+*Xft.font: xfr:monospace:size=12

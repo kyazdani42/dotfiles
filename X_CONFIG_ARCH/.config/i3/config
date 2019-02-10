@@ -5,8 +5,8 @@ bindsym $mod+d exec dmenu_run
 bindsym $mod+Shift+w exec $BROWSER
 bindsym $mod+r exec $TERMINAL ranger
 
-bindsym $mod+Return split h, exec $TERMINAL
-bindsym $mod+Shift+Return split v, exec $TERMINAL
+bindsym $mod+Return split h, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
+bindsym $mod+Shift+Return split v, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
 # go to mode
 bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
@@ -141,7 +141,6 @@ client.urgent           $red    $black #FFFFFF $red      $red_h
 
 # i3 bar config
 bar {
-#	status_command i3status
 	status_command i3blocks
 	font pango:mono 11
 	position top
@@ -157,4 +156,8 @@ bar {
 		urgent_workspace   $red $black $red
 	}
 }
+
+# bind caps lock to escape
+exec_always --no-startup-id xmodmap -e "clear lock"
+exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"
 
