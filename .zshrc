@@ -65,8 +65,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias pacman="sudo pacman"
 alias gitbeauty="git log --all --graph --oneline"
-#alias ls="exa"
-#alias cat="bat"
+alias ls="exa"
+alias cat="bat"
 
-#autoload -U promptinit; promptinit
-#prompt pure
+autoload -U promptinit; promptinit
+prompt pure
+

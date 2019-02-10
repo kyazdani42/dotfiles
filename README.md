@@ -17,4 +17,7 @@
 
 ## zsh
 ### with pure prompt (git support and very basic)
+### install ohmyzsh and edit ~/.oh-my-zsh/lib/key-bindings.zsh
+```	bindkey -v
+export KEYTIMEOUT=1 ```
 
