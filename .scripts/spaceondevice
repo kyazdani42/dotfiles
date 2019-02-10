@@ -1,10 +1,8 @@
 #!/bin/bash
 
-rootspace=$(df -H /dev/sda3 | awk '{print $3}' | sed -n '2p')/$(df -H /dev/sda3 | awk '{print $2}' | sed -n '2p')
 computer=💻
-home=🏠
-homespace=$(df -H /dev/sda4 | awk '{print $3}' | sed -n '2p')/$(df -H /dev/sda4 | awk '{print $2}' | sed -n '2p')
+rootspace="$(df -H /dev/sda1 | awk '{print $3}' | sed -n '2p')/$(df -H /dev/sda1 | awk '{print $2}' | sed -n '2p')"
 
-echo ${computer} ${rootspace} \| ${home} ${homespace}
+echo "${computer} ${rootspace} |"
 
 

@@ -12,8 +12,9 @@ bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
 
 # font for titles
-font pango: mono 11
-new_window pixel 2
+font pango: monospace 0
+new_window 1pixel
+
 # gaps
 bindsym $mod+m gaps inner current plus 5
 bindsym $mod+n gaps inner current minus 5
@@ -133,27 +134,29 @@ set_from_resource $blue_h   i3wm.color14 #9AEDFE
 set_from_resource $grey     i3wm.color7  #BFBFBF
 set_from_resource $grey_h   i3wm.color15 #E6E6E6
 
-# class                 border  backgr. text  indicator child_border
-client.focused          $blue_h $black #FFFFFF $blue_h   $yellow
-client.focused_inactive $pink_h $black #FFFFFF $pink_h   $pink
-client.unfocused        $grey   $black #FFFFFF $grey     $purple
-client.urgent           $red    $black #FFFFFF $red      $red_h
+set $bar_color #161621
 
-# i3 bar config
+# class                 border  backgr. text  indicator child_border
+client.focused          $blue_h $bar_color #FFFFFF $yellow   $yellow
+client.focused_inactive $pink_h $bar_color #FFFFFF $pink_h   $pink
+client.unfocused        $grey   $bar_color #FFFFFF $grey     $purple
+client.urgent           $red    $bar_color #FFFFFF $red      $red_h
+
+
+# bar options
 bar {
 	status_command i3blocks
-	font pango:mono 11
+	font pango:monospace 11
 	position top
-	height 27
 	colors {
-		background $black
+		background $bar_color
 		statusline $white
-		separator $white
+		separator $yellow
 
-		focused_workspace  $yellow $blue #FFFFFF
-		active_workspace   $yellow $blue #FFFFFF
-		inactive_workspace $black $black #FFFFFF
-		urgent_workspace   $red $black $red
+		focused_workspace  $blue $yellow $bar_color
+		active_workspace   $blue $yellow $bar_color
+		inactive_workspace $bar_color $bar_color $grey
+		urgent_workspace   $red $bar_color $red
 	}
 }
 
