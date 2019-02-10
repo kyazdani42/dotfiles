@@ -9,6 +9,8 @@ if [[ "$(tty)" = "/dev/tty1" ]]; then
 	pgrep i3 || startx
 fi
 
-feh --bg-scale $HOME/Pictures/Walls/wimWall.png
+feh --bg-scale $HOME/Pictures/vimWall.png
 compton &
 
+
+export PATH="$HOME/.cargo/bin:$PATH"

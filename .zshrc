@@ -60,6 +60,8 @@ ZSH_THEME=""
 plugins=(
   git
 )
+fpath+=('/home/kiyan/.config/npm_global/lib/node_modules/pure-prompt/functions')
+fpath+=('/home/kiyan/.zsh_functions')
 
 source $ZSH/oh-my-zsh.sh
 
