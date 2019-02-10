@@ -1,4 +1,4 @@
-# ``` My Gentoo Environment ```
+# ``` My X11 Environment ```
 
 # WM: i3
 ### some x utilities I use with i3:
