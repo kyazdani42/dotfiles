@@ -145,9 +145,9 @@ client.urgent           $red    $bar_color #FFFFFF $red      $red_h
 # bar options
 bar {
 	status_command i3blocks
-	font pango:monospace 14
+	font pango:monospace 12.4
 	position top
-	height 29
+	height 23
 	colors {
 		background $bar_color
 		statusline $white
