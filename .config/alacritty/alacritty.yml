@@ -78,6 +78,8 @@ tabspaces: 8
 
 # Font configuration (changes require restart)
 font:
+  Default:
+      - monospace
   # Normal (roman) font face
   #normal:
     # Font family
@@ -114,7 +116,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 7.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.

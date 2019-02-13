@@ -1,8 +1,7 @@
 #!/bin/bash
 
-computer=💻
-rootspace="$(df -H /dev/sda1 | awk '{print $3}' | sed -n '2p')/$(df -H /dev/sda1 | awk '{print $2}' | sed -n '2p')"
+computer='/:'
+rootspace="$(df -H /dev/sda2 | awk '{print $3}' | sed -n '2p')/$(df -H /dev/sda2 | awk '{print $2}' | sed -n '2p')"
 
-echo "${computer} ${rootspace} |"
-
+echo "${computer} ${rootspace}"
 

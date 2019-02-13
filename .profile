@@ -13,4 +13,5 @@ feh --bg-scale $HOME/Pictures/vimWall.png
 compton &
 
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.bin:$PATH"
+

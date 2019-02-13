@@ -1,4 +1,4 @@
-separator_block_width=30
+separator_block_width=20
 separator=false
 align=center
 
@@ -7,20 +7,16 @@ command=$HOME/.scripts/ips
 markup=pango
 interval=once
 
-[battery]
-command=$HOME/.scripts/battery
-markup=pango
-interval=300
-
 [memory swap cpu usage]
 command=$HOME/.scripts/usageinfo
 interval=3
 
-[space]
-command=$HOME/.scripts/spaceondevice
-interval=once
+[battery]
+command=$HOME/.scripts/battery
+markup=pango
+interval=3
 
 [datetime]
-command=echo '🗓 ' $(date +"%F %T")
+command=echo $(date +"%F %T")
 interval=1
 

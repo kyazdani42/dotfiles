@@ -3,7 +3,6 @@ set $mod Mod1
 
 bindsym $mod+d exec dmenu_run
 bindsym $mod+Shift+w exec $BROWSER
-bindsym $mod+r exec $TERMINAL ranger
 
 bindsym $mod+Return split h, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
 bindsym $mod+Shift+Return split v, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
@@ -146,8 +145,9 @@ client.urgent           $red    $bar_color #FFFFFF $red      $red_h
 # bar options
 bar {
 	status_command i3blocks
-	font pango:monospace 11
+	font pango:monospace 14
 	position top
+	height 29
 	colors {
 		background $bar_color
 		statusline $white

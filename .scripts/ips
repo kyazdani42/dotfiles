@@ -1,10 +1,4 @@
 #!/bin/bash
 
-GR='\033[0;32m'
-BL='\033[0;34m'
-RS='\033[0m'
-
-ip=$(hostname --ip-addresses | awk '{ print $1 }')
-wip=$(curl -s https://ipinfo.io/ip)
-echo -e "<span color='lightgreen'>${ip}</span><span> | </span><span color='lightblue'>${wip}</span>\n"
-
+ip=$(ip addr show wlp3s0 | grep -m1 inet | awk '{ print $2 }' | sed 's/\/.*$//g')
+echo -e "<span color='lightblue'>${ip}</span>"

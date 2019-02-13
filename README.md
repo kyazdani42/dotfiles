@@ -5,6 +5,7 @@
 - i3blocks
 - feh
 - compton
+- dmenu
 
 # TERM: alacritty
 ### terminal written in rust (uses the GPU, super fast, config easy)
