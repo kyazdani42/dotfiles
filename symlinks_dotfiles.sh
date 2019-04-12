@@ -17,4 +17,4 @@ ln -s $PWD/.config/alacritty $HOME/.config/alacritty
 ln -s $PWD/.config/compton.conf $HOME/.config/compton.conf
 ln -s $PWD/.config/i3 $HOME/.config/i3
 ln -s $PWD/.config/i3blocks $HOME/.config/i3blocks
-
+ln -s $PWD/.config/polybar $HOME/.config/polybar

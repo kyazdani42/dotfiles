@@ -141,24 +141,24 @@ client.focused_inactive $pink_h $bar_color #FFFFFF $pink_h   $pink
 client.unfocused        $grey   $bar_color #FFFFFF $grey     $purple
 client.urgent           $red    $bar_color #FFFFFF $red      $red_h
 
-
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # bar options
-bar {
-	status_command i3blocks
-	font pango:monospace 12.4
-	position top
-	height 23
-	colors {
-		background $bar_color
-		statusline $white
-		separator $yellow
-
-		focused_workspace  $blue $yellow $bar_color
-		active_workspace   $blue $yellow $bar_color
-		inactive_workspace $bar_color $bar_color $grey
-		urgent_workspace   $red $bar_color $red
-	}
-}
+#bar {
+#	status_command i3blocks
+#	font pango:monospace 12.4
+#	position top
+#	height 23
+#	colors {
+#		background $bar_color
+#		statusline $white
+#		separator $yellow
+#
+#		focused_workspace  $blue $yellow $bar_color
+#		active_workspace   $blue $yellow $bar_color
+#		inactive_workspace $bar_color $bar_color $grey
+#		urgent_workspace   $red $bar_color $red
+#	}
+#}
 
 # bind caps lock to escape
 exec_always --no-startup-id xmodmap -e "clear lock"

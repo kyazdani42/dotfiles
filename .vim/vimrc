@@ -8,8 +8,6 @@ let mapleader =" "
 call plug#begin('~/.vim/plugged')
 	Plug 'junegunn/goyo.vim'
 	Plug 'PotatoesMaster/i3-vim-syntax'
-	Plug 'jreybert/vimagit'
-	Plug 'vimwiki/vimwiki'
 	Plug 'scrooloose/nerdtree'
 	Plug 'Quramy/tsuquyomi'
 	Plug 'leafgarland/typescript-vim'
