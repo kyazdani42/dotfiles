@@ -18,6 +18,9 @@ if filereadable(expand("~/.vimrc_background"))
 endif
 colorscheme base16-gruvbox-dark-hard
 
+" bg transparent
+"hi Normal ctermbg=none guibg=NONE
+
 syntax on
 set number relativenumber
 set ruler
