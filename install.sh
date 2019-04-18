@@ -39,6 +39,10 @@ echo link vim config
 ln -s $PWD/.vim $HOME/.vim
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
 
+echo install plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 echo -----------------------------------------------------------------------------
 echo link .config folders
 ln -s $PWD/.config/nvim $HOME/.config/nvim
