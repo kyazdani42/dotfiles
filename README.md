@@ -1,26 +1,29 @@
-# ``` My X11 Environment ```
+### ` WM: i3 `
+Some X11 programs used with i3:
+- polybar (the bar)
+- feh (the background)
+- compton (the compositor)
+- dmenu (the menu)
 
-# WM: i3
-### some x utilities I use with i3:
-- i3blocks
-- feh
-- compton
-- dmenu
+### ` Terminal: alacritty `
+ - Written in rust
+ - Configuration in yaml so easy
+ - GPU accelerated rendering
 
-# TERM: alacritty
-### terminal written in rust (uses the GPU, super fast, config easy)
+### ` Shell: fish `
+Using fish even if not posix.\
+I use fisher as a plugin manager\
+To handle compatibility with bash, i use bass \
+Pure prompt is the perfect prompt
 
-# SHELL: zsh
-### install pure prompt (git support and very basic)
-### npm global folder must be located in .config/npm/
-### install ohmyzsh and edit ~/.oh-my-zsh/lib/key-bindings.zsh
+### ` Editor: vim `
+Base 16 color schemes (256) gruvbox dark hard here \
+I use neovim, vim is aliased to nvim
+
+-----------------------------
+
+` installation  `
+- installation:
+```bash
+sudo ./install.sh
 ```
-bindkey -v
-export KEYTIMEOUT=1
-```
-
-# EDITOR: vim
-### no comments here
-
-# PROGRAMS:
-### zathura: a vi emulated pdf reader
