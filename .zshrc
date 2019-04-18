@@ -21,7 +21,15 @@ alias pacman="sudo pacman"
 alias gitbeauty="git log --all --graph --oneline"
 alias ls="exa"
 alias cat="bat"
+alias vim="nvim"
 
 autoload -U promptinit; promptinit
 prompt pure
+
+\cat ~/todo
+
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && \
+    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+        eval "$("$BASE16_SHELL/profile_helper.sh")"
 

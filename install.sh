@@ -1,5 +1,5 @@
 echo installing programs
-sudo pacman -S git vim neovim polybar alacritty chromium compton vifm i3blocks zsh zathura nodejs npm yarn
+sudo pacman -S git vim neovim dmenu polybar alacritty chromium compton vifm i3blocks zsh zathura nodejs npm yarn fish
 
 echo install ohmyzsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -25,6 +25,7 @@ ln -s $PWD/.scripts $HOME/.scripts
 echo link vim config
 ln -s $PWD/.vim $HOME/.vim
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
+ln -s $PWD/.config/nvim $HOME/.config/nvim
 
 echo link .config folders
 ln -s $PWD/.config/alacritty $HOME/.config/alacritty
@@ -32,4 +33,5 @@ ln -s $PWD/.config/compton.conf $HOME/.config/compton.conf
 ln -s $PWD/.config/i3 $HOME/.config/i3
 ln -s $PWD/.config/i3blocks $HOME/.config/i3blocks
 ln -s $PWD/.config/polybar $HOME/.config/polybar
+ln -s $PWD/.config/fish $HOME/.config/fish
 

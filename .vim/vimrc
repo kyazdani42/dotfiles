@@ -9,29 +9,28 @@ call plug#begin('~/.vim/plugged')
 	Plug 'junegunn/goyo.vim'
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'scrooloose/nerdtree'
-	Plug 'Quramy/tsuquyomi'
-	Plug 'leafgarland/typescript-vim'
+	Plug 'chriskempson/base16-vim'
 call plug#end()
+
+colorscheme base16-gruvbox-dark-hard
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 
 syntax on
 set number relativenumber
 set ruler
 set cursorline
-set encoding=utf-8
-set nocompatible
-set wildmode=longest,list,full
-"|gruvbox|hybrid_reverse|jellybeans|snazzy|tender
-colorscheme dracula
-" bg transparent
-hi Normal ctermbg=none guibg=NONE
-" disable autocommenting on newline
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 "Activate indentation
 filetype off
-filetype plugin indent on
-set smartindent
 "Disable vi-compatibility
 set nocompatible
+set encoding=utf-8
+set wildmode=longest,list,full
+filetype plugin indent on
+set smartindent
 "Non-expanded, 4-wide tabulations
 set tabstop=4
 set shiftwidth=4
@@ -54,6 +53,8 @@ autocmd BufWritePre * %s/\s\+$//e
 " Run xrdb whenever Xdefaults or Xresources are updated.
 autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 
+" disable autocommenting on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " goyo plugin to read text better
 map <leader>f :Goyo \| set linebreak<CR>
