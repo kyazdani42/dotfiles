@@ -3,6 +3,10 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
+alias pacman="sudo pacman"
+alias gitbeauty="git log --all --graph --oneline"
+alias ls="exa"
+alias cat="bat"
 alias vim="nvim"
 
 cat ~/todo
