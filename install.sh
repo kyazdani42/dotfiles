@@ -6,17 +6,21 @@ echo ---------------------------------------------------------------------------
 echo install base16-shell colors
 git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
 
-echo -----------------------------------------------------------------------------
-echo install ohmyzsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+# echo -----------------------------------------------------------------------------
+# echo install ohmyzsh
+# sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo -----------------------------------------------------------------------------
-echo install pure prompt
-mkdir -p $HOME/.zsh_functions
-git clone https://github.com/sindresorhus/pure /tmp/pure
-mv /tmp/pure/async.zsh /tmp/pure/pure.zsh $HOME/.zsh_functions
-ln -s $HOME/.zsh_functions/pure.zsh $HOME/.zsh_functions/prompt_pure_setup
-ln -s $HOME/.zsh_functions/async.zsh HOME/.zsh_functions/async
+echo install fisher
+curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
+
+# echo -----------------------------------------------------------------------------
+# echo install pure prompt
+# mkdir -p $HOME/.zsh_functions
+# git clone https://github.com/sindresorhus/pure /tmp/pure
+# mv /tmp/pure/async.zsh /tmp/pure/pure.zsh $HOME/.zsh_functions
+# ln -s $HOME/.zsh_functions/pure.zsh $HOME/.zsh_functions/prompt_pure_setup
+# ln -s $HOME/.zsh_functions/async.zsh HOME/.zsh_functions/async
 
 echo -----------------------------------------------------------------------------
 echo link home config file
@@ -44,4 +48,6 @@ ln -s $PWD/.config/i3 $HOME/.config/i3
 ln -s $PWD/.config/i3blocks $HOME/.config/i3blocks
 ln -s $PWD/.config/polybar $HOME/.config/polybar
 ln -s $PWD/.config/fish $HOME/.config/fish
+
+chsh -s /usr/bin/fish
 
