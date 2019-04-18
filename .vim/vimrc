@@ -9,14 +9,24 @@ call plug#begin('~/.vim/plugged')
 	Plug 'junegunn/goyo.vim'
 	Plug 'PotatoesMaster/i3-vim-syntax'
 	Plug 'scrooloose/nerdtree'
-	Plug 'chriskempson/base16-vim'
+	Plug 'drewtempelmeyer/palenight.vim'
+	Plug 'itchyny/lightline.vim'
 call plug#end()
 
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
-  source ~/.vimrc_background
+set background=dark
+colorscheme palenight
+
+let g:lightline = {
+	\'colorscheme': 'palenight',
+	\}
+
+if (has("nvim"))
+	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
-colorscheme base16-gruvbox-dark-hard
+
+if (has("termguicolors"))
+	set termguicolors
+endif
 
 " bg transparent
 "hi Normal ctermbg=none guibg=NONE
