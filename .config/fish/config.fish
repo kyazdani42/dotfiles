@@ -10,3 +10,5 @@ alias cat="bat"
 alias vim="nvim"
 
 cat ~/todo
+
+fish_vi_key_bindings
