@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdtree'
 	Plug 'drewtempelmeyer/palenight.vim'
 	Plug 'itchyny/lightline.vim'
+	Plug 'tpope/vim-surround'
 call plug#end()
 
 set background=dark
