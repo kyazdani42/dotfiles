@@ -10,11 +10,9 @@ Some X11 programs used with i3:
  - Configuration in yaml so easy
  - GPU accelerated rendering
 
-### ` Shell: fish `
-Using fish even if not posix.\
-I use fisher as a plugin manager\
-To handle compatibility with bash, i use bass \
-Pure prompt is the perfect prompt
+### ` Shell: zsh `
+zsh is with vi mode
+please sure replace `.oh-my-zsh/lib/key-bindings.zsh` bindkey -e with bindkey -v and add export KEYTIMEOUT=1
 
 ### ` Editor: vim `
 Base 16 color schemes (256) gruvbox dark hard here \

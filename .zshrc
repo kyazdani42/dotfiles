@@ -13,6 +13,7 @@ ZSH_THEME=""
 plugins=(
   git
 )
+
 fpath+=('/home/kiyan/.zsh_functions')
 
 source $ZSH/oh-my-zsh.sh
@@ -26,5 +27,5 @@ alias vim="nvim"
 autoload -U promptinit; promptinit
 prompt pure
 
-\cat ~/todo
+\cat ~/.todo
 
