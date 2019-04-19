@@ -12,6 +12,15 @@ ZSH_THEME=""
 
 plugins=(
   git
+  zsh-autosuggestions
+  colored-man-pages
+  cargo
+  docker
+  node
+  pyenv
+  ripgrep
+  rust
+  go
 )
 
 fpath+=('/home/kiyan/.zsh_functions')
