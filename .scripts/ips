@@ -1,4 +1,0 @@
-#!/bin/bash
-
-ip=$(ip addr show wlp3s0 | grep -m1 inet | awk '{ print $2 }' | sed 's/\/.*$//g')
-echo -e "<span color='lightblue'>${ip}</span>"

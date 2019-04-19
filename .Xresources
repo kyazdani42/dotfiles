@@ -3,7 +3,7 @@ URxvt.url-launcher: chromium-browser
 URxvt.matcher.button: 2
 URxvt.scrollBar: false
 
-URXft.font: xfr:monospace:size=10
+URXft.font: xfr:noto-sans:size=10
 URxvt.letterSpace: -1
 URxvt*depth: 32
 URxvt*background: [100]#000000

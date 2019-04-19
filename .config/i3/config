@@ -16,7 +16,7 @@ bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
 
 # font for titles
-font pango: monospace 0
+font noto-sans: monospace 0
 new_window 1pixel
 
 # gaps
@@ -148,7 +148,6 @@ client.urgent           $red    $bar_color #FFFFFF $red      $red_h
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-exec_always --no-startup-id xrandr --dpi 220
 # bind caps lock to escape
 exec_always --no-startup-id xmodmap -e "clear lock"
 exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"

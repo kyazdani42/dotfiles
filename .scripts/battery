@@ -1,7 +1,0 @@
-#!/bin/bash
-
-battery=$(acpi | awk '{print $4}')
-temp=$(acpi -t | awk '{print $4" °C"}')
-charge=$(acpi | awk '{print $3}' | sed -e s/Charging,/⚡/ | sed -e s/Discharging,/🔋/)
-echo -e "<span color='yellow'>${charge} ${battery}</span><span> </span><span color='orange'>temp ${temp}</span>"
-
