@@ -70,7 +70,8 @@ handle_errors "Error installing vim plug"
 echo -----------------------------------------------------------------------------
 echo link .config folders
 
-rm -rf $HOME/.config/{nvim,alacritty,compton.conf,i3,i3blocks,polybar}
+rm -rf $HOME/.config/{nvim,alacritty,compton.conf,i3,i3blocks,polybar,tmux}
+ln -s $PWD/.config/tmux $HOME/.config/tmux
 ln -s $PWD/.config/nvim $HOME/.config/nvim
 ln -s $PWD/.config/alacritty $HOME/.config/alacritty
 ln -s $PWD/.config/compton.conf $HOME/.config/compton.conf

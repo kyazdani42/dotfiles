@@ -1,3 +1,4 @@
+if [ -t 0 ] && [[ -z $TMUX ]] && [[ $- = *i* ]]; then exec tmux -f $HOME/.config/tmux/tmux.conf; fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.scripts:$PATH
 
