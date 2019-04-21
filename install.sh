@@ -25,7 +25,7 @@ if [ -f $HOME/.config/base16-shell ]; then
 	handle_errors "Error cloning base16-shell colors"
 fi
 
-if [ ! -f $HOME/.oh-my-zsh ]; then
+if [ -f $HOME/.oh-my-zsh ]; then
 	echo -----------------------------------------------------------------------------
 	echo installing zsh
 
@@ -59,7 +59,7 @@ ln -s $PWD/config/vim $HOME/.vim
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
 
 
-if [ ! -f $PWD/config/vim/autoload/plug.vim ]; then
+if [ -f $PWD/config/vim/autoload/plug.vim ]; then
 	mkdir -p $PWD/config/vim/autoload
 	echo install vim plug
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
