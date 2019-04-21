@@ -6,12 +6,29 @@
 let mapleader =" "
 
 call plug#begin('~/.vim/plugged')
+	"centers the text and gets rid of everything else (zen mode like)
 	Plug 'junegunn/goyo.vim'
+
+	"might just be explicit
 	Plug 'PotatoesMaster/i3-vim-syntax'
+
+	"the file directory
 	Plug 'scrooloose/nerdtree'
+
+	"the colorscheme
 	Plug 'drewtempelmeyer/palenight.vim'
+
+	"the lightline at the bottom
 	Plug 'itchyny/lightline.vim'
+
+	"change/delete surrounding char
 	Plug 'tpope/vim-surround'
+
+	"changes vim workdir to project root
+	Plug 'airblade/vim-rooter'
+	"fuzzyfinder for vim
+	Plug 'junegunn/fzf.vim'
+
 call plug#end()
 
 set background=dark
@@ -93,5 +110,10 @@ noremap <C-h> <C-W>h
 noremap <C-j> <C-W>j
 noremap <C-k> <C-W>k
 noremap <C-l> <C-W>l
+
+"fzf config
+map <C-g> :GFiles<CR>
+map <C-p> :Files<CR>
+map <leader>p :Rg<Cr>
 
 
