@@ -26,4 +26,6 @@ URxvt*background: [100]#292D3E
 *.color7:     #FFFFFF
 *.color15:    #FF5370
 
-*Xft.font: xfr:noto-sans:size=10
+*Xft.dpi: 220
+*Xft.font: xfr:noto-sans:size=18
+

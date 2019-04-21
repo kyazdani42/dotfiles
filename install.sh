@@ -48,12 +48,11 @@ ln -s $PWD/.zshrc $HOME/.zshrc
 echo -----------------------------------------------------------------------------
 echo linking .profile, .gitconfig .xinitrc, .xresources, .scripts
 
-rm -rf $HOME/{.gitconfig,.profile,.xinitrc,.Xresources,scripts}
-ln -s $PWD/.gitconfig $HOME/.gitconfig
-ln -s $PWD/.profile $HOME/.profile
-ln -s $PWD/.xinitrc $HOME/.xinitrc
-ln -s $PWD/.Xresources $HOME/.Xresources
-ln -s $PWD/.scripts $HOME/.scripts
+rm -rf $HOME/{.gitconfig,.profile,.xinitrc,.Xresources}
+ln -s $PWD/gitconfig $HOME/.gitconfig
+ln -s $PWD/profile $HOME/.profile
+ln -s $PWD/xinitrc $HOME/.xinitrc
+ln -s $PWD/Xresources $HOME/.Xresources
 
 echo -----------------------------------------------------------------------------
 echo link vim config
@@ -71,12 +70,11 @@ echo ---------------------------------------------------------------------------
 echo link .config folders
 
 rm -rf $HOME/.config/{nvim,alacritty,compton.conf,i3,i3blocks,polybar,tmux}
-ln -s $PWD/.config/tmux $HOME/.config/tmux
-ln -s $PWD/.config/nvim $HOME/.config/nvim
-ln -s $PWD/.config/alacritty $HOME/.config/alacritty
-ln -s $PWD/.config/compton.conf $HOME/.config/compton.conf
-ln -s $PWD/.config/i3 $HOME/.config/i3
-ln -s $PWD/.config/i3blocks $HOME/.config/i3blocks
-ln -s $PWD/.config/polybar $HOME/.config/polybar
+ln -s $PWD/config/tmux $HOME/.config/tmux
+ln -s $PWD/config/nvim $HOME/.config/nvim
+ln -s $PWD/config/alacritty $HOME/.config/alacritty
+ln -s $PWD/config/compton.conf $HOME/.config/compton.conf
+ln -s $PWD/config/i3 $HOME/.config/i3
+ln -s $PWD/config/polybar $HOME/.config/polybar
 
 cp $PWD/vimWall.png $HOME/Pictures/vimWall.png
