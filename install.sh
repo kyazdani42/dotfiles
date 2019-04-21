@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1" == "-h" ]; then
+if [ "$1" == "-h" || "1" == "--help" ]; then
 	echo "usage: ./install.sh (--init-system will try to install programs with pacman)"
 	exit 0;
 fi
@@ -17,36 +17,48 @@ if [ "$1" == "--init-system" ]; then
 	handle_error "Error installing programs"
 fi
 
-if [ -f $HOME/.config/base16-shell ]; then
+if [ ! -d $HOME/.config/base16-shell ]; then
 	echo -----------------------------------------------------------------------------
 	echo install base16-shell colors
 
-	git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell
+	git clone https://github.com/chriskempson/base16-shell.git $HOME/.config/base16-shell &>/dev/null
 	handle_errors "Error cloning base16-shell colors"
+	echo "base16-shell colors installed"
 fi
 
-if [ -f $HOME/.oh-my-zsh ]; then
+if [ ! -d $HOME/.oh-my-zsh ]; then
 	echo -----------------------------------------------------------------------------
-	echo installing zsh
+	echo installing oh my zsh
 
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" &>/dev/null
 	handle_errors "Error installing oh my zsh"
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	echo "oh my zsh installed"
+
+	echo "installing zsh-autosuggestions"
+	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions &>/dev/null
 	handle_errors "Error installing zsh-autosuggestions"
+	echo "zsh-autosuggestions installed"
+fi
+
+if [ ! -f $HOME/.zsh_functions/async ]; then
+	echo -----------------------------------------------------------------------------
+	echo "installing pure prompt"
+	rm -rf $HOME/.zsh_functions /tmp/pure
+
+	git clone https://github.com/sindresorhus/pure /tmp/pure &>/dev/null
+	handle_errors "Error cloning pure prompt"
+
+	mkdir -p $HOME/.zsh_functions
+	mv /tmp/pure/async.zsh /tmp/pure/pure.zsh $HOME/.zsh_functions
+	ln -s $HOME/.zsh_functions/pure.zsh $HOME/.zsh_functions/prompt_pure_setup
+	ln -s $HOME/.zsh_functions/async.zsh $HOME/.zsh_functions/async
+	rm -rf /tmp/pure
+	echo "pure prompt installed"
 fi
 
 echo -----------------------------------------------------------------------------
-echo installing pure prompt
-rm -rf $HOME/.zsh_functions /tmp/pure
+echo link zsh config
 
-git clone https://github.com/sindresorhus/pure /tmp/pure
-handle_errors "Error cloning pure prompt"
-
-mkdir -p $HOME/.zsh_functions
-mv /tmp/pure/async.zsh /tmp/pure/pure.zsh $HOME/.zsh_functions
-ln -s $HOME/.zsh_functions/pure.zsh $HOME/.zsh_functions/prompt_pure_setup
-ln -s $HOME/.zsh_functions/async.zsh $HOME/.zsh_functions/async
-rm -rf /tmp/pure
 rm $HOME/.zshrc
 ln -s $PWD/config/zshrc $HOME/.zshrc
 
@@ -59,15 +71,16 @@ ln -s $PWD/config/vim $HOME/.vim
 ln -s $HOME/.vim/vimrc $HOME/.vimrc
 
 
-if [ -f $PWD/config/vim/autoload/plug.vim ]; then
+if [ ! -f $PWD/config/vim/autoload/plug.vim ]; then
 	mkdir -p $PWD/config/vim/autoload
 	echo install vim plug
 	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	handle_errors "Error installing vim plug"
+	echo "vim plug installed"
 fi
 
 echo -----------------------------------------------------------------------------
-echo link configuration
+echo link configurations
 
 rm -rf $HOME/{.gitconfig,.profile,.xinitrc,.Xresources,Pictures}
 rm -rf $HOME/.config/{nvim,alacritty,compton.conf,i3,i3blocks,polybar,tmux}
