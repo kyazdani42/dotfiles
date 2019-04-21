@@ -15,6 +15,9 @@ call plug#begin('~/.vim/plugged')
 	"the file directory
 	Plug 'scrooloose/nerdtree'
 
+	"comment plugin with ctrl + / (2 times)
+	Plug 'tomtom/tcomment_vim'
+
 	"the colorscheme
 	Plug 'drewtempelmeyer/palenight.vim'
 
@@ -29,6 +32,8 @@ call plug#begin('~/.vim/plugged')
 	"fuzzyfinder for vim
 	Plug 'junegunn/fzf.vim'
 
+	"hilight when yanking
+	Plug 'machakann/vim-highlightedyank'
 call plug#end()
 
 set background=dark
@@ -114,6 +119,7 @@ noremap <C-l> <C-W>l
 "fzf config
 map <C-g> :GFiles<CR>
 map <C-p> :Files<CR>
-map <leader>p :Rg<Cr>
+map <leader>p :Rg<CR>
 
+let g:highlightedyank_highlight_duration = 300
 
