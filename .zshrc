@@ -2,27 +2,31 @@ if [ -t 0 ] && [[ -z $TMUX ]] && [[ $- = *i* ]]; then exec tmux -f $HOME/.config
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.scripts:$PATH
 
-# Path to your oh-my-zsh installation.
 export ZSH="/home/kiyan/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME=""
 
-plugins=(
-  git
-  zsh-autosuggestions
-  colored-man-pages
-  cargo
-  docker
-  node
-  pyenv
-  ripgrep
-  rust
-  go
-)
+#rg is ripgrep
+export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
+
+if [[ $PLUG_PY == 1 ]]; then
+	plugins=(
+		git
+		pyenv
+		zsh-autosuggestions
+		colored-man-pages
+		ripgrep
+	)
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+else
+	plugins=(
+		git
+		zsh-autosuggestions
+		colored-man-pages
+		ripgrep
+	)
+fi
 
 fpath+=('/home/kiyan/.zsh_functions')
 

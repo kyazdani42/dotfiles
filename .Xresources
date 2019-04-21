@@ -9,7 +9,6 @@ URxvt*depth: 32
 URxvt*background: [100]#292D3E
 *.foreground: #FF5370
 
-
 *.color0:     #292D3E
 *.color8:     #F07178
 *.color1:     #444267
