@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$1" == "-h" ]; then
+	echo "usage: ./install.sh (--init-system will try to install programs with pacman)"
+	exit 0;
+fi
+
 function handle_errors {
 	if [ $? != 0 ]; then
 		echo $1
@@ -7,10 +12,10 @@ function handle_errors {
 	fi
 }
 
-echo installing programs
-
-sudo pacman -S git vim neovim polybar alacritty chromium compton vifm i3blocks zsh zathura nodejs npm yarn tmux exa bat net-tools feh firefox
-handle_errors "Error installing programs"
+if [ "$1" == "--init-system" ]; then
+	exec ./programs.sh
+	handle_error "Error installing programs"
+fi
 
 if [ -f $HOME/.config/base16-shell ]; then
 	echo -----------------------------------------------------------------------------
@@ -43,33 +48,35 @@ ln -s $HOME/.zsh_functions/pure.zsh $HOME/.zsh_functions/prompt_pure_setup
 ln -s $HOME/.zsh_functions/async.zsh $HOME/.zsh_functions/async
 rm -rf /tmp/pure
 rm $HOME/.zshrc
-ln -s $PWD/.zshrc $HOME/.zshrc
-
-echo -----------------------------------------------------------------------------
-echo linking .profile, .gitconfig .xinitrc, .xresources, .scripts
-
-rm -rf $HOME/{.gitconfig,.profile,.xinitrc,.Xresources}
-ln -s $PWD/gitconfig $HOME/.gitconfig
-ln -s $PWD/profile $HOME/.profile
-ln -s $PWD/xinitrc $HOME/.xinitrc
-ln -s $PWD/Xresources $HOME/.Xresources
+ln -s $PWD/config/zshrc $HOME/.zshrc
 
 echo -----------------------------------------------------------------------------
 echo link vim config
 
 rm -rf $HOME/{.vim,.vimrc}
-ln -s $PWD/.vim $HOME/.vim
-ln -s $HOME/.vim/vimrc $HOME/.vimrc
-mkdir -p $PWD/.vim/autoload
 
-echo install vim plug
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-handle_errors "Error installing vim plug"
+ln -s $PWD/config/vim $HOME/.vim
+ln -s $HOME/.vim/vimrc $HOME/.vimrc
+
+
+if [ ! -f $PWD/config/vim/autoload/plug.vim ]; then
+	mkdir -p $PWD/config/vim/autoload
+	echo install vim plug
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	handle_errors "Error installing vim plug"
+fi
 
 echo -----------------------------------------------------------------------------
-echo link .config folders
+echo link configuration
 
+rm -rf $HOME/{.gitconfig,.profile,.xinitrc,.Xresources,Pictures}
 rm -rf $HOME/.config/{nvim,alacritty,compton.conf,i3,i3blocks,polybar,tmux}
+
+ln -s $PWD/Pictures $HOME/Pictures
+
+ln -s $PWD/config/profile $HOME/.profile
+ln -s $PWD/config/xinitrc $HOME/.xinitrc
+ln -s $PWD/config/Xresources $HOME/.Xresources
 ln -s $PWD/config/tmux $HOME/.config/tmux
 ln -s $PWD/config/nvim $HOME/.config/nvim
 ln -s $PWD/config/alacritty $HOME/.config/alacritty
@@ -77,4 +84,3 @@ ln -s $PWD/config/compton.conf $HOME/.config/compton.conf
 ln -s $PWD/config/i3 $HOME/.config/i3
 ln -s $PWD/config/polybar $HOME/.config/polybar
 
-cp $PWD/vimWall.png $HOME/Pictures/vimWall.png
