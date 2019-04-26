@@ -41,5 +41,3 @@ alias vim="nvim"
 autoload -U promptinit; promptinit
 prompt pure
 
-\cat ~/.todo
-

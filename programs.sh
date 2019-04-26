@@ -21,6 +21,7 @@ sudo pacman -S \
 	yarn \
 	net-tools \
 	chromium \
-	firefox
+	firefox \
+	ripgrep
 
 exit $?
