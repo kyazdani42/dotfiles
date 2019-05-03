@@ -24,6 +24,6 @@ export BROWSER="/usr/bin/chromium"
 export GDK_SCALE=1
 export GDK_SPI_SCALE=1
 
-feh --bg-scale $HOME/Pictures/vimWall.png
+feh --bg-scale $HOME/Pictures/purply-mountains.jpg
 compton &
 

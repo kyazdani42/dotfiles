@@ -35,9 +35,12 @@ source $ZSH/oh-my-zsh.sh
 alias pacman="sudo pacman"
 alias gitbeauty="git log --all --graph --oneline"
 alias ls="exa"
+alias la="ls -la --git"
 alias cat="bat"
 alias vim="nvim"
 
 autoload -U promptinit; promptinit
 prompt pure
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
