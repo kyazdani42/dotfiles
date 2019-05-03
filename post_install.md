@@ -5,3 +5,6 @@ change font size depending on your screen resolution in
 
 add plugins through :CocInstall in neovim
 
+install hunter0 (file manager)
+install cquery for C lsp
+install rust and the toolchain
