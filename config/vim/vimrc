@@ -33,49 +33,46 @@ call plug#begin('~/.vim/plugged')
 	"changes vim workdir to project root
 	Plug 'airblade/vim-rooter'
 	"fuzzyfinder for vim
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 	Plug 'junegunn/fzf.vim'
 
 	"hilight when yanking
 	Plug 'machakann/vim-highlightedyank'
 
-	"completion !
-	Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+	Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()
 
 set background=dark
 colorscheme palenight
 
-let g:lightline = {
-	\'colorscheme': 'palenight',
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ], [ 'cocstatus', 'readonly', 'filename', 'modified' ] ],
-	\ },
-	\ 'component_function': {
-	\   'cocstatus': 'coc#status'
-	\ },
-	\}
-
 if (has("nvim"))
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
+let g:lightline = {
+			\'colorscheme': 'palenight',
+			\'active': {
+			\  'left': [ [ 'mode', 'paste' ],
+			\            [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+			\},
+			\'component_function': {
+			\  'cocstatus': 'coc#status'
+			\},
+			\}
+
 if (has("termguicolors"))
 	set termguicolors
 endif
-
 if !has('gui_running')
 	set t_Co=256
 endif
 
-" bg transparent
-"hi Normal ctermbg=none guibg=NONE
-
+set mouse=a
 syntax on
 set number relativenumber
 set ruler
 set cursorline
-
 "Activate indentation
 filetype off
 "Disable vi-compatibility
@@ -96,15 +93,14 @@ set backspace=indent,eol,start
 set laststatus=2
 "Better search
 set ignorecase
+set so=6
 set smartcase
 set incsearch
+set scrolloff=9999
 set showmatch
 set hlsearch
-"
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
-" Run xrdb whenever Xdefaults or Xresources are updated.
-autocmd BufWritePost ~/.Xresources,~/.Xdefaults !xrdb %
 
 " disable autocommenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -156,32 +152,35 @@ set shortmess+=c
 " always show signcolumns
 set signcolumn=yes
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+noremap <leader><leader> :call CocActionAsync('doHover')<CR>
+
+"tab triggers completion, ctrl Tab makes always a tab
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-"this is needed to make a tab at the end of word
-"cause coc will trigger coc#refresh which is asynchronous so the result cannot be checked
-inoremap <leader><TAB> <TAB>
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<TAB>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" Use <C-space> to trigger completion.
+" inoremap <C><space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" Use `[c` and `]c` to navigate diagnostics
-nmap <silent> [c <Plug>(coc-diagnostic-prev)
-nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
