@@ -1,7 +1,9 @@
 # Mod1 is Alt, Mod4 is Windows
 set $mod Mod1
 
-bindsym $mod+d exec dmenu_run
+set $dmenu "dmenu_run -i -l 15 -h 50 -x 1200 -y 400 -w 1500 -fn noto-sans -sf '#fff' -sb '#BD93F9' -nf '#fff' -nb '#221f3e'"
+
+bindsym $mod+d exec $dmenu
 bindsym $mod+Shift+w exec $BROWSER
 
 bindsym $mod+w exec $TERMINAL -e hunter
@@ -101,7 +103,7 @@ bindsym $mod+F2 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+F2 restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+x exec "[ $(echo -e 'No\nYes' | dmenu -i -p 'Do you want to exit?') == 'Yes' ] && i3-msg exit"
+bindsym $mod+Shift+x exec "[ $(echo -e 'cancel\nexit' | dmenu -i -h 45 -fn noto-sans -w 470 -x 1600 -sf '#292d3e' -sb '#8be9fd' -nf '#fff' -nb '#292d3e') == 'yes' ] &&ji3-msg exit"
 # resize window (you can also use the mouse for that)
 mode "resize" {
 	bindsym h resize shrink width 5 px or 10 ppt
