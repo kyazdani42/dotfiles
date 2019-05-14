@@ -1,27 +1,41 @@
-### ` WM: i3 `
-Some X11 programs used with i3:
-- polybar (the bar)
-- feh (the background)
-- compton (the compositor)
-- dmenu (the menu)
+***i3 in manjaro - by kiyan yazdani***
 
-### ` Terminal: alacritty `
- - Written in rust
- - Configuration in yaml so easy
- - GPU accelerated rendering
-
-### ` Shell: zsh `
-zsh is with vi mode
-please sure replace `.oh-my-zsh/lib/key-bindings.zsh` bindkey -e with bindkey -v and add export KEYTIMEOUT=1
-
-### ` Editor: vim `
-Base 16 color schemes (256) gruvbox dark hard here \
-I use neovim, vim is aliased to nvim
-
------------------------------
-
-` installation  `
-- installation:
-```bash
-sudo ./install.sh
+\
+**just use some basic programs to make your desktop a little better**
 ```
+polybar, feh, compton, dmenu...
+```
+
+\
+***no other terminal than alacritty:***
+ ```
+ Written in rust, and rust is dope
+Configuration in yaml is the fucking best
+GPU accelerated rendering *(this is cool)*
+ ```
+
+\
+***stop using fish you f\*ckers***\
+Use zsh with vi mode.\
+Replace '*.oh-my-zsh/lib/key-bindings.zsh*' bindkey -e with bindkey -v.\
+Export KEYTIMEOUT=1 (mandator for vi mode to work properly).
+
+***You guessed it... vim***
+```
+for f*ck sake, use neovim.
+But don't bloat the editor with too many plugins, vim has a pretty decent amount of feature you wan't to learn.
+Or install vscod...ium!
+```
+
+---
+
+**installation**
+```bash
+$ sudo ./install.sh
+```
+
+***et voila***
+![alt text](.github/screenshot.png?raw=true "screenshot")
+
+
+---

@@ -1,10 +1,8 @@
-change font size depending on your screen resolution in
+**change font sizes depending on your screen resolution in**
 - Xresources (*Xft.dpi,*Xft.font)
-- config/polybar/config (line 31, line 50-52)
-- config/alacritty/alacritty.yml (line 119)
+- config/polybar/config
+- config/alacritty/alacritty.yml
+- Also some tweaks to do in .profile with dpi, qt and gtk scales
 
-add plugins through :CocInstall in neovim
-
-install hunter0 (file manager)
-install cquery for C lsp
-install rust and the toolchain
+**install hunter0 (file manager)**\
+**install rust and the toolchain**
