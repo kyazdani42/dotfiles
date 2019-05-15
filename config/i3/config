@@ -103,7 +103,7 @@ bindsym $mod+F2 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+F2 restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+x exec "[ $(echo -e 'cancel\nexit' | dmenu -i -h 45 -fn noto-sans -w 470 -x 1600 -sf '#292d3e' -sb '#8be9fd' -nf '#fff' -nb '#292d3e') == 'yes' ] &&ji3-msg exit"
+bindsym $mod+Shift+x exec "[ $(echo -e 'cancel\nexit' | dmenu -i -h 45 -fn noto-sans -w 470 -x 1600 -sf '#292d3e' -sb '#8be9fd' -nf '#fff' -nb '#292d3e') == 'exit' ] && i3-msg exit"
 # resize window (you can also use the mouse for that)
 mode "resize" {
 	bindsym h resize shrink width 5 px or 10 ppt
