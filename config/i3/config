@@ -81,15 +81,15 @@ mode "resize" {
 set $red    #FF5555
 set $purple #BD93F9
 set $pink   #FF92D0
-set $barC   #2a2b2f
+set $bgCol  #292D3E
 set $white  #FFFFFF
 set $blue   #9AEDFE
 
-# class                 border bg text indicator child_border
+# class                 border  bg-text  indicator child-border
 client.focused          $purple $purple  $purple   $purple
-client.focused_inactive $pink  $barC   $white    $barC
-client.unfocused        $barC  $barC   $white    $barC
-client.urgent           $red   $barC   $white    $red
+client.focused_inactive $pink   $bgCol   $white    $bgCol
+client.unfocused        $bgCol  $bgCol   $white    $bgCol
+client.urgent           $red    $bgCol   $white    $red
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
