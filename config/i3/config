@@ -71,10 +71,10 @@ bindsym $mod+a focus parent
 
 bindsym $mod+Shift+r mode "resize"
 mode "resize" {
-	bindsym h resize shrink width 10 px
-	bindsym j resize grow height 10 px
-	bindsym k resize shrink height 10 px
-	bindsym l resize grow width 10 px
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
 	bindsym $mod+Shift+r mode "default"
 }
 
