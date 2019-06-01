@@ -1,37 +1,33 @@
-***i3 in manjaro - by kiyan yazdani***
+***i3 in manjaro***
+
+**some basic programs**
+>- *[polybar](https://github.com/polybar/polybar)*
+>- *[feh](https://github.com/derf/feh)*
+>- *[compton](https://github.com/chjj/compton)*
+>- *[dmenu](https://tools.suckless.org/dmenu/)*
+
+***alacritty:***
+- Terminal written in rust
+- Configuration is dynamic, you don't need to relaunch the terminal to see the changes
+- Configuring with yaml is very easy
+- GPU accelerated rendering is great
 
 \
-**just use some basic programs to make your desktop a little better**
-```
-polybar, feh, compton, dmenu...
-```
+***zsh***\
+To enable vi mode
+> Replace **$HOME/.oh-my-zsh/lib/key-bindings.zsh** `bindkey -e` to `bindkey -v`\
+> add `export KEYTIMEOUT=1` *(remove timeout issue when changing modes)*.
 
-\
-***no other terminal than alacritty:***
- ```
- Written in rust, and rust is dope
-Configuration in yaml is the fucking best
-GPU accelerated rendering *(this is cool)*
- ```
+***vim***
+(neovim)
 
-\
-***stop using fish you f\*ckers***\
-Use zsh with vi mode.\
-Replace '*.oh-my-zsh/lib/key-bindings.zsh*' bindkey -e with bindkey -v.\
-Export KEYTIMEOUT=1 (mandator for vi mode to work properly).
-
-***You guessed it... vim***
-```
-for f*ck sake, use neovim.
-But don't bloat the editor with too many plugins, vim has a pretty decent amount of feature you wan't to learn.
-Or install vscod...ium!
-```
+also, as an alternative to vscode, is use vscodium
 
 ---
 
 **installation**
 ```bash
-$ sudo ./install.sh
+$ sudo ./install.sh (--init-system to install programs)
 ```
 
 ***et voila***
