@@ -34,7 +34,7 @@ if [ ! -d $HOME/.oh-my-zsh ]; then
 	handle_errors "Error installing oh my zsh"
 
 	#enable vi key binding
-	sed -s 's/bindkey -e/bindkey -v\nexport KEYTIMEOUT=1/g' $HOME/.oh-my-zsh/lib/key-bindings.zsh
+	sed -i 's/bindkey -e/bindkey -v\nexport KEYTIMEOUT=1/g' $HOME/.oh-my-zsh/lib/key-bindings.zsh
 	echo "oh my zsh installed"
 
 	echo "installing zsh-autosuggestions"
