@@ -4,5 +4,5 @@
 - config/alacritty/alacritty.yml
 - Also some tweaks to do in .profile with dpi, qt and gtk scales
 
-**install hunter0 (file manager)**\
 **install rust and the toolchain**
+**install rabite0/hunter (file manager)**

@@ -39,6 +39,8 @@ call plug#begin('~/.vim/plugged')
 	"hilight when yanking
 	Plug 'machakann/vim-highlightedyank'
 
+	Plug 'leafgarland/typescript-vim'
+
 call plug#end()
 
 set background=dark
