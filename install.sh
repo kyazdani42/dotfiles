@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1" == "-h" || "1" == "--help" ]; then
+if [ "$1" == "-h" -o "$1" == "--help" ]; then
 	echo "usage: ./install.sh (--init-system will try to install programs with pacman)"
 	exit 0;
 fi
@@ -85,8 +85,8 @@ fi
 echo -----------------------------------------------------------------------------
 echo link configurations
 
-rm -rf $HOME/{.gitconfig,.profile,.xinitrc,.Xresources,Pictures}
-rm -rf $HOME/.config/{nvim,alacritty,compton.conf,i3,i3blocks,polybar,tmux}
+rm -rf $HOME/{.profile,.xinitrc,.Xresources,Pictures,.gtkrc-2.0}
+rm -rf $HOME/.config/{nvim,alacritty,compton.conf,i3,i3blocks,polybar,tmux,gtk-3.0}
 
 ln -s $PWD/Pictures $HOME/Pictures
 
@@ -99,4 +99,5 @@ ln -s $PWD/config/alacritty $HOME/.config/alacritty
 ln -s $PWD/config/compton.conf $HOME/.config/compton.conf
 ln -s $PWD/config/i3 $HOME/.config/i3
 ln -s $PWD/config/polybar $HOME/.config/polybar
-
+ln -s $PWD/config/gtk-3.0 $HOME/.config/gtk-3.0
+ln -s $PWD/config/gtkrc-2.0 $HOME/.gtkrc-2.0

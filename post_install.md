@@ -1,8 +1,11 @@
-**change font sizes depending on your screen resolution in**
+**fonts, fontsizes, themes**
 - Xresources (*Xft.dpi,*Xft.font)
-- config/polybar/config
-- config/alacritty/alacritty.yml
-- Also some tweaks to do in .profile with dpi, qt and gtk scales
+- config/polybar/config (bar height, pixel size)
+- install fonts (consolas, inconsolata, noto)
+- config/alacritty/alacritty.yml (fonts, point)
+- .profile (gtk and qt scales)
+- add Plane theme
+- configure qt5ct
 
 **install rust and the toolchain**
-**install rabite0/hunter (file manager)**
+**install [deno](https://github.com/denoland/deno)**
