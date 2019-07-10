@@ -27,7 +27,7 @@ also, as an alternative to vscode, is use vscodium
 
 **installation**
 ```bash
-$ sudo ./install.sh (--init-system to install programs)
+$ sudo ./install.sh (--init | -i to install programs)
 ```
 
 ***et voila***
