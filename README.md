@@ -19,8 +19,6 @@
 ***vim***
 (neovim)
 
-also, as an alternative to vscode, is use vscodium
-
 ---
 
 **installation**
