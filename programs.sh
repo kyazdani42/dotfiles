@@ -53,5 +53,8 @@ installer net-tools ifconfig
 installer ripgrep rg
 installer neovim nvim
 
-exit $?
+# install fonts
+installer ttf-dejavu
+installer adobe-source-sans-pro-fonts
+fc-cache
 

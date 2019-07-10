@@ -12,10 +12,7 @@ function handle_errors {
 	fi
 }
 
-if [ "$1" == "--init" -o "$1" == "-i" ]; then
-	exec ./programs.sh
-	handle_error "Error installing programs"
-fi
+[ "$1" == "--init" -o "$1" == "-i" ] && exec ./programs.sh;
 
 if [ ! -d $HOME/.config/base16-shell ]; then
 	echo -----------------------------------------------------------------------------

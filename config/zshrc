@@ -5,6 +5,10 @@ ZSH_THEME=""
 
 fpath+=('/home/kiyan/.zsh_functions')
 
+function fonts() {
+	fc-list -f '%{family}\n' | awk '!x[$0]++' | grep Mono
+}
+
 if [[ $PLUG_PY == 1 ]]; then
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"

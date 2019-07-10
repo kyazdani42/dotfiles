@@ -3,7 +3,7 @@ URxvt.url-launcher: chromium-browser
 URxvt.matcher.button: 2
 URxvt.scrollBar: false
 
-URxvt.font: xft:Consolas:size=15
+URxvt.font: xft:DejaVu Sans Mono:size=15
 URxvt.letterSpace: -1
 URxvt*depth: 32
 URxvt*background: [90]#292d3e
@@ -28,5 +28,5 @@ URxvt.color7:     #FFFFFF
 URxvt.color15:    #FF5370
 
 *Xft.dpi: 120
-*Xft.font: xft:adobe-source-code-pro:size=18
+*Xft.font: xft:DejaVu Sans Mono:size=18
 
