@@ -2,6 +2,6 @@ gtk-icon-theme-name = "Plane"
 gtk-theme-name = "Plane"
 style "user-font"
 {
-	font_name="Noto Sans 9"
+	font_name="Open Sans 9"
 }
-gtk-font-name="Noto Sans 9"
+gtk-font-name="Open Sans 9"
