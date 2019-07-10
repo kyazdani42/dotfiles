@@ -14,9 +14,7 @@
 
 \
 ***zsh***\
-To enable vi mode
-> Replace **$HOME/.oh-my-zsh/lib/key-bindings.zsh** `bindkey -e` to `bindkey -v`\
-> add `export KEYTIMEOUT=1` *(remove timeout issue when changing modes)*.
+> vi mode is enabled
 
 ***vim***
 (neovim)
