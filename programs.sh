@@ -37,7 +37,6 @@ installer exa
 installer feh
 installer polybar
 installer tmux
-installer vifm
 installer zsh
 installer zathura
 installer npm
@@ -45,6 +44,9 @@ installer yarn
 installer chromium
 installer firefox
 installer pass
+installer i3lock
+installer xss-lock
+installer nautilus
 
 installer nodejs node
 installer net-tools ifconfig

@@ -3,18 +3,19 @@
 [ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 [ -d "$HOME/.pyenv/bin" ] && export PATH="$HOME/.pyenv/bin:$PATH"
 
+eval $(ssh-agent -s)
+ssh-add $HOME/.ssh/id_rsa.pub
+
 export PATH="$HOME/.cargo/bin:$HOME/.deno/bin:$PATH"
 
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_SCALE_FACTOR=1
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 export EDITOR="/usr/bin/vim"
 export TERMINAL="/usr/bin/alacritty"
 export BROWSER="/usr/bin/chromium"
-export GDK_SCALE=1
-export GDK_SPI_SCALE=1
 
-feh --bg-scale $HOME/Pictures/purply-mountains.jpg
-compton &
+feh --bg-scale $HOME/Pictures/Disco_Dingo.png
+compton --config ~/.config/compton.conf -b
+xss-lock -- lock &
 

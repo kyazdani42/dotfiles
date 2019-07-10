@@ -7,24 +7,25 @@ bindsym $mod+F2 reload
 bindsym $mod+Shift+F2 restart
 # exit i3 (logs you out of your X session)
 
-set $dmenu "dmenu_run -i -l 15 -h 50 -x 1200 -y 400 -w 1500 -fn noto-sans -sf '#fff' -sb '#BD93F9' -nf '#fff' -nb '#221f3e'"
+set $dmenu "dmenu_run -i -l 17 -h 25 -x 600 -y 300 -w 750 -fn adobe-source-code-pro -sf '#fff' -sb '#BD93F9' -nf '#fff' -nb '#221f3e'"
 
-bindsym $mod+Shift+p exec "passmenu -i -l 15 -h 50 -x 1200 -y 400 -w 1500 -fn noto-sans -sf '#fff' -sb '#BD93F9' -nf '#fff' -nb '#221f3e'"
+bindsym $mod+p exec "passmenu -i -l 17 -h 25 -x 600 -y 300 -w 750 -fn adobe-source-code-pro -sf '#fff' -sb '#BD93F9' -nf '#fff' -nb '#221f3e'"
 
 bindsym $mod+d exec $dmenu
 bindsym $mod+Shift+w exec $BROWSER
 
 bindsym $mod+Tab workspace back_and_forth
 
-bindsym $mod+w exec $TERMINAL -e hunter
+bindsym $mod+w exec nautilus
 
 bindsym $mod+Return split h, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
 bindsym $mod+Shift+Return split v, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
+
 # go to mode
 bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
 
-bindsym $mod+Shift+x exec "[ $(echo -e 'cancel\nexit' | dmenu -i -h 45 -fn noto-sans -w 470 -x 1600 -sf '#292d3e' -sb '#8be9fd' -nf '#fff' -nb '#292d3e') == 'exit' ] && i3-msg exit"
+bindsym $mod+Shift+x exec exit_script
 # resize window (you can also use the mouse for that)
 
 # no title
@@ -66,10 +67,6 @@ bindsym $mod+Control+Return scratchpad show
 bindsym $mod+Shift+s floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
-# focus the parent container
-bindsym $mod+a focus parent
-# focus the child container
- bindsym $mod+c focus child
 
 bindsym $mod+Shift+r mode "resize"
 mode "resize" {
@@ -79,6 +76,8 @@ mode "resize" {
 	bindsym l resize grow width 10 px or 10 ppt
 	bindsym $mod+Shift+r mode "default"
 }
+
+bindsym $mod+Shift+o exec lock
 
 set $red    #FF5555
 set $purple #BD93F9
@@ -102,6 +101,8 @@ exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"
 bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%- unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 
 set $ws1 "1"
 set $ws2 "2"
@@ -137,4 +138,3 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-

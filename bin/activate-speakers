@@ -1,0 +1,4 @@
+#!/bin/sh
+
+amixer -q set Speaker unmute
+amixer -q set Master unmute

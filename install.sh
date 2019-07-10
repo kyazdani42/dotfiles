@@ -12,7 +12,7 @@ function handle_errors {
 	fi
 }
 
-if [ "$1" == "--init-system" ]; then
+if [ "$1" == "--init" -o "$1" == "-i" ]; then
 	exec ./programs.sh
 	handle_error "Error installing programs"
 fi
@@ -65,7 +65,6 @@ echo link zsh config
 rm $HOME/.zshrc
 ln -s $PWD/config/zshrc $HOME/.zshrc
 
-echo -----------------------------------------------------------------------------
 echo link vim config
 
 rm -rf $HOME/{.vim,.vimrc}
@@ -82,13 +81,14 @@ if [ ! -f $PWD/config/vim/autoload/plug.vim ]; then
 	echo "vim plug installed"
 fi
 
-echo -----------------------------------------------------------------------------
 echo link configurations
 
 rm -rf $HOME/{.profile,.xinitrc,.Xresources,Pictures,.gtkrc-2.0}
 rm -rf $HOME/.config/{nvim,alacritty,compton.conf,i3,i3blocks,polybar,tmux,gtk-3.0}
 
 ln -s $PWD/Pictures $HOME/Pictures
+
+ln -s $PWD/bin $HOME/.bin
 
 ln -s $PWD/config/profile $HOME/.profile
 ln -s $PWD/config/xinitrc $HOME/.xinitrc

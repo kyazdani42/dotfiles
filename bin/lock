@@ -1,0 +1,4 @@
+#!/bin/sh
+
+i3lock -ei $HOME/Pictures/lock_screen.png
+

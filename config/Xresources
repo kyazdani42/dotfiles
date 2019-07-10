@@ -3,29 +3,30 @@ URxvt.url-launcher: chromium-browser
 URxvt.matcher.button: 2
 URxvt.scrollBar: false
 
-URXft.font: xfr:noto-sans:size=10
+URxvt.font: xft:Consolas:size=15
 URxvt.letterSpace: -1
 URxvt*depth: 32
-URxvt*background: [100]#292D3E
-*.foreground: #FF5370
+URxvt*background: [90]#292d3e
+URxvt*cursorColor: #959dcb
+*.foreground: #959dcb
 
-*.color0:     #292D3E
-*.color8:     #F07178
-*.color1:     #444267
-*.color9:     #F78C6C
-*.color2:     #32374D
-*.color10:    #FFCB6B
-*.color3:     #676E95
-*.color11:    #C3E88D
-*.color4:     #8796B0
-*.color12:    #89DDFF
-*.color5:     #959DCB
-*.color13:    #82AAFF
-*.color6:     #959DCB
-*.color14:    #C792EA
-*.color7:     #FFFFFF
-*.color15:    #FF5370
+URxvt.color0:     #292D3E
+URxvt.color8:     #F07178
+URxvt.color1:     #444267
+URxvt.color9:     #F78C6C
+URxvt.color2:     #32374D
+URxvt.color10:    #FFCB6B
+URxvt.color3:     #676E95
+URxvt.color11:    #C3E88D
+URxvt.color4:     #8796B0
+URxvt.color12:    #89DDFF
+URxvt.color5:     #959DCB
+URxvt.color13:    #82AAFF
+URxvt.color6:     #959DCB
+URxvt.color14:    #C792EA
+URxvt.color7:     #FFFFFF
+URxvt.color15:    #FF5370
 
-*Xft.dpi: 220
-*Xft.font: xfr:noto-sans:size=18
+*Xft.dpi: 120
+*Xft.font: xft:adobe-source-code-pro:size=18
 
