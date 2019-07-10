@@ -13,7 +13,7 @@
 - GPU accelerated rendering is great
 
 \
-***zsh***\
+***zsh***
 > vi mode is enabled
 
 ***vim***
