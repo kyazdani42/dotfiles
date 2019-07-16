@@ -15,6 +15,7 @@ fi
 
 [ -f '/home/kiyan/.gcloud/path.zsh.inc' ] && . '/home/kiyan/.gcloud/path.zsh.inc'
 [ -f '/home/kiyan/.gcloud/completion.zsh.inc' ] && . '/home/kiyan/.gcloud/completion.zsh.inc'
+[ -d '/home/kiyan/.yarn/bin' ] && export PATH="$HOME/.yarn/bin":$PATH
 
 source $ZSH/oh-my-zsh.sh
 
@@ -27,6 +28,7 @@ alias gitbeauty="git log --all --graph --oneline"
 alias ls="exa"
 alias la="ls -la --git"
 alias vim="nvim"
+alias open="xdg-open"
 alias find="fd"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
