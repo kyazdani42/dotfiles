@@ -98,9 +98,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id xmodmap -e "clear lock"
 exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"
 
-bindsym XF86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q sset Master 3%- unmute
-bindsym XF86AudioMute exec amixer -q set Master toggle
+bindsym XF86AudioRaiseVolume exec alsaHandler --up
+bindsym XF86AudioLowerVolume exec alsaHandler --down
+bindsym XF86AudioMute exec alsaHandler --toggle
+
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 

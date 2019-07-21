@@ -30,6 +30,7 @@ alias la="ls -la --git"
 alias vim="nvim"
 alias open="xdg-open"
 alias find="fd"
+alias cdd="cd $HOME/Document/workspaces"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
