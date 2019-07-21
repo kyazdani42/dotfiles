@@ -37,3 +37,4 @@ export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
 autoload -U promptinit; promptinit
 prompt pure
 
+source /home/kiyan/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

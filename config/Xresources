@@ -33,7 +33,7 @@ XTerm.termName: xterm-256color
 #define base0F #ff5370
 
 *foreground:   base05
-*background:   [90]base00
+*background:   base00
 *cursorColor:  base05
 
 *color0:       base00

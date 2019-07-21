@@ -1,4 +1,3 @@
-**fonts, fontsizes, themes**
 - config/polybar/config (bar height, pixel size)
 - .profile (gtk and qt scales)
 - add Plane theme
@@ -8,6 +7,6 @@
 - configure everything for monolith
 - vscode with yay
 - docker
-
-**install rust and the toolchain**
-**install [deno](https://github.com/denoland/deno)**
+- zsh-syntax-hilighting
+- install rust and the toolchain
+- install [deno](https://github.com/denoland/deno)

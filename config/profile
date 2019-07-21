@@ -17,7 +17,7 @@ export BROWSER="/usr/bin/chromium"
 
 feh --bg-scale $HOME/Pictures/Disco_Dingo.png
 
-compton --backend glx --paint-on-overlay --refresh-rate 60 --glx-no-stencil --glx-no-rebind-pixmap --glx-swap-method -1 -I 1 -O 1 -b
+compton --backend glx --refresh-rate 60 --glx-no-stencil --glx-no-rebind-pixmap --use-damage -I 1 -O 1 --vsync -b
 
 xss-lock -- lock &
 
