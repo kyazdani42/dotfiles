@@ -1,176 +1,271 @@
+[global/wm]
+;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
+margin-top = 0
+margin-bottom = 0
+
+[settings]
+;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+; Define fallback values used by all module formats
+format-foreground = #FF0000
+format-background = #00FF00
+format-underline =
+format-overline =
+format-spacing =
+format-padding =
+format-margin =
+format-offset =
+
 [colors]
 background = #cc292d3e
-background-alt = #444
+background-alt = #444444
 foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
+foreground-alt = #555555
 alert = #bd2c40
 focused = #404050
 
 [bar/main]
 monitor = ${env:MONITOR}
+monitor-strict = false
+override-redirect = false
+bottom = false
+fixed-center = true
 width = 100%
 height = 35
-radius = 0.0
-fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
-line-color = #f00
+radius = 0.0
+line-size = 2
+line-color = #000000
 
 border-size = 0
-border-color = #0000000
+border-color = #000000
 
 padding-left = 0
 padding-right = 0
 
 module-margin-left = 2
-module-margin-right = 1
+module-margin-right = 2
 
-font-0 = DejaVu Sans:pixelsize=13;0
-font-1 = Twitter Color Emoji:pixelsize=12;1
-
+font-0 = "DejaVu Sans:size=13;2"
+font-1 = "UbuntuMono Nerd Font:size=16;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
 
 modules-left = i3
-modules-center = memory cpu battery
-modules-right = filesystem alsa date powermenu
+modules-center = memory cpu filesystem battery
+modules-right = pavolume arch-aur-updates date
+
+separator =
 
 tray-position = right
-tray-padding = 2
+tray-detached = false
+tray-maxsize = 20
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+tray-padding = 4
+tray-scale = 1.0
 
-cursor-click = pointer
-cursor-scroll = ns-resize
+enable-ipc = true
 
-[module/filesystem]
-type = internal/fs
-interval = 25
-
-mount-0 = /
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-label-unmounted-foreground = ${colors.foreground-alt}
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
-index-sort = true
+pin-workspaces = true
+strip-wsnumbers = false
+index-sort = false
+enable-click = true
+enable-scroll = true
 wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = false
 
+ws-icon-0 = 1
+ws-icon-1 = 2
+ws-icon-2 = 3
+ws-icon-3 = 4
+ws-icon-4 = 5
+ws-icon-5 = 6
+ws-icon-6 = 7
+ws-icon-7 = 8
+ws-icon-8 = 9
+ws-icon-9 = 10
+
+format = <label-state> <label-mode>
+
+label-mode = %mode%
 label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-foreground = #000000
+label-mode-background = #FFBB00
 
-label-focused = %index%
-label-focused-background = ${colors.focused}
+label-focused = %icon% %name%
+label-focused-background = ${colors.background-alt}
+label-focused-foreground = ${colors.foreground}
 label-focused-underline =
-label-focused-padding = 3
+label-focused-padding = 2
 
-label-unfocused = %index%
-label-unfocused-padding = 3
+label-unfocused = %icon% %name%
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-underline =
 
-label-visible = %index%
+; visible = Active workspace on unfocused monitor
+label-visible = %icon% %name%
 label-visible-background = ${self.label-focused-background}
-label-visible-underline =
-label-visible-padding = 3
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = 2
 
-label-urgent = %index%
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 3
+label-urgent = %icon% %name%
+label-urgent-background = ${self.label-focused-background}
+label-urgent-foreground = #db104e
+label-urgent-padding = 2
 
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = "cpu "
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/arch-aur-updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/check-all-updates.sh
+interval = 1000
+label = updates: %output%
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
-label = %percentage:2%%
 
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = "mem "
-format-prefix-foreground = ${colors.foreground-alt}
-label = %percentage_used%%
-
-[module/date]
-type = internal/date
-interval = 7
-date = "%Y-%m-%d"
-time = %H:%M
-label = %date% %time%
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume-foreground = ${root.foreground}
-
-format-muted-foreground = ${colors.foreground}
-label-muted = "🔇"
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
-bar-volume-indicator-font = 0
-bar-volume-fill = ─
-bar-volume-fill-font = 0
-bar-volume-empty = ─
-bar-volume-empty-font = 0
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-; TODO: create battery module
 [module/battery]
 type = internal/battery
 battery = BAT0
-adapter = ADP1
+adapter = AC0
 full-at = 100
-label-full = charged
-label-full-foreground = #ffec1c
-format-charging = charging <label-charging>
-format-discharging = discharging <label-discharging>
 
-[module/powermenu]
-type = custom/menu
+format-charging = 🔌 <label-charging>
+label-charging = %percentage%%
+format-charging-foreground = ${colors.foreground}
+format-charging-background = ${colors.background}
 
-expand-right = true
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%%
+format-discharging-foreground = ${colors.foreground}
+format-discharging-background = ${colors.background}
 
-format-spacing = 1
+format-full-prefix = " "
+format-full-prefix-foreground = #a3c725
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
-label-open = ⏻
-label-open-foreground = ${colors.secondary}
-label-close = cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-0-foreground = #FF3008
+ramp-capacity-1-foreground = #E88607
+ramp-capacity-2-foreground = #FFDD14
+ramp-capacity-3-foreground = #85EB07
+ramp-capacity-4-foreground = #08FF5A
 
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
+[module/cpu]
+type = internal/cpu
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
+interval = 2
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-prefix = "  cpu:"
+format-prefix-foreground = ${colors.foreground-alt}
 
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+label-font = 1
+format = <label>
+; Available tokens:
+;   %percentage% (default) - total cpu load
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = %percentage:3%%
 
-[settings]
-screenchange-reload = true
+[module/date]
+type = internal/date
+interval = 10
+date = %a %Y-%m-%d
+time = %H:%M
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+label = "%date%  %time% "
 
-[global/wm]
-margin-top = 0
-margin-bottom = 0
+[module/filesystem]
+type = internal/fs
+
+mount-0 = /
+interval = 60
+fixed-values = false
+spacing = 4
+format-mounted = <label-mounted>
+format-mounted-foreground = ${colors.foreground}
+format-mounted-background = ${colors.background}
+
+; Available tokens:
+;   %mountpoint%
+;   %type%
+;   %fsname%
+;   %percentage_free%
+;   %percentage_used%
+;   %total%
+;   %free%
+;   %used%
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+format-unmounted-foreground = ${colors.alert}
+format-unmounted-background = ${colors.background}
+
+[module/memory]
+type = internal/memory
+interval = 1
+; Available tokens:
+;   %percentage_used% (default)
+;   %percentage_free%
+;   %gb_used%
+;   %gb_free%
+;   %gb_total%
+;   %mb_used%
+;   %mb_free%
+;   %mb_total%
+label = %percentage_used%%
+
+format = <label>
+format-prefix = " mem: "
+format-prefix-foreground = ${colors.foreground-alt}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/scripts/pavolume.sh --listen
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
+scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+# vim:ft=dosini
+
