@@ -1,0 +1,23 @@
+#!/bin/sh
+
+font="Cantarell"
+bg="#221f3e"
+sel="#BD93F9"
+exitSel="#FF5555"
+fg="#ffffff"
+
+case $1 in
+	"--menu" | "-m")
+		exitstatus=$(printf 'cancel\nexit\nshutdown\nreboot' | dmenu -i -h 35 -fn $font -sf $fg -sb $exitSel -nf $fg -nb $bg)
+		[ "$exitstatus" = "exit" ] && i3-msg exit;
+		[ "$exitstatus" = "shutdown" ] && poweroff;
+		[ "$exitstatus" = "reboot" ] && reboot;
+		;;
+	"--launch" | "-l")
+		dmenu_run -i -l 100 -w 400 -fn $font -sf $fg -sb $sel -nf $fg -nb $bg;;
+	"--pass" | "-p")
+		passmenu -i -l 100 -y 37 -w 400 -fn $font -sf $fg -sb $sel -nf $fg -nb $bg;;
+	*)
+		echo "usage: dmenu_scripts --menu | --launch | --pass";;
+esac
+

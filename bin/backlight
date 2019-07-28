@@ -1,0 +1,4 @@
+#!/bin/sh
+
+[ "$1" = "--inc" ] && xbacklight -inc 5
+[ "$1" = "--dec" ] && xbacklight -dec 5

@@ -1,10 +1,8 @@
 [global/wm]
-;https://github.com/jaagr/polybar/wiki/Configuration#global-wm-settings
 margin-top = 0
 margin-bottom = 0
 
 [settings]
-;https://github.com/jaagr/polybar/wiki/Configuration#application-settings
 throttle-output = 5
 throttle-output-for = 10
 throttle-input-for = 30
@@ -15,15 +13,8 @@ compositing-overline = over
 compositing-underline = over
 compositing-border = over
 
-; Define fallback values used by all module formats
-format-foreground = #FF0000
-format-background = #00FF00
-format-underline =
-format-overline =
-format-spacing =
-format-padding =
-format-margin =
-format-offset =
+format-foreground = #dfdfdf
+format-background = #cc292d3e
 
 [colors]
 background = #cc292d3e
@@ -53,7 +44,7 @@ border-size = 0
 border-color = #000000
 
 padding-left = 0
-padding-right = 0
+padding-right = 1
 
 module-margin-left = 2
 module-margin-right = 2
@@ -155,7 +146,9 @@ battery = BAT0
 adapter = AC0
 full-at = 100
 
-format-charging = 🔌 <label-charging>
+format-charging-prefix = " "
+format-charging-prefix-foreground = ${colors.foreground-alt}
+format-charging = <label-charging>
 label-charging = %percentage%%
 format-charging-foreground = ${colors.foreground}
 format-charging-background = ${colors.background}

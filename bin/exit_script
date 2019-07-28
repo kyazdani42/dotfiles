@@ -1,6 +1,0 @@
-#!/bin/sh
-exitstatus=$(echo -e 'cancel\nexit\nshutdown\nreboot' | dmenu -i -h 33 -fn adobe-source-code-pro -sf '#fff' -sb '#FF5555' -nf '#fff' -nb '#221f3e')
-[ "$exitstatus" == "exit" ] && i3-msg exit
-[ "$exitstatus" == "shutdown" ] && poweroff
-[ "$exitstatus" == "reboot" ] && reboot
-
