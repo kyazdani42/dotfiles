@@ -92,18 +92,15 @@ client.focused_inactive $pink   $bgCol   $white    $bgCol
 client.unfocused        $bgCol  $bgCol   $white    $bgCol
 client.urgent           $red    $bgCol   $white    $red
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-
-# bind caps lock to escape
-exec_always --no-startup-id xmodmap -e "clear lock"
-exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape"
-
 bindsym XF86AudioRaiseVolume exec alsaHandler --up
 bindsym XF86AudioLowerVolume exec alsaHandler --down
 bindsym XF86AudioMute exec alsaHandler --toggle
 
 bindsym XF86MonBrightnessDown exec backlight --dec
 bindsym XF86MonBrightnessUp exec backlight --inc
+
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+bindsym $mod+Shift+p exec $HOME/.config/polybar/launch.sh
 
 set $ws1 "1"
 set $ws2 "2"

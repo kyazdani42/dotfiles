@@ -1,25 +1,49 @@
-[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
-[ -d "$HOME/.bin" ] && export PATH="$HOME/.bin:$PATH"
-[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
-[ -d "$HOME/.pyenv/bin" ] && export PATH="$HOME/.pyenv/bin:$PATH"
+BINARIES=(
+# program folders
+"$HOME/.cargo/bin"
+"$HOME/.deno/bin"
+"$HOME/.yarn/bin"
+"$HOME/.pyenv/bin"
+# local folders
+"$HOME/bin"
+"$HOME/.bin"
+"$HOME/.local/bin"
+)
 
+for path in "${BINARIES[@]}"; do
+	[ -d "$path" ] && export PATH="$path:$PATH"
+done
+
+# start ssh agent to use ssh
 eval "$(ssh-agent -s)"
 ssh-add "$HOME/.ssh/id_rsa.pub"
 
-export PATH="$HOME/.cargo/bin:$HOME/.deno/bin:$PATH"
 
+# use qt5ct as QT plateform
 export QT_QPA_PLATFORMTHEME="qt5ct"
+
+#path to gtk 2 config file
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
+# default programs
 export EDITOR="/usr/bin/vim"
 export TERMINAL="/usr/bin/alacritty"
 export BROWSER="/usr/bin/chromium"
 
-feh --bg-scale "$HOME/Pictures/Disco_Dingo.png"
+# set wallpaper
+WALL="$HOME/Pictures/Disco_Dingo.png"
+feh --bg-scale "$WALL"
 
+# launch wifi tray
 nm-applet &
 
+# launch compton compositor
 compton --backend glx --refresh-rate 60 --glx-no-stencil --glx-no-rebind-pixmap --use-damage -I 1 -O 1 --vsync -b
 
+# launch locking program
 xss-lock -- lock &
+
+# bind caps lock to escape
+xmodmap -e "clear lock"
+xmodmap -e "keysym Caps_Lock = Escape"
 
