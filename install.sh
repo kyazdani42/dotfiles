@@ -5,7 +5,7 @@ if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
 	exit 0;
 fi
 
-[ "$1" == "--init" ] || [ "$1" == "-i" ] && exec ./programs.sh;
+[ "$1" == "--init" ] || [ "$1" == "-i" ] && ./programs.sh;
 
 function handle_errors {
 	if [ $? != 0 ]; then

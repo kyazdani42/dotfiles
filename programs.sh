@@ -3,16 +3,14 @@
 installer="err"
 
 function checkinstaller() {
-	command -v "$1" &>/dev/null
+	command -v "$1"
 }
 
-[ "$(checkinstaller "pacman")" == 0 ] && installer="pacman"
+[ "$(checkinstaller "pacman")" ] && installer="pacman"
+[ "$(checkinstaller "apt-get")" ] && installer="apt-get install"
+[ "$(checkinstaller "apt")" ] && installer="apt install"
 
-[ "$(checkinstaller "apt-get")" == 0 ] && installer="apt-get install"
-
-[ "$(checkinstaller "apt")" == 0 ] && installer="apt install"
-
-[ "$installer" == "err" ] && echo "Error: no supported package manager found" && exit 1;
+[ "$installer" = "err" ] && echo "Error: no supported package manager found" && exit 1;
 
 echo "Installer with $installer: continue ?: (y/n)"
 read -r should_continue
@@ -21,11 +19,11 @@ read -r should_continue
 function installer() {
 	program=$1
 	[ -n "$2" ] && program=$2
-	command -v "$program" &>/dev/null
-	if [ $? == 1 ]; then
+
+	if [ ! "$(command -v "$program")" ]; then
 		echo "installing $1"
-		sudo pacman -Sy "$1"
-		[ $? == 1 ] && echo "$1 was not installed" >> install-log.error
+		$(command -v "sudo") pacman -Sy --noconfirm "$1" >/dev/null
+		[ "$?" == "1" ] && echo "$1 was not installed" >> install-log.error
 	fi
 }
 
