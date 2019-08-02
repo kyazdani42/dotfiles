@@ -1,11 +1,16 @@
 #!/bin/bash
 
-if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
-	echo "usage: ./install.sh (--init-system will try to install programs with pacman)"
-	exit 0;
-fi
-
-[ "$1" == "--init" ] || [ "$1" == "-i" ] && ./programs.sh;
+case "$1" in
+	"-h" | "--help")
+		echo "usage: ./install.sh (--init will try to install programs with your package manager)";
+		exit 0;
+		;;
+	"-i" | "--init")
+		./programs.sh;
+		;;
+	"*")
+		;;
+esac
 
 function handle_errors {
 	if [ $? != 0 ]; then

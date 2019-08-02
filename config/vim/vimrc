@@ -68,6 +68,7 @@ set cursorline
 filetype off
 "Disable vi-compatibility
 set nocompatible
+set ttyfast
 set encoding=utf-8
 set wildmode=longest,list,full
 filetype plugin indent on
@@ -76,23 +77,18 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
-"Don't bother throttling tty
-set ttyfast
-"More useful backspace behavior
 set backspace=indent,eol,start
 "Use statusbar on all windows
 set laststatus=2
-"Better search
 set ignorecase
-set so=6
+set scrolloff=9999
 set smartcase
 set incsearch
-set scrolloff=9999
 set showmatch
 set hlsearch
+
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
-
 " disable autocommenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
@@ -101,10 +97,8 @@ map <leader>f :Goyo \| set linebreak<CR>
 "nerd tree
 map <C-n> :NERDTreeToggle<CR>
 
-"copy into clipboard
-vmap <y> "+y
-"paste from clipboard
-nmap <p> "+p
+noremap <leader>y "+y
+noremap <leader>p "+p
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright

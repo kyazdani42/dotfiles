@@ -21,7 +21,7 @@ function installer() {
 	[ -n "$2" ] && program=$2
 
 	if [ ! "$(command -v "$program")" ]; then
-		echo "installing $1"
+		echo "installing $1..."
 		$(command -v "sudo") pacman -Sy --noconfirm "$1" >/dev/null
 		[ "$?" == "1" ] && echo "$1 was not installed" >> install-log.error
 	fi
