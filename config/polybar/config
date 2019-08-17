@@ -31,7 +31,7 @@ override-redirect = false
 bottom = false
 fixed-center = true
 width = 100%
-height = 35
+height = 60
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -49,11 +49,11 @@ padding-right = 1
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = "DejaVu Sans:size=13;2"
-font-1 = "UbuntuMono Nerd Font:size=16;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=8;1"
+font-0 = "DejaVu Sans:size=17;2"
+font-1 = "UbuntuMono Nerd Font:size=19;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=15;1"
+font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=15;1"
+font-4 = "Font Awesome 5 Brands:pixelsize=15;1"
 
 modules-left = i3
 modules-center = memory cpu filesystem battery
@@ -100,7 +100,7 @@ ws-icon-9 = 10
 format = <label-state> <label-mode>
 
 label-mode = %mode%
-label-mode-padding = 2
+label-mode-padding = 3
 label-mode-foreground = #000000
 label-mode-background = #FFBB00
 
@@ -108,10 +108,10 @@ label-focused = %icon% %name%
 label-focused-background = ${colors.background-alt}
 label-focused-foreground = ${colors.foreground}
 label-focused-underline =
-label-focused-padding = 2
+label-focused-padding = 3
 
 label-unfocused = %icon% %name%
-label-unfocused-padding = 2
+label-unfocused-padding = 3
 label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-underline =
@@ -120,12 +120,12 @@ label-unfocused-underline =
 label-visible = %icon% %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = 2
+label-visible-padding = 3
 
 label-urgent = %icon% %name%
 label-urgent-background = ${self.label-focused-background}
 label-urgent-foreground = #db104e
-label-urgent-padding = 2
+label-urgent-padding = 3
 
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}

@@ -46,6 +46,9 @@ installer pass
 installer i3lock
 installer xss-lock
 installer nautilus
+installer trizen
+installer pulseaudio
+installer pulseaudio-alsa
 
 installer nodejs node
 installer net-tools ifconfig
