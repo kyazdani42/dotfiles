@@ -8,6 +8,7 @@ bindsym $mod+F2 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+F2 restart
 # exit i3 (logs you out of your X session)
+bindsym $mod+x exec gnome-screenshot -i
 
 bindsym $mod+p exec dmenu_scripts --pass
 bindsym $mod+d exec dmenu_scripts --launch

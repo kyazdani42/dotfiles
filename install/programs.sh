@@ -28,6 +28,7 @@ installer pass
 installer i3lock
 installer xss-lock
 installer nautilus
+installer gnome-screenshot
 
 installer nodejs node
 installer net-tools ifconfig
