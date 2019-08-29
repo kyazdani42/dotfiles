@@ -14,6 +14,13 @@ for path in "${BINARIES[@]}"; do
 	[ -d "$path" ] && export PATH="$path:$PATH"
 done
 
+if command -v go; then
+	gopath="$HOME/Document/go_projects"
+	[ ! -d "$gopath" ] && mkdir -p $gopath/{src,pkg,bin}
+	export GOPATH=$gopath
+	export PATH="$GOPATH/bin:$PATH"
+fi
+
 # start ssh agent to use ssh
 eval "$(ssh-agent -s)"
 ssh-add "$HOME/.ssh/id_rsa.pub"

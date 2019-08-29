@@ -126,3 +126,6 @@ map <leader>p :Rg<CR>
 
 let g:highlightedyank_highlight_duration = 300
 
+" disable ale on C files
+let g:ale_linters = {'c': []}
+
