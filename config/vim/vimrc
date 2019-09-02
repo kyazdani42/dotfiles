@@ -122,6 +122,7 @@ noremap <C-l> <C-W>l
 "fzf config
 map <C-g> :GFiles<CR>
 map <C-p> :Files<CR>
+map <leader>b :Buffers<CR>
 map <leader>p :Rg<CR>
 
 let g:highlightedyank_highlight_duration = 300
