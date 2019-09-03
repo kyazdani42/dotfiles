@@ -5,9 +5,12 @@ if ! command -v cargo; then
 	curl https://sh.rustup.rs -sSf | sh
 fi
 
-printf "installing procs"
+printf "installing procs\n"
 cargo install procs
 
-printf "installing starship prompt"
+printf "installing starship prompt\n"
 cargo install starship
+
+printf "installing pastel\n"
+cargo install pastel
 

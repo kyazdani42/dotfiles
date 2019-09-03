@@ -124,6 +124,10 @@ noremap <C-l> <C-W>l
 map <leader>g :GFiles<CR>
 map <leader>o :Files<CR>
 map <leader>r :Rg<CR>
+map <leader>b :Buffers<CR>
 
 let g:highlightedyank_highlight_duration = 300
+
+" disable ale on C files
+let g:ale_linters = {'c': []}
 
