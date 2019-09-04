@@ -33,7 +33,7 @@ font:
     family: DejaVu Sans Mono
     style: Italic
 
-  size: 7.5
+  size: 10
 
   offset:
     x: 0

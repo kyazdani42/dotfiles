@@ -7,7 +7,7 @@ URxvt.font: xft:DejaVu Sans Mono:size=10
 URxvt.letterSpace: -1
 URxvt*depth: 32
 
-*Xft.dpi: 120
+*Xft.dpi: 160
 *Xft.font: xft:DejaVu Sans Mono:size=18
 
 XTerm.termName: xterm-256color

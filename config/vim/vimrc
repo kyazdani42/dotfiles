@@ -97,8 +97,9 @@ map <leader>f :Goyo \| set linebreak<CR>
 "nerd tree
 map <C-n> :NERDTreeToggle<CR>
 
-noremap <leader>y "+y
-noremap <leader>p "+p
+vmap <Leader>y "+y
+vmap <Leader>p "+p
+nmap <Leader>p "+p
 
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
@@ -120,10 +121,10 @@ noremap <C-k> <C-W>k
 noremap <C-l> <C-W>l
 
 "fzf config
-map <C-g> :GFiles<CR>
-map <C-p> :Files<CR>
+map <leader>g :GFiles<CR>
+map <leader>o :Files<CR>
+map <leader>r :Rg<CR>
 map <leader>b :Buffers<CR>
-map <leader>p :Rg<CR>
 
 let g:highlightedyank_highlight_duration = 300
 
