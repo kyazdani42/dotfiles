@@ -43,3 +43,4 @@ installer ttf-dejavu
 installer adobe-source-sans-pro-fonts
 fc-cache
 
+echo "install ttf-twemoji-color to have good fonts"
