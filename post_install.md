@@ -5,5 +5,4 @@
 - configure qt5ct
 - vscode with yay
 - docker
-- zsh-syntax-hilighting
 - install [deno](https://github.com/denoland/deno)

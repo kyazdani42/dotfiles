@@ -2,7 +2,8 @@
 
 from subprocess import check_output, run
 from math import sqrt
-# from os import environ
+from os import environ
+from sys import exit
 
 def get_monitor_informations():
     xrandr_output = check_output(['xrandr']).decode('utf-8')
@@ -37,7 +38,18 @@ inches = get_inches(monitor_informations)
 screen_resolution = get_screen_res(monitor_informations)
 dpi = round(screen_resolution / inches)
 
-print("inches: ", inches, "screen: ", screen_resolution, "dpis: ", dpi)
+if dpi < 180:
+    xftdpi = "120"
+else:
+    xftdpi = "200"
 
-# run(['xrdb', environ['HOME'] + '/.Xresources']).returncode
+xresources_location = environ['HOME'] + '/.Xresources'
+ret = run(['sed', '-i', "s/\*Xft\.dpi\: [0-9]*/\*Xft\.dpi\: " + xftdpi + "/", xresources_location]).returncode
+
+if ret != 0:
+    print("could not update ~/.Xresources")
+    exit(1)
+
+ret = run(['xrdb', xresources_location]).returncode
+exit(0)
 

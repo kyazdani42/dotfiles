@@ -30,7 +30,6 @@ ln -s "$PWD/bin" "$HOME/.bin"
 printf "link XDG_CONFIG_HOME configuration files\n"
 
 rm -rf "$HOME/.config/{nvim,alacritty,compton.conf,i3,i3blocks,polybar,tmux,gtk-3.0}"
-rm -rf "$HOME/{.profile,.xinitrc,.Xresources,Pictures,.gtkrc-2.0,.bin}"
 
 ln -s "$PWD/config/tmux" "$HOME/.config/tmux"
 ln -s "$PWD/config/alacritty" "$HOME/.config/alacritty"
