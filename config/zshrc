@@ -6,10 +6,17 @@ fpath+=('/home/kiyan/.zsh_functions')
 
 plugins=(git zsh-autosuggestions docker colored-man-pages)
 
-if [[ $PLUG_PY == 1 ]]; then
+if [ ! -z $PLUG_PY ]
+then
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 	plugins+=(pyenv)
+fi
+
+if [ ! -z $NVM ]
+then
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
 source $ZSH/oh-my-zsh.sh

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-font="Cantarell"
+font="Cantarell:pixelsize=20"
 bg="#221f3e"
 sel="#BD93F9"
 exitSel="#FF5555"

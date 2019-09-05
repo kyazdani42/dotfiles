@@ -4,6 +4,7 @@ BINARIES=(
 "$HOME/.deno/bin"
 "$HOME/.yarn/bin"
 "$HOME/.pyenv/bin"
+"$HOME/.nvm"
 # local folders
 "$HOME/bin"
 "$HOME/.bin"
@@ -16,7 +17,7 @@ done
 
 if command -v go; then
 	gopath="$HOME/Document/go_projects"
-	[ ! -d "$gopath" ] && mkdir -p $gopath/{src,pkg,bin}
+	[ ! -d "$gopath" ] && mkdir -p "$gopath"/{src,pkg,bin}
 	export GOPATH=$gopath
 	export PATH="$GOPATH/bin:$PATH"
 fi
