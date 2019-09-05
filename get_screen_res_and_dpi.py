@@ -2,7 +2,8 @@
 
 from subprocess import check_output, run
 from math import sqrt
-from os import environ
+# from os import environ
+
 def get_monitor_informations():
     xrandr_output = check_output(['xrandr']).decode('utf-8')
 
