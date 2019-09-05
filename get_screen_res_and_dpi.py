@@ -3,7 +3,6 @@
 from subprocess import check_output, run
 from math import sqrt
 from os import environ
-
 def get_monitor_informations():
     xrandr_output = check_output(['xrandr']).decode('utf-8')
 
@@ -35,7 +34,7 @@ def get_inches(monitor_informations):
 monitor_informations = get_monitor_informations()
 inches = get_inches(monitor_informations)
 screen_resolution = get_screen_res(monitor_informations)
-dpi = screen_resolution / inches
+dpi = round(screen_resolution / inches)
 
 print("inches: ", inches, "screen: ", screen_resolution, "dpis: ", dpi)
 
