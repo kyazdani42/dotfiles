@@ -10,7 +10,6 @@ primary_resolution=$(echo $primary_line | grep -oe "[0-9]\{3,4\}x[0-9]\{3,4\}" |
 primary_inches=$(echo $primary_line | grep -oe "[0-9]\{3,4\}mm x [0-9]\{3,4\}mm" | sed 's/[m,x]/ /g')
 
 PATH=".:$PATH"
-compute_res_inch_dpi.py "$primary_resolution" "$primary_inches"
-echo
-compute_res_inch_dpi.py "$connected_resolutions" "$connected_inches"
+[ -n "$primary_resolution" ] && [ -n "$pimary_inches" ] && compute_res_inch_dpi.py "$primary_resolution" "$primary_inches" && echo
+[ -n "$connected_resolutions" ] && [ -n "$connected_inches" ] && compute_res_inch_dpi.py "$connected_resolutions" "$connected_inches"
 
