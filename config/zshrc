@@ -13,8 +13,11 @@ then
 	plugins+=(pyenv)
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+if [ ! -z $NVM ]
+then
+	export NVM_DIR="$HOME/.nvm"
+	[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
 
 source $ZSH/oh-my-zsh.sh
 
