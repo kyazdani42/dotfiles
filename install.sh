@@ -6,10 +6,10 @@ case "$1" in
 		exit 0
 		;;
 	"-i" | "--init")
-		./install/programs.sh
+		if ! ./install/programs.sh; then exit 1; fi
 		./install/vim.sh
-		./install/rust.sh
 		./install/shell.sh
+		./install/rust.sh
 		;;
 esac
 
@@ -30,6 +30,8 @@ ln -s "$PWD/config/alacritty" "$HOME/.config/alacritty"
 ln -s "$PWD/config/i3" "$HOME/.config/i3"
 ln -s "$PWD/config/polybar" "$HOME/.config/polybar"
 ln -s "$PWD/config/gtk-3.0" "$HOME/.config/gtk-3.0"
+
+mkdir -p "$HOME"/{.bin,.workbin}
 
 echo "installation is done, you may now use your new system !"
 

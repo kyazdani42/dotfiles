@@ -1,5 +1,4 @@
 *plugged
 config/vim/autoload/*
 install-log.error
-bin/getDataFromBucket
 

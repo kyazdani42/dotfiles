@@ -9,6 +9,7 @@ BINARIES=(
 "$HOME/bin"
 "$HOME/.bin"
 "$HOME/.local/bin"
+"$HOME/.workbin"
 )
 
 for path in "${BINARIES[@]}"; do

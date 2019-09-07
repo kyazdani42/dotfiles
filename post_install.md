@@ -1,8 +1,7 @@
-- config/polybar/config (bar height, pixel size)
-- .profile (gtk and qt scales)
-- add Plane theme
+- edit $HOME/.config/polybar/config (bar height, pixel size)
+- edit $HOME/.profile (gtk and qt scales)
+- add GTK theme (plane)
 - lightdm configuration for webkit2-gtk-greeter with litarvan theme
 - configure qt5ct
-- vscode with yay
-- docker
+- configure docker to run without sudo
 - install [deno](https://github.com/denoland/deno)
