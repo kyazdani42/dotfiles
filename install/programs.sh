@@ -20,7 +20,7 @@ function install() {
 	then
 		echo "** installing $1 **"
 
-		if ! $(command -v "sudo") yay -Sy --noconfirm "$1" >/dev/null
+		if ! yay -Sy --noconfirm "$1" &>/dev/null
 		then
 			echo "$1 was not installed" >> install-log.error
 		else
