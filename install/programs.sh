@@ -56,7 +56,6 @@ install rsync
 install rofi
 install php
 install pavucontrol
-install alsamixer
 install nmap
 install polybar
 install youtube-dl
