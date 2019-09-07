@@ -5,6 +5,8 @@ sudo pacman -Syu --noconfirm >/dev/null
 
 if ! command -v yay >/dev/null
 then
+	echo "** installing yay **"
+
 	git clone https://aur.archlinux.org/yay.git &>/dev/null
 	cd yay || cd .
 	if ! makepkg -si --noconfirm &>/dev/null
@@ -13,6 +15,8 @@ then
 		exit 1
 	fi
 	cd - || cd .
+	rm -rf yay
+	echo "-- yay successfully installed --"
 fi
 
 function install() {
