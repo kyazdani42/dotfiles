@@ -1,42 +1,64 @@
 #!/bin/bash
 
-if ! command -v zsh; then
+if ! command -v zsh >/dev/null
+then
+	echo "** installing zsh **"
 	sudo pacman -Sy --noconfirm zsh >/dev/null
-	[ "$?" != "0" ] && printf "Error installing zsh, exiting.\n" && exit 1;
+	[ "$?" != "0" ] && echo "Error installing zsh, exiting." && exit 1;
+	echo "-- zsh installed --"
+	echo
 fi
 
-if [ ! -d "$HOME/.config/base16-shell" ]; then
-	printf "installing base16-shell colors"
+[ "$SHELL" != "/usr/bin/zsh" ] && chsh -s /usr/bin/zsh
 
-	git clone https://github.com/chriskempson/base16-shell.git "$HOME/.config/base16-shell" >/dev/null
-	[ "?" != "0" ] && printf "Error installing base16-shell colors, exiting.\n" && exit 1;
-	printf "base16-shell colors installed\n"
+
+if [ ! -d "$HOME/.config/base16-shell" ]
+then
+	echo "** installing base16-shell colors **"
+
+	git clone https://github.com/chriskempson/base16-shell.git "$HOME/.config/base16-shell" &>/dev/null
+	[ "$?" != "0" ] && echo "Error installing base16-shell colors, exiting." && exit 1;
+
+	echo "-- base16-shell colors installed --"
+	echo
 fi
 
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-	printf "installing oh my zsh\n"
+if [ ! -d "$HOME/.oh-my-zsh" ]
+then
+	echo "** installing oh my zsh **"
 
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh >/dev/null)"
+	git clone https://github.com/robbyrussell/oh-my-zsh "$HOME/.oh-my-zsh" &>/dev/null
 
-	[ ! -d "$HOME/.oh-my-zsh" ] && printf "Error installing oh my zsh, exiting\n" && exit 1;
+	[ "$?" != "0" ] && echo "Error installing oh my zsh, exiting." && exit 1;
 
 	# enable vi keybindings
 	sed -i 's/bindkey -e/bindkey -v\nexport KEYTIMEOUT=1/g' "$HOME/.oh-my-zsh/lib/key-bindings.zsh"
-	printf "oh my zsh installed\n"
-
-	printf "installing zsh-autosuggestions\n"
-	git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" >/dev/null
-	[ "$?" != "0" ] && printf "Error installing zsh-autosuggestions, exiting.\n" && exit 1;
-	printf "zsh-autosuggestions installed\n"
-
-	printf "installing zsh-syntax hilighting\n"
-	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting"
-	[ "$?" != "0" ] && printf "Error installing zsh-syntax-highlighting, exiting.\n" && exit 1;
+	echo "-- oh my zsh installed --"
+	echo
 fi
 
-printf "link zsh configuration files"
+if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]
+then
+	echo "** installing zsh-autosuggestions **"
+	git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" &>/dev/null
+	[ "$?" != "0" ] && echo "Error installing zsh-autosuggestions, exiting." && exit 1;
+	echo "-- zsh-autosuggestions installed --"
+	echo
+fi
 
-rm "$HOME/.zshrc"
+if [ ! -d "$HOME/.zsh-syntax-highlighting" ]
+then
+	echo "** installing zsh-syntax hilighting **"
+
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" &>/dev/null
+
+	[ "$?" != "0" ] && echo "Error installing zsh-syntax-highlighting, exiting." && exit 1;
+	echo "-- zsh-syntax-highlighting installed --"
+	echo
+fi
+
+echo "link zsh configuration file"
+
+rm -f "$HOME/.zshrc"
 ln -s "$PWD/config/zshrc" "$HOME/.zshrc"
-
 

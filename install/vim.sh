@@ -1,17 +1,17 @@
 #!/bin/bash
 
 if ! command -v vim >/dev/null; then
-	echo "installing vim"
+	echo "** installing vim **"
 	sudo pacman -Sy --noconfirm vim >/dev/null
-	[ "$?" == "1" ] && printf "Error during vim installation, exiting.\n" && exit 1;
-	echo "vim installed !"
+	[ "$?" != "0" ] && printf "Error during vim installation, exiting.\n" && exit 1;
+	echo "-- vim installed --"
 fi
 
 if ! command -v nvim >/dev/null; then
-	echo "installing neovim"
+	echo "** installing neovim **"
 	sudo pacman -Sy --noconfirm neovim >/dev/null
-	[ "$?" == "1" ] && printf "Error during neovim installation, exiting.\n" && exit 1;
-	echo "neovim installed !"
+	[ "$?" != "0" ] && printf "Error during neovim installation, exiting.\n" && exit 1;
+	echo "-- neovim installed --"
 fi
 
 printf "remove vim config file and folder\n"
