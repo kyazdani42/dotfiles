@@ -29,7 +29,9 @@ function install() {
 	fi
 }
 
+install xorg
 install xorg-server
+install xorg-xinit
 install xorg-xmodmap
 install xorg-xev
 install xorg-xdpyinfo
