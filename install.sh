@@ -27,7 +27,22 @@ ln -s "$PWD/config/gtk-3.0" "$HOME/.config/gtk-3.0"
 
 mkdir -p "$HOME"/{.bin,.workbin}
 
-echo "installation is finished, you should now reboot your system"
-echo "you may also need to update some files:"
-cat post_install.md
+echo "
+*************************************************************
+Installation is done, you should now reboot your system     *
+----------------------------------------------------------- *
+POST INSTALL STEPS:                                         *
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
+                                                            *
+- qt5ct    : configure                                      *
+- profile  : gtk and qt scales                              *
+- polybar  : height, font sizes                             *
+- docker   : configuration to run without sudo              *
+- gtk      : download theme (plane), edit gtk config        *
+- deno     : install steps at github.com/denoland/deno      *
+- lightdm  : edit with the conf provided in config/lightdm  *
+                                                            *
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
+*************************************************************
+"
 
