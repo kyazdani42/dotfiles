@@ -1,8 +1,11 @@
 #!/bin/bash
 
+echo "updating your system"
+sudo pacman -Syu --noconfirm >/dev/null
+
 if ! command -v yay >/dev/null
 then
-	if ! $(command -v sudo) pacman -Sy --noconfirm yay >/dev/null
+	if ! $(command -v sudo) pacman -Sy --noconfirm yay &>/dev/null
 	then
 		echo "Error during yay installation, exiting"
 		exit 1
