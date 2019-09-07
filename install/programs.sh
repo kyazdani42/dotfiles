@@ -5,7 +5,7 @@ sudo pacman -Syu --noconfirm >/dev/null
 
 if ! command -v yay >/dev/null
 then
-	git clone https://aur.archlinux.org/yay.git >/dev/null
+	git clone https://aur.archlinux.org/yay.git &>/dev/null
 	cd yay || cd .
 	if ! makepkg -si --noconfirm &>/dev/null
 	then
