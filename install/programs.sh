@@ -5,11 +5,14 @@ sudo pacman -Syu --noconfirm >/dev/null
 
 if ! command -v yay >/dev/null
 then
-	if ! $(command -v sudo) pacman -Sy --noconfirm yay &>/dev/null
+	git clone https://aur.archlinux.org/yay.git >/dev/null
+	cd yay || cd .
+	if ! makepkg -si --noconfirm &>/dev/null
 	then
 		echo "Error during yay installation, exiting"
 		exit 1
 	fi
+	cd - || cd .
 fi
 
 function install() {
