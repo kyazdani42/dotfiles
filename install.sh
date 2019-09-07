@@ -1,17 +1,10 @@
 #!/bin/bash
 
-case "$1" in
-	"-h" | "--help")
-		echo "usage: ./install.sh [-i|--init]"
-		exit 0
-		;;
-	"-i" | "--init")
-		if ! ./install/programs.sh; then exit 1; fi
-		./install/vim.sh
-		./install/shell.sh
-		./install/rust.sh
-		;;
-esac
+if ! ./install/programs.sh; then exit 1; fi
+./install/vim.sh
+./install/shell.sh
+./install/rust.sh
+./install/confs.sh
 
 echo "linking home configuration files"
 echo
@@ -33,5 +26,7 @@ ln -s "$PWD/config/gtk-3.0" "$HOME/.config/gtk-3.0"
 
 mkdir -p "$HOME"/{.bin,.workbin}
 
-echo "installation is done, you may now use your new system !"
+echo "installation is finished, you should now reboot your system"
+echo "you may also need to update some files:"
+cat post_install.md
 

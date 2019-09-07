@@ -1,4 +1,4 @@
-# ***i3 in manjaro***
+# ***i3 in arch***
 
 ## **programs**
 - [polybar](https://github.com/polybar/polybar)
@@ -10,9 +10,11 @@
 - [neovim](https://neovim.io)
 
 ## **install**
+do not run this if you are not running an arch based distribution
 ```bash
-$ sudo ./install.sh (--init | -i to install programs)
+$ sudo ./install.sh
 ```
+warning: this will replace important configuration file, the installation should be run on a fresh install
 
 ## *voila* ##
 ![alt text](.github/screenshot.png?raw=true "screenshot")
