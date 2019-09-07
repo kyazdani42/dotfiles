@@ -1,3 +1,4 @@
+- setup lightdm to launch on start with the configuration provided in config/lightdm
 - edit $HOME/.config/polybar/config (bar height, pixel size)
 - edit $HOME/.profile (gtk and qt scales)
 - add GTK theme (plane)

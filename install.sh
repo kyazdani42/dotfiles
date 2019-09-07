@@ -1,10 +1,11 @@
 #!/bin/bash
 
+./install/rust.sh
 if ! ./install/programs.sh; then exit 1; fi
 ./install/vim.sh
 ./install/shell.sh
-./install/rust.sh
-./install/confs.sh
+
+sudo systemctl enable lightdm.service
 
 echo "linking home configuration files"
 echo
