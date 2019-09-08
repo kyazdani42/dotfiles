@@ -41,6 +41,7 @@ install xorg-xev
 install xorg-xdpyinfo
 install xorg-xrandr
 install xdotool
+install zsh
 install vlc
 install i3-gaps
 install compton
