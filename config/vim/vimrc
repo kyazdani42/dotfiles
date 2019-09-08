@@ -96,6 +96,9 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 map <leader>f :Goyo \| set linebreak<CR>
 "nerd tree
 map <C-n> :NERDTreeToggle<CR>
+imap <C-j> <Esc>
+vmap <C-j> <Esc>
+map <C-j> <Esc>
 
 vmap <Leader>y "+y
 vmap <Leader>p "+p
