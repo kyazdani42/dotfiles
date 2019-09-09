@@ -105,6 +105,20 @@ vmap <Leader>y "+y
 vmap <Leader>p "+p
 nmap <Leader>p "+p
 
+" <leader><leader> toggles between buffers
+nnoremap <leader><leader> <c-^>
+
+"oups
+map <F1> <Esc>
+imap <F1> <Esc>
+
+"autoclose tags on scripting files
+autocmd Filetype html,xml,xsl,php source ~/.vim/plugins/closetag/plugin/closetag.vim
+
+" Jump to start and end of line using the home row keys
+map H ^
+map L $
+
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 
