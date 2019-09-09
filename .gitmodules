@@ -7,9 +7,9 @@
 [submodule "config/zsh/zsh-autosuggestions"]
 	path = config/zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "config/base16-shell"]
-	path = config/base16-shell
-	url = https://github.com/chriskempson/base16-shell
 [submodule "config/vim/autoload/plug-vim"]
 	path = config/vim/autoload/plug-vim
 	url = https://github.com/junegunn/vim-plug
+[submodule "config/base16-shell"]
+	path = config/base16-shell
+	url = https://github.com/chriskempson/base16-shell.git
