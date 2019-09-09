@@ -1,4 +1,4 @@
 *plugged
-config/vim/autoload/*
 install-log.error
+plug.vim
 

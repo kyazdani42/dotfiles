@@ -38,28 +38,6 @@ ln -s "$HOME/.vim/vimrc" "$HOME/.vimrc"
 mkdir -p "$HOME/.config"
 ln -s "$PWD/config/nvim" "$HOME/.config/nvim"
 
-if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
-	mkdir -p "$HOME/.vim/autoload"
-
-	echo "** installing vim plugin manager **"
-
-	if ! curl -sfLo "$HOME/.vim/autoload/plug.vim" --create-dirs "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" >/dev/null
-	then
-		echo "Error during plug.vim installation, exiting."
-		exit 1
-	fi
-
-	echo "-- vim plug installed --"
-	echo
-
-	echo "** installing vim plugins **"
-
-	if ! vim +PlugInstall +qall &>/dev/null
-	then
-		echo "Error during vim plugins installation, exiting."
-		exit 1
-	fi
-
-	echo "vim plugins installed"
-fi
+rm -f "$HOME/.vim/autoload/plug.vim"
+ln -s "$PWD/config/vim/autoload/plug-vim/plug.vim" "$HOME/.vim/autoload/plug.vim"
 

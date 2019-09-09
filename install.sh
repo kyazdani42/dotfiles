@@ -1,6 +1,5 @@
 #!/bin/bash
 
-./install/rust.sh
 if ! ./install/programs.sh; then exit 1; fi
 ./install/vim.sh
 ./install/shell.sh
