@@ -1,80 +1,41 @@
 #!/bin/bash
 
-if ! command -v zsh >/dev/null
-then
-	echo "** installing zsh **"
-
-	if ! sudo pacman -Sy --noconfirm zsh >/dev/null
-	then
-		echo "Error installing zsh, exiting."
-		exit 1
-	fi
-
-	echo "-- zsh installed --"
-	echo
-fi
-
 [ "$SHELL" != "/usr/bin/zsh" ] && chsh -s /usr/bin/zsh
 
-if [ ! -d "$HOME/.config/base16-shell" ]
-then
-	echo "** installing base16-shell colors **"
+echo "Removing .zshrc, .zsh-syntax-highlighting, .oh-my-zsh"
+rm -f "$HOME"/{.zshrc,.zsh-syntax-highlighting,.oh-my-zsh}
+echo
 
-	if ! git clone https://github.com/chriskempson/base16-shell.git "$HOME/.config/base16-shell" &>/dev/null
-	then
-		echo "Error installing base16-shell colors, exiting."
-		exit 1
-	fi
+echo "removing zsh-autosuggestions"
+rm -f "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+rm -f "$PWD/config/zsh/oh-my-zsh/custom/plugins/zsh-autosuggestions"
+echo
 
-	echo "-- base16-shell colors installed --"
-	echo
-fi
+echo "removing base16-shell colors"
+rm -f "$HOME/.config/base16-shell"
+echo
 
-if [ ! -d "$HOME/.oh-my-zsh" ]
-then
-	echo "** installing oh my zsh **"
+echo "creating symlink for .zshrc"
+ln -s "$PWD/config/zsh/zshrc" "$HOME/.zshrc"
+echo
 
-	if ! git clone https://github.com/robbyrussell/oh-my-zsh "$HOME/.oh-my-zsh" &>/dev/null
-	then
-		echo "Error installing oh my zsh, exiting."
-		exit 1
-	fi
+echo "creating symlink for .zsh-syntax-highlighting"
+ln -s "$PWD/config/zsh/zsh-syntax-highlighting" "$HOME/.zsh-syntax-highlighting"
+echo
 
-	# enable vi keybindings
-	sed -i 's/bindkey -e/bindkey -v\nexport KEYTIMEOUT=1/g' "$HOME/.oh-my-zsh/lib/key-bindings.zsh"
-	echo "-- oh my zsh installed --"
-	echo
-fi
+echo "creating symlink for .oh-my-zsh"
+ln -s "$PWD/config/zsh/oh-my-zsh" "$HOME/.oh-my-zsh"
+echo
 
-if [ ! -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]
-then
-	echo "** installing zsh-autosuggestions **"
+echo "changing zsh emacs key bindings to vi key bindings"
+sed -i 's/bindkey -e/bindkey -v\nexport KEYTIMEOUT=1/g' "$HOME/.oh-my-zsh/lib/key-bindings.zsh"
+echo
 
-	if ! git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" &>/dev/null
-	then
-		echo "Error installing zsh-autosuggestions, exiting."
-		exit 1
-	fi
+echo "creating symlink for plugin zsh-autosuggestions"
+ln -s "$PWD/config/zsh/zsh-autosuggestions" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+echo
 
-	echo "-- zsh-autosuggestions installed --"
-	echo
-fi
-
-if [ ! -d "$HOME/.zsh-syntax-highlighting" ]
-then
-	echo "** installing zsh-syntax hilighting **"
-
-	if ! git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.zsh-syntax-highlighting" &>/dev/null
-	then
-		echo "Error installing zsh-syntax-highlighting, exiting."
-		exit 1
-	fi
-
-	echo "-- zsh-syntax-highlighting installed --"
-	echo
-fi
-
-echo "link zsh configuration file"
-rm -f "$HOME/.zshrc"
-ln -s "$PWD/config/zshrc" "$HOME/.zshrc"
+echo "creating symlink for base16-shell colors"
+ln -s "$PWD/config/base16-shell" "$HOME/.config/base16-shell"
+echo
 

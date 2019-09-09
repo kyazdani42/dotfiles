@@ -1,0 +1,12 @@
+[submodule "config/zsh/zsh-syntax-highlighting"]
+	path = config/zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "config/zsh/oh-my-zsh"]
+	path = config/zsh/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh
+[submodule "config/zsh/zsh-autosuggestions"]
+	path = config/zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "config/base16-shell.git"]
+	path = config/base16-shell.git
+	url = https://github.com/chriskempson/base16-shell.git
