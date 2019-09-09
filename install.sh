@@ -80,13 +80,12 @@ Installation is done, you might want to reboot your system  *
 POST INSTALL STEPS:                                         *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
                                                             *
-- qt5ct    : configure                                      *
-- profile  : gtk and qt scales                              *
-- polybar  : height, font sizes                             *
-- docker   : configuration to run without sudo              *
-- gtk      : download theme (plane), edit gtk config        *
-- deno     : install steps at github.com/denoland/deno      *
-- lightdm  : edit with the conf provided in config/lightdm  *
+- Xresources    : *Xft.dpi                                  *
+- polybar       : height, font sizes                        *
+- dmenu scripts : heights, font sizes                       *
+- docker        : configuration to run docker without sudo  *
+- gtk           : download theme (plane), edit gtk configs  *
+- lightdm       : enable lightdm litarvan theme             *
                                                             *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
 *************************************************************
