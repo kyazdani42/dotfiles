@@ -42,6 +42,8 @@ install xorg-xdpyinfo
 install xorg-xrandr
 install xdotool
 install zsh
+install vim
+install neovim
 install vlc
 install i3-gaps
 install compton
@@ -80,7 +82,7 @@ install gnome-screenshot
 install visual-studio-code-bin
 install bat
 install starship
-install procs
+# install procs -- the install is not working anymore
 install pastel
 install exa
 install betterlockscreen
@@ -110,6 +112,11 @@ install nerd-fonts-source-code-pro
 install nerd-fonts-ubuntu-mono
 
 fc-cache >/dev/null
+
+if ! sudo systemctl status lightdm.service | grep active
+then
+	sudo systemctl enable lightdm.service
+fi
 
 echo "installed all programs, check install-error.log to see if some programs have not been installed properly"
 
