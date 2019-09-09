@@ -5,7 +5,6 @@ ZSH_THEME=""
 plugins=(git zsh-autosuggestions docker colored-man-pages vi-mode)
 export KEYTIMEOUT=1
 
-
 if [ ! -z $PYENV ]
 then
 	eval "$(pyenv init -)"
@@ -30,7 +29,8 @@ bindkey "^J" vi-cmd-mode
 [ -f '/home/kiyan/.gcloud/completion.zsh.inc' ] && . '/home/kiyan/.gcloud/completion.zsh.inc'
 
 function open() {
-	nohup xdg-open $1 &
+	&>/dev/null xdg-open $1 &
+	disown
 }
 
 alias pacman="sudo pacman"
@@ -43,9 +43,9 @@ alias vim="nvim"
 alias find="fd"
 
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-if command -v fzf >/dev/null; then export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."; fi
+[ $(command -v fzf) ] && export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
 
 [ -d $HOME/.zsh-syntax-highlighting ] && source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-if command -v starship >/dev/null; then eval "$(starship init zsh)"; fi
+[ $(command -v starship) ] && eval "$(starship init zsh)"
 
