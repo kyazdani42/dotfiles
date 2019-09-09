@@ -27,9 +27,6 @@ ln -s "$PWD/config/zsh/zsh-syntax-highlighting" "$HOME/.zsh-syntax-highlighting"
 echo "creating symlink for .oh-my-zsh"
 ln -s "$PWD/config/zsh/oh-my-zsh" "$HOME/.oh-my-zsh"
 
-echo "changing zsh emacs key bindings to vi key bindings"
-sed -i 's/bindkey -e/bindkey -v\nexport KEYTIMEOUT=1/g' "$HOME/.oh-my-zsh/lib/key-bindings.zsh"
-
 echo "creating symlink for plugin zsh-autosuggestions"
 ln -s "$PWD/config/zsh/zsh-autosuggestions" "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
@@ -55,12 +52,13 @@ ln -s "$PWD/config/vim/autoload/plug-vim/plug.vim" "$HOME/.vim/autoload/plug.vim
 
 
 echo "remove home configuration file"
-rm -rf "$HOME"/{.profile,.xinitrc,.Xresources,Pictures,.gtkrc-2.0,.bin}
+rm -rf "$HOME"/{.profile,.xinitrc,.Xmodmap,.Xresources,Pictures,.gtkrc-2.0,.bin}
 
 echo "creating symlink for home configuration files"
 ln -s "$PWD/config/profile" "$HOME/.profile"
 ln -s "$PWD/config/xinitrc" "$HOME/.xinitrc"
 ln -s "$PWD/config/Xresources" "$HOME/.Xresources"
+ln -s "$PWD/config/Xmodmap" "$HOME/.Xmodmap"
 ln -s "$PWD/config/gtkrc-2.0" "$HOME/.gtkrc-2.0"
 ln -s "$PWD/Pictures" "$HOME/Pictures"
 ln -s "$PWD/bin" "$HOME/.bin"

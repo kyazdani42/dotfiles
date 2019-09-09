@@ -2,7 +2,9 @@ export ZSH="/home/kiyan/.oh-my-zsh"
 
 ZSH_THEME=""
 
-plugins=(git zsh-autosuggestions docker colored-man-pages)
+plugins=(git zsh-autosuggestions docker colored-man-pages vi-mode)
+export KEYTIMEOUT=1
+
 
 if [ ! -z $PYENV ]
 then
@@ -19,6 +21,10 @@ then
 fi
 
 source $ZSH/oh-my-zsh.sh
+
+# enable control j to change to normal mode
+bindkey -r "^J"
+bindkey "^J" vi-cmd-mode
 
 [ -f '/home/kiyan/.gcloud/path.zsh.inc' ] && . '/home/kiyan/.gcloud/path.zsh.inc'
 [ -f '/home/kiyan/.gcloud/completion.zsh.inc' ] && . '/home/kiyan/.gcloud/completion.zsh.inc'

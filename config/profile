@@ -52,7 +52,3 @@ compton --backend glx --refresh-rate 60 --glx-no-stencil --glx-no-rebind-pixmap 
 # launch locking program
 xss-lock -- lock &
 
-# bind caps lock to escape
-xmodmap -e "clear lock"
-xmodmap -e "keysym Caps_Lock = Escape"
-
