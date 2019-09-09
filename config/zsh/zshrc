@@ -41,6 +41,8 @@ alias la="exa -la --git"
 alias lt="exa -Tla --git"
 alias vim="nvim"
 alias find="fd"
+alias grep="rg"
+alias less="bat"
 
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 [ $(command -v fzf) ] && export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."

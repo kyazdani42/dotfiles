@@ -12,7 +12,8 @@
 ## **install**
 do not run this if you are not running an arch based distribution
 ```bash
-$ sudo ./install.sh
+$ git clone --recurse-submodules -j8 https://github.com/kyazdani42/dotfiles $HOME/.dotfiles
+$ cd .dotfiles && ./install.sh
 ```
 warning: this will replace important configuration file, the installation should be run on a fresh install
 

@@ -2,8 +2,6 @@
 
 if ! ./install-arch.sh; then exit 1; fi
 
-git submodule update --init --recursive
-
 [ "$SHELL" != "/usr/bin/zsh" ] && chsh -s /usr/bin/zsh
 
 mkdir -p "$HOME/.config"

@@ -113,7 +113,7 @@ install nerd-fonts-ubuntu-mono
 
 fc-cache >/dev/null
 
-if ! sudo systemctl status lightdm.service | grep active
+if ! sudo systemctl status lightdm.service | grep active >/dev/null
 then
 	sudo systemctl enable lightdm.service
 fi
