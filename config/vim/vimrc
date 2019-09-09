@@ -96,9 +96,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 map <leader>f :Goyo \| set linebreak<CR>
 "nerd tree
 map <C-n> :NERDTreeToggle<CR>
-imap <C-j> <Esc>
-vmap <C-j> <Esc>
-map <C-j> <Esc>
+
+" control j to escape
+inoremap <C-j> <Esc>
+vnoremap <C-j> <Esc>
 
 vmap <Leader>y "+y
 vmap <Leader>p "+p
@@ -116,12 +117,6 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
-
-"map control hjkl to move between windows (no need for w)
-noremap <C-h> <C-W>h
-noremap <C-j> <C-W>j
-noremap <C-k> <C-W>k
-noremap <C-l> <C-W>l
 
 "fzf config
 map <leader>g :GFiles<CR>
