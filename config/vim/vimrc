@@ -87,6 +87,8 @@ set incsearch
 set showmatch
 set hlsearch
 
+autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2 expandtab
+
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
 " disable autocommenting on newline
@@ -100,6 +102,17 @@ map <C-n> :NERDTreeToggle<CR>
 " control j to escape
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
+
+" disable all escapes to force using c-j
+inoremap <Esc> <Nop>
+vnoremap <Esc> <Nop>
+inoremap <C-c> <Nop>
+vnoremap <C-c> <Nop>
+inoremap <C-[> <Nop>
+vnoremap <C-[> <Nop>
+
+map <leader>w :w<CR>
+map <leader>x :x<CR>
 
 vmap <Leader>y "+y
 vmap <Leader>p "+p
