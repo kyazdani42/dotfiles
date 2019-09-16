@@ -1,9 +1,9 @@
-export ZSH="/home/kiyan/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME=""
 
 plugins=(git zsh-autosuggestions docker colored-man-pages vi-mode)
-export KEYTIMEOUT=1
+export KEYTIMEOUT=1 # required for vi-mode to work properly
 
 if [ ! -z $PYENV ]
 then
@@ -25,8 +25,8 @@ source $ZSH/oh-my-zsh.sh
 bindkey -r "^J"
 bindkey "^J" vi-cmd-mode
 
-[ -f '/home/kiyan/.gcloud/path.zsh.inc' ] && . '/home/kiyan/.gcloud/path.zsh.inc'
-[ -f '/home/kiyan/.gcloud/completion.zsh.inc' ] && . '/home/kiyan/.gcloud/completion.zsh.inc'
+[ -f "$HOME/.gcloud/path.zsh.inc" ] && . "$HOME/.gcloud/path.zsh.inc"
+[ -f "$HOME/.gcloud/completion.zsh.inc" ] && . "$HOME/.gcloud/completion.zsh.inc"
 
 function open() {
 	&>/dev/null xdg-open $1 &

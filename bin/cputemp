@@ -4,9 +4,8 @@ function getCpuTemp() {
 	sensors | grep Core | awk '{print substr($3, 2, length($3)-5)}' | tr "\\n" " " | sed 's/ /°C  /g' | sed 's/  $//'
 }
 
-clear;
+clear
 while true; do
-	printf "\r$(getCpuTemp)";
-	sleep 2;
+	printf "\r$(getCpuTemp)"
+	sleep 2
 done
-

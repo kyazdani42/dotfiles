@@ -54,10 +54,10 @@ if [ -x "$(command -v tput)" ]; then
 fi
 
 # you can change these
-lc="${reset}${bold}${green}"        # labels
-nc="${reset}${bold}${green}"        # user and hostname
-ic="${reset}${bold}${white}"        # info
-c0="${reset}${bold}${green}"        # first color
+lc="${reset}${bold}${green}" # labels
+nc="${reset}${bold}${green}" # user and hostname
+ic="${reset}${bold}${white}" # info
+c0="${reset}${bold}${green}" # first color
 
 ## OUTPUT
 
@@ -72,4 +72,3 @@ ${c0}  |||| |||| ||||  ${lc}SHELL:     ${ic}${shell}${reset}
 ${c0}  |||| |||| ||||  ${lc}${uitype}:        ${ic}${ui}${reset}
 
 EOF
-
