@@ -80,7 +80,6 @@ Installation is done, you might want to reboot your system  *
 POST INSTALL STEPS:                                         *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
                                                             *
-- Xresources    : *Xft.dpi                                  *
 - polybar       : height, font sizes                        *
 - dmenu scripts : heights, font sizes                       *
 - docker        : configuration to run docker without sudo  *
@@ -90,4 +89,6 @@ POST INSTALL STEPS:                                         *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
 *************************************************************
 "
+
+echo "when launching the system, you may need to adjust the dpi level of each monitor. launching set_dpis should do the trick"
 

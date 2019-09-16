@@ -1,0 +1,29 @@
+#!/usr/bin/bash
+
+RED="\x1b[31m"
+YELLOW="\x1b[33m"
+GREEN="\x1b[32m"
+RESET="\x1b[0m"
+
+monitors=$(xrandr | grep -w connected | cut -d' ' -f1)
+
+if [ -z "$1" ]; then
+	echo "please enter a dpi level:"
+	read -r dpi_level
+else
+	dpi_level="$1"
+fi
+
+for monitor in $monitors; do
+	printf "try setting ${GREEN}%s${RESET} dpi to monitor ${YELLOW}%s${RESET}\n" "$1" "$monitor"
+	if ! xrandr --output "$monitor" --dpi "$dpi_level" &>/dev/null; then
+		printf "${RED}Failed setting dpi %s to monitor %s${RESET}\n" "$dpi_level" "$monitor"
+		exit 1
+	else
+		printf "dpi ${GREEN}%s${RESET} has been set to monitor ${YELLOW}%s${RESET}\n" "$dpi_level" "$monitor"
+	fi
+done
+
+sed -i "s/^\*Xft.dpi: [0-9]\{2,3\}$/\*Xft.dpi: $dpi_level/" "$HOME/.Xresources"
+xrdb merge "$HOME/.Xresources"
+

@@ -1,0 +1,7 @@
+#!/usr/bin/zsh
+
+echo "this script must be sourced"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
