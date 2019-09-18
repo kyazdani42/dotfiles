@@ -3,22 +3,15 @@ set $mod Mod1
 
 floating_modifier $mod
 
+# no title
+new_window 1pixel
+
 # reload the configuration file
 bindsym $mod+F2 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+F2 restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+x exec gnome-screenshot -i
-
-bindsym $mod+p exec dmenu_scripts --pass
-bindsym $mod+d exec dmenu_scripts --launch
-bindsym $mod+Shift+x exec dmenu_scripts --menu
-
-bindsym $mod+Shift+w exec $BROWSER
 
 bindsym $mod+Tab workspace back_and_forth
-
-bindsym $mod+w exec nautilus
 
 bindsym $mod+Return split h, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
 bindsym $mod+Shift+Return split v, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
@@ -26,10 +19,6 @@ bindsym $mod+Shift+Return split v, exec $HOME/.config/alacritty/spawn-alacritty-
 # go to mode
 bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
-
-
-# no title
-new_window 1pixel
 
 # gaps
 bindsym $mod+m gaps inner current plus 10
@@ -77,9 +66,6 @@ mode "resize" {
 	bindsym $mod+Shift+r mode "default"
 }
 
-bindsym $mod+o exec lock --lock
-bindsym $mod+Shift+o exec lock --greeter
-
 set $red    #FF5555
 set $purple #BD93F9
 set $pink   #FF92D0
@@ -92,13 +78,6 @@ client.focused          $purple $purple  $purple   $purple
 client.focused_inactive $pink   $bgCol   $white    $bgCol
 client.unfocused        $bgCol  $bgCol   $white    $bgCol
 client.urgent           $red    $bgCol   $white    $red
-
-bindsym XF86AudioRaiseVolume exec alsaHandler --up
-bindsym XF86AudioLowerVolume exec alsaHandler --down
-bindsym XF86AudioMute exec alsaHandler --toggle
-
-bindsym XF86MonBrightnessDown exec backlight --dec
-bindsym XF86MonBrightnessUp exec backlight --inc
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bindsym $mod+Shift+p exec $HOME/.config/polybar/launch.sh

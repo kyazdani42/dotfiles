@@ -1,4 +1,0 @@
-#!/bin/sh
-
-[ "$1" = "--lock" ] && betterlockscreen -l
-[ "$1" = "--greeter" ] && dm-tool switch-to-greeter

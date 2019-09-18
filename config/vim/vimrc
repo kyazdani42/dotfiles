@@ -9,6 +9,8 @@ call plug#begin('~/.vim/plugged')
 	"centers the text and gets rid of everything else (zen mode like)
 	Plug 'junegunn/goyo.vim'
 
+	Plug 'baskerville/vim-sxhkdrc'
+
 	"might just be explicit
 	Plug 'PotatoesMaster/i3-vim-syntax'
 

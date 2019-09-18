@@ -46,6 +46,7 @@ install vim
 install neovim
 install vlc
 install i3-gaps
+install sxhkd
 install compton
 install tree
 install zip
@@ -106,6 +107,8 @@ install ttf-font-awesome-4
 install ttf-inconsolata
 install ttf-monaco
 install ttf-opensans
+install ttf-symbola
+install ttf-joypixels
 install ttf-roboto-mono
 install nerd-fonts-dejavu-complete
 install nerd-fonts-source-code-pro

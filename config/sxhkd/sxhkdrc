@@ -1,0 +1,30 @@
+XF86Audio{Lower,Raise}Volume
+	amixer -q sset Master 3%{-,+} unmute
+
+XF86MonBrightness{Down,Up}
+	xbacklight -{dec,inc} 5
+
+alt + o
+	betterlockscreen -l
+
+alt + shift + o
+	dm-tool switch-to-greeter
+
+alt + p
+	passwords
+
+alt + d
+	launcher
+
+alt + shift + x
+	exitmenu
+
+alt + z
+	gnome-screenshot -i
+
+alt + w
+	nautilus
+
+alt + shift + w
+	$BROWSER
+

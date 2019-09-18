@@ -86,16 +86,16 @@ wrapping-scroll = false
 reverse-scroll = false
 fuzzy-match = false
 
-ws-icon-0 = 1
-ws-icon-1 = 2
-ws-icon-2 = 3
-ws-icon-3 = 4
-ws-icon-4 = 5
-ws-icon-5 = 6
-ws-icon-6 = 7
-ws-icon-7 = 8
-ws-icon-8 = 9
-ws-icon-9 = 10
+ws-icon-0 = "1;١"
+ws-icon-1 = "2;٢"
+ws-icon-2 = "3;٣"
+ws-icon-3 = "4;۴"
+ws-icon-4 = "5;۵"
+ws-icon-5 = "6;۶"
+ws-icon-6 = "7;٧"
+ws-icon-7 = "8;٨"
+ws-icon-8 = "9;٩"
+ws-icon-9 = "10;۱۰"
 
 format = <label-state> <label-mode>
 
@@ -104,25 +104,25 @@ label-mode-padding = 3
 label-mode-foreground = #000000
 label-mode-background = #FFBB00
 
-label-focused = %icon% %name%
+label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 label-focused-foreground = ${colors.foreground}
 label-focused-underline =
 label-focused-padding = 3
 
-label-unfocused = %icon% %name%
+label-unfocused = %icon%
 label-unfocused-padding = 3
 label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-underline =
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %icon% %name%
+label-visible = %icon%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = 3
 
-label-urgent = %icon% %name%
+label-urgent = %icon%
 label-urgent-background = ${self.label-focused-background}
 label-urgent-foreground = #db104e
 label-urgent-padding = 3

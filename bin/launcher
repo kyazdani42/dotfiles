@@ -1,0 +1,9 @@
+#!/bin/sh
+
+font="Cantarell:pixelsize=20"
+bg="#221f3e"
+sel="#BD93F9"
+fg="#ffffff"
+
+dmenu_run -i -l 100 -w 400 -fn $font -sf $fg -sb $sel -nf $fg -nb $bg
+

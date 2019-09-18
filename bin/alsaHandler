@@ -1,5 +1,0 @@
-#!/bin/sh
-
-[ "$1" == "--toggle" ] && amixer -q set Master toggle
-[ "$1" == "--up" ] && amixer -q sset Master 3%+ unmute
-[ "$1" == "--down" ] && amixer -q sset Master 3%- unmute
