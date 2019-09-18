@@ -122,5 +122,14 @@ then
 	sudo systemctl enable lightdm.service
 fi
 
+notification_daemon_file="/usr/share/dbus-1/services/org.freedesktop.Notifications.service"
+
+if command -v dunst >/dev/null && [ ! -f $notification_daemon_file ]
+then
+	echo "[D-BUS Service]
+Name=org.freedesktop.Notifications
+Exec=/usr/bin/dunst" | sudo tee $notification_daemon_file
+fi
+
 echo "installed all programs, check install-error.log to see if some programs have not been installed properly"
 
