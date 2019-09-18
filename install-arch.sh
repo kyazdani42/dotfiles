@@ -45,6 +45,7 @@ install zsh
 install vim
 install neovim
 install vlc
+install dunst
 install i3-gaps
 install sxhkd
 install compton
