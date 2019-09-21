@@ -1,9 +1,17 @@
 #!/bin/sh
 
 font="Cantarell:pixelsize=20"
-bg="#221f3e"
-sel="#BD93F9"
-fg="#ffffff"
+bg_color="#221f3e"
+fg_selected_color="#BD93F9"
+fg_color="#ffffff"
+lines=100
+width=400
 
-dmenu_run -i -l 100 -w 400 -fn $font -sf $fg -sb $sel -nf $fg -nb $bg
-
+dmenu_run -i \
+	-l $lines \
+	-w $width \
+	-fn $font \
+	-sf $fg_color \
+	-sb $fg_selected_color \
+	-nf $fg_color \
+	-nb $bg_color

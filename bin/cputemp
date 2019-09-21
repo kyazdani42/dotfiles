@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/bash
 
 function getCpuTemp() {
 	sensors | grep Core | awk '{print substr($3, 2, length($3)-5)}' | tr "\\n" " " | sed 's/ /°C  /g' | sed 's/  $//'
@@ -6,6 +6,6 @@ function getCpuTemp() {
 
 clear
 while true; do
-	printf "\r$(getCpuTemp)"
+	printf "\r%s" "$(getCpuTemp)"
 	sleep 2
 done
