@@ -75,11 +75,14 @@ set encoding=utf-8
 set wildmode=longest,list,full
 filetype plugin indent on
 set smartindent
-"Non-expanded, 4-wide tabulations
+
+" indent with 4 spaces
 set tabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
+
 set backspace=indent,eol,start
+
 "Use statusbar on all windows
 set laststatus=2
 set ignorecase
@@ -89,7 +92,7 @@ set incsearch
 set showmatch
 set hlsearch
 
-autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2 expandtab
+autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2
 
 " Automatically deletes all trailing whitespace on save.
 autocmd BufWritePre * %s/\s\+$//e
