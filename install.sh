@@ -85,8 +85,6 @@ POST INSTALL STEPS:                                         *
 - polybar       : height, font sizes                        *
 - dmenu scripts : heights, font sizes                       *
 - docker        : configuration to run docker without sudo  *
-- gtk           : download theme (plane), edit gtk configs  *
-- lightdm       : enable lightdm litarvan theme             *
                                                             *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
 *************************************************************
