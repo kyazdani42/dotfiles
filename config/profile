@@ -41,7 +41,7 @@ export BROWSER="/usr/bin/chromium"
 
 # set wallpaper
 WALL="$HOME/Pictures/Disco_Dingo.png"
-feh --bg-scale "$WALL"
+feh --no-fehbg --bg-scale "$WALL" &
 
 # launch wifi tray
 nm-applet &

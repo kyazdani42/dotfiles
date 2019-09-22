@@ -100,6 +100,11 @@ install nodejs
 install net-tools
 install ripgrep
 
+# gtk theme
+install simple-shutdown-dialog
+install la-capitaine-icon-theme
+install osx-arc-shadow
+
 install adobe-source-sans-pro-fonts
 install adobe-source-code-pro-fonts
 install ttf-dejavu

@@ -1,5 +1,5 @@
-gtk-icon-theme-name = "Plane"
-gtk-theme-name = "Plane"
+gtk-icon-theme-name = "La Capitaine"
+gtk-theme-name = "OSX-Arc-Shadow"
 style "user-font"
 {
 	font_name="DejaVu Sans 9"

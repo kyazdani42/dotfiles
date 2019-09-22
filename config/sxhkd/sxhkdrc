@@ -17,7 +17,8 @@ alt + d
 	launcher
 
 alt + shift + x
-	exitmenu
+    shutdown-dialog
+	# exitmenu
 
 alt + z
 	gnome-screenshot -i
