@@ -6,7 +6,9 @@ floating_modifier $mod
 # no title
 new_window 1pixel
 
-# reload the configuration file bindsym $mod+F2 reload
+# reload the configuration file
+bindsym $mod+F2 reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+F2 restart
 
@@ -15,8 +17,8 @@ for_window [class="Org.gnome.Nautilus" instance="org.gnome.Nautilus"] floating e
 
 bindsym $mod+Tab workspace back_and_forth
 
-bindsym $mod+Return split h, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
-bindsym $mod+Shift+Return split v, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
+bindsym $mod+Return split h, exec --no-startup-id $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
+bindsym $mod+Shift+Return split v, exec --no-startup-id $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
 
 # go to mode
 bindsym $mod+Shift+z split h

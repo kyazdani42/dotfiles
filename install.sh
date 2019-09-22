@@ -50,11 +50,12 @@ ln -s "$PWD/config/vim/autoload/plug-vim/plug.vim" "$HOME/.vim/autoload/plug.vim
 
 
 echo "remove home configuration file"
-rm -rf "$HOME"/{.profile,.xinitrc,.Xmodmap,.Xresources,Pictures,.gtkrc-2.0,.bin}
+rm -rf "$HOME"/{.profile,.xprofile,.xinitrc,.Xmodmap,.Xresources,Pictures,.gtkrc-2.0,.bin}
 
 echo "creating symlink for home configuration files"
 ln -s "$PWD/config/profile" "$HOME/.profile"
 ln -s "$PWD/config/xinitrc" "$HOME/.xinitrc"
+ln -s "$PWD/config/xprofile" "$HOME/.xprofile"
 ln -s "$PWD/config/Xresources" "$HOME/.Xresources"
 ln -s "$PWD/config/Xmodmap" "$HOME/.Xmodmap"
 ln -s "$PWD/config/gtkrc-2.0" "$HOME/.gtkrc-2.0"

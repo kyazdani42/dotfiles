@@ -1,0 +1,15 @@
+# launch wifi tray
+nm-applet &
+
+# launch compton compositor
+compton --backend glx --refresh-rate 60 --glx-no-stencil --glx-no-rebind-pixmap --use-damage -I 1 -O 1 --vsync -b
+
+# launch locking program
+xss-lock -- lock &
+
+# launch key bindings
+sxhkd &
+
+# set wallpaper
+WALL="$HOME/Pictures/Disco_Dingo.png"
+feh --no-fehbg --bg-scale "$WALL" &

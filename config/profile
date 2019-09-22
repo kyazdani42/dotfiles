@@ -23,6 +23,11 @@ if command -v go; then
 	export PATH="$GOPATH/bin:$PATH"
 fi
 
+# fzf plugin for fast search
+# `bindkey | grep fzf` for the key bindings
+[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
+[ $(command -v fzf) ] && export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
+
 # start ssh agent to use ssh
 eval "$(ssh-agent -s)"
 ssh-add "$HOME/.ssh/id_rsa.pub"
@@ -38,19 +43,3 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export EDITOR="/usr/bin/vim"
 export TERMINAL="/usr/bin/alacritty"
 export BROWSER="/usr/bin/chromium"
-
-# set wallpaper
-WALL="$HOME/Pictures/Disco_Dingo.png"
-feh --no-fehbg --bg-scale "$WALL" &
-
-# launch wifi tray
-nm-applet &
-
-# launch compton compositor
-compton --backend glx --refresh-rate 60 --glx-no-stencil --glx-no-rebind-pixmap --use-damage -I 1 -O 1 --vsync -b
-
-# launch locking program
-xss-lock -- lock &
-
-# launch key bindings
-sxhkd &
