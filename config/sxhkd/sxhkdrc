@@ -18,7 +18,6 @@ alt + d
 
 alt + shift + x
     shutdown-dialog
-	# exitmenu
 
 alt + z
 	gnome-screenshot -i
