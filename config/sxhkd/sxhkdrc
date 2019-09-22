@@ -22,9 +22,6 @@ alt + shift + x
 alt + z
 	gnome-screenshot -i
 
-alt + w
-	nautilus
-
 alt + shift + w
 	$BROWSER
 
