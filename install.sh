@@ -7,7 +7,7 @@ if ! ./install-arch.sh; then exit 1; fi
 mkdir -p "$HOME/.config"
 
 echo "Removing .zshrc, .zsh-syntax-highlighting, .oh-my-zsh"
-rm -f "$HOME"/{.zshrc,.zsh-syntax-highlighting,.oh-my-zsh}
+rm -f "$HOME"/{.zshrc,.zsh-syntax-highlighting,.oh-my-zsh,.zsh_vi_mode}
 
 echo "removing zsh-autosuggestions"
 rm -f "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
@@ -18,6 +18,9 @@ rm -f "$HOME/.config/base16-shell"
 
 echo "creating symlink for .zshrc"
 ln -s "$PWD/config/zsh/zshrc" "$HOME/.zshrc"
+
+echo "creating symlink for .zsh_vi_mode"
+ln -s "$PWD/config/zsh/zsh_vi_mode" "$HOME/.zsh_vi_mode"
 
 echo "creating symlink for .zsh-syntax-highlighting"
 ln -s "$PWD/config/zsh/zsh-syntax-highlighting" "$HOME/.zsh-syntax-highlighting"
