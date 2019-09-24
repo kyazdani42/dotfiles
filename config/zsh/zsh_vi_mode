@@ -1,6 +1,5 @@
 #!/usr/bin/zsh
 
-bindkey -v
 export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
