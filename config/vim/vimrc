@@ -107,6 +107,7 @@ map <C-n> :NERDTreeToggle<CR>
 " control j to escape
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
+map <C-j> <Esc>
 
 " disable all escapes to force using c-j
 inoremap <Esc> <Nop>
