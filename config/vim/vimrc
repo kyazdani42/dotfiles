@@ -105,9 +105,9 @@ map <leader>f :Goyo \| set linebreak<CR>
 map <C-n> :NERDTreeToggle<CR>
 
 " control j to escape
+map <C-j> <Nop>
 inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
-map <C-j> <Esc>
+noremap <C-j> <Esc>
 
 " disable all escapes to force using c-j
 inoremap <Esc> <Nop>
