@@ -5,15 +5,13 @@
 
 let mapleader =" "
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 call plug#begin('~/.vim/plugged')
-	"centers the text and gets rid of everything else (zen mode like)
-	Plug 'junegunn/goyo.vim'
-
-	Plug 'baskerville/vim-sxhkdrc'
-
-	"might just be explicit
-	Plug 'PotatoesMaster/i3-vim-syntax'
-
 	"the file directory
 	Plug 'scrooloose/nerdtree'
 
@@ -24,7 +22,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'drewtempelmeyer/palenight.vim'
 
 	"asynchronous lint engine
-	Plug 'w0rp/ale'
+	Plug 'dense-analysis/ale'
 
 	"the lightline at the bottom
 	Plug 'itchyny/lightline.vim'
@@ -99,8 +97,6 @@ autocmd BufWritePre * %s/\s\+$//e
 " disable autocommenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" goyo plugin to read text better
-map <leader>f :Goyo \| set linebreak<CR>
 "nerd tree
 map <C-n> :NERDTreeToggle<CR>
 
@@ -121,8 +117,6 @@ map <leader>w :w<CR>
 map <leader>x :x<CR>
 
 vmap <Leader>y "+y
-vmap <Leader>p "+p
-nmap <Leader>p "+p
 
 " <leader><leader> toggles between buffers
 nnoremap <leader><leader> <c-^>
@@ -138,6 +132,9 @@ autocmd Filetype html,xml,xsl,php source ~/.vim/plugins/closetag/plugin/closetag
 map H ^
 map L $
 
+" M to make
+noremap M :!make<cr>
+
 " Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
 set splitbelow splitright
 
@@ -152,10 +149,10 @@ inoremap <Up> <Nop>
 inoremap <Down> <Nop>
 
 "fzf config
-map <leader>g :GFiles<CR>
-map <leader>o :Files<CR>
-map <leader>r :Rg<CR>
-map <leader>b :Buffers<CR>
+map <leader>o :Buffers<CR>
+map <C-p> :Files<CR>
+map <leader>p :Rg<CR>
+map <leader>f :GFiles<CR>
 
 let g:highlightedyank_highlight_duration = 300
 

@@ -23,6 +23,8 @@ alias vim="nvim"
 alias find="fd"
 alias grep="rg"
 alias less="bat"
+alias gpo="git push origin"
+alias glo="git pull origin"
 
 # fzf plugin for fast search
 # `bindkey | grep fzf` for the key bindings
