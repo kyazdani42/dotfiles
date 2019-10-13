@@ -1,9 +1,8 @@
-" My   "
-" Vim  "
-" Rc   "
-" File "
-
 let mapleader =" "
+
+" ==================================
+" Plugins
+" ==================================
 
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -43,8 +42,10 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+" Color stuff
 set background=dark
 colorscheme palenight
+syntax on " Syntax highlighting
 
 if (has("nvim"))
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -59,46 +60,65 @@ if !has('gui_running')
 	set t_Co=256
 endif
 
-set mouse=a
-syntax on
-set number relativenumber
-set ruler
-set cursorline
-"Activate indentation
-filetype off
+" ==========================
+" Settings
+" ==========================
+
+"autoclose tags on scripting files
+autocmd Filetype html,xml,xsl,php source ~/.vim/plugins/closetag/plugin/closetag.vim
+
+" Mouse support
+set mouse=a " enable mouse
+set mousehide " hide mouse while typing
+
+" Stuff
+set autoread " reload file when it changes
+set confirm " disable 'no write'
+set showmatch "Show matching brackets/parenthesis
+set number relativenumber "Relative numbers
+set cursorline " Highlight current line
+set backspace=indent,eol,start "Easy backspace
+set splitbelow splitright " Splits open at the bottom and right
+set clipboard=unnamed "Use system clipboard
+set ruler " Show line and column number of cursor pos
+autocmd BufWritePre * %s/\s\+$//e " Automatically deletes all trailing whitespace on save.
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disable autocommenting on newline
+
+" Encoding
+set encoding=utf-8 " displayed encoding
+set fileencoding=utf-8 " written to file encoding
+
 "Disable vi-compatibility
 set nocompatible
 set ttyfast
-set encoding=utf-8
 set wildmode=longest,list,full
-filetype plugin indent on
-set smartindent
 
-" indent with 4 spaces
+" Indentation
+set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-
-set backspace=indent,eol,start
-
-"Use statusbar on all windows
-set laststatus=2
-set ignorecase
-set scrolloff=9999
-set smartcase
-set incsearch
-set showmatch
-set hlsearch
-
+filetype plugin indent on
 autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2
 
-" Automatically deletes all trailing whitespace on save.
-autocmd BufWritePre * %s/\s\+$//e
-" disable autocommenting on newline
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+" Use statusbar on all windows
+set laststatus=2
+set scrolloff=9999
 
-"nerd tree
+" Search settings
+set smartcase
+set incsearch
+set hlsearch
+set ignorecase
+
+" ==================================
+" mappings
+" ==================================
+
 map <C-n> :NERDTreeToggle<CR>
+
+" Disable Ex mode
+nnoremap Q <Nop>
 
 " control j to escape
 map <C-j> <Nop>
@@ -118,25 +138,18 @@ map <leader>x :x<CR>
 
 vmap <Leader>y "+y
 
-" <leader><leader> toggles between buffers
+"toggle buffer
 nnoremap <leader><leader> <c-^>
 
-"oups
+" Oups
 map <F1> <Esc>
 imap <F1> <Esc>
 
-"autoclose tags on scripting files
-autocmd Filetype html,xml,xsl,php source ~/.vim/plugins/closetag/plugin/closetag.vim
-
-" Jump to start and end of line using the home row keys
 map H ^
 map L $
 
 " M to make
 noremap M :!make<cr>
-
-" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
-set splitbelow splitright
 
 "disable arrow keys
 noremap <Left> <Nop>
@@ -154,8 +167,13 @@ map <C-p> :Files<CR>
 map <leader>p :Rg<CR>
 map <leader>f :GFiles<CR>
 
+" =====================
+" Plugin configuration
+" =====================
+
+" Highlighted yank
 let g:highlightedyank_highlight_duration = 300
 
-" disable ale on C files
-let g:ale_linters = {'c': []}
+" Ale
+let g:ale_parse_c_makefile = 1
 
