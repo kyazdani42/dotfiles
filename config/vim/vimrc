@@ -17,6 +17,8 @@ call plug#begin('~/.vim/plugged')
 	"comment plugin with ctrl + / (2 times)
 	Plug 'tomtom/tcomment_vim'
 
+    Plug 'peitalin/vim-jsx-typescript'
+
 	"the colorscheme
 	Plug 'drewtempelmeyer/palenight.vim'
 
@@ -148,6 +150,8 @@ imap <F1> <Esc>
 map H ^
 map L $
 
+map <F2> :ALEGoToDefinition<CR>
+
 " M to make
 noremap M :!make<cr>
 
@@ -176,4 +180,21 @@ let g:highlightedyank_highlight_duration = 300
 
 " Ale
 let g:ale_parse_c_makefile = 1
+
+" Fzf
+let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_colors =
+            \ { 'fg':      ['fg', 'Normal'],
+            \   'bg':      ['bg', 'Normal'],
+            \   'hl':      ['fg', 'Comment'],
+            \   'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \   'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+            \   'hl+':     ['fg', 'Statement'],
+            \   'info':    ['fg', 'PreProc'],
+            \   'border':  ['fg', 'Ignore'],
+            \   'prompt':  ['fg', 'Conditional'],
+            \   'pointer': ['fg', 'Exception'],
+            \   'marker':  ['fg', 'Keyword'],
+            \   'spinner': ['fg', 'Label'],
+            \   'header':  ['fg', 'Comment'] }
 
