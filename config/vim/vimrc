@@ -179,7 +179,8 @@ map <leader>f :GFiles<CR>
 let g:highlightedyank_highlight_duration = 300
 
 " Ale
-let g:ale_parse_c_makefile = 1
+let g:ale_c_parse_makefile = 1
+let g:ale_linters = { 'c': ['gcc'], 'rust': ['rls', 'cargo'] }
 
 " Fzf
 let g:fzf_layout = { 'down': '~40%' }
