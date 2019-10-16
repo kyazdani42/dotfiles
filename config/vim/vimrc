@@ -127,14 +127,6 @@ map <C-j> <Nop>
 inoremap <C-j> <Esc>
 noremap <C-j> <Esc>
 
-" disable all escapes to force using c-j
-inoremap <Esc> <Nop>
-vnoremap <Esc> <Nop>
-inoremap <C-c> <Nop>
-vnoremap <C-c> <Nop>
-inoremap <C-[> <Nop>
-vnoremap <C-[> <Nop>
-
 map <leader>w :w<CR>
 map <leader>x :x<CR>
 
@@ -154,16 +146,6 @@ map <F2> :ALEGoToDefinition<CR>
 
 " M to make
 noremap M :!make<cr>
-
-"disable arrow keys
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
 
 "fzf config
 map <leader>o :Buffers<CR>
