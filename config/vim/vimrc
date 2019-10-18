@@ -29,7 +29,11 @@ call plug#begin('~/.vim/plugged')
 	"hilight when yanking
 	Plug 'machakann/vim-highlightedyank'
 
+    " color syntax for most languages
     Plug 'sheerun/vim-polyglot'
+
+    " required for styled components to actually have proper
+    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
     "CoC
     Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
