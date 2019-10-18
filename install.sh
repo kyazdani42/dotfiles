@@ -85,11 +85,10 @@ Installation is done, you might want to reboot your system  *
 ----------------------------------------------------------- *
 POST INSTALL STEPS:                                         *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
-                                                            *
 - polybar       : height, font sizes                        *
 - dmenu scripts : heights, font sizes                       *
 - docker        : configuration to run docker without sudo  *
-                                                            *
+- vim           : launch PlugInstall, CocInstall            *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
 *************************************************************
 "
