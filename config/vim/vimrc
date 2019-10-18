@@ -150,10 +150,10 @@ map L $
 noremap M :!make<cr>
 
 "fzf config
-map <leader>b :Buffers<CR>
-map <leader>p :Files<CR>
-map <leader>r :Rg<CR>
-map <leader>f :GFiles<CR>
+map <silent> <leader>b :Buffers<CR>
+map <silent> <leader>p :Files<CR>
+map <silent> <leader>r :Rg<CR>
+map <silent> <leader>f :GFiles<CR>
 
 " =====================
 " Plugin configuration
