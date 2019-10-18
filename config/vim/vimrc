@@ -48,7 +48,7 @@ set background=dark
 colorscheme palenight
 syntax on " Syntax highlighting
 "tooltip menu colors
-hi Pmenu guibg=#282944 guifg=#878ca9
+hi Pmenu guibg=#343f58 guifg=#e7edf9
 hi PmenuSel guibg=#1c1f2b guifg=#80cbc4
 hi PmenuSbar guibg=#3a3d51
 hi PmenuThumb guibg=#2e3140
@@ -74,7 +74,7 @@ endif
 autocmd Filetype html,xml,xsl,php source ~/.vim/plugins/closetag/plugin/closetag.vim
 
 " Mouse support
-set mouse=a " enable mouse
+set mouse=n " enable mouse
 set mousehide " hide mouse while typing
 
 " Stuff
@@ -151,9 +151,8 @@ noremap M :!make<cr>
 
 "fzf config
 map <silent> <leader>b :Buffers<CR>
-map <silent> <leader>p :Files<CR>
 map <silent> <leader>r :Rg<CR>
-map <silent> <leader>f :GFiles<CR>
+nnoremap <silent> <leader>p :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
 
 " =====================
 " Plugin configuration
@@ -163,21 +162,29 @@ map <silent> <leader>f :GFiles<CR>
 let g:highlightedyank_highlight_duration = 300
 
 " --- Fzf --- "
-let g:fzf_layout = { 'down': '~40%' }
-let g:fzf_colors =
-        \ { 'fg':      ['fg', 'Normal'],
-        \   'bg':      ['bg', 'Normal'],
-        \   'hl':      ['fg', 'Comment'],
-        \   'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-        \   'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-        \   'hl+':     ['fg', 'Statement'],
-        \   'info':    ['fg', 'PreProc'],
-        \   'border':  ['fg', 'Ignore'],
-        \   'prompt':  ['fg', 'Conditional'],
-        \   'pointer': ['fg', 'Exception'],
-        \   'marker':  ['fg', 'Keyword'],
-        \   'spinner': ['fg', 'Label'],
-        \   'header':  ['fg', 'Comment'] }
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let $FZF_DEFAULT_OPTS='--color=bg:#343f58,fg:#c7cfed,hl:#e74f6b,bg+:#343f58,fg+:#e7edf9,hl+:#e74f6b,gutter:#343f58,spinner:#343f58,info:#343f58,prompt:#343f58,pointer:#80b9c9 --layout=reverse --margin=1,4'
+
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = float2nr(14)
+  let width = float2nr(70)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 2
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
 
 " --- Coc --- "
 

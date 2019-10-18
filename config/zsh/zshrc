@@ -41,3 +41,4 @@ source $HOME/.zsh_vi_mode
 [ -d $HOME/.zsh-syntax-highlighting ] && source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 eval "$(direnv hook zsh)"
+

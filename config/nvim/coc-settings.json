@@ -1,5 +1,7 @@
 {
     "json.format.enable": true,
+    "suggest.minTriggerInputLength": 3,
+    "suggest.timeout": 700,
     "languageserver": {
         "clangd": {
             "command": "clangd",
