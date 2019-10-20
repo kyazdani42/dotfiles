@@ -89,6 +89,9 @@ POST INSTALL STEPS:                                         *
 - dmenu scripts : heights, font sizes                       *
 - docker        : configuration to run docker without sudo  *
 - vim           : launch PlugInstall, CocInstall            *
+- coc           : coc-tsserver coc-prettier coc-json        *
+                > coc-css coc-rls coc-html coc-emmet        *
+                > coc-styled-components                     *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
 *************************************************************
 "

@@ -6,28 +6,28 @@ let mapleader =" "
 
 call plug#begin('~/.vim/plugged')
 	"the file directory
-	Plug 'scrooloose/nerdtree'
+    Plug 'scrooloose/nerdtree'
 
 	"comment plugin with ctrl + / (2 times)
-	Plug 'tomtom/tcomment_vim'
+    Plug 'tomtom/tcomment_vim'
 
 	"the colorscheme
-	Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'drewtempelmeyer/palenight.vim'
 
-	"the lightline at the bottom
-	Plug 'itchyny/lightline.vim'
+    "the lightline at the bottom
+    Plug 'itchyny/lightline.vim'
 
-	"change/delete surrounding char
-	Plug 'tpope/vim-surround'
+    "change/delete surrounding char
+    Plug 'tpope/vim-surround'
 
-	"changes vim workdir to project root
-	Plug 'airblade/vim-rooter'
-	"fuzzyfinder for vim
-	Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-	Plug 'junegunn/fzf.vim'
+    "changes vim workdir to project root
+    Plug 'airblade/vim-rooter'
+    "fuzzyfinder for vim
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
 
-	"hilight when yanking
-	Plug 'machakann/vim-highlightedyank'
+    "hilight when yanking
+    Plug 'machakann/vim-highlightedyank'
 
     " color syntax for most languages
     Plug 'sheerun/vim-polyglot'
@@ -163,7 +163,7 @@ let g:highlightedyank_highlight_duration = 300
 
 " --- Fzf --- "
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-let $FZF_DEFAULT_OPTS='--color=bg:#343f58,fg:#c7cfed,hl:#e74f6b,bg+:#343f58,fg+:#e7edf9,hl+:#e74f6b,gutter:#343f58,spinner:#343f58,info:#343f58,prompt:#343f58,pointer:#80b9c9 --layout=reverse --margin=1,4'
+let $FZF_DEFAULT_OPTS=' -i --color=bg:#343f58,fg:#c7cfed,hl:#e74f6b,bg+:#343f58,fg+:#e7edf9,hl+:#e74f6b,gutter:#343f58,spinner:#343f58,info:#343f58,prompt:#343f58,pointer:#80b9c9 --layout=reverse --margin=1,4'
 
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
