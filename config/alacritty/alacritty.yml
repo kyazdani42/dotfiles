@@ -1,8 +1,8 @@
 # see /usr/share/doc/alacritty/example/alacritty.yml
 window:
   dimensions:
-    columns: 0
-    lines: 0
+    columns: 100
+    lines: 30
 
   padding:
     x: 5
@@ -21,16 +21,14 @@ tabspaces: 8
 
 font:
   normal:
-    family: DejaVu Sans Mono
+    family: "Noto Sans Mono"
     style: Regular
 
-  bold:
-    family: DejaVu Sans Mono
-    style: Bold
-
-  italic:
-    family: DejaVu Sans Mono
-    style: Italic
+  # bold:
+    # family: DejaVu Sans Mono
+    # style: Bold
+  #   family: DejaVu Sans Mono
+  #   style: Italic
 
   size: 7.6
 
@@ -42,7 +40,7 @@ font:
     x: 0
     y: 0
 
-use_thin_strokes: false
+use_thin_strokes: true
 draw_bold_text_with_bright_colors: true
 
 colors:

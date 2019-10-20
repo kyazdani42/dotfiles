@@ -10,6 +10,7 @@ networkmanager
 network-manager-applet
 i3-gaps
 clang
+valgrind
 dunst
 sxhkd
 compton
@@ -18,6 +19,8 @@ lightdm
 lightdm-webkit-theme-litarvan
 tar
 shellcheck
+lldb
+gdb
 lightdm-webkit2-greeter
 rofi
 pavucontrol
@@ -46,6 +49,8 @@ ttf-opensans
 ttf-symbola
 ttf-joypixels
 ttf-roboto-mono
+ttf-public-sans
+noto-fonts
 nerd-fonts-dejavu-complete
 nerd-fonts-source-code-pro
 nerd-fonts-ubuntu-mono
