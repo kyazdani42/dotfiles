@@ -7,6 +7,7 @@ let mapleader =" "
 call plug#begin('~/.vim/plugged')
 	"the file directory
     Plug 'scrooloose/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 
 	"comment plugin with ctrl + / (2 times)
     Plug 'tomtom/tcomment_vim'
@@ -32,14 +33,12 @@ call plug#begin('~/.vim/plugged')
     " color syntax for most languages
     Plug 'sheerun/vim-polyglot'
 
-    " required for styled components to actually have proper
-    Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-
     "CoC
     Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
 
     "git integration
     Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -71,7 +70,7 @@ endif
 " ==========================
 
 "autoclose tags on scripting files
-autocmd Filetype html,xml,xsl,php source ~/.vim/plugins/closetag/plugin/closetag.vim
+autocmd Filetype html,xml,xsl,php source ~/.vim/scripts/closetag/plugin/closetag.vim
 
 " Mouse support
 set mouse=n " enable mouse
@@ -105,6 +104,9 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 filetype plugin indent on
+
+autocmd BufNewFile,BufRead *.tsx set syntax=typescript tabstop=2 shiftwidth=2
+autocmd BufNewFile,BufRead *.jsx set syntax=javascript tabstop=2 shiftwidth=2
 autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2
 
 " Use statusbar on all windows
@@ -121,7 +123,8 @@ set ignorecase
 " mappings
 " ==================================
 
-map <C-n> :NERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
+map <silent> <leader>n :NERDTreeFind<CR>
 
 " Disable Ex mode
 nnoremap Q <Nop>
