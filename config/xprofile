@@ -11,5 +11,5 @@ xss-lock -- lock &
 sxhkd &
 
 # set wallpaper
-WALL="$HOME/Pictures/Disco_Dingo.png"
+WALL="$HOME/Pictures/samurai_river.jpg"
 feh --no-fehbg --bg-scale "$WALL" &
