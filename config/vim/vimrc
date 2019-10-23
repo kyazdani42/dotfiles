@@ -210,6 +210,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 " Use control K to show documentation in preview window
 nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
+nmap <silent> <C-I> :Format<CR>
+nmap <silent> <C-O> :call CocActionAsync('runCommand', 'tsserver.organizeImports')<CR>
 
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
