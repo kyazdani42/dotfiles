@@ -17,7 +17,7 @@ format-foreground = #dfdfdf
 format-background = #cc292d3e
 
 [colors]
-background = #cc292d3e
+background = #292d3e
 background-alt = #444444
 foreground = #dfdfdf
 foreground-alt = #555555
