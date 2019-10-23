@@ -26,16 +26,22 @@ alias less="bat"
 alias gpo="git push origin"
 alias glo="git pull origin"
 
-# fzf plugin for fast search
-# `bindkey | grep fzf` for the key bindings
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
-[ $(command -v fzf) ] && export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
-
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"
 
 # must be sourced after starship
 source $HOME/.zsh_vi_mode
+
+# fzf plugin for fast search
+# `bindkey | grep fzf` for the key bindings
+if [ -f $HOME/.fzf.zsh ]; then
+    source $HOME/.fzf.zsh
+    bindkey '^O' fzf-cd-widget
+fi
+if [ $(command -v fzf) ]; then
+    export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
+    export FZF_DEFAULT_OPTS=' -i --color=bg:#1d2021,fg:#ebdbb2,hl:#cc241d,bg+:#1d2021,fg+:#ebdbb2,hl+:#cc241d,gutter:#1d2021,spinner:#1d2021,info:#1d2021,prompt:#1d2021,pointer:#83a598'
+fi
 
 # add syntax highlighting to zsh
 [ -d $HOME/.zsh-syntax-highlighting ] && source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
