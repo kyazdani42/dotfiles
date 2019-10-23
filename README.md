@@ -17,8 +17,11 @@ $ cd .dotfiles && ./install.sh
 ```
 warning: this will replace important configuration file, the installation should be run on a fresh install
 
-## *voila* ##
-![alt text](.github/screenshot.png?raw=true "screenshot")
+## *multiple themes* ##
+### palenight
+![alt text](.github/screenshot_palenight.png?raw=true "screenshot")
+### gruvbox
+![alt text](.github/screenshot_gruvbox.png?raw=true "screenshot")
 
 
 ---
