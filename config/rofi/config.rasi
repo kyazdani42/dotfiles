@@ -5,11 +5,9 @@ configuration {
 
 * {
     background-color:               transparent;
-    background:                     #282828d0;
+    background:                     #292d3ea0;
     background-alt:                 transparent;
-    text-color:                     #ebdbb2;
-    primary:                        #b16286;
-    urgent:                         #cc241d;
+    text-color:                     #dfdfdf;
 }
 
 window {
@@ -40,10 +38,6 @@ element {
     orientation:                    horizontal;
 }
 
-element normal.urgent, element alternate.urgent {
-    background-color:               @urgent;
-}
-
 element normal.active, element alternate.active {
     background-color:               @background-alt;
     border:                         4px 4px solid 4px 4px;
@@ -54,11 +48,6 @@ element normal.active, element alternate.active {
 element selected {
     border:                         0px 0px solid 0px 0px;
     border-radius:                  0;
-    border-color:                   @primary;
-}
-
-element selected.urgent {
-    background-color:               @urgent;
 }
 
 element selected.active {
