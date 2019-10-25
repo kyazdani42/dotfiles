@@ -66,12 +66,13 @@ ln -s "$PWD/Pictures" "$HOME/Pictures"
 ln -s "$PWD/bin" "$HOME/.bin"
 
 echo "removing XFG_CONFIG_HOME configuration files"
-rm -rf "$HOME/.config"/{tmux,alacritty,i3,polybar,gtk-3.0,sxhkd,dunst}
+rm -rf "$HOME/.config"/{tmux,alacritty,i3,polybar,gtk-3.0,sxhkd,dunst,rofi}
 
 echo "link XDG_CONFIG_HOME configuration files"
 ln -s "$PWD/config/tmux" "$HOME/.config/tmux"
 ln -s "$PWD/config/alacritty" "$HOME/.config/alacritty"
 ln -s "$PWD/config/i3" "$HOME/.config/i3"
+ln -s "$PWD/config/rofi" "$HOME/.config/rofi"
 ln -s "$PWD/config/polybar" "$HOME/.config/polybar"
 ln -s "$PWD/config/gtk-3.0" "$HOME/.config/gtk-3.0"
 ln -s "$PWD/config/sxhkd" "$HOME/.config/sxhkd"
