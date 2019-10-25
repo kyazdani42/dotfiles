@@ -8,8 +8,7 @@ call plug#begin('~/.vim/plugged')
 	"the file directory
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-
-	"comment plugin with ctrl + / (2 times)
+"comment plugin with ctrl + / (2 times)
     Plug 'tomtom/tcomment_vim'
 
 	"the colorscheme
@@ -56,7 +55,22 @@ if (has("nvim"))
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
-let g:lightline = { 'colorscheme': 'palenight' }
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+let g:lightline = {
+      \ 'colorscheme': 'palenight',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste', 'gitbranch' ],
+      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
 if (has("termguicolors"))
 	set termguicolors
@@ -72,6 +86,7 @@ endif
 "autoclose tags on scripting files
 autocmd Filetype html,xml,xsl,php source ~/.vim/scripts/closetag/plugin/closetag.vim
 
+set noshowmode
 " Mouse support
 set mouse=n " enable mouse
 set mousehide " hide mouse while typing
