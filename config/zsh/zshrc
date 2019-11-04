@@ -40,7 +40,7 @@ if [ -f $HOME/.fzf.zsh ]; then
 fi
 if [ $(command -v fzf) ]; then
     export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
-    export FZF_DEFAULT_OPTS=' -i --color=bg:#1d2021,fg:#ebdbb2,hl:#cc241d,bg+:#1d2021,fg+:#ebdbb2,hl+:#cc241d,gutter:#1d2021,spinner:#1d2021,info:#1d2021,prompt:#1d2021,pointer:#83a598'
+    export FZF_DEFAULT_OPTS=' -i --color=bg:#343f58,fg:#c7cfed,hl:#e74f7b,bg+:#343f58,fg+:#e7edf9,hl+:#e74f6b,gutter:#343f58,spinner:#343f58,info:#343f58,prompt:#343f58,pointer:#80b9c9'
 fi
 
 # add syntax highlighting to zsh
