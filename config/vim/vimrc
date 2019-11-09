@@ -180,29 +180,10 @@ nnoremap <silent> <leader>p :call fzf#vim#files('.', {'options': '--prompt ""'})
 let g:highlightedyank_highlight_duration = 300
 
 " --- Fzf --- "
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-let $FZF_DEFAULT_OPTS=' -i --color=bg:#343f58,fg:#c7cfed,hl:#e74f6b,bg+:#343f58,fg+:#e7edf9,hl+:#e74f6b,gutter:#343f58,spinner:#343f58,info:#343f58,prompt:#343f58,pointer:#80b9c9 --layout=reverse --margin=1,4'
-
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
-
-  let height = float2nr(14)
-  let width = float2nr(70)
-  let horizontal = float2nr((&columns - width) / 2)
-  let vertical = 2
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': vertical,
-        \ 'col': horizontal,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-endfunction
+let g:fzf_layout = { 'down': '~25%' }
+autocmd! FileType fzf
+autocmd  FileType fzf set laststatus=0 noshowmode noruler
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 
 " --- Coc --- "
 

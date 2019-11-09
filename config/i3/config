@@ -78,7 +78,7 @@ set $white  #FFFFFF
 set $blue   #9AEDFE
 
 # class                 border  bg-text  indicator child-border
-client.focused          $purple $purple  $purple   $purple
+client.focused          $bgCol $bgCol  $bgCol   $bgCol
 client.focused_inactive $pink   $bgCol   $white    $bgCol
 client.unfocused        $bgCol  $bgCol   $white    $bgCol
 client.urgent           $red    $bgCol   $white    $red

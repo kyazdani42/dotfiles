@@ -28,7 +28,7 @@ focused = #404050
 monitor = ${env:MONITOR}
 monitor-strict = false
 override-redirect = false
-bottom = false
+bottom = true
 fixed-center = true
 width = 100%
 height = 40
@@ -56,8 +56,8 @@ font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;1"
 
 modules-left = i3
-modules-center = memory cpu filesystem battery
-modules-right = pavolume arch-aur-updates date
+modules-center = xwindow
+modules-right = battery pavolume arch-aur-updates date
 
 separator =
 
@@ -75,13 +75,16 @@ enable-ipc = true
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
 
+[module/xwindow]
+type = internal/xwindow
+
 [module/i3]
 type = internal/i3
-pin-workspaces = true
+pin-workspaces = false
 strip-wsnumbers = false
 index-sort = false
-enable-click = true
-enable-scroll = true
+enable-click = false
+enable-scroll = false
 wrapping-scroll = false
 reverse-scroll = false
 fuzzy-match = false
@@ -105,7 +108,7 @@ label-mode-foreground = #000000
 label-mode-background = #FFBB00
 
 label-focused = %icon%
-label-focused-background = ${colors.background-alt}
+label-focused-background = #485570
 label-focused-foreground = ${colors.foreground}
 label-focused-underline =
 label-focused-padding = 3
@@ -194,7 +197,7 @@ label = %percentage:3%%
 [module/date]
 type = internal/date
 interval = 10
-date = %a %Y-%m-%d
+date = %a %d/%m/%Y
 time = %H:%M
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
