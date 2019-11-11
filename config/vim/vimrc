@@ -24,7 +24,6 @@ call plug#begin('~/.vim/plugged')
     "changes vim workdir to project root
     Plug 'airblade/vim-rooter'
     "fuzzyfinder for vim
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
 
     "hilight when yanking

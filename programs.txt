@@ -99,3 +99,4 @@ chromium
 firefox
 gimp
 gpick
+fzf
