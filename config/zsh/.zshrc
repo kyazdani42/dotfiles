@@ -1,6 +1,6 @@
 # configure oh my zsh
 ZSH_THEME=""
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.config/zsh/oh-my-zsh"
 plugins=(git zsh-autosuggestions docker colored-man-pages)
 
 # launch oh my zsh
@@ -30,7 +30,7 @@ alias glo="git pull origin"
 [ $(command -v starship) ] && eval "$(starship init zsh)"
 
 # must be sourced after starship
-source $HOME/.zsh_vi_mode
+source $ZDOTDIR/zsh_vi_mode
 
 # fzf plugin for fast search
 # `bindkey | grep fzf` for the key bindings
@@ -44,5 +44,5 @@ if [ $(command -v fzf) ]; then
 fi
 
 # add syntax highlighting to zsh
-[ -d $HOME/.zsh-syntax-highlighting ] && source $HOME/.zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 

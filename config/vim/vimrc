@@ -8,7 +8,8 @@ call plug#begin('~/.vim/plugged')
 	"the file directory
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-"comment plugin with ctrl + / (2 times)
+
+    "comment plugin with ctrl + / (2 times)
     Plug 'tomtom/tcomment_vim'
 
 	"the colorscheme
@@ -207,7 +208,6 @@ nmap <silent> gr <Plug>(coc-references)
 " Use control K to show documentation in preview window
 nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
 nmap <silent> <C-I> :Format<CR>
-nmap <silent> <C-O> :call CocActionAsync('runCommand', 'tsserver.organizeImports')<CR>
 
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
@@ -220,7 +220,7 @@ endfunction
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 " " Remap for rename current word
-nmap <F2> <Plug>(coc-rename)
+nmap rn <Plug>(coc-rename)
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 " use `:OR` for organize import of current buffer

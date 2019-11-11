@@ -24,6 +24,6 @@ for monitor in $monitors; do
 	fi
 done
 
-sed -i "s/^\*Xft.dpi: [0-9]\{2,3\}$/\*Xft.dpi: $dpi_level/" "$HOME/.Xresources"
-xrdb merge "$HOME/.Xresources"
+sed -i "s/^\*Xft.dpi: [0-9]\{2,3\}$/\*Xft.dpi: $dpi_level/" "$HOME/.xinit/Xresources"
+xrdb merge "$HOME/.xinit/Xresources"
 

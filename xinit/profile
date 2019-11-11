@@ -2,7 +2,7 @@ BINARIES=(
 # program folders
 "$HOME/.cargo/bin"
 "$HOME/.deno/bin"
-"$HOME/.yarn/bin"
+"$HOME/.config/yarn/bin"
 "$HOME/.pyenv/bin"
 "$HOME/.nvm"
 # local folders
@@ -16,12 +16,12 @@ for path in "${BINARIES[@]}"; do
 	[ -d "$path" ] && export PATH="$path:$PATH"
 done
 
-if command -v go; then
-	gopath="$HOME/Document/go_projects"
-	[ ! -d "$gopath" ] && mkdir -p "$gopath"/{src,pkg,bin}
-	export GOPATH=$gopath
-	export PATH="$GOPATH/bin:$PATH"
-fi
+# if command -v go; then
+# 	gopath="$HOME/Document/go_projects"
+# 	[ ! -d "$gopath" ] && mkdir -p "$gopath"/{src,pkg,bin}
+# 	export GOPATH=$gopath
+# 	export PATH="$GOPATH/bin:$PATH"
+# fi
 
 # fzf plugin for fast search
 # `bindkey | grep fzf` for the key bindings
@@ -32,14 +32,15 @@ fi
 eval "$(ssh-agent -s)"
 ssh-add "$HOME/.ssh/id_rsa.pub"
 
-
 # use qt5ct as QT plateform
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
 #path to gtk 2 config file
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export GTK2_RC_FILES="$HOME/.config/gtkrc-2.0"
 
 # default programs
 export EDITOR="/usr/bin/vim"
 export TERMINAL="/usr/bin/alacritty"
 export BROWSER="/usr/bin/chromium"
+
+export ZDOTDIR="$HOME/.config/zsh"
