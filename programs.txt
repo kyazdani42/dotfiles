@@ -99,4 +99,3 @@ chromium
 firefox
 gimp
 gpick
-direnv
