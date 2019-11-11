@@ -1,0 +1,32 @@
+106c106
+< call s:h("Boolean", { "fg": s:red }) " a boolean constant: TRUE, false
+---
+> call s:h("Boolean", { "fg": s:yellow }) " a boolean constant: TRUE, false
+108,113c108,113
+< call s:h("Identifier", { "fg": s:red }) " any variable name
+< call s:h("Function", { "fg": s:blue }) " function name (also: methods for classes)
+< call s:h("Statement", { "fg": s:purple }) " any statement
+< call s:h("Conditional", { "fg": s:purple }) " if, then, else, endif, switch, etc.
+< call s:h("Repeat", { "fg": s:purple }) " for, do, while, etc.
+< call s:h("Label", { "fg": s:purple }) " case, default, etc.
+---
+> call s:h("Identifier", { "fg": s:purple }) " any variable name
+> call s:h("Function", { "fg": s:white }) " function name (also: methods for classes)
+> call s:h("Statement", { "fg": s:red }) " any statement
+> call s:h("Conditional", { "fg": s:red }) " if, then, else, endif, switch, etc.
+> call s:h("Repeat", { "fg": s:red }) " for, do, while, etc.
+> call s:h("Label", { "fg": s:blue }) " case, default, etc.
+115c115
+< call s:h("Keyword", { "fg": s:red }) " any other keyword
+---
+> call s:h("Keyword", { "fg": s:purple }) " any other keyword
+121,122c121,122
+< call s:h("PreCondit", { "fg": s:yellow }) " preprocessor #if, #else, #endif, etc.
+< call s:h("Type", { "fg": s:yellow }) " int, long, char, etc.
+---
+> call s:h("PreCondit", { "fg": s:comment_grey }) " preprocessor #if, #else, #endif, etc.
+> call s:h("Type", { "fg": s:blue }) " int, long, char, etc.
+124c124
+< call s:h("Structure", { "fg": s:yellow }) " struct, union, enum, etc.
+---
+> call s:h("Structure", { "fg": s:purple }) " struct, union, enum, etc.
