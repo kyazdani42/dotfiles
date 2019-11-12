@@ -23,11 +23,6 @@ done
 # 	export PATH="$GOPATH/bin:$PATH"
 # fi
 
-# fzf plugin for fast search
-# `bindkey | grep fzf` for the key bindings
-[ -f "$HOME/.fzf.zsh" ] && source "$HOME/.fzf.zsh"
-[ $(command -v fzf) ] && export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
-
 # start ssh agent to use ssh
 eval "$(ssh-agent -s)"
 ssh-add "$HOME/.ssh/id_rsa.pub"

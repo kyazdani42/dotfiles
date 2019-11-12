@@ -34,11 +34,6 @@ alias glo="git pull origin"
 source $ZDOTDIR/zsh_vi_mode
 
 # fzf plugin for fast search
-# `bindkey | grep fzf` for the key bindings
-if [ -f $HOME/.fzf.zsh ]; then
-    source $HOME/.fzf.zsh
-    bindkey '^O' fzf-cd-widget
-fi
 if [ $(command -v fzf) ]; then
     export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
     export FZF_DEFAULT_OPTS=' -i --color=bg:#292d3e,fg:#c7cfed,hl:#e74f7b,bg+:#292d3e,fg+:#e7edf9,hl+:#e74f6b,gutter:#292d3e,spinner:#292d3e,info:#292d3e,prompt:#292d3e,pointer:#80b9c9'
@@ -47,5 +42,7 @@ fi
 # add syntax highlighting to zsh
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# `bindkey | grep fzf` for the key bindings
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+bindkey '^O' fzf-cd-widget
