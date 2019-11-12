@@ -43,27 +43,37 @@ done <programs.txt
 fc-cache >/dev/null
 
 # setup lightdm
+post_message=""
 if ! sudo systemctl status lightdm.service | grep active >/dev/null
 then
+    if pacman -Q | grep theme-litarvan >/dev/null; then
+        yay -Rns lightm-webkit-theme-litarvan
+    fi
+    if ! yay -S aur/lightdm-webkit-theme-litarvan; then
+        print "\x1b[31mError during litarvan install, quitting\x1b[0m";
+        exit 1;
+    fi
     sudo systemctl enable lightdm.service
-    sudo cp -r ./etc/lightdm /etc/lightdm
+    rm -rf /etc/lightdm
+    sudo cp -r lightdm /etc/lightdm
     sudo cp Pictures/tower_violet_blue.jpg $(find /usr/share/lightdm-webkit/themes -name 'background.*')
     user=$USER
     sudo cp Pictures/user.png /var/lib/AccountsService/icons/$user.png
 
     account_service_file="/var/lib/AccountsService/users/$user"
     if [ -f  $account_service_file ]; then
-        sudo sed "s/Icon=.*$/Icon=\/var\/lib\/AccountsService\/icons\/$user.png/" $account_service_file
+        sudo -i sed "s/Icon=.*$/Icon=\/var\/lib\/AccountsService\/icons\/$user.png/" $account_service_file
     else
         echo "
 [User]
 Language=
 Session=i3
 XSession=i3
-Icon=/var/lib/AccountsService/icons/kiyan.png
+Icon=/var/lib/AccountsService/icons/$user.png
 SystemAccount=false
 " | sudo tee $account_service_file
     fi
+    post_message="lightdm has been properly configured, run '# systemctl start lightdm.service' to launch it now"
 fi
 
 # setup dunst
@@ -77,3 +87,4 @@ fi
 
 echo "** - installed all programs, check error.log to see if some programs have not been installed properly - **"
 
+echo $post_message
