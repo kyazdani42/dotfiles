@@ -16,7 +16,7 @@ sxhkd
 compton
 xmonad
 lightdm
-lightdm-webkit-theme-litarvan
+aur/lightdm-webkit-theme-litarvan
 tar
 shellcheck
 lldb

@@ -42,15 +42,32 @@ done <programs.txt
 
 fc-cache >/dev/null
 
+# setup lightdm
 if ! sudo systemctl status lightdm.service | grep active >/dev/null
 then
     sudo systemctl enable lightdm.service
-    sudo cp config/lightdm/lightdm.conf /etc/lightdm
-    sudo cp config/lightdm/lightdm-webkit2-greeter.conf /etc/lightdm
+    sudo cp -r ./etc/lightdm /etc/lightdm
+    sudo cp Pictures/tower_violet_blue.jpg $(find /usr/share/lightdm-webkit/themes -name 'background.*')
+    user=$USER
+    sudo cp Pictures/user.png /var/lib/AccountsService/icons/$user.png
+
+    account_service_file="/var/lib/AccountsService/users/$user"
+    if [ -f  $account_service_file ]; then
+        sudo sed "s/Icon=.*$/Icon=\/var\/lib\/AccountsService\/icons\/$user.png/" $account_service_file
+    else
+        echo "
+[User]
+Language=
+Session=i3
+XSession=i3
+Icon=/var/lib/AccountsService/icons/kiyan.png
+SystemAccount=false
+" | sudo tee $account_service_file
+    fi
 fi
 
+# setup dunst
 notification_daemon_file="/usr/share/dbus-1/services/org.freedesktop.Notifications.service"
-
 if command -v dunst >/dev/null && [ ! -f $notification_daemon_file ]
 then
     echo "[D-BUS Service]

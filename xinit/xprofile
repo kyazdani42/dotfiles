@@ -1,6 +1,9 @@
 # launch wifi tray
 nm-applet &
 
+# set writing rate
+xset r rate 220 50
+
 # launch compton compositor
 compton -i 0.96 --inactive-dim 0.15 -r0 -o0 -l0 -t0 --backend glx --refresh-rate 60 --glx-no-stencil --glx-no-rebind-pixmap --use-damage -I 1 -O 1 --vsync -b
 

@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# this scrips is useless as lightdm handles login by itself
-
-xset r rate 260 50
-exec i3
-
