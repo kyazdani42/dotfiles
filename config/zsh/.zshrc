@@ -23,7 +23,7 @@ alias lt="exa -Tla --git"
 alias vim="nvim"
 alias find="fd"
 alias grep="rg"
-alias less="bat"
+alias cat="bat --decorations never"
 alias gpo="git push origin"
 alias glo="git pull origin"
 
