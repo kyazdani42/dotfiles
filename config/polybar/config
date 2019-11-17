@@ -55,9 +55,9 @@ font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;1"
 
-modules-left = i3
-modules-center = xwindow
-modules-right = battery pavolume arch-aur-updates date
+modules-left = date i3 xwindow
+modules-center =
+modules-right = battery pavolume arch-aur-updates
 
 separator =
 
@@ -197,13 +197,13 @@ label = %percentage:3%%
 [module/date]
 type = internal/date
 interval = 10
-date = %a %d/%m/%Y
+date = %a %d
 time = %H:%M
-format-prefix = " "
+format-prefix = "  "
 format-prefix-foreground = ${colors.foreground-alt}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
-label = "%date%  %time% "
+label = "%date%  %time%"
 
 [module/filesystem]
 type = internal/fs

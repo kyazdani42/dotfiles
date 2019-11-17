@@ -164,9 +164,6 @@ imap <F1> <Esc>
 map H ^
 map L $
 
-" M to make
-noremap M :!make<cr>
-
 "fzf config
 map <silent> <leader>b :Buffers<CR>
 map <silent> <leader>r :Rg<CR>

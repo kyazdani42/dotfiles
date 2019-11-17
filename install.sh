@@ -49,6 +49,13 @@ POST INSTALL STEPS:                                         *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
 *************************************************************
 
+firefox:
+- rescale by going into about:config and then looking for devPix...
+- palenight theme
+- tabs on bottom:
+https://github.com/jonhoo/configs/blob/master/gui/.mozilla/firefox/dev-edition-default/chrome/userChrome.css
+
+
 when launching the system, you may need to adjust the dpi level of each monitor.
 
 launching set_dpis should do the trick
