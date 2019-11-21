@@ -31,7 +31,7 @@ override-redirect = false
 bottom = true
 fixed-center = true
 width = 100%
-height = 40
+height = 36
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -49,8 +49,8 @@ padding-right = 1
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = "DejaVu Sans:size=12;2"
-font-1 = "UbuntuMono Nerd Font:size=14;3"
+font-0 = "DejaVu Sans:size=10;2"
+font-1 = "UbuntuMono Nerd Font:size=12;3"
 font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=10;1"
 font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=10;1"
 font-4 = "Font Awesome 5 Brands:pixelsize=10;1"

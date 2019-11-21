@@ -13,7 +13,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tomtom/tcomment_vim'
 
 	"the colorscheme
-    Plug 'drewtempelmeyer/palenight.vim'
+    Plug 'kyazdani42/palenight.vim'
 
     "the lightline at the bottom
     Plug 'itchyny/lightline.vim'
@@ -44,6 +44,7 @@ call plug#end()
 " Color stuff
 set background=dark
 colorscheme palenight
+let g:palenight_terminal_italics=1
 syntax on " Syntax highlighting
 "tooltip menu colors
 hi Pmenu guibg=#343f58 guifg=#e7edf9

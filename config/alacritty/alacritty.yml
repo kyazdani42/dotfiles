@@ -24,11 +24,13 @@ font:
     family: "Noto Sans Mono"
     style: Regular
 
-  # bold:
-    # family: DejaVu Sans Mono
-    # style: Bold
-  #   family: DejaVu Sans Mono
-  #   style: Italic
+  bold:
+    family: "Noto Sans Mono"
+    style: Bold
+
+  italic:
+    family: "Noto Sans Mono"
+    style: Italic
 
   size: 7.6
 

@@ -1,3 +1,4 @@
+[ $TERM != "tmux-256color" ] && exec tmux -f $HOME/.config/tmux/tmux.conf
 # configure oh my zsh
 export HISTFILE="$HOME/.cache/zsh/history"
 ZSH_THEME=""
@@ -13,19 +14,26 @@ function open() {
 	disown
 }
 
-# aliases
+# unix aliases
+alias p="sudo pacman"
+alias ss="sudo systemctl"
+alias sss="sudo systemctl status"
 alias pacman="sudo pacman"
-alias cht="curl cheat.sh/"
-alias gitbeauty="git log --all --graph --oneline"
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+alias bat="bat --decorations never"
 alias ls="exa"
+alias sl="exa"
 alias la="exa -la --git"
 alias lt="exa -Tla --git"
-alias vim="nvim"
-alias find="fd"
-alias grep="rg"
-alias cat="bat --decorations never"
-alias gpo="git push origin"
-alias glo="git pull origin"
+
+# git aliases
+alias gitbeauty="git log --all --graph --oneline"
+alias gpp="git push origin HEAD"
+
+# tmux aliases
+alias tls="tmux list-sessions"
 
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"
@@ -46,3 +54,4 @@ source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 bindkey '^O' fzf-cd-widget
+
