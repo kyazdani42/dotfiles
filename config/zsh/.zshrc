@@ -1,4 +1,4 @@
-[ $TERM != "tmux-256color" ] && exec tmux -f $HOME/.config/tmux/tmux.conf
+[ $TERM != "tmux-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
 # configure oh my zsh
 export HISTFILE="$HOME/.cache/zsh/history"
 ZSH_THEME=""
@@ -34,6 +34,7 @@ alias gpp="git push origin HEAD"
 
 # tmux aliases
 alias tls="tmux list-sessions"
+alias tka="tmux kill-session -a"
 
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"

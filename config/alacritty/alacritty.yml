@@ -117,6 +117,8 @@ debug:
 key_bindings:
   - { key: Paste,                   action: Paste                        }
   - { key: Copy,                    action: Copy                         }
+# allow control slash to send ++ so i can bind control / to comment in vim
+  - { key: Slash,    mods: Control, chars: "++"                          }
   - { key: L,        mods: Control, action: ClearLogNotice               }
   - { key: L,        mods: Control, chars: "\x0c"                        }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }

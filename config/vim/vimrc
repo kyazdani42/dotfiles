@@ -8,6 +8,9 @@ call plug#begin('~/.vim/plugged')
 	"the file directory
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'airblade/vim-gitgutter'
 
     "comment plugin with ctrl + / (2 times)
     Plug 'tomtom/tcomment_vim'
@@ -31,13 +34,11 @@ call plug#begin('~/.vim/plugged')
 
     " color syntax for most languages
     Plug 'sheerun/vim-polyglot'
-
     "CoC
     Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
 
     "git integration
     Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -150,11 +151,6 @@ map <C-j> <Nop>
 inoremap <C-j> <Esc>
 noremap <C-j> <Esc>
 
-map <leader>w :w<CR>
-map <leader>x :x<CR>
-
-vmap <Leader>y "+y
-
 "toggle buffer
 nnoremap <leader><leader> <c-^>
 
@@ -167,12 +163,35 @@ map L $
 
 "fzf config
 map <silent> <leader>b :Buffers<CR>
-map <silent> <leader>r :Rg<CR>
+map <silent> <C-f> :Rg<CR>
 nnoremap <silent> <leader>p :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
 
 " =====================
 " Plugin configuration
 " =====================
+
+" --- TComment --- "
+nmap <silent> ++ :TComment<CR>
+vmap <silent> ++ :TComment<CR>
+
+" --- Nerd tree --- "
+
+let g:NERDTreeIgnore = ['^node_modules$']
+
+" sync open file with NERDTree
+" " Check if NERDTree is open or active
+function! IsNERDTreeOpen()
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
+" file, and we're not in vimdiff
+function! SyncTree()
+  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
+    NERDTreeFind
+    wincmd p
+  endif
+endfunction
 
 " --- Highlighted yank --- "
 let g:highlightedyank_highlight_duration = 300
