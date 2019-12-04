@@ -27,6 +27,8 @@ alias ls="exa"
 alias sl="exa"
 alias la="exa -la --git"
 alias lt="exa -Tla --git"
+alias rm="rm -v"
+alias mkdir="mkdir -v"
 
 # git aliases
 alias gitbeauty="git log --all --graph --oneline"
