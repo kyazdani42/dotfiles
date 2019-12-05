@@ -29,7 +29,7 @@ font:
     style: Bold
 
   italic:
-    family: "Noto Sans Mono"
+    family: "SauceCodePro Nerd Font"
     style: Italic
 
   size: 7.6
