@@ -1,10 +1,9 @@
 BINARIES=(
 # program folders
-"$HOME/.cargo/bin"
 "$HOME/.deno/bin"
 "$HOME/.config/yarn/bin"
+"$HOME/.config/cargo/bin"
 "$HOME/.pyenv/bin"
-"$HOME/.nvm"
 # local folders
 "$HOME/bin"
 "$HOME/.bin"

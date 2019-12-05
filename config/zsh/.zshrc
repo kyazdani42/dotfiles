@@ -8,6 +8,8 @@ plugins=(git zsh-autosuggestions docker colored-man-pages)
 # launch oh my zsh
 source $ZSH/oh-my-zsh.sh
 
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
 # open stuff mac style
 function open() {
 	&>/dev/null xdg-open $1 &

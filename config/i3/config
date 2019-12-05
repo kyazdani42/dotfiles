@@ -3,8 +3,18 @@ set $mod Mod1
 
 floating_modifier $mod
 
-# no title
-new_window 1pixel
+font pango:Noto Sans Mono 10
+# in case there is a title
+title_align center
+# no border, no title bar
+default_border none
+default_floating_border none
+
+# the focus only changes when clicking
+focus_follows_mouse no
+
+# going back to previous workspace when switching to same workspace
+workspace_auto_back_and_forth yes
 
 # reload the configuration file
 bindsym $mod+F2 reload
@@ -77,11 +87,29 @@ set $bgCol  #292D3E
 set $white  #FFFFFF
 set $blue   #9AEDFE
 
-# class                 border  bg-text  indicator child-border
-client.focused          $bgCol $bgCol  $bgCol   $bgCol
-client.focused_inactive $pink   $bgCol   $white    $bgCol
-client.unfocused        $bgCol  $bgCol   $white    $bgCol
-client.urgent           $red    $bgCol   $white    $red
+# for these 5 classes, colors can be, in the order:
+# - border color
+# - background color
+# - text color
+# - indicator color
+# - child_border color
+
+# Note that for the window decorations, the color around the child window is the "child_border",
+# and "border" color is only the two thin lines around the titlebar.
+
+# The indicator color is used for indicating where a new window will be opened.
+# For horizontal split containers, the right border will be painted in indicator color,
+# for vertical split containers, the bottom border.
+# This only applies to single windows within a split container,
+# which are otherwise indistinguishable from single windows outside of a split container.
+
+client.focused          $blue $blue $blue $blue $blue
+client.focused_inactive $bgCol $bgCol $bgCol $bgCol $bgCol
+client.unfocused        $bgCol $bgCol $bgCol $bgCol $bgCol
+client.urgent           $red $red $red $red $red
+client.placeholder      $bgCol $bgCol $bgCol $bgCol $bgCol
+
+client.background       $bgCol
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 bindsym $mod+Shift+p exec $HOME/.config/polybar/launch.sh
