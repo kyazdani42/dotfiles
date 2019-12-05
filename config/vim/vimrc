@@ -52,6 +52,18 @@ hi Pmenu guibg=#343f58 guifg=#e7edf9
 hi PmenuSel guibg=#1c1f2b guifg=#80cbc4
 hi PmenuSbar guibg=#3a3d51
 hi PmenuThumb guibg=#2e3140
+hi CursorLine guibg=#1c1f2b
+hi LineNr guifg=#3a3f58
+hi Visual guibg=#343a51
+hi VisualNOS guibg=#343a51
+hi Search guibg=#4c4b65 guifg=default
+hi IncSearch guibg=#4c4b65 guifg=default
+hi MatchParen gui=bold,underline guifg=#a77eca
+
+" these not working because of alacritty doesnt support blink
+" also i think i cannot change cursor color because of alacritty too
+" hi Cursor guibg=#ffcc00
+" set guicursor=a:blinkon100
 
 if (has("nvim"))
 	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
