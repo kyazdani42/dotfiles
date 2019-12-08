@@ -52,7 +52,7 @@ colors:
 
   cursor:
     text: '0x292d3e'
-    cursor: '0x959dcb'
+    cursor: '0xffcb6b'
 
   normal:
     black:   '0x292d3e'
