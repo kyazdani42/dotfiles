@@ -186,7 +186,7 @@ set ignorecase
 " mappings
 " ==================================
 
-map <silent> <C-n> :MyNERDTreeToggle<CR>
+map <silent> <C-n> :NERDTreeToggle<CR>
 map <silent> <leader>n :NERDTreeFind<CR>
 
 " Disable Ex mode
@@ -217,44 +217,39 @@ nnoremap <silent> <leader>p :call fzf#vim#files('.', {'options': '--prompt ""'})
 " =====================
 
 " --- TComment --- "
+" Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>
 vmap <silent> ++ :TComment<CR>
 
 " --- Nerd tree --- "
 
 let g:NERDTreeIgnore = ['^node_modules$']
+let NERDTreeShowHidden=1
 
-function! OpenNerdTree()
-    NERDTreeToggle
-    if IsNERDTreeOpen()
-        set winhighlight=Normal:Nerd
-        highlight Nerd guibg=#1c1f2b
-        highlight NerdTreeFile guibg=#1c1f2b
-    endif
-endfunction
+" nerd tree set specific colors
+autocmd  FileType nerdtree set winhighlight=Normal:Nerd
+highlight Nerd guibg=#1c1f2b
+highlight NerdTreeFile guibg=#1c1f2b
 
-command! -nargs=0 MyNERDTreeToggle :call OpenNerdTree()
-
-" sync open file with NERDTree
-" " Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && strlen(expand('%')) > 0 && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
+" close window if nerd tree is the last one
+" TODO: this output CoC error on quit...
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " --- Highlighted yank --- "
 let g:highlightedyank_highlight_duration = 300
 
 " --- Fzf --- "
 let g:fzf_layout = { 'down': '~25%' }
+let $FZF_DEFAULT_OPTS .= ' --margin=1'
+let g:fzf_colors = {
+  \ 'bg': ['bg', 'CursorLine'],
+  \ 'gutter': ['bg', 'CursorLine'],
+  \ 'spinner': ['bg', 'CursorLine'],
+  \ 'info': ['bg', 'CursorLine'],
+  \ 'prompt': ['bg', 'CursorLine'],
+  \ 'pointer': ['bg', 'Normal'],
+  \ 'bg+':     ['bg', 'Normal'],
+  \ }
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
