@@ -5,47 +5,141 @@ let mapleader =" "
 " ==================================
 
 call plug#begin('~/.vim/plugged')
-	"the file directory
+	" File Explorer
     Plug 'scrooloose/nerdtree'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'ryanoasis/vim-devicons'
 
-    "comment plugin with ctrl + / (2 times)
-    Plug 'tomtom/tcomment_vim'
+    map <silent> <C-n> :NERDTreeToggle<CR>
+    map <silent> <leader>n :NERDTreeFind<CR>
 
-	"the colorscheme
+    let g:NERDTreeIgnore = ['^node_modules$']
+    let NERDTreeShowHidden=1
+
+    " nerd tree set specific colors
+    " nerd tree is shit
+    autocmd  FileType nerdtree set winhighlight=Normal:Nerd
+    highlight Nerd guibg=#1c1f2b
+    highlight NerdTreeFile guibg=#1c1f2b
+
+    " Comments
+    " Ctrl + / is outputing ++ (term configuration)
+    Plug 'tomtom/tcomment_vim'
+    nmap <silent> ++ :TComment<CR>
+    vmap <silent> ++ :TComment<CR>
+
+
+	" Colors
     Plug 'kyazdani42/palenight.vim'
+
 
     "the lightline at the bottom
     Plug 'itchyny/lightline.vim'
+    let g:lightline = {
+          \ 'colorscheme': 'palenight',
+          \ 'active': {
+          \   'left': [ [ 'mode', 'paste', 'gitbranch' ],
+          \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+          \ },
+          \ 'component_function': {
+          \   'cocstatus': 'coc#status',
+          \   'currentfunction': 'CocCurrentFunction',
+          \   'gitbranch': 'fugitive#head'
+          \ },
+          \ }
+    function! CocCurrentFunction()
+      return get(b:, 'coc_current_function', '')
+    endfunction
 
-    "change/delete surrounding char
-    Plug 'tpope/vim-surround'
 
-    "changes vim workdir to project root
-    Plug 'airblade/vim-rooter'
-    "fuzzyfinder for vim
+    " Fuzzyfinder for vim
     Plug 'junegunn/fzf.vim'
 
-    "hilight when yanking
+    map <silent> <leader>b :Buffers<CR>
+    map <silent> <C-f> :Rg<CR>
+    nnoremap <silent> <leader>p :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
+
+    let g:fzf_nvim_statusline = 0 " disable statusline overwriting
+    autocmd! FileType fzf
+    autocmd  FileType fzf set laststatus=0 noruler
+          \| autocmd BufLeave <buffer> set laststatus=2 ruler
+
+    let g:fzf_layout = { 'down': '~25%' }
+    let g:fzf_colors = {
+          \ 'bg': ['bg', 'CursorLine'],
+          \ 'spinner': ['bg', 'CursorLine'],
+          \ 'info': ['bg', 'CursorLine'],
+          \ 'gutter': ['bg', 'CursorLine'],
+          \ 'prompt': ['bg', 'CursorLine'],
+          \ 'pointer': ['bg', 'CursorLine'],
+          \ 'bg+':     ['bg', 'CursorLine'],
+          \ }
+
+    " Hilight when yanking
     Plug 'machakann/vim-highlightedyank'
+    let g:highlightedyank_highlight_duration = 300
+
+    " Change/delete surrounding char
+    Plug 'tpope/vim-surround'
+
+    " Changes vim workdir to project root
+    Plug 'airblade/vim-rooter'
+
+    " Git informations in the gutter
+    Plug 'airblade/vim-gitgutter'
 
     " color syntax for most languages
     Plug 'sheerun/vim-polyglot'
+
     "CoC
     Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
+    set cmdheight=2 " Better display for messages
+    set updatetime=250 " launch cursor hold (in ms, for diagnostic message mostly)
+    " Use <c-space> to trigger completion.
+    inoremap <silent><expr> <leader>; coc#refresh()
+    " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+    " Coc only does snippet and additional edit on confirm.
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-    Plug 'airblade/vim-gitgutter'
+    " Remap keys for gotos
+    nmap <silent> E <Plug>(coc-diagnostic-prev)
+    nmap <silent> W <Plug>(coc-diagnostic-next)
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gy <Plug>(coc-type-definition)
+    nmap <silent> gi <Plug>(coc-implementation)
+    nmap <silent> gr <Plug>(coc-references)
+    " Use control K to show documentation in preview window
+    nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
+    nmap <silent> <C-I> :Format<CR>
+
+    function! s:show_documentation()
+      if (index(['vim','help'], &filetype) >= 0)
+        execute 'vert h '.expand('<cword>')
+      else
+        call CocAction('doHover')
+      endif
+    endfunction
+
+    " Highlight symbol under cursor on CursorHold
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+    " Remap for rename current word
+    nmap rn <Plug>(coc-rename)
+    command! -nargs=0 Format :call CocAction('format')
+    command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 call plug#end()
 
-" Color stuff
-set background=dark
+filetype plugin indent on
+
 colorscheme palenight
+set termguicolors
+set t_Co=256
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set background=dark
 let g:palenight_terminal_italics=1
 syntax on " Syntax highlighting
-"tooltip menu colors
+" some color overriding the colorscheme
 hi Pmenu guibg=#343f58 guifg=#e7edf9
 hi PmenuSel guibg=#1c1f2b guifg=#80cbc4
 hi PmenuSbar guibg=#3a3d51
@@ -56,49 +150,18 @@ hi Visual guibg=#343a51
 hi VisualNOS guibg=#343a51
 hi Search guibg=#4c4b65 guifg=default
 hi IncSearch guibg=#4c4b65 guifg=default
-hi MatchParen gui=bold,underline guifg=#a77eca
-
-set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
+hi MatchParen gui=bold,underline guifg=#a77eca guibg=default
 set fillchars=vert:⠀
-
-" cursor blink
 set guicursor+=a:blinkon100
-
-if (has("nvim"))
-	let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
-
-let g:lightline = {
-      \ 'colorscheme': 'palenight',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'gitbranch' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
-
-if (has("termguicolors"))
-	set termguicolors
-endif
-if !has('gui_running')
-	set t_Co=256
-endif
 
 " ==========================
 " Settings
 " ==========================
 
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disable autocommenting on newline
+
 " undo files
-" use ~/.cache/vim/ as default data directory, create the directory if
-" it does not exist.
+" use ~/.cache/vim/ as default data directory, create the directory if it does not exist.
 set backup
 set undofile
 set undolevels=1000
@@ -131,64 +194,42 @@ set undodir=$HOME/.cache/vim/undofile
 set backupdir=$HOME/.cache/vim/backup
 set directory=$HOME/.cache/vim/swap
 
-"autoclose tags on scripting files
-autocmd Filetype html,xml,xsl,php source ~/.vim/scripts/closetag/plugin/closetag.vim
-
-set noshowmode
-" Mouse support
-set mouse=n " enable mouse
-set mousehide " hide mouse while typing
-
-" Stuff
-set autoread " reload file when it changes
-set confirm " disable 'no write'
-set showmatch "Show matching brackets/parenthesis
-set number relativenumber "Relative numbers
+set relativenumber " Relative numbers
+set showmatch " Show matching brackets/parenthesis
 set cursorline " Highlight current line
-set backspace=indent,eol,start "Easy backspace
+set noshowmode
+set mousehide " hide mouse while typing
+set linebreak " do not break words
 set splitbelow splitright " Splits open on the bottom or on the right
 set ruler " Show line and column number of cursor pos
-autocmd BufWritePre * %s/\s\+$//e " Automatically deletes all trailing whitespace on save.
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disable autocommenting on newline
-set linebreak " do not break words
-
-" Encoding
-set encoding=utf-8 " displayed encoding
-set fileencoding=utf-8 " written to file encoding
-
-"Disable vi-compatibility
-set nocompatible
-set ttyfast
-set wildmode=longest,list,full
+set laststatus=2 " Use StatusBar on all windows, 2 = always
+set scrolloff=9999 " Make cursor in middle of screen ?
 
 " Indentation
-set smartindent
-set tabstop=4
-set shiftwidth=4
-set expandtab
-filetype plugin indent on
-
-autocmd BufNewFile,BufRead *.tsx set syntax=typescript tabstop=2 shiftwidth=2
-autocmd BufNewFile,BufRead *.jsx set syntax=javascript tabstop=2 shiftwidth=2
+set smartindent " auto indent on new line (brackets for instance)
+set tabstop=4 " Tabs are 4 spaces long
+set shiftwidth=4 " Number of space for autoindent
+set expandtab " Use Spaces
+" {java/type}script is indenting with 2 spaces
 autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2
-
-" Use statusbar on all windows
-set laststatus=2
-set scrolloff=9999
+" jsx and tsx files are {java/type}script
+autocmd BufNewFile,BufRead *.tsx set syntax=typescript
+autocmd BufNewFile,BufRead *.jsx set syntax=javascript
 
 " Search settings
-set smartcase
-set incsearch
-set hlsearch
-set ignorecase
+set noincsearch " Do not move cursor during search
+set ignorecase " Ignore case
+set hlsearch " Highlight search results
 
-" ==================================
-" mappings
-" ==================================
-
-map <silent> <C-n> :NERDTreeToggle<CR>
-map <silent> <leader>n :NERDTreeFind<CR>
-
+" Misc
+set autoread " reload file when it changes
+set confirm " disable 'no write'
+set mouse=n " enable mouse
+set backspace=indent,eol,start " Easy backspace
+set encoding=utf-8 " displayed encoding
+set fileencoding=utf-8 " written to file encoding
+set nocompatible " Disable vi compatibility
+set wildmode=longest,list,full " Command line completion mode
 " Disable Ex mode
 nnoremap Q <Nop>
 
@@ -207,91 +248,4 @@ imap <F1> <Esc>
 map H ^
 map L $
 
-"fzf config
-map <silent> <leader>b :Buffers<CR>
-map <silent> <C-f> :Rg<CR>
-nnoremap <silent> <leader>p :call fzf#vim#files('.', {'options': '--prompt ""'})<CR>
-
-" =====================
-" Plugin configuration
-" =====================
-
-" --- TComment --- "
-" Ctrl + / is outputing ++ (term configuration)
-nmap <silent> ++ :TComment<CR>
-vmap <silent> ++ :TComment<CR>
-
-" --- Nerd tree --- "
-
-let g:NERDTreeIgnore = ['^node_modules$']
-let NERDTreeShowHidden=1
-
-" nerd tree set specific colors
-autocmd  FileType nerdtree set winhighlight=Normal:Nerd
-highlight Nerd guibg=#1c1f2b
-highlight NerdTreeFile guibg=#1c1f2b
-
-" close window if nerd tree is the last one
-" TODO: this output CoC error on quit...
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-" --- Highlighted yank --- "
-let g:highlightedyank_highlight_duration = 300
-
-" --- Fzf --- "
-let g:fzf_layout = { 'down': '~25%' }
-let $FZF_DEFAULT_OPTS .= ' --margin=1'
-let g:fzf_colors = {
-  \ 'bg': ['bg', 'CursorLine'],
-  \ 'gutter': ['bg', 'CursorLine'],
-  \ 'spinner': ['bg', 'CursorLine'],
-  \ 'info': ['bg', 'CursorLine'],
-  \ 'prompt': ['bg', 'CursorLine'],
-  \ 'pointer': ['bg', 'Normal'],
-  \ 'bg+':     ['bg', 'Normal'],
-  \ }
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-
-" --- Coc --- "
-
-" Better display for messages
-set cmdheight=2
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-" Use <c-.> to trigger completion.
-inoremap <silent><expr> <c-.> coc#refresh()
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"
-" " Remap keys for gotos
-nmap <silent> E <Plug>(coc-diagnostic-prev)
-nmap <silent> W <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" Use control K to show documentation in preview window
-nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
-nmap <silent> <C-I> :Format<CR>
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'vert h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" " Remap for rename current word
-nmap rn <Plug>(coc-rename)
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" vim:set et sw=2:
+" vim: set et sw=2 foldlevel=0 foldmethod=marker:

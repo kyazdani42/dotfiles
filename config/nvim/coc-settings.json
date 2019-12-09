@@ -1,25 +1,5 @@
 {
     "json.format.enable": true,
-    "suggest.timeout": 700,
-    "languageserver": {
-        "clangd": {
-            "command": "clangd",
-            "args": [
-                "--background-index"
-            ],
-            "rootPatterns": [
-                "compile_flags.txt",
-                "compile_commands.json",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "filetypes": [
-                "c",
-                "cpp",
-                "objc",
-                "objcpp"
-            ]
-        }
-    }
+    "coc.preferences.colorSupport": false,
+    "languageserver": {}
 }
