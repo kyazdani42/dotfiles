@@ -50,6 +50,14 @@ source $ZDOTDIR/zsh_vi_mode
 if [ $(command -v fzf) ]; then
     export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
     export FZF_DEFAULT_OPTS=' -i --color=bg:#292d3e,fg:#676e95,hl:#89ddff,bg+:#292d3e,fg+:#e7edf9,hl+:#89ddff,gutter:#292d3e,spinner:#292d3e,info:#292d3e,prompt:#292d3e,pointer:#80b9c9'
+    _fzf_compgen_path() {
+        fd --hidden --follow --exclude ".git" . "$1"
+    }
+
+    # Use fd to generate the list for directory completion
+    _fzf_compgen_dir() {
+        fd --type d --hidden --follow --exclude ".git" . "$1"
+    }
 fi
 
 # add syntax highlighting to zsh
