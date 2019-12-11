@@ -13,7 +13,7 @@ clang
 valgrind
 dunst
 sxhkd
-compton
+picom
 xmonad
 lightdm
 tar
