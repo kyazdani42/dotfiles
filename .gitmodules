@@ -10,6 +10,3 @@
 [submodule "config/vim/autoload/plug-vim"]
 	path = config/vim/autoload/plug-vim
 	url = https://github.com/junegunn/vim-plug
-[submodule "config/vim/scripts/closetag"]
-	path = config/vim/scripts/closetag
-	url = https://github.com/alvan/vim-closetag
