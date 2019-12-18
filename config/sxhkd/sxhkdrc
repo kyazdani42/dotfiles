@@ -19,8 +19,11 @@ alt + d
 alt + shift + x
     shutdown-dialog
 
-alt + z
-	gnome-screenshot -i
+Print
+	gnome-screenshot -a
+
+Control + Print
+    gnome-screenshot -i
 
 alt + shift + w
 	$BROWSER

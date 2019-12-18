@@ -44,22 +44,18 @@ Installation is done, you might want to reboot your system  *
 ----------------------------------------------------------- *
 POST INSTALL STEPS:                                         *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
-- polybar       : height, font sizes                        *
-- dmenu scripts : heights, font sizes                       *
-- rofi scrips   : heights, font sizes                       *
 - docker        : configuration to run docker without sudo  *
 - vim           : launch PlugInstall, CocInstall            *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
 *************************************************************
 
-firefox:
-- rescale by going into about:config and then looking for devPix...
-- palenight theme
-- tabs on bottom:
-https://github.com/jonhoo/configs/blob/master/gui/.mozilla/firefox/dev-edition-default/chrome/userChrome.css
+Modify font sizes in alacritty/alacritty.yml, polybar/config rofi/config.rasi xinit/Xresources
 
-when launching the system, you may need to adjust the dpi level of each monitor.
+rescale firefox in about:config devPixel...,
+firefox palenight theme,
+firefox tabs on bottom https://github.com/jonhoo/configs/blob/master/gui/.mozilla/firefox/dev-edition-default/chrome/userChrome.css
 
+when launching the system, you may need to adjust the dpi level of each monitor, 
 launching set_dpis should do the trick
 EOF
 

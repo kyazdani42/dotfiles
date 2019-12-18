@@ -15,7 +15,7 @@ call plug#begin('~/.vim/plugged')
     map <silent> <leader>n :NERDTreeFind<CR>
 
 	" Colors
-    Plug 'kyazdani42/palenight.vim'
+    Plug 'drewtempelmeyer/palenight.vim'
 
     "the lightline at the bottom
     Plug 'itchyny/lightline.vim'
@@ -28,7 +28,6 @@ call plug#begin('~/.vim/plugged')
 
     " Fuzzyfinder for vim
     Plug 'junegunn/fzf.vim'
-
 
     " Hilight when yanking
     Plug 'machakann/vim-highlightedyank'
@@ -45,28 +44,13 @@ call plug#begin('~/.vim/plugged')
 
     " color syntax for most languages
     Plug 'sheerun/vim-polyglot'
-
-    "CoC
-    Plug 'neoclide/coc.nvim', { 'tag': '*', 'branch': 'release' }
 call plug#end()
 
 filetype plugin indent on
 
 let g:lightline = {
       \ 'colorscheme': 'palenight',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste', 'gitbranch' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
-      \   'gitbranch': 'fugitive#head'
-      \ },
       \ }
-function! CocCurrentFunction()
-  return get(b:, 'coc_current_function', '')
-endfunction
 
 colorscheme palenight
 set termguicolors
@@ -203,39 +187,5 @@ let g:fzf_colors = {
       \ 'pointer': ['bg', 'CursorLine'],
       \ 'bg+':     ['bg', 'CursorLine'],
       \ }
-
-set cmdheight=2 " Better display for messages
-set updatetime=300 " launch cursor hold (in ms, for diagnostic message mostly)
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> ;; coc#refresh()
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Remap keys for gotos
-nmap <silent> E <Plug>(coc-diagnostic-prev)
-nmap <silent> W <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-" Use control K to show documentation in preview window
-nnoremap <silent> <C-k> :call <SID>show_documentation()<CR>
-nmap <silent> <C-I> :Format<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'vert h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" Remap for rename current word
-nmap rn <Plug>(coc-rename)
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " vim: set et sw=2 foldlevel=0 foldmethod=marker:
