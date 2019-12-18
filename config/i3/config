@@ -22,6 +22,9 @@ bindsym $mod+Shift+F2 restart
 
 bindsym $mod+w exec nautilus
 for_window [class="Org.gnome.Nautilus" instance="org.gnome.Nautilus"] floating enable, resize set 1000 800, border pixel 11
+for_window [class="VirtualBox Manager" instance="VirtualBox Manager"] floating enable, resize set 2600 1600, border pixel 11
+for_window [class="VirtualBox Machine" instance="VirtualBox Machine"] floating enable, resize set 1816 1094
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable, resize set 1200 600, border pixel 11
 
 bindsym $mod+Tab workspace back_and_forth
 

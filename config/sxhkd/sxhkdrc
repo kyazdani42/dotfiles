@@ -1,6 +1,9 @@
 XF86Audio{Lower,Raise}Volume
 	amixer -q sset Master 3%{-,+} unmute
 
+Menu + {Down,Up}
+	amixer -q sset Master 3%{-,+} unmute
+
 XF86MonBrightness{Down,Up}
 	xbacklight -{dec,inc} 5
 
@@ -22,8 +25,8 @@ alt + shift + x
 Print
 	gnome-screenshot -a
 
-Control + Print
-    gnome-screenshot -i
+F12
+	gnome-screenshot -i
 
 alt + shift + w
 	$BROWSER
