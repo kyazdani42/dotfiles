@@ -5,6 +5,7 @@ xorg-xmodmap
 xorg-xev
 xorg-xdpyinfo
 xorg-xrandr
+xclip
 xdotool
 networkmanager
 network-manager-applet

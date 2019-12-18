@@ -1,0 +1,9 @@
+#!/bin/sh
+
+[ $# != 1 ] || [ ! -f $1 ] && exit 1
+
+options=""
+(echo $1 | grep -Eq ".png$") && options="-t image/png"
+(echo $1 | grep ".jpe\?g$") && options="-t image/jpeg"
+
+xclip -selection clipboard $options $1
