@@ -99,3 +99,4 @@ firefox
 gimp
 gpick
 fzf
+vscodium-bin

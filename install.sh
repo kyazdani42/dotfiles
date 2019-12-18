@@ -23,6 +23,11 @@ for file in config/*; do
     ln -s $linkfrom $linkto
 done
 
+echo "linking vscodium configs"
+rm -f $HOME/.config/VSCodium/User/{keybindings.json,settings.json}
+ln -s $PWD/vscodium/keybindings.json $HOME/.config/VSCodium/User/keybindings.json
+ln -s $PWD/vscodium/settings.json $HOME/.config/VSCodium/User/settings.json
+
 echo "creating symlink for vim config file"
 rm "$HOME/.vimrc"
 ln -s "$HOME/.vim/vimrc" "$HOME/.vimrc"
@@ -44,8 +49,6 @@ POST INSTALL STEPS:                                         *
 - rofi scrips   : heights, font sizes                       *
 - docker        : configuration to run docker without sudo  *
 - vim           : launch PlugInstall, CocInstall            *
-- coc           : coc-tsserver coc-prettier coc-json        *
-                > coc-css coc-rls coc-html                  *
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
 *************************************************************
 
@@ -54,7 +57,6 @@ firefox:
 - palenight theme
 - tabs on bottom:
 https://github.com/jonhoo/configs/blob/master/gui/.mozilla/firefox/dev-edition-default/chrome/userChrome.css
-
 
 when launching the system, you may need to adjust the dpi level of each monitor.
 
