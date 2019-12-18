@@ -8,7 +8,8 @@ font pango:Noto Sans Mono 10
 title_align center
 # no border, no title bar
 default_border none
-default_floating_border none
+# borders on floating to make it easier to resize
+default_floating_border pixel 11
 
 # the focus only changes when clicking
 focus_follows_mouse no
@@ -20,7 +21,7 @@ bindsym $mod+F2 reload
 bindsym $mod+Shift+F2 restart
 
 bindsym $mod+w exec nautilus
-for_window [class="Org.gnome.Nautilus" instance="org.gnome.Nautilus"] floating enable, resize set 900 700
+for_window [class="Org.gnome.Nautilus" instance="org.gnome.Nautilus"] floating enable, resize set 1000 800, border pixel 11
 
 bindsym $mod+Tab workspace back_and_forth
 
@@ -100,7 +101,7 @@ set $blue   #9AEDFE
 # This only applies to single windows within a split container,
 # which are otherwise indistinguishable from single windows outside of a split container.
 
-client.focused          $blue $blue $blue $blue $blue
+client.focused          $bgCol $bgCol $bgCol $bgCol $bgCol
 client.focused_inactive $bgCol $bgCol $bgCol $bgCol $bgCol
 client.unfocused        $bgCol $bgCol $bgCol $bgCol $bgCol
 client.urgent           $red $red $red $red $red
