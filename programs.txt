@@ -96,6 +96,7 @@ vlc
 zathura
 nautilus
 chromium
+brave
 firefox
 gimp
 gpick
