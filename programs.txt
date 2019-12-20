@@ -14,6 +14,7 @@ clang
 valgrind
 dunst
 sxhkd
+sxiv
 picom
 xmonad
 lightdm
