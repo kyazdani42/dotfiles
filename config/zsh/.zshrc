@@ -3,7 +3,7 @@
 export HISTFILE="$HOME/.cache/zsh/history"
 ZSH_THEME=""
 export ZSH="$HOME/.config/zsh/oh-my-zsh"
-plugins=(git zsh-autosuggestions docker colored-man-pages)
+plugins=(git docker colored-man-pages)
 
 # launch oh my zsh
 source $ZSH/oh-my-zsh.sh
@@ -62,6 +62,7 @@ fi
 
 # add syntax highlighting to zsh
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # `bindkey | grep fzf` for the key bindings
 source /usr/share/fzf/key-bindings.zsh
