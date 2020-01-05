@@ -40,6 +40,8 @@ alias gpp="git push origin HEAD"
 alias tls="tmux list-sessions"
 alias tka="tmux kill-session -a"
 
+alias showpic="sxiv"
+
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"
 
