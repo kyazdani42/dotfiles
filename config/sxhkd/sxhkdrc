@@ -1,7 +1,7 @@
 XF86Audio{Lower,Raise}Volume
 	amixer -q sset Master 3%{-,+} unmute
 
-Menu + {Down,Up}
+super + {Down,Up}
 	amixer -q sset Master 3%{-,+} unmute
 
 XF86MonBrightness{Down,Up}

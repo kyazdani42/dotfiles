@@ -23,11 +23,6 @@ for file in config/*; do
     ln -s $linkfrom $linkto
 done
 
-echo "linking vscodium configs"
-rm -f $HOME/.config/VSCodium/User/{keybindings.json,settings.json}
-ln -s $PWD/vscodium/keybindings.json $HOME/.config/VSCodium/User/keybindings.json
-ln -s $PWD/vscodium/settings.json $HOME/.config/VSCodium/User/settings.json
-
 echo "creating symlink for vim config file"
 rm "$HOME/.vimrc"
 ln -s "$HOME/.vim/vimrc" "$HOME/.vimrc"
