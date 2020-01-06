@@ -16,7 +16,6 @@ dunst
 sxhkd
 sxiv
 picom
-xmonad
 lightdm
 tar
 shellcheck
