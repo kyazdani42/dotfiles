@@ -32,8 +32,6 @@ pulseaudio
 pulseaudio-alsa
 cups
 simple-shutdown-dialog
-i3lock-color
-betterlockscreen
 xss-lock
 la-capitaine-icon-theme
 osx-arc-shadow
