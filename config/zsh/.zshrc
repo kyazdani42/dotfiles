@@ -12,8 +12,8 @@ fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # open stuff mac style
 function open() {
-	&>/dev/null xdg-open $1 &
-	disown
+    &>/dev/null xdg-open $1 &
+    disown
 }
 
 # unix aliases
@@ -64,7 +64,19 @@ fi
 
 # add syntax highlighting to zsh
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
+# This speeds up pasting w/ autosuggest
+# https://github.com/zsh-users/zsh-autosuggestions/issues/238
+pasteinit() {
+    OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+    zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+pastefinish() {
+    zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
 
 # `bindkey | grep fzf` for the key bindings
 source /usr/share/fzf/key-bindings.zsh
