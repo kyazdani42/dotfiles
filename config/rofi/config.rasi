@@ -6,49 +6,30 @@ configuration {
 * {
     background-color:               transparent;
     background:                     #292d3ea0;
-    background-alt:                 transparent;
     text-color:                     #dfdfdf;
 }
 
 window {
     height:                         100%;
     width:                          100%;
-    transparency:                   "true";
-    background-color:               @background;
 }
 
 mainbox {
     children:                       [ entry, listview ];
     padding:                        100px 300px;
+    background-color:               @background;
 }
 
 entry {
     expand:                         false;
-    margin:                         12px 360px;
-    background-color:               @background-alt;
-    padding:                        8px;
-    border:                         8px;
-    border-color:                   @background-alt;
-    border-radius:                  1px;
 }
 
 element {
     padding:                        20px;
     margin:                         0px 1200px;
-    orientation:                    horizontal;
-}
-
-element normal.active, element alternate.active {
-    background-color:               @background-alt;
-    border:                         4px 4px solid 4px 4px;
-    border-radius:                  8;
-    border-color:                   transparent;
 }
 
 element selected {
     background-color: #ffffff10;
 }
 
-element selected.active {
-    background-color:               @background-alt;
-}
