@@ -34,7 +34,7 @@ entry {
 
 element {
     padding:                        20px;
-    margin:                         0px 350px;
+    margin:                         0px 1200px;
     orientation:                    horizontal;
 }
 
@@ -46,8 +46,7 @@ element normal.active, element alternate.active {
 }
 
 element selected {
-    border:                         0px 0px solid 0px 0px;
-    border-radius:                  0;
+    background-color: #ffffff10;
 }
 
 element selected.active {
