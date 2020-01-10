@@ -17,7 +17,7 @@ alt + p
 	passwords
 
 alt + d
-    rofi_launch
+    rofi_launch &
 
 alt + shift + x
     shutdown-dialog
