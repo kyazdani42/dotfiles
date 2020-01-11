@@ -22,11 +22,16 @@ mainbox {
 
 entry {
     expand:                         false;
+    margin:                         0px 1150px;
+    horizontal-align:               0.5;
+}
+
+listview {
+    margin:                         0px 1150px;
 }
 
 element {
     padding:                        20px;
-    margin:                         0px 1200px;
 }
 
 element selected {
