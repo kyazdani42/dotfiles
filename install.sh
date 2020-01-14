@@ -31,6 +31,9 @@ if command -v yarn &>/dev/null; then
     yarn config set prefix "$HOME/.config/yarn"
 fi
 
+echo "link emacs config"
+ln -sf "$PWD/emacs/init.el" "$HOME/.emacs.d/init.el"
+
 mkdir -p "$HOME/.workbin"
 
 cat <<EOF

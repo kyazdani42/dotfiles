@@ -53,6 +53,7 @@ nerd-fonts-dejavu-complete
 nerd-fonts-source-code-pro
 nerd-fonts-ubuntu-mono
 zsh
+emacs
 vim
 neovim
 tree
