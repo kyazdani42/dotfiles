@@ -60,9 +60,9 @@ bindsym $mod+Shift+l move right
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+t layout tabbed
+# bindsym $mod+e layout toggle split
 
 # turn into floating scrathpad
 bindsym $mod+Control+s move scratchpad
