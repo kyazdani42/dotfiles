@@ -5,15 +5,6 @@ let mapleader =" "
 " ==================================
 
 call plug#begin('~/.vim/plugged')
-	" File Explorer
-    Plug 'scrooloose/nerdtree'
-    Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-    Plug 'ryanoasis/vim-devicons'
-
-    map <silent> <C-n> :NERDTreeToggle<CR>
-    map <silent> <leader>n :NERDTreeFind<CR>
-
 	" Colors
     Plug 'drewtempelmeyer/palenight.vim'
     let g:lightline = { 'colorscheme': 'palenight' }
@@ -36,19 +27,9 @@ call plug#begin('~/.vim/plugged')
 
     " Change/delete surrounding char
     Plug 'tpope/vim-surround'
-
-    " Changes vim workdir to project root
-    Plug 'airblade/vim-rooter'
-
-    " Git informations in the gutter
-    Plug 'airblade/vim-gitgutter'
-
-    " color syntax for most languages
-    Plug 'sheerun/vim-polyglot'
 call plug#end()
 
 filetype plugin indent on
-
 
 colorscheme palenight
 let g:palenight_terminal_italics=1
@@ -122,14 +103,14 @@ set scrolloff=9999 " Make cursor in middle of screen ?
 set smartindent " auto indent on new line (brackets for instance)
 set tabstop=4 " Tabs are 4 spaces long
 set shiftwidth=4 " Number of space for autoindent
-set noexpandtab " Use tabs
+set expandtab " Use spaces
 
 autocmd BufNewFile,BufRead *.tsx set syntax=typescript
 autocmd BufNewFile,BufRead *.jsx set syntax=javascript
 autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2 expandtab
 
-autocmd FileType c,cpp set tabstop=8 shiftwidth=8 
-autocmd FileType python set tabstop=4 shiftwidth=4
+autocmd FileType c,cpp set tabstop=8 shiftwidth=8 noexpandtab
+autocmd FileType python set tabstop=4 shiftwidth=4 noexpandtab
 
 " Search settings
 set noincsearch " Do not move cursor during search
@@ -173,14 +154,5 @@ autocmd  FileType fzf set laststatus=0 noruler nornu
       \| autocmd BufLeave <buffer> set laststatus=2 ruler relativenumber
 
 let g:fzf_layout = { 'down': '~25%' }
-let g:fzf_colors = {
-      \ 'bg': ['bg', 'CursorLine'],
-      \ 'spinner': ['bg', 'CursorLine'],
-      \ 'info': ['bg', 'CursorLine'],
-      \ 'gutter': ['bg', 'CursorLine'],
-      \ 'prompt': ['bg', 'CursorLine'],
-      \ 'pointer': ['bg', 'CursorLine'],
-      \ 'bg+':     ['bg', 'CursorLine'],
-      \ }
 
 " vim: set et sw=2 foldlevel=0 foldmethod=marker:
