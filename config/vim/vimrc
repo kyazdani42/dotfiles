@@ -16,6 +16,7 @@ call plug#begin('~/.vim/plugged')
 
 	" Colors
     Plug 'drewtempelmeyer/palenight.vim'
+    let g:lightline = { 'colorscheme': 'palenight' }
 
     "the lightline at the bottom
     Plug 'itchyny/lightline.vim'
@@ -48,22 +49,19 @@ call plug#end()
 
 filetype plugin indent on
 
-let g:lightline = {
-      \ 'colorscheme': 'palenight',
-      \ }
 
 colorscheme palenight
+let g:palenight_terminal_italics=1
+
+set background=dark
+syntax on
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 set t_Co=256
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
-let g:palenight_terminal_italics=1
-syntax on " Syntax highlighting
-" some color overriding the colorscheme
-hi Pmenu guibg=#343f58 guifg=#e7edf9
-hi PmenuSel guibg=#1c1f2b guifg=#80cbc4
-hi PmenuSbar guibg=#3a3d51
-hi PmenuThumb guibg=#2e3140
+
+" some colors to override colorscheme
+" These are declared as GUI colors because of 'termguicolors' attr
 hi CursorLine guibg=#1c1f2b
 hi LineNr guifg=#3a3f58
 hi Visual guibg=#343a51
@@ -71,14 +69,9 @@ hi VisualNOS guibg=#343a51
 hi Search guibg=#4c4b65 guifg=default
 hi IncSearch guibg=#4c4b65 guifg=default
 hi MatchParen gui=bold,underline guifg=#a77eca guibg=default
-set fillchars+=vert:\│
-set guicursor+=a:blinkon100
 
-" ==========================
-" Settings
-" ==========================
-
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o " disable autocommenting on newline
+" disable autocommenting on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
 
 " undo files
 " use ~/.cache/vim/ as default data directory, create the directory if it does not exist.
@@ -129,12 +122,14 @@ set scrolloff=9999 " Make cursor in middle of screen ?
 set smartindent " auto indent on new line (brackets for instance)
 set tabstop=4 " Tabs are 4 spaces long
 set shiftwidth=4 " Number of space for autoindent
-set expandtab " Use Spaces
-" {java/type}script is indenting with 2 spaces
-autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2
-" jsx and tsx files are {java/type}script
+set noexpandtab " Use tabs
+
 autocmd BufNewFile,BufRead *.tsx set syntax=typescript
 autocmd BufNewFile,BufRead *.jsx set syntax=javascript
+autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2 expandtab
+
+autocmd FileType c,cpp set tabstop=8 shiftwidth=8 
+autocmd FileType python set tabstop=4 shiftwidth=4
 
 " Search settings
 set noincsearch " Do not move cursor during search
