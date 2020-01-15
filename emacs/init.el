@@ -1,12 +1,23 @@
-(set-frame-font "Noto Sans Mono 11" nil t)
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (toggle-scroll-bar -1)
+(set-frame-font "Noto Sans Mono 11" nil t)
 (setq display-line-numbers 'relative
+      inhibit-startup-message t
+      vc-follow-symlinks t
       visible-bell 1
+      make-backup-file nil
+      auto-save-default nil
+      scroll-conservatively 100
       ring-bell-function 'ignore)
 
+(defalias 'yes-or-no-p 'y-or-n-p)
+
+(defvar shell "/usr/bin/sh")
+
 (require 'package)
+ ;; not sure what this do
+ ; (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 (package-refresh-contents)
@@ -15,23 +26,22 @@
   (unless (package-installed-p pkg)
     (package-install pkg)))
 
+(installer 'projectile)
+(require 'projectile)
+(projectile-mode +1)
+
+(installer 'evil-leader)
+(require 'evil-leader)
+(global-evil-leader-mode)
+
 (installer 'evil)
 (require 'evil)
 (evil-mode 1)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (helm lsp-mode rust-mode evil))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
 (define-key evil-insert-state-map (kbd "C-j") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-j") 'evil-normal-state)
+
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key "p" 'projectile-command-map)
 
 (installer 'base16-theme)
 (setq base16-distinct-fringe-background nil
@@ -46,6 +56,7 @@
       evil-insert-state-cursor  `(,(plist-get my/colors :base0A) bar)
       evil-replace-state-cursor `(,(plist-get my/colors :base0A) bar))
 
+(global-prettify-symbols-mode t)
 (global-hl-line-mode 1)
 (set-face-foreground 'highlight nil)
 (set-face-background 'hl-line "#1c1f2b")
@@ -54,7 +65,39 @@
 (require 'rust-mode)
 
 (installer 'helm)
-(require 'helm *.rs)
+(require 'helm)
 
 (installer 'lsp-mode)
 (require 'lsp-mode)
+
+(installer 'org)
+(installer 'org-bullets)
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+(installer 'magit)
+
+;; needed for doom-modeline
+;; run all-the-icon-install-fonts
+(installer 'all-the-icons)
+(require 'all-the-icons)
+
+(installer 'doom-modeline)
+(require 'doom-modeline)
+(doom-modeline-mode 1)
+(setq doom-modeline-height 20)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (evil-leader doom-modeline magit org-bullets org-mode helm lsp-mode rust-mode evil))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
