@@ -16,8 +16,8 @@
 (defvar shell "/usr/bin/sh")
 
 (require 'package)
- ;; not sure what this do
- ; (setq package-enable-at-startup nil)
+;; not sure what this do
+					; (setq package-enable-at-startup nil)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 (package-refresh-contents)
@@ -26,35 +26,38 @@
   (unless (package-installed-p pkg)
     (package-install pkg)))
 
+(installer 'base16-theme)
+(setq base16-distinct-fringe-background nil
+      base16-highlight-mode-line "box")
+(load-theme 'base16-material-palenight t)
+(defvar my/theme base16-material-palenight-colors)
+
 (installer 'projectile)
 (require 'projectile)
 (projectile-mode +1)
 
 (installer 'evil-leader)
 (require 'evil-leader)
+(evil-leader/set-leader "<SPC>")
+(evil-leader/set-key "p" 'projectile-command-map)
+; need to make this vim command C-^ or :buffer
+(evil-leader/set-key "<SPC>" 'switch-to-prev-buffer)
 (global-evil-leader-mode)
 
 (installer 'evil)
+;; Set the cursor color based on the evil state
+(setq evil-emacs-state-cursor   `(,(plist-get my/theme :base0A) box)
+      evil-motion-state-cursor  `(,(plist-get my/theme :base0A) box)
+      evil-normal-state-cursor  `(,(plist-get my/theme :base0A) box)
+      evil-visual-state-cursor  `(,(plist-get my/theme :base0A) box)
+      evil-insert-state-cursor  `(,(plist-get my/theme :base0A) bar)
+      evil-replace-state-cursor `(,(plist-get my/theme :base0A) bar))
+(setq evil-want-C-u-delete nil)
+(setq evil-want-C-u-scroll 1)
 (require 'evil)
 (evil-mode 1)
 (define-key evil-insert-state-map (kbd "C-j") 'evil-normal-state)
 (define-key evil-visual-state-map (kbd "C-j") 'evil-normal-state)
-
-(evil-leader/set-leader "<SPC>")
-(evil-leader/set-key "p" 'projectile-command-map)
-
-(installer 'base16-theme)
-(setq base16-distinct-fringe-background nil
-      base16-highlight-mode-line "box")
-(load-theme 'base16-material-palenight t)
-;; Set the cursor color based on the evil state
-(defvar my/colors base16-material-palenight-colors)
-(setq evil-emacs-state-cursor   `(,(plist-get my/colors :base0A) box)
-      evil-motion-state-cursor  `(,(plist-get my/colors :base0A) box)
-      evil-normal-state-cursor  `(,(plist-get my/colors :base0A) box)
-      evil-visual-state-cursor  `(,(plist-get my/colors :base0A) box)
-      evil-insert-state-cursor  `(,(plist-get my/colors :base0A) bar)
-      evil-replace-state-cursor `(,(plist-get my/colors :base0A) bar))
 
 (global-prettify-symbols-mode t)
 (global-hl-line-mode 1)
