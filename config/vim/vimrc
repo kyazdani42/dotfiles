@@ -7,7 +7,6 @@ let mapleader =" "
 call plug#begin('~/.vim/plugged')
 	" Colors
     Plug 'drewtempelmeyer/palenight.vim'
-    let g:lightline = { 'colorscheme': 'palenight' }
 
     "the lightline at the bottom
     Plug 'itchyny/lightline.vim'
@@ -31,25 +30,13 @@ call plug#end()
 
 filetype plugin indent on
 
-colorscheme palenight
-let g:palenight_terminal_italics=1
-
-set background=dark
 syntax on
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
 set t_Co=256
 
-" some colors to override colorscheme
-" These are declared as GUI colors because of 'termguicolors' attr
-hi CursorLine guibg=#1c1f2b
-hi LineNr guifg=#3a3f58
-hi Visual guibg=#343a51
-hi VisualNOS guibg=#343a51
-hi Search guibg=#4c4b65 guifg=default
-hi IncSearch guibg=#4c4b65 guifg=default
-hi MatchParen gui=bold,underline guifg=#a77eca guibg=default
+source ~/.vim/colors.vim
 
 " disable autocommenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
@@ -143,6 +130,17 @@ imap <F1> <Esc>
 
 map H ^
 map L $
+
+" Move by line
+nnoremap j gj
+nnoremap k gk
+
+" Jump to last edit position on opening file
+if has("autocmd")
+  " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
+  au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
 
 map <silent> <leader>b :Buffers<CR>
 map <silent> <leader>f :Rg<CR>

@@ -83,6 +83,12 @@
   (setq evil-want-C-u-scroll 1)
   :config
   (evil-mode 1)
+
+  (define-key evil-normal-state-map (kbd "j") (kbd "gj"))
+  (define-key evil-visual-state-map (kbd "j") (kbd "gj"))
+  (define-key evil-normal-state-map (kbd "k") (kbd "gk"))
+  (define-key evil-visual-state-map (kbd "k") (kbd "gk"))
+
   (define-key evil-insert-state-map (kbd "C-j") 'evil-normal-state)
   (define-key evil-normal-state-map (kbd "C-j") 'evil-normal-state)
   (define-key evil-visual-state-map (kbd "C-j") 'evil-normal-state)
