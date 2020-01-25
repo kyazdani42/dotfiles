@@ -45,7 +45,9 @@
   :config
   (doom-modeline-mode 1))
 
-(use-package neotree)
+(use-package neotree
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 (use-package evil-leader
   :config

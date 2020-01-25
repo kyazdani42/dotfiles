@@ -54,6 +54,7 @@ nerd-fonts-source-code-pro
 nerd-fonts-ubuntu-mono
 zsh
 emacs
+dragon-drag-and-drop
 vim
 neovim
 tree

@@ -1,7 +1,7 @@
+let g:palenight_terminal_italics=1
 colorscheme palenight
 
 set background=dark
-let g:palenight_terminal_italics=1
 let g:lightline = { 'colorscheme': 'palenight' }
 
 " some colors to override colorscheme
