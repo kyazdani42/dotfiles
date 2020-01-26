@@ -16,12 +16,13 @@ dunst
 sxhkd
 sxiv
 picom
-lightdm
 tar
 shellcheck
 lldb
 gdb
+lightdm
 lightdm-webkit2-greeter
+lightdm-webkit-theme-litarvan-git
 rofi
 pavucontrol
 polybar
