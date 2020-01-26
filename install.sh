@@ -8,7 +8,9 @@ echo "home folders"
 rm -rf "$HOME"/{Pictures,.bin,.xinit}
 ln -s "$PWD/xinit" "$HOME/.xinit"
 ln -s "$PWD/Pictures" "$HOME/Pictures"
-ln -s "$PWD/bin" "$HOME/.bin"
+
+rm -rf $HOME/.local/bin
+ln -sf "$PWD/bin" "$HOME/.local/bin"
 
 mkdir -p "$HOME/.config"
 
@@ -31,29 +33,21 @@ if command -v yarn &>/dev/null; then
     yarn config set prefix "$HOME/.config/yarn"
 fi
 
-echo "link emacs config"
-ln -sf "$PWD/emacs/init.el" "$HOME/.emacs.d/init.el"
-
 mkdir -p "$HOME/.workbin"
 
+xrdb -merge ~/.xinit/Xresources
+
 cat <<EOF
-*************************************************************
-Installation is done, you might want to reboot your system  *
------------------------------------------------------------ *
-POST INSTALL STEPS:                                         *
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
-- docker        : configuration to run docker without sudo  *
-- vim           : launch PlugInstall, CocInstall            *
-::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::*
-*************************************************************
-
-Modify font sizes in alacritty/alacritty.yml, polybar/config rofi/config.rasi xinit/Xresources
-
-rescale firefox in about:config devPixel...,
-firefox palenight theme,
-firefox tabs on bottom https://github.com/jonhoo/configs/blob/master/gui/.mozilla/firefox/dev-edition-default/chrome/userChrome.css
-
-when launching the system, you may need to adjust the dpi level of each monitor, 
-launching set_dpis should do the trick
+Installation is done, you might want to reboot your system
+==========================================================
+POST INSTALL STEPS:                                        
+- run PlugInstall in vim/neovim
+- When launching the system, you may need to adjust the dpi level 
+  of each monitor, launching set_dpis should do the trick
+- Modify font sizes in:
+  - alacritty/alacritty.yml
+  - polybar/config
+  - rofi/config.rasi
+  - xinit/Xresources
 EOF
 

@@ -49,11 +49,8 @@ padding-right = 1
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = "DejaVu Sans:size=18;2"
-font-1 = "UbuntuMono Nerd Font:size=22;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=15;1"
-font-3 = "Font Awesome 5 Free:style=Solid:pixelsize=15;1"
-font-4 = "Font Awesome 5 Brands:pixelsize=15;1"
+font-0 = "DejaVu Sans:size=11;1"
+font-1 = "UbuntuMono Nerd Font:size=13;2"
 
 modules-left = date i3 xwindow
 modules-center =
@@ -71,9 +68,6 @@ tray-padding = 4
 tray-scale = 1.0
 
 enable-ipc = true
-
-scroll-up = i3wm-wsnext
-scroll-down = i3wm-wsprev
 
 [module/xwindow]
 type = internal/xwindow
@@ -177,23 +171,6 @@ ramp-capacity-2-foreground = #F9eD54
 ramp-capacity-3-foreground = #259B07
 ramp-capacity-4-foreground = #41af2A
 
-[module/cpu]
-type = internal/cpu
-
-interval = 2
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-prefix = "  cpu:"
-format-prefix-foreground = ${colors.foreground-alt}
-
-label-font = 1
-format = <label>
-; Available tokens:
-;   %percentage% (default) - total cpu load
-;   %percentage-cores% - load percentage for each core
-;   %percentage-core[1-9]% - load percentage for specific core
-label = %percentage:3%%
-
 [module/date]
 type = internal/date
 interval = 10
@@ -204,52 +181,6 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 label = "%date%  %time%"
-
-[module/filesystem]
-type = internal/fs
-
-mount-0 = /
-interval = 60
-fixed-values = false
-spacing = 4
-format-mounted = <label-mounted>
-format-mounted-foreground = ${colors.foreground}
-format-mounted-background = ${colors.background}
-
-; Available tokens:
-;   %mountpoint%
-;   %type%
-;   %fsname%
-;   %percentage_free%
-;   %percentage_used%
-;   %total%
-;   %free%
-;   %used%
-
-label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
-label-unmounted = %mountpoint% not mounted
-format-unmounted-foreground = ${colors.alert}
-format-unmounted-background = ${colors.background}
-
-[module/memory]
-type = internal/memory
-interval = 1
-; Available tokens:
-;   %percentage_used% (default)
-;   %percentage_free%
-;   %gb_used%
-;   %gb_free%
-;   %gb_total%
-;   %mb_used%
-;   %mb_free%
-;   %mb_total%
-label = %percentage_used%%
-
-format = <label>
-format-prefix = " mem: "
-format-prefix-foreground = ${colors.foreground-alt}
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
 
 [module/pavolume]
 type = custom/script

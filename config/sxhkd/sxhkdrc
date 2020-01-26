@@ -7,12 +7,6 @@ super + {Down,Up}
 XF86MonBrightness{Down,Up}
 	xbacklight -{dec,inc} 5
 
-alt + e
-	emacs $HOME
-
-alt + shift + e
-      	emacs $HOME/.emacs.d/init.el
-
 alt + o
 	betterlockscreen -l blur
 

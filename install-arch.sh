@@ -85,6 +85,18 @@ then
     Exec=/usr/bin/dunst" | sudo tee $notification_daemon_file
 fi
 
+# setup docker
+if ! groups | grep docker >/dev/null; then
+	sudo groupadd docker >/dev/null
+	sudo usermod -aG docker $USER
+fi
+
+if ! sudo systemctl status docker | grep active > /dev/null
+then
+	sudo systemctl enable docker
+	sudo systemctl start docker
+fi
+
 echo "** - installed all programs, check error.log to see if some programs have not been installed properly - **"
 
 echo $post_message
