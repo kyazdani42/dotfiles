@@ -24,19 +24,19 @@ function install_yay() {
 }
 
 function install() {
-	if ! yay -Q | grep "$1" >/dev/null
+	if ! yay -Q | egrep "^$1" >/dev/null
 	then
-		printf "\x1b[32m** installing $1 **\x1b[0m\n"
+		printf "\r\e[K\x1b[32m** installing $1 **\x1b[0m"
 
 		if ! yay -Sy --noconfirm "$1" &>/dev/null
 		then
-			printf "\x1b[31m$1 was not installed\x1b[0m\n"
+			printf "\r\e[K\x1b[31m$1 was not installed\x1b[0m\n"
 			echo "$1 was not installed" >> error.log
 		else
-			printf "\x1b[32m-- $1 has been installed --\x1b[0m\n"
+			printf "\r\e[K\x1b[32m-- $1 has been installed --\x1b[0m\n"
 		fi
 	else
-		printf "\x1b[35m$1 has already been installed\x1b[0m\n"
+		printf "\r\e[K\x1b[35m$1 has already been installed\x1b[0m"
 	fi
 }
 
@@ -44,6 +44,7 @@ function install_programs() {
 	while read file; do
 		install $file
 	done <programs.txt
+	printf "\r\e[K\n"
 }
 
 fc-cache >/dev/null
@@ -68,18 +69,17 @@ function setup_lightdm() {
 		sudo rm -rf /etc/lightdm; sudo cp -r etc/lightdm /etc/lightdm
 		sudo cp Pictures/tower_violet_blue.jpg $(find /usr/share/lightdm-webkit/themes -name 'background.*')
 		sudo cp Pictures/user.png /var/lib/AccountsService/icons/$USER.png
-		sudo cat > /var/lib/AccountsService/users/$USER <<EOF
-[User]
-Session=i3
-XSession=i3
-Icon=/var/lib/AccountsService/icons/$USER.png
-SystemAccount=false
-EOF
+		echo "
+		[User]
+		Session=i3
+		XSession=i3
+		Icon=/var/lib/AccountsService/icons/$USER.png
+		SystemAccount=false" | sudo tee /var/lib/AccountsService/users/$USER
 	fi
 }
 
 function setup_dunst() {
-	sudo cat etc/notifications.service > /usr/share/dbus-1/services/org.freedesktop.Notifications.service
+	sudo cp -f etc/notifications.service /usr/share/dbus-1/services/org.freedesktop.Notifications.service
 }
 
 function setup_docker() {
@@ -107,3 +107,6 @@ enable_docker_service
 
 printf "\x1b[1m** - installed all programs, check error.log to see if some programs have not been installed properly - **\x1b[0m\n"
 
+# TODO: find a fix for that
+echo
+echo "Some programs might not be installed because of name issue: see \`pacman -Q | grep gdb\`"
