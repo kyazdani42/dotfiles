@@ -5,31 +5,33 @@ let mapleader =" "
 " ==================================
 
 call plug#begin('~/.vim/plugged')
-	" Colors
-    Plug 'drewtempelmeyer/palenight.vim'
+" Colors
+Plug 'drewtempelmeyer/palenight.vim'
 
-    "the lightline at the bottom
-    Plug 'itchyny/lightline.vim'
+"the lightline at the bottom
+Plug 'itchyny/lightline.vim'
 
-    " colorizer 
-    Plug 'norcalli/nvim-colorizer.lua'
+Plug 'ryanoasis/vim-devicons'
 
-    " Comments
-    Plug 'tomtom/tcomment_vim'
-    " Ctrl + / is outputing ++ (term configuration)
-    nmap <silent> ++ :TComment<CR>
-    vmap <silent> ++ :TComment<CR>
+" colorizer 
+Plug 'norcalli/nvim-colorizer.lua'
 
-    " Fuzzyfinder for vim
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-    Plug 'junegunn/fzf.vim'
+" Comments
+Plug 'tomtom/tcomment_vim'
+" Ctrl + / is outputing ++ (term configuration)
+nmap <silent> ++ :TComment<CR>
+vmap <silent> ++ :TComment<CR>
 
-    " Hilight when yanking
-    Plug 'machakann/vim-highlightedyank'
-    let g:highlightedyank_highlight_duration = 300
+" Fuzzyfinder for vim
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-    " Change/delete surrounding char
-    Plug 'tpope/vim-surround'
+" Hilight when yanking
+Plug 'machakann/vim-highlightedyank'
+let g:highlightedyank_highlight_duration = 300
+
+" Change/delete surrounding char
+Plug 'tpope/vim-surround'
 call plug#end()
 
 filetype plugin indent on
@@ -110,15 +112,18 @@ nnoremap k gk
 " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
-map <silent> <leader>b :Buffers<CR>
-map <silent> <leader>f :Rg<CR>
-nnoremap <silent> <leader>p :Files<CR>
-
 let g:fzf_nvim_statusline = 0 " disable statusline overwriting
+let g:fzf_layout = { 'down': '~45%' }
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noruler nornu 
       \| autocmd BufLeave <buffer> set laststatus=2 ruler relativenumber
 
-let g:fzf_layout = { 'down': '~25%' }
+nnoremap <silent> <C-l> :call fzf#vim#buffers()<CR>
+nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
+nnoremap <silent> <C-f> :Rg<CR>
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 " vim: set et sw=2 foldlevel=0 foldmethod=marker:

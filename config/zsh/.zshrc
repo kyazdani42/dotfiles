@@ -24,7 +24,7 @@ alias pacman="sudo pacman"
 alias vim="nvim"
 alias vi="nvim"
 alias v="nvim"
-alias bat="bat --decorations never"
+alias bat="bat --decorations never --theme=ansi-dark"
 alias ls="exa"
 alias sl="exa"
 alias la="exa -la --git"
@@ -53,6 +53,8 @@ source $ZDOTDIR/zsh_vi_mode
 if [ $(command -v fzf) ]; then
     export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
     export FZF_DEFAULT_OPTS=' -i --color=bg:#292d3e,fg:#676e95,hl:#89ddff,bg+:#292d3e,fg+:#e7edf9,hl+:#89ddff,gutter:#292d3e,spinner:#292d3e,info:#292d3e,prompt:#292d3e,pointer:#80b9c9'
+	export FZF_PREVIEW_COMMAND="bat --decorations=never --theme=ansi-dark --color always {}"
+
     _fzf_compgen_path() {
         fd --hidden --follow --exclude ".git" . "$1"
     }
