@@ -1,6 +1,6 @@
 configuration {
     show-icons:                     true;
-    font:                           "Cantarell 30";
+    font:                           "Cantarell 25";
 }
 
 * {
@@ -16,22 +16,22 @@ window {
 
 mainbox {
     children:                       [ entry, listview ];
-    padding:                        100px 300px;
+    padding:                        20px 100px;
     background-color:               @background;
 }
 
 entry {
     expand:                         false;
-    margin:                         0px 1150px;
+    margin:                         0px 600px;
     horizontal-align:               0.5;
 }
 
 listview {
-    margin:                         0px 1150px;
+    margin:                         0px 600px;
 }
 
 element {
-    padding:                        20px;
+    padding:                        10px;
 }
 
 element selected {

@@ -118,12 +118,58 @@ autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noruler nornu 
       \| autocmd BufLeave <buffer> set laststatus=2 ruler relativenumber
 
-nnoremap <silent> <C-l> :call fzf#vim#buffers()<CR>
+nnoremap <silent> <leader>b :call fzf#vim#buffers()<CR>
 nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
 nnoremap <silent> <C-f> :Rg<CR>
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
+
+nnoremap <silent> <leader>p :call FzfFileIcons('')<CR>
+
+function! FzfFileIcons(qargs)
+  let l:fzf_files_options = '--preview "bat --theme=ansi-dark --decorations=never --color always {2..-1} | head -'.&lines.'" --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all'
+
+  function! s:files(dir)
+    let l:cmd = $FZF_DEFAULT_COMMAND
+    if a:dir != ''
+      let l:cmd .= ' ' . shellescape(a:dir)
+    endif
+    let l:files = split(system(l:cmd), '\n')
+    return s:prepend_icon(l:files)
+  endfunction
+
+  function! s:prepend_icon(candidates)
+    let l:result = []
+    for l:candidate in a:candidates
+      let l:filename = fnamemodify(l:candidate, ':p:t')
+      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+      call add(l:result, printf('%s %s', l:icon, l:candidate))
+    endfor
+
+    return l:result
+  endfunction
+  
+  function! s:edit_file(lines)
+    if len(a:lines) < 2 | return | endif
+
+    let l:cmd = get({'ctrl-x': 'split',
+                 \ 'ctrl-v': 'vertical split',
+                 \ 'ctrl-t': 'tabe'}, a:lines[0], 'e')
+    
+    for l:item in a:lines[1:]
+      let l:pos = stridx(l:item, ' ')
+      let l:file_path = l:item[pos+1:-1]
+      execute 'silent '. l:cmd . ' ' . l:file_path
+    endfor
+  endfunction
+
+  call fzf#run({
+        \ 'source': <sid>files(a:qargs),
+        \ 'sink*':   function('s:edit_file'),
+        \ 'options': '-m ' . l:fzf_files_options,
+        \ 'down':    '45%' })
+endfunction
 
 " vim: set et sw=2 foldlevel=0 foldmethod=marker:
