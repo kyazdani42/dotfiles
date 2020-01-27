@@ -1,8 +1,9 @@
 #!/bin/bash
 
 function update_system() {
-	echo "updating your system"
-	sudo pacman -Syu --noconfirm >/dev/null
+	printf "\e[1mupdating your system\e[0m\nThis might take some time...\n"
+	sudo pacman -Syu --noconfirm &>/dev/null
+	printf "\e[1;35mDone !\e[0m\n\n"
 }
 
 function install_yay() {
@@ -44,7 +45,7 @@ function install_programs() {
 	while read file; do
 		install $file
 	done <programs.txt
-	printf "\r\e[K\n"
+	printf "\r\e[K"
 }
 
 fc-cache >/dev/null
