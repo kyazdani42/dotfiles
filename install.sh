@@ -4,21 +4,15 @@ if ! ./install-arch.sh; then exit 1; fi
 
 [ "$SHELL" != "/usr/bin/zsh" ] && chsh -s /usr/bin/zsh
 
-echo "home folders"
+printf "\x1b[1m- Initialize home folders\n"
 rm -rf $HOME/{Pictures,.xinit}
 ln -s $PWD/xinit $HOME/.xinit
 ln -s $PWD/Pictures $HOME/Pictures
-
 rm -rf $HOME/.local/bin
 ln -sf $PWD/bin $HOME/.local/bin
-mkdir -p $HOME/.workbin
+mkdir -p $HOME/{.workbin,.config}
 
-mkdir -p $HOME/.config
-
-echo "removing XFG_CONFIG_HOME configuration files"
-rm -rf $HOME/.config/{gtkrc-2.0,tmux,alacritty,i3,polybar,gtk-3.0,sxhkd,dunst,rofi}
-
-echo "link XDG_CONFIG_HOME configuration files"
+echo "- Linking \$XDG_CONFIG_HOME configuration files"
 for file in config/*; do
     linkto="$HOME/.$file"
     rm -rf $linkto
@@ -26,21 +20,25 @@ for file in config/*; do
     ln -sf $linkfrom $linkto
 done
 
-echo "creating symlink for vim config file"
-rm $HOME/.vimrc
-ln -s $HOME/.vim/vimrc $HOME/.vimrc
+echo "- Linking vimrc"
+rm -f $HOME/.vimrc
+ln -sf $PWD/etc/vimrc $HOME/.vimrc
+sudo cp -f etc/vimrc /etc/vimrc # use the vimrc globally
 
 if command -v yarn >/dev/null; then
-    yarn config set prefix "$HOME/.config/yarn"
+    yarn -s config set prefix "$HOME/.config/yarn" &>/dev/null
 fi
-
+nvim +PlugInstall +qa &>/dev/null
+nvim +PlugUpdate +qa &>/dev/null
 xrdb -merge ~/.xinit/Xresources
+
+printf "\x1b[0m\n"
 
 cat <<EOF
 Installation is done, you might want to reboot your system
 ==========================================================
 POST INSTALL STEPS:                                        
-- run PlugInstall in vim/neovim
+- run PlugInstall in neovim
 - When launching the system, you may need to adjust the dpi level 
   of each monitor, launching set_dpis should do the trick
 - Modify font sizes in:

@@ -7,6 +7,6 @@
 [submodule "config/zsh/zsh-autosuggestions"]
 	path = config/zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "config/vim/autoload/plug-vim"]
-	path = config/vim/autoload/plug-vim
+[submodule "config/nvim/autoload/vim-plug"]
+	path = config/nvim/autoload/vim-plug
 	url = https://github.com/junegunn/vim-plug

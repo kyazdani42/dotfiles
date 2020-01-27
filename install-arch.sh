@@ -106,8 +106,7 @@ setup_dunst
 setup_docker
 enable_docker_service
 
-printf "\x1b[1m** - installed all programs, check error.log to see if some programs have not been installed properly - **\x1b[0m\n"
+printf "\x1b[1m** - installed all programs, check error.log to see if some programs have not been installed properly - **\x1b[0m\n\n"
 
 # TODO: find a fix for that
-echo
-echo "Some programs might not be installed because of name issue: see \`pacman -Q | grep gdb\`"
+echo "Some programs might not be installed because of name issue: see \`pacman -Q | grep gdb\`\n"

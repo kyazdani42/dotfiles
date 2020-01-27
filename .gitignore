@@ -1,5 +1,5 @@
 *plugged
-install-log.error
+error.log
 *zcomp*
 plug.vim
 

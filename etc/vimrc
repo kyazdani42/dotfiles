@@ -1,0 +1,71 @@
+let mapleader =" "
+
+set term=xterm-256color
+filetype plugin indent on
+syntax on
+set t_Co=256
+set termguicolors
+
+" disable autocommenting on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
+
+set relativenumber " Relative numbers
+set showmatch " Show matching brackets/parenthesis
+set mousehide " hide mouse while typing
+set linebreak " do not break words
+set splitbelow splitright " Splits open on the bottom or on the right
+set ruler " Show line and column number of cursor pos
+set nocursorline
+set laststatus=2 " Use StatusBar on all windows, 2 = always
+set scrolloff=9999 " Make cursor in middle of screen ?
+
+" Indentation
+set smartindent " auto indent on new line (brackets for instance)
+set tabstop=4 " Tabs are 4 spaces long
+set shiftwidth=4 " Number of space for autoindent
+set expandtab " use spaces
+
+" Search settings
+set noincsearch " Do not move cursor during search
+set ignorecase " Ignore case during search
+set hlsearch " Highlight search results
+
+" Misc
+set nocompatible " Disable vi compatibility
+set autoread " reload file when it changes
+set confirm " disable 'no write'
+set mouse=n " enable mouse
+set backspace=indent,eol,start " Easy backspace
+set encoding=utf-8 " displayed encoding
+set fileencoding=utf-8 " written to file encoding
+set wildmode=longest,list,full " Command line completion mode
+
+" Disable Ex mode
+nnoremap Q <Nop>
+
+" control j to escape
+map <C-j> <Nop>
+inoremap <C-j> <Esc>
+noremap <C-j> <Esc>
+
+"toggle buffer
+nnoremap <leader><leader> <c-^>
+
+" Oups
+map <F1> <Nop>
+imap <F1> <Nop>
+
+map H ^
+map L $
+
+" Move by line
+nnoremap j gj
+nnoremap k gk
+
+" Jump to last edit position on opening file
+if has("autocmd")
+  " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
+  au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+endif
+
+" vim: set et sw=2 foldlevel=0 foldmethod=marker:

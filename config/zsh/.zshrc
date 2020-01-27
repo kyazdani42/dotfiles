@@ -51,8 +51,10 @@ source $ZDOTDIR/zsh_vi_mode
 
 # fzf plugin for fast search
 if [ $(command -v fzf) ]; then
+	bg="#292d3e"
+	fg="#e7edf9"
     export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
-    export FZF_DEFAULT_OPTS=' -i --color=bg:#292d3e,fg:#676e95,hl:#89ddff,bg+:#292d3e,fg+:#e7edf9,hl+:#89ddff,gutter:#292d3e,spinner:#292d3e,info:#292d3e,prompt:#292d3e,pointer:#80b9c9'
+    export FZF_DEFAULT_OPTS=" -i --color=bg:${bg},fg:#676e95,hl:#89ddff,bg+:${bg},fg+:${fg},hl+:#89ddff,gutter:${bg},spinner:${bg},info:${bg},prompt:${bg},pointer:${fg}"
 	export FZF_PREVIEW_COMMAND="bat --decorations=never --theme=ansi-dark --color always {}"
 
     _fzf_compgen_path() {

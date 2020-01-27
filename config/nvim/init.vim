@@ -4,7 +4,7 @@ let mapleader =" "
 " Plugins
 " ==================================
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 " Colors
 Plug 'drewtempelmeyer/palenight.vim'
 
@@ -34,15 +34,14 @@ let g:highlightedyank_highlight_duration = 300
 Plug 'tpope/vim-surround'
 call plug#end()
 
-filetype plugin indent on
-
-syntax on
-
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+filetype plugin indent on
 set termguicolors
 set t_Co=256
+syntax on
 
-source ~/.vim/colors.vim
+" TODO: find a way to make this relative
+source ~/.config/nvim/colors.vim
 
 " disable autocommenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
