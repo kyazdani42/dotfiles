@@ -118,14 +118,14 @@ autocmd  FileType fzf set laststatus=0 noruler nornu
       \| autocmd BufLeave <buffer> set laststatus=2 ruler relativenumber
 
 nnoremap <silent> <leader>b :call fzf#vim#buffers()<CR>
-nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
-nnoremap <silent> <C-f> :Rg<CR>
+nnoremap <silent> <leader>p :call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
+nnoremap <silent> <leader>f :Rg<CR>
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
-nnoremap <silent> <leader>p :call FzfFileIcons('')<CR>
+nnoremap <silent> <C-p> :call FzfFileIcons('')<CR>
 
 function! FzfFileIcons(qargs)
   let l:fzf_files_options = '--preview "bat --theme=ansi-dark --decorations=never --color always {2..-1} | head -'.&lines.'" --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all'
