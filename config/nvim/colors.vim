@@ -19,3 +19,13 @@ hi Search guibg=#4c4b65 guifg=default
 hi IncSearch guibg=#4c4b65 guifg=default
 hi MatchParen gui=bold,underline guifg=#a77eca guibg=default
 
+" TODO:
+"hi LspDiagnosticsError
+"hi LspDiagnosticsHint
+"hi LspDiagnosticsInformation
+"hi LspDiagnosticsUnderline
+"hi LspDiagnosticsUnderlineError
+"hi LspDiagnosticsUnderlineHint
+"hi LspDiagnosticsUnderlineInformation
+"hi LspDiagnosticsUnderlineWarning
+"hi LspDiagnosticsWarning

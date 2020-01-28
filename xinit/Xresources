@@ -1,4 +1,4 @@
-*Xft.dpi: 120
+*Xft.dpi: 160
 *Xft.font: xft:DejaVu Sans Mono:size=12
 
 URxvt.perl-ext-common: default,matcher
@@ -7,7 +7,7 @@ URxvt.matcher.button: 2
 URxvt.scrollBar: false
 
 URxvt.termName: xterm-256color
-URxvt.font: xft:Noto Sans Mono:size=11,xft:Inconsolata:pixelsize=11
+URxvt.font: xft:Noto Sans Mono:size=16,xft:Inconsolata:pixelsize=16
 URxvt.letterSpace: -1;
 URxvt*depth: 32
 

@@ -20,7 +20,7 @@ set tabstop=4                   " Tabs are 4 spaces long
 set shiftwidth=4                " Number of space for autoindent
 
 " Disable autocommenting on newline
-set formatoptions-=c formatoptions-=r formatoptions-=o
+autocmd! Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Retrieve last position in a file: https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -55,25 +55,37 @@ cabbrev W w
 call plug#begin('~/.config/nvim/plugged')
 Plug 'drewtempelmeyer/palenight.vim'    " Colorscheme
 Plug 'itchyny/lightline.vim'            " The lightline at the bottom
-Plug 'ryanoasis/vim-devicons'           " Some icons
 Plug 'norcalli/nvim-colorizer.lua'      " Rgb/hex colorizer
+Plug 'machakann/vim-highlightedyank'    " Highlight yanking
+Plug 'preservim/nerdtree'               " File Explorer
+Plug 'ryanoasis/vim-devicons'           " Some icons
+Plug 'Xuyuanp/nerdtree-git-plugin'      " Git Plugin for nerdtree
 Plug 'tomtom/tcomment_vim'              " Comments
+Plug 'tpope/vim-surround'               " Change/delete surrounding char
+Plug 'justinmk/vim-sneak'               " Better fast search using 's
 Plug 'airblade/vim-rooter'              " Changes Vim working directory to project root 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'                 " Fuzzy finder for quick file matching
-Plug 'machakann/vim-highlightedyank'    " Highlight yanking
-Plug 'tpope/vim-surround'               " Change/delete surrounding char
+Plug 'neovim/nvim-lsp'                   " Language server configurations
 call plug#end()
 
 source ~/.config/nvim/colors.vim
 
 silent! lua require'colorizer'.setup()
 
+map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=30
+" kill Nerd tree when its the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>
 vmap <silent> ++ :TComment<CR>
 
 let g:highlightedyank_highlight_duration = 300
+
+let g:sneak#label = 1
+hi! link Sneak Normal
 
 let g:fzf_nvim_statusline = 0 " disable fzf statusline overwriting
 let g:fzf_layout = { 'down': '~45%' }
