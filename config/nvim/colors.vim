@@ -1,7 +1,12 @@
-let g:palenight_terminal_italics=1
+syntax on
+set t_Co=256
+set termguicolors
+set background=dark
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
 silent! colorscheme palenight
 
-set background=dark
+let g:palenight_terminal_italics=1
 let g:lightline = { 'colorscheme': 'palenight' }
 
 " some colors to override colorscheme

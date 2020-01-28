@@ -23,7 +23,7 @@ done
 echo "- Linking vimrc"
 rm -f $HOME/.vimrc
 ln -sf $PWD/etc/vimrc $HOME/.vimrc
-sudo cp -f etc/vimrc /etc/vimrc # use the vimrc globally
+sudo cp -f etc/vimrc /etc/vimrc
 
 if command -v yarn >/dev/null; then
     yarn -s config set prefix "$HOME/.config/yarn" &>/dev/null

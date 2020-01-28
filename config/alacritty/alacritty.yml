@@ -29,7 +29,7 @@ font:
     style: Bold
 
   italic:
-    family: "SauceCodePro Nerd Font"
+    family: "Hack"
     style: Italic
 
   size: 10

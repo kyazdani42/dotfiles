@@ -48,6 +48,7 @@ ttf-opensans
 ttf-symbola
 ttf-joypixels
 ttf-roboto-mono
+ttf-hack
 ttf-public-sans
 noto-fonts
 nerd-fonts-dejavu-complete
