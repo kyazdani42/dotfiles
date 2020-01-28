@@ -22,6 +22,9 @@ Plug 'tomtom/tcomment_vim'
 nmap <silent> ++ :TComment<CR>
 vmap <silent> ++ :TComment<CR>
 
+" Changes Vim working directory to project root 
+Plug 'airblade/vim-rooter'
+
 " Fuzzyfinder for vim
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
