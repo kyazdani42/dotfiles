@@ -1,5 +1,5 @@
 let g:palenight_terminal_italics=1
-colorscheme palenight
+silent! colorscheme palenight
 
 set background=dark
 let g:lightline = { 'colorscheme': 'palenight' }

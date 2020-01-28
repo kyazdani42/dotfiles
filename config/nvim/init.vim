@@ -43,10 +43,10 @@ syntax on
 " TODO: find a way to make this relative
 source ~/.config/nvim/colors.vim
 
+silent! lua require'colorizer'.setup()
+
 " disable autocommenting on newline
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o 
-
-lua require'colorizer'.setup()
 
 set relativenumber " Relative numbers
 set showmatch " Show matching brackets/parenthesis
