@@ -36,8 +36,7 @@ fontconfig
 simple-shutdown-dialog
 xss-lock
 la-capitaine-icon-theme
-osx-arc-shadow
-xcursor-osx-elcap
+x-arc-shadow
 adobe-source-sans-pro-fonts
 adobe-source-code-pro-fonts
 ttf-dejavu
