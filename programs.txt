@@ -32,6 +32,7 @@ pass
 pulseaudio
 pulseaudio-alsa
 cups
+fontconfig
 simple-shutdown-dialog
 xss-lock
 la-capitaine-icon-theme
@@ -59,7 +60,6 @@ nerd-fonts-source-code-pro
 nerd-fonts-ubuntu-mono
 zsh
 dragon-drag-and-drop
-vim
 neovim
 tree
 zip

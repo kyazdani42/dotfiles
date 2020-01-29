@@ -3,7 +3,7 @@ xss-lock -- lock &		# Locking program
 nm-applet & 			# Wifi tray
 sxhkd &					# launch key bindings
 mpd &					# Music daemon
-picom \ 				# Compositor
+picom \
 	--inactive-dim 0.15 \
 	-r0 -o0 -l0 -t0 \
 	--backend glx \

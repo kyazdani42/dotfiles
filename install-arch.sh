@@ -12,13 +12,13 @@ function install_yay() {
 		echo "** installing yay **"
 
 		git clone https://aur.archlinux.org/yay.git &>/dev/null
-		cd yay
+		cd yay || exit 1
 		if ! makepkg -si --noconfirm &>/dev/null
 		then
 			echo "Error during yay installation, exiting"
 			exit 1
 		fi
-		cd -
+		cd .. || exit 1
 		rm -rf yay
 		echo "-- yay successfully installed --"
 	fi
@@ -46,36 +46,36 @@ function install_programs() {
 		install $file
 	done <programs.txt
 	printf "\r\e[K"
+
+	fc-cache >/dev/null
 }
 
-fc-cache >/dev/null
 
 function check_service() {
-	sudo systemctl status $1 | grep active > /dev/null;
+	sudo systemctl status $1 > /dev/null;
 	return $?
 }
 
 function enable_service() {
-	sudo systemctl enable $1
+	sudo systemctl enable $1 &>/dev/null
 }
 
 function start_service() {
-	sudo systemctl start $1
+	sudo systemctl start $1 &>/dev/null
 }
 
 function setup_lightdm() {
 	if ! check_service lightdm
 	then
 		enable_service lightdm
-		sudo rm -rf /etc/lightdm; sudo cp -r etc/lightdm /etc/lightdm
+		sudo rm -rf /etc/lightdm; sudo cp -fr etc/lightdm /etc/lightdm
 		sudo cp Pictures/tower_violet_blue.jpg $(find /usr/share/lightdm-webkit/themes -name 'background.*')
 		sudo cp Pictures/user.png /var/lib/AccountsService/icons/$USER.png
-		echo "
-		[User]
-		Session=i3
-		XSession=i3
-		Icon=/var/lib/AccountsService/icons/$USER.png
-		SystemAccount=false" | sudo tee /var/lib/AccountsService/users/$USER
+		echo "[User]
+Session=i3
+XSession=i3
+Icon=/var/lib/AccountsService/icons/$USER.png
+SystemAccount=false" | sudo tee /var/lib/AccountsService/users/$USER &>/dev/null
 	fi
 }
 

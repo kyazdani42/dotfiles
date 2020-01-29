@@ -18,9 +18,8 @@ set mouse=n                     " Enable mouse
 set smartindent                 " auto indent on new line (brackets for instance)
 set tabstop=4                   " Tabs are 4 spaces long
 set shiftwidth=4                " Number of space for autoindent
+set formatoptions-=cro          " Disable autocommenting on newline
 
-" Disable autocommenting on newline
-autocmd! Filetype * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Retrieve last position in a file: https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -50,33 +49,28 @@ imap <F1> <Nop>
 
 cabbrev W w
 
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
+
 " ============================= PLUGINS ============================= "
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'drewtempelmeyer/palenight.vim'    " Colorscheme
-Plug 'itchyny/lightline.vim'            " The lightline at the bottom
-Plug 'norcalli/nvim-colorizer.lua'      " Rgb/hex colorizer
-Plug 'machakann/vim-highlightedyank'    " Highlight yanking
-Plug 'preservim/nerdtree'               " File Explorer
-Plug 'ryanoasis/vim-devicons'           " Some icons
-Plug 'Xuyuanp/nerdtree-git-plugin'      " Git Plugin for nerdtree
-Plug 'tomtom/tcomment_vim'              " Comments
-Plug 'tpope/vim-surround'               " Change/delete surrounding char
-Plug 'justinmk/vim-sneak'               " Better fast search using 's
-Plug 'airblade/vim-rooter'              " Changes Vim working directory to project root 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'                 " Fuzzy finder for quick file matching
-Plug 'neovim/nvim-lsp'                   " Language server configurations
+Plug 'drewtempelmeyer/palenight.vim'                                    " Colorscheme
+Plug 'itchyny/lightline.vim'                                            " The lightline at the bottom
+Plug 'norcalli/nvim-colorizer.lua'                                      " Rgb/hex colorizer
+Plug 'machakann/vim-highlightedyank'                                    " Highlight yanking
+Plug 'tomtom/tcomment_vim'                                              " Comments
+Plug 'tpope/vim-surround'                                               " Change/delete surrounding char
+Plug 'justinmk/vim-sneak'                                               " Better fast search using 's
+Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
+Plug 'neovim/nvim-lsp'                                                  " Language server configurations
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy finder install
+Plug 'junegunn/fzf.vim'                                                 " Fuzzy finder for quick file matching
 call plug#end()
 
 source ~/.config/nvim/colors.vim
 
 silent! lua require'colorizer'.setup()
-
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=30
-" kill Nerd tree when its the last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>
