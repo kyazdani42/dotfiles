@@ -1,13 +1,9 @@
-# launch wifi tray
-nm-applet &
-
-# set writing rate
-xset r rate 200 45 &
-# disable key repeat to make my vim experience better
-# xset r off
-
-# launch compton compositor
-picom \
+xset r rate 300 40 &	# set writing rate
+xss-lock -- lock &		# Locking program
+nm-applet & 			# Wifi tray
+sxhkd &					# launch key bindings
+mpd &					# Music daemon
+picom \ 				# Compositor
 	--inactive-dim 0.15 \
 	-r0 -o0 -l0 -t0 \
 	--backend glx \
@@ -22,13 +18,7 @@ picom \
 	--shadow-exclude 'class_g = "Brave-browser"' \
 	-b &
 
-# launch locking program
-xss-lock -- lock &
-
-# launch key bindings
-sxhkd &
-
-# set wallpaper
 # WALL="$HOME/Pictures/samurai_river.jpg"
 WALL="$HOME/Pictures/mountain_deer.jpg"
 feh --no-fehbg --bg-scale "$WALL" &
+

@@ -52,6 +52,9 @@ ttf-hack
 ttf-public-sans
 noto-fonts
 nerd-fonts-dejavu-complete
+mpd
+mpc
+ncmpcpp
 nerd-fonts-source-code-pro
 nerd-fonts-ubuntu-mono
 zsh

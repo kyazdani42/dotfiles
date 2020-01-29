@@ -32,6 +32,7 @@ alias lt="exa -Tla --git"
 alias rm="rm -v"
 alias mkdir="mkdir -v"
 alias dnd="dragon-drag-and-drop"
+alias mus="ncmpcpp -c ~/.config/ncmpcpp/config"
 
 # git aliases
 alias gitbeauty="git log --all --graph --oneline"
