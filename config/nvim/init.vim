@@ -9,7 +9,7 @@ set linebreak                   " Do not break words
 set splitbelow splitright       " Splits open on the bottom or on the right
 set laststatus=2                " Use StatusBar on all windows, 2 = always
 set scrolloff=8                 " Lines from the cursor
-set wildmode=longest,list,full  " Command line completion mode
+set wildmode+=longest,full      " Command line completion mode
 set noincsearch                 " Do not move cursor during search
 set ignorecase                  " Ignore case
 set hlsearch                    " Highlight search results (enforce)

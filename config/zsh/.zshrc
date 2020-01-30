@@ -1,6 +1,7 @@
 [ $TERM != "tmux-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
 # configure oh my zsh
 export HISTFILE="$HOME/.cache/zsh/history"
+mkdir -p $HOME/.cache/zsh
 ZSH_THEME=""
 export ZSH="$HOME/.config/zsh/oh-my-zsh"
 plugins=(git docker colored-man-pages)

@@ -84,6 +84,7 @@ yarn
 npm
 nodejs
 net-tools
+fd
 bat
 alacritty
 tokei
