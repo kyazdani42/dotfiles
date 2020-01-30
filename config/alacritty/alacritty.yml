@@ -36,7 +36,7 @@ font:
 
   offset:
     x: 0
-    y: 0
+    y: -3
 
   glyph_offset:
     x: 0

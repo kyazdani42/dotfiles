@@ -58,10 +58,13 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'drewtempelmeyer/palenight.vim'                                    " Colorscheme
 Plug 'itchyny/lightline.vim'                                            " The lightline at the bottom
 Plug 'norcalli/nvim-colorizer.lua'                                      " Rgb/hex colorizer
+Plug 'tpope/vim-fugitive'                                               " Git integration
 Plug 'machakann/vim-highlightedyank'                                    " Highlight yanking
 Plug 'tomtom/tcomment_vim'                                              " Comments
 Plug 'tpope/vim-surround'                                               " Change/delete surrounding char
 Plug 'justinmk/vim-sneak'                                               " Better fast search using 's
+Plug 'preservim/nerdtree'                                               " File explorer
+Plug 'Xuyuanp/nerdtree-git-plugin'                                      " Git for file explorer
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
 Plug 'neovim/nvim-lsp'                                                  " Language server configurations
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy finder install
@@ -71,6 +74,8 @@ call plug#end()
 source ~/.config/nvim/colors.vim
 
 silent! lua require'colorizer'.setup()
+
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>
