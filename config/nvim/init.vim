@@ -1,27 +1,29 @@
 let mapleader =" "
 
-set relativenumber              " Relative numbers
-set showmatch                   " Show matching brackets/parenthesis
-set cursorline                  " Highlight current line
-set noshowmode                  " Do not output message on the bottom
-set mousehide                   " Hide mouse while typing
-set linebreak                   " Do not break words
-set splitbelow splitright       " Splits open on the bottom or on the right
-set laststatus=2                " Use StatusBar on all windows, 2 = always
-set scrolloff=8                 " Lines from the cursor
-set wildmode+=longest,full      " Command line completion mode
-set noincsearch                 " Do not move cursor during search
-set ignorecase                  " Ignore case
-set hlsearch                    " Highlight search results (enforce)
-set confirm                     " Disable 'no write'
-set mouse=n                     " Enable mouse
-set smartindent                 " auto indent on new line (brackets for instance)
-set tabstop=4                   " Tabs are 4 spaces long
-set shiftwidth=4                " Number of space for autoindent
-set formatoptions-=cro          " Disable autocommenting on newline
+set relativenumber             " Relative numbers
+set showmatch                  " Show matching brackets/parenthesis
+set cursorline                 " Highlight current line
+set noshowmode                 " Do not output message on the bottom
+set mousehide                  " Hide mouse while typing
+set linebreak                  " Do not break words
+set splitbelow splitright      " Splits open on the bottom or on the right
+set laststatus=2               " Use StatusBar on all windows, 2 = always
+set scrolloff=8                " Lines from the cursor
+set wildmode+=longest,full     " Command line completion mode
+set noincsearch                " Do not move cursor during search
+set ignorecase                 " Ignore case
+set hlsearch                   " Highlight search results (enforce)
+set confirm                    " Disable 'no write'
+set mouse=n                    " Enable mouse
+set smartindent                " auto indent on new line (brackets for instance)
+set tabstop=4                  " Tabs are 4 spaces long
+set shiftwidth=4               " Number of space for autoindent
 
 " Retrieve last position in a file: https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Disable autocommenting on newline: https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
+autocmd BufNewFile,BufWinEnter * setlocal formatoptions-=cro
 
 autocmd BufNewFile,BufRead *.tsx set syntax=typescript
 autocmd BufNewFile,BufRead *.jsx set syntax=javascript
@@ -65,6 +67,7 @@ Plug 'tpope/vim-surround'                                               " Change
 Plug 'justinmk/vim-sneak'                                               " Better fast search using 's
 Plug 'preservim/nerdtree'                                               " File explorer
 Plug 'Xuyuanp/nerdtree-git-plugin'                                      " Git for file explorer
+Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
 Plug 'neovim/nvim-lsp'                                                  " Language server configurations
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy finder install
@@ -74,6 +77,20 @@ call plug#end()
 source ~/.config/nvim/colors.vim
 
 silent! lua require'colorizer'.setup()
+
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
+
+lua <<EOF
+local nvim_lsp = require'nvim_lsp'
+nvim_lsp.vimls.setup{}
+nvim_lsp.bashls.setup{}
+EOF
 
 nnoremap <silent> <C-n> :NERDTreeToggle<CR>
 
@@ -87,7 +104,31 @@ let g:sneak#label = 1
 hi! link Sneak Normal
 
 let g:fzf_nvim_statusline = 0 " disable fzf statusline overwriting
-let g:fzf_layout = { 'down': '~45%' }
+
+function! CreateCenteredFloatingWindow()
+    let width = min([&columns - 4, max([80, &columns - 20])])
+    let height = min([&lines - 4, max([20, &lines - 10])])
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+
+    let top = "╭" . repeat("─", width - 2) . "╮"
+    let mid = "│" . repeat(" ", width - 2) . "│"
+    let bot = "╰" . repeat("─", width - 2) . "╯"
+    let lines = [top] + repeat([mid], height - 2) + [bot]
+    let s:buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+    call nvim_open_win(s:buf, v:true, opts)
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    au BufWipeout <buffer> exe 'bw '.s:buf
+endfunction
+
+let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noruler nornu 
