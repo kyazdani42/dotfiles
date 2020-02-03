@@ -1,8 +1,9 @@
 xset r rate 300 40 &	# set writing rate
-xss-lock -- lock &		# Locking program
 nm-applet & 			# Wifi tray
 sxhkd &					# launch key bindings
 mpd &					# Music daemon
+setbg &					# sets the background
+unclutter &				# Hides the cursor
 picom \
 	--inactive-dim 0.15 \
 	-r0 -o0 -l0 -t0 \
@@ -17,8 +18,3 @@ picom \
 	--focus-exclude 'class_g = "Brave-browser"' \
 	--shadow-exclude 'class_g = "Brave-browser"' \
 	-b &
-
-# WALL="$HOME/Pictures/samurai_river.jpg"
-WALL="$HOME/Pictures/mountain_deer.jpg"
-feh --no-fehbg --bg-scale "$WALL" &
-

@@ -37,6 +37,8 @@ simple-shutdown-dialog
 xss-lock
 la-capitaine-icon-theme
 x-arc-shadow
+unclutter
+xwallpaper
 adobe-source-sans-pro-fonts
 adobe-source-code-pro-fonts
 ttf-dejavu

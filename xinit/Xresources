@@ -1,19 +1,6 @@
 *Xft.dpi: 160
 *Xft.font: xft:DejaVu Sans Mono:size=12
 
-URxvt.perl-ext-common: default,matcher
-URxvt.url-launcher: chromium-browser
-URxvt.matcher.button: 2
-URxvt.scrollBar: false
-
-URxvt.termName: xterm-256color
-URxvt.font: xft:Noto Sans Mono:size=16,xft:Inconsolata:pixelsize=16
-URxvt.letterSpace: -1;
-URxvt*depth: 32
-
-! Base16 Material Palenight
-! Scheme: Nate Peterson
-
 #define base00 #292d3e
 #define base01 #444267
 #define base02 #32374d

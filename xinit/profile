@@ -1,40 +1,30 @@
 BINARIES=(
-# program folders
+# programs binaries
 "$HOME/.deno/bin"
 "$HOME/.cargo/bin"
 "$HOME/.config/yarn/bin"
 "$HOME/.pyenv/bin"
-# local folders
-"$HOME/bin"
-"$HOME/.bin"
+# personnal binaries
 "$HOME/.local/bin"
-"$HOME/.workbin"
+"$HOME/.local/workbin"
 )
 
 for path in "${BINARIES[@]}"; do
 	[ -d "$path" ] && export PATH="$path:$PATH"
 done
 
-# if command -v go; then
-# 	gopath="$HOME/Document/go_projects"
-# 	[ ! -d "$gopath" ] && mkdir -p "$gopath"/{src,pkg,bin}
-# 	export GOPATH=$gopath
-# 	export PATH="$GOPATH/bin:$PATH"
-# fi
-
-# start ssh agent to use ssh
 eval "$(ssh-agent -s)"
 ssh-add "$HOME/.ssh/id_rsa.pub"
 
-# use qt5ct as QT plateform
-export QT_QPA_PLATFORMTHEME="qt5ct"
-
-#path to gtk 2 config file
+export LESSHISTFILE="-"
 export GTK2_RC_FILES="$HOME/.config/gtkrc-2.0"
+export ZDOTDIR="$HOME/.config/zsh"
+export INPUTRC="$HOME/.config/inputrc"
+export WGETRC="$HOME/.config/wget/wgetrc"
+export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 
 # default programs
-export EDITOR="/usr/bin/nvim"
-export TERMINAL="/usr/bin/alacritty"
-export BROWSER="/usr/bin/brave"
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="brave"
 
-export ZDOTDIR="$HOME/.config/zsh"

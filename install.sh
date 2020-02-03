@@ -10,7 +10,8 @@ ln -s $PWD/xinit $HOME/.xinit
 ln -s $PWD/Pictures $HOME/Pictures
 rm -rf $HOME/.local/bin
 ln -sf $PWD/bin $HOME/.local/bin
-mkdir -p $HOME/{.workbin,.config}
+mkdir -p $HOME/.config
+cp Pictures/mountain_deer.jpg ~/.config/wallpaper
 
 echo "- Linking \$XDG_CONFIG_HOME configuration files"
 for file in config/*; do

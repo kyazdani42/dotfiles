@@ -21,11 +21,11 @@ tabspaces: 8
 
 font:
   normal:
-    family: "Noto Sans Mono"
+    family: "monospace"
     style: Regular
 
   bold:
-    family: "Noto Sans Mono"
+    family: "monospace"
     style: Bold
 
   italic:
