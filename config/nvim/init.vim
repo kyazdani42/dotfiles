@@ -18,6 +18,7 @@ set mouse=n                    " Enable mouse
 set smartindent                " auto indent on new line (brackets for instance)
 set tabstop=4                  " Tabs are 4 spaces long
 set shiftwidth=4               " Number of space for autoindent
+set expandtab                  " expand tab into space by default
 
 " Retrieve last position in a file: https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -64,9 +65,9 @@ Plug 'tpope/vim-fugitive'                                               " Git in
 Plug 'machakann/vim-highlightedyank'                                    " Highlight yanking
 Plug 'tomtom/tcomment_vim'                                              " Comments
 Plug 'tpope/vim-surround'                                               " Change/delete surrounding char
+Plug 'junegunn/goyo.vim'                                                " Centers text
+Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
 Plug 'justinmk/vim-sneak'                                               " Better fast search using 's
-Plug 'preservim/nerdtree'                                               " File explorer
-Plug 'Xuyuanp/nerdtree-git-plugin'                                      " Git for file explorer
 Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
 Plug 'neovim/nvim-lsp'                                                  " Language server configurations
@@ -79,7 +80,7 @@ source ~/.config/nvim/colors.vim
 silent! lua require'colorizer'.setup()
 
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
@@ -90,9 +91,11 @@ lua <<EOF
 local nvim_lsp = require'nvim_lsp'
 nvim_lsp.vimls.setup{}
 nvim_lsp.bashls.setup{}
+nvim_lsp.tsserver.setup{}
+nvim_lsp.sumneko_lua.setup{}
 EOF
 
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+nnoremap <silent> <C-n> :LuaTree<CR>
 
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>

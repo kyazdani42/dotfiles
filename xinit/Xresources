@@ -1,5 +1,6 @@
 *Xft.dpi: 160
 *Xft.font: xft:DejaVu Sans Mono:size=12
+Xcursor.theme: OSX-ElCap
 
 #define base00 #292d3e
 #define base01 #444267
