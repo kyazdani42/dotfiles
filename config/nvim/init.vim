@@ -1,3 +1,11 @@
+" My Neovim Configuration "
+" ----------------------- "
+"  Yazdani Kiyan          "
+"  github.com/kyazdani42  "
+"-------------------------"
+
+" Config {{{
+
 let mapleader =" "
 
 set relativenumber             " Relative numbers
@@ -34,6 +42,10 @@ autocmd FileType python set tabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType markdown set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2 expandtab
 
+" }}}
+
+" Mappings {{{
+
 map <C-j> <Nop>
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
@@ -52,10 +64,12 @@ imap <F1> <Nop>
 
 cabbrev W w
 
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1
+" }}}
 
-" ============================= PLUGINS ============================= "
+" Plugins {{{
+
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1 " Disable netrw
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'drewtempelmeyer/palenight.vim'                                    " Colorscheme
@@ -79,13 +93,13 @@ source ~/.config/nvim/colors.vim
 
 silent! lua require'colorizer'.setup()
 
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <leader>k <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K           <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <leader>k   <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> gd          <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gD          <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> 1gD         <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr          <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> <C-]>       <cmd>lua vim.lsp.buf.definition()<CR>
 
 lua <<EOF
 local nvim_lsp = require'nvim_lsp'
@@ -95,7 +109,7 @@ nvim_lsp.tsserver.setup{}
 nvim_lsp.sumneko_lua.setup{}
 EOF
 
-nnoremap <silent> <C-n> :LuaTree<CR>
+nnoremap <silent> <leader>n :LuaTree<CR>
 
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>
@@ -106,44 +120,8 @@ let g:highlightedyank_highlight_duration = 300
 let g:sneak#label = 1
 hi! link Sneak Normal
 
-let g:fzf_nvim_statusline = 0 " disable fzf statusline overwriting
+source ~/.config/nvim/fzf.vim
 
-function! CreateCenteredFloatingWindow()
-    let width = min([&columns - 4, max([80, &columns - 20])])
-    let height = min([&lines - 4, max([20, &lines - 10])])
-    let top = ((&lines - height) / 2) - 1
-    let left = (&columns - width) / 2
-    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+" }}}
 
-    let top = "╭" . repeat("─", width - 2) . "╮"
-    let mid = "│" . repeat(" ", width - 2) . "│"
-    let bot = "╰" . repeat("─", width - 2) . "╯"
-    let lines = [top] + repeat([mid], height - 2) + [bot]
-    let s:buf = nvim_create_buf(v:false, v:true)
-    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
-    call nvim_open_win(s:buf, v:true, opts)
-    set winhl=Normal:Floating
-    let opts.row += 1
-    let opts.height -= 2
-    let opts.col += 2
-    let opts.width -= 4
-    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    au BufWipeout <buffer> exe 'bw '.s:buf
-endfunction
-
-let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
-
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noruler nornu 
-      \| autocmd BufLeave <buffer> set laststatus=2 ruler relativenumber
-
-nnoremap <silent> <leader>b :call fzf#vim#buffers()<CR>
-nnoremap <silent> <leader>p :call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
-
-nnoremap <silent> <leader>f :Rg<CR>
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
-
-" vim: set et sw=2 foldlevel=0 foldmethod=marker:
+" vim: set sw=2 foldlevel=0 foldmethod=marker:

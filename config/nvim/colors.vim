@@ -19,6 +19,7 @@ hi VisualNOS guibg=#343a51
 hi Search guibg=#4c4b65 guifg=default
 hi IncSearch guibg=#4c4b65 guifg=default
 hi MatchParen gui=bold,underline guifg=#a77eca guibg=default
+hi EndOfBuffer guibg=#292d3e guifg=#292d3e
 
 " TODO:
 "hi LspDiagnosticsError
