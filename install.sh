@@ -39,7 +39,6 @@ cat <<EOF
 Installation is done, you might want to reboot your system
 ==========================================================
 POST INSTALL STEPS:                                        
-- run PlugInstall in neovim
 - When launching the system, you may need to adjust the dpi level 
   of each monitor, launching set_dpis should do the trick
 - Modify font sizes in:
