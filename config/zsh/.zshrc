@@ -90,3 +90,5 @@ source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
 bindkey '^O' fzf-cd-widget
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

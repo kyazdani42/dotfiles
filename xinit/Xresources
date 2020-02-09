@@ -2,6 +2,11 @@
 *Xft.font: xft:DejaVu Sans Mono:size=12
 Xcursor.theme: OSX-ElCap
 
+Xft.hinting: 1
+Xft.hintstyle: hintslight
+Xft.antialias: 1
+Xft.rgba: rgb 
+
 #define base00 #292d3e
 #define base01 #444267
 #define base02 #32374d

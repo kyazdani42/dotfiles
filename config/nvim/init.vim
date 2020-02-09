@@ -80,11 +80,12 @@ Plug 'machakann/vim-highlightedyank'                                    " Highli
 Plug 'tomtom/tcomment_vim'                                              " Comments
 Plug 'tpope/vim-surround'                                               " Change/delete surrounding char
 Plug 'junegunn/goyo.vim'                                                " Centers text
-Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
 Plug 'justinmk/vim-sneak'                                               " Better fast search using 's
+Plug 'ryanoasis/vim-devicons'                                           " Icons
 Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
-Plug 'neovim/nvim-lsp'                                                  " Language server configurations
+Plug 'neovim/nvim-lsp'                                                  " Lsp setup
+Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy finder install
 Plug 'junegunn/fzf.vim'                                                 " Fuzzy finder for quick file matching
 call plug#end()
@@ -119,6 +120,17 @@ let g:highlightedyank_highlight_duration = 300
 
 let g:sneak#label = 1
 hi! link Sneak Normal
+
+let g:lightline = {
+      \ 'colorscheme': 'palenight',
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+\ }
+
+function! LightlineFilename()
+  return expand('%:t') !=# '' ? @% : '[No Name]'
+endfunction
 
 source ~/.config/nvim/fzf.vim
 

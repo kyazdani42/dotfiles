@@ -25,8 +25,8 @@ endfunction
 
 let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 
-nnoremap <silent> <leader>p :call fzf#vim#files('', fzf#vim#with_preview())<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview())<CR>
+nnoremap <silent> <leader>; :Buffers<CR>
 nnoremap <silent> <leader>f :Rg<CR>
 
 command! -bang -nargs=* Rg

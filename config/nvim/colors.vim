@@ -8,8 +8,6 @@ let g:palenight_terminal_italics=1
 
 silent! colorscheme palenight
 
-let g:lightline = { 'colorscheme': 'palenight' }
-
 " some colors to override colorscheme
 " These are declared as GUI colors because of 'termguicolors' attr
 hi CursorLine guibg=#1c1f2b
@@ -19,9 +17,8 @@ hi VisualNOS guibg=#343a51
 hi Search guibg=#4c4b65 guifg=default
 hi IncSearch guibg=#4c4b65 guifg=default
 hi MatchParen gui=bold,underline guifg=#a77eca guibg=default
-hi EndOfBuffer guibg=#292d3e guifg=#292d3e
+hi EndOfBuffer guibg=#292d3e guifg=bg
 
-" TODO:
 "hi LspDiagnosticsError
 "hi LspDiagnosticsHint
 "hi LspDiagnosticsInformation
