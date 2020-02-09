@@ -110,7 +110,7 @@ nvim_lsp.tsserver.setup{}
 nvim_lsp.sumneko_lua.setup{}
 EOF
 
-nnoremap <silent> <leader>n :LuaTree<CR>
+nnoremap <silent> <C-n> :LuaTree<CR>
 
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>

@@ -19,12 +19,13 @@ hi IncSearch guibg=#4c4b65 guifg=default
 hi MatchParen gui=bold,underline guifg=#a77eca guibg=default
 hi EndOfBuffer guibg=#292d3e guifg=bg
 
-"hi LspDiagnosticsError
-"hi LspDiagnosticsHint
-"hi LspDiagnosticsInformation
-"hi LspDiagnosticsUnderline
-"hi LspDiagnosticsUnderlineError
-"hi LspDiagnosticsUnderlineHint
-"hi LspDiagnosticsUnderlineInformation
-"hi LspDiagnosticsUnderlineWarning
-"hi LspDiagnosticsWarning
+
+hi LspDiagnosticsUnderline guifg=green
+hi LspDiagnosticsUnderlineInformation gui=underline
+hi LspDiagnosticsUnderlineHint gui=underline
+hi LspDiagnosticsError guifg=#ff5370
+hi LspDiagnosticsUnderlineError gui=underline,bold
+hi LspDiagnosticsHint guifg=bg
+hi LspDiagnosticsInformation guifg=#8796b0
+hi LspDiagnosticsUnderlineWarning gui=underline
+hi LspDiagnosticsWarning guifg=bg
