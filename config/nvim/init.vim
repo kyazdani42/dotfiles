@@ -87,7 +87,7 @@ Plug 'airblade/vim-rooter'                                              " Change
 Plug 'neovim/nvim-lsp'                                                  " Lsp setup
 Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy finder install
-Plug 'junegunn/fzf.vim'                                                 " Fuzzy finder for quick file matching
+Plug 'yuki-ycino/fzf-preview.vim'                                       " Better plugin for fzf
 call plug#end()
 
 source ~/.config/nvim/colors.vim
