@@ -73,7 +73,7 @@ curl
 cmake
 rsync
 nmap
-gotop
+ytop
 youtube-dl
 tmux
 ffmpeg
