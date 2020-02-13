@@ -1,7 +1,5 @@
 #!/usr/bin/zsh
 
-echo "this must be source when ran"
-
 [ -f "$HOME/.gcloud/path.zsh.inc" ] && . "$HOME/.gcloud/path.zsh.inc"
 [ -f "$HOME/.gcloud/completion.zsh.inc" ] && . "$HOME/.gcloud/completion.zsh.inc"
 
