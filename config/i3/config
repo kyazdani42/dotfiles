@@ -31,6 +31,9 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Return split h, exec --no-startup-id $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
 bindsym $mod+Shift+Return split v, exec --no-startup-id $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
 
+# Contrain focused window
+floating_maximum_size 1500 x 1000
+
 # go to mode
 bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
