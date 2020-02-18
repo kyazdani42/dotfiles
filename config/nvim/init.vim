@@ -27,6 +27,7 @@ set smartindent                " auto indent on new line (brackets for instance)
 set tabstop=4                  " Tabs are 4 spaces long
 set shiftwidth=4               " Number of space for autoindent
 set expandtab                  " expand tab into space by default
+set clipboard^=unnamedplus     " Use system clipboard
 
 " Retrieve last position in a file: https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
