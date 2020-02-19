@@ -4,9 +4,9 @@
 "  github.com/kyazdani42  "
 "-------------------------"
 
-" Config {{{
+" Configs {{{
 
-let mapleader =" "
+let mapleader = " "
 
 set relativenumber             " Relative numbers
 set showmatch                  " Show matching brackets/parenthesis
@@ -15,7 +15,6 @@ set noshowmode                 " Do not output message on the bottom
 set mousehide                  " Hide mouse while typing
 set linebreak                  " Do not break words
 set splitbelow splitright      " Splits open on the bottom or on the right
-set laststatus=2               " Use StatusBar on all windows, 2 = always
 set scrolloff=8                " Lines from the cursor
 set wildmode+=longest,full     " Command line completion mode
 set noincsearch                " Do not move cursor during search
@@ -43,44 +42,7 @@ autocmd FileType python set tabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType markdown set tabstop=4 shiftwidth=4 expandtab
 autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2 expandtab
 
-" }}}
-
-" Mappings {{{
-
-map <C-j> <Nop>
-inoremap <C-j> <Esc>
-vnoremap <C-j> <Esc>
-
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <leader><leader> <c-^> 
-nnoremap j gj
-nnoremap k gk
-
-nnoremap Q <Nop>
-map <F1> <Nop>
-imap <F1> <Nop>
-
-cabbrev W w
-
-nnoremap { {zz
-nnoremap } }zz
-nnoremap ( (zz
-nnoremap ) )zz
-nnoremap [[ [[zz
-nnoremap ][ ][zz
-nnoremap [] []zz
-nnoremap % %zz
-vnoremap { {zz
-vnoremap } }zz
-vnoremap ( (zz
-vnoremap ) )zz
-vnoremap [[ [[zz
-vnoremap ][ ][zz
-vnoremap [] []zz
-vnoremap % %zz
+lua require'init'.setup()
 
 " }}}
 
@@ -105,25 +67,10 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy 
 Plug 'yuki-ycino/fzf-preview.vim'                                       " Better plugin for fzf
 call plug#end()
 
-source ~/.config/nvim/colors.vim
-
+silent! lua require'colors'.setup()
 silent! lua require'colorizer'.setup()
-
-nnoremap <silent> K           <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> <leader>k   <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> gd          <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> gD          <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> 1gD         <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr          <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> <C-]>       <cmd>lua vim.lsp.buf.definition()<CR>
-
-lua <<EOF
-local nvim_lsp = require'nvim_lsp'
-nvim_lsp.vimls.setup{}
-nvim_lsp.bashls.setup{}
-nvim_lsp.tsserver.setup{}
-nvim_lsp.sumneko_lua.setup{}
-EOF
+silent! lua require'lsp'.setup()
+silent! lua require'fzf'.setup()
 
 nnoremap <silent> <C-n> :LuaTree<CR>
 
@@ -147,8 +94,6 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? WebDevIconsGetFileTypeSymbol(@%) . ' ' . @% : '[No Name]'
 endfunction
 
-source ~/.config/nvim/fzf.vim
-
 " }}}
 
-" vim: set sw=2 foldlevel=0 foldmethod=marker:
+" vim: set sw=2 foldlevel=0 foldmethod=marker
