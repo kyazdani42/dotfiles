@@ -65,6 +65,23 @@ imap <F1> <Nop>
 
 cabbrev W w
 
+nnoremap { {zz
+nnoremap } }zz
+nnoremap ( (zz
+nnoremap ) )zz
+nnoremap [[ [[zz
+nnoremap ][ ][zz
+nnoremap [] []zz
+nnoremap % %zz
+vnoremap { {zz
+vnoremap } }zz
+vnoremap ( (zz
+vnoremap ) )zz
+vnoremap [[ [[zz
+vnoremap ][ ][zz
+vnoremap [] []zz
+vnoremap % %zz
+
 " }}}
 
 " Plugins {{{
