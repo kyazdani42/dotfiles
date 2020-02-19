@@ -69,9 +69,6 @@ cabbrev W w
 
 " Plugins {{{
 
-let g:loaded_netrw = 1
-let g:loaded_netrwPlugin = 1 " Disable netrw
-
 call plug#begin('~/.config/nvim/plugged')
 Plug 'drewtempelmeyer/palenight.vim'                                    " Colorscheme
 Plug 'itchyny/lightline.vim'                                            " The lightline at the bottom
@@ -130,7 +127,7 @@ let g:lightline = {
 \ }
 
 function! LightlineFilename()
-  return expand('%:t') !=# '' ? @% : '[No Name]'
+  return expand('%:t') !=# '' ? WebDevIconsGetFileTypeSymbol(@%) . ' ' . @% : '[No Name]'
 endfunction
 
 source ~/.config/nvim/fzf.vim
