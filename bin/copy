@@ -1,5 +1,10 @@
 #!/bin/sh
 
+if [ ! -t 0 ]; then
+    cat /dev/stdin | xclip -in -selection clipboard
+    exit
+fi
+
 [ $# != 1 ] || [ ! -f $1 ] && exit 1
 
 options=""
