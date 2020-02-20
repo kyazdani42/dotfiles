@@ -72,7 +72,8 @@ silent! lua require'colorizer'.setup()
 silent! lua require'lsp'.setup()
 silent! lua require'fzf'.setup()
 
-nnoremap <silent> <C-n> :LuaTree<CR>
+nnoremap <silent> <C-n> :LuaTreeToggle<CR>
+nnoremap <silent> <leader>n :LuaTreeRefresh<CR>
 
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>
