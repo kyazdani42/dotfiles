@@ -1,4 +1,4 @@
-[ $TERM != "screen-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
+# [ $TERM != "screen-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
 # configure oh my zsh
 export HISTFILE="$HOME/.cache/zsh/history"
 mkdir -p $HOME/.cache/zsh
@@ -53,11 +53,9 @@ source $ZDOTDIR/zsh_vi_mode
 
 # fzf plugin for fast search
 if [ $(command -v fzf) ]; then
-	bg="#292d3e"
-	fg="#e7edf9"
     export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
-    export FZF_DEFAULT_OPTS=" --prompt=' ' -i --color=bg:${bg},fg:#676e95,hl:#89ddff,bg+:${bg},fg+:${fg},hl+:#89ddff,gutter:${bg},spinner:${bg},info:${bg},prompt:${bg},pointer:${fg}"
 	export FZF_PREVIEW_COMMAND="bat --decorations=never --theme=ansi-dark --color always {}"
+    source $ZDOTDIR/fzf.zsh
 
     _fzf_compgen_path() {
         fd --hidden --follow --exclude ".git" . "$1"
