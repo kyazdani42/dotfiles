@@ -1,4 +1,4 @@
-# [ $TERM != "screen-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
+[ $TERM != "screen-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
 # configure oh my zsh
 export HISTFILE="$HOME/.cache/zsh/history"
 mkdir -p $HOME/.cache/zsh
@@ -54,7 +54,7 @@ source $ZDOTDIR/zsh_vi_mode
 # fzf plugin for fast search
 if [ $(command -v fzf) ]; then
     export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
-	export FZF_PREVIEW_COMMAND="bat --decorations=never --theme=ansi-dark --color always {}"
+    export FZF_PREVIEW_COMMAND="bat --decorations=never --theme=ansi-dark --color always {}"
     source $ZDOTDIR/fzf.zsh
 
     _fzf_compgen_path() {
