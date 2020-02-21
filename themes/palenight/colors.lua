@@ -6,15 +6,28 @@ local OPTIONS = {
     t_Co = '256'
 }
 
+local DARK_BLUE = '#1c1f2b'
+local SEARCH_BG = '#39446c'
+local SELECTION = '#343a51'
+local LINE_NBR = '#3a3f58'
+local CYAN = '#89ddff'
+local PURPLE = '#c792ea'
+local FG = '#959dcb'
+local WHITE = '#ffffff'
+
 local HIGHLIGHT_GROUPS = {
-    CursorLine = { bg = '#1c1f2b' },
-    LineNr = { fg = '#3a3f58' },
-    Visual = { bg = '#343a51' },
-    VisualNOS = { bg = '#343a51' },
-    Search = { bg = '#4c4b65', fg = 'default' },
-    IncSearch = { bg = '#4c4b65', fg= 'default' },
-    MatchParen = { gui = 'bold,underline', fg = '#a77eca', bg = 'default' },
-    EndOfBuffer = { bg = '#292d3e', fg = 'bg' }
+    Pmenu = { bg = DARK_BLUE, fg = WHITE },                   -- normal item popup
+    PmenuSel = { bg = PURPLE, fg = WHITE, gui = 'bold' },     -- selected item popup
+    PmenuSbar = { bg = FG, fg = FG },                         -- scrollbar popup
+    PmenuThumb = { bg = SEARCH_BG, fg = SEARCH_BG },          -- scrollbar thumb popup
+    CursorLine = { bg = DARK_BLUE },                          -- current line
+    LineNr = { fg = LINE_NBR },                               -- line numbers
+    Visual = { bg = SELECTION },                              -- selection
+    VisualNOS = { bg = SELECTION },                           -- selection not owned by vim
+    Search = { bg = SEARCH_BG, fg = 'default' },              -- search results
+    IncSearch = { bg = SEARCH_BG, fg= 'default' },            -- while typing search
+    EndOfBuffer = { bg = 'bg', fg = 'bg' },                   -- little ~
+    MatchParen = { gui = 'bold', fg = CYAN, bg = 'default' }, -- matching paren
 }
 
 local function set_highlights()

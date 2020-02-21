@@ -65,6 +65,7 @@ Plug 'airblade/vim-rooter'                                              " Change
 Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy finder install
 Plug 'yuki-ycino/fzf-preview.vim'                                       " Better plugin for fzf
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}      " Lsp
 call plug#end()
 
 silent! lua require'colors'.setup()
@@ -86,14 +87,68 @@ hi! link Sneak Normal
 
 let g:lightline = {
       \ 'colorscheme': 'palenight',
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename',
+      \ 'active': {
+      \   'left': [
+      \     ['mode'], [ 'filename' ], ['git', 'blame'],
+      \     [ 'readonly', 'modified' ]
+      \   ],
+      \   'right': [
+      \     [], [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ]
+      \   ],
       \ },
-\ }
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename'
+      \ },
+      \ }
 
 function! LightlineFilename()
   return expand('%:t') !=# '' ? WebDevIconsGetFileTypeSymbol(@%) . ' ' . @% : '[No Name]'
 endfunction
+
+set hidden           " TextEdit might fail if hidden is not set.
+set nobackup         " Some lsp have issues with backup files, see #649.
+set nowritebackup
+set cmdheight=2      " Give more space for displaying messages.
+set updatetime=300   " Update time for lsp cycles
+set shortmess+=c     " Don't pass messages to |ins-completion-menu|.
+set signcolumn=yes   " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved.
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+nnoremap <silent> <leader>j <Plug>(coc-diagnostic-prev)
+nnoremap <silent> <leader>k <Plug>(coc-diagnostic-next)
+
+nnoremap <silent> gd <Plug>(coc-definition)
+nnoremap <silent> gt <Plug>(coc-type-definition)
+nnoremap <silent> gi <Plug>(coc-implementation)
+nnoremap <silent> gr <Plug>(coc-references)
+nnoremap <leader>rn  <Plug>(coc-rename)
+vnoremap <C-I>  <Plug>(coc-format-selected)
+nnoremap <C-I>  <Plug>(coc-format-selected)
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " }}}
 

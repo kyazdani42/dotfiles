@@ -1,0 +1,5 @@
+{
+    "git.enableGutters": false,
+    "git.realtimeGutters": false,
+    "rust.clippy_preference": "on"
+}
