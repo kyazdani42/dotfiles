@@ -63,9 +63,11 @@ Plug 'ryanoasis/vim-devicons'                                           " Icons
 Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
 Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
+Plug 'kyazdani42/highlight.lua'                                         " Highlight experiments using treesitter
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy finder install
 Plug 'yuki-ycino/fzf-preview.vim'                                       " Better plugin for fzf
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}      " Lsp
+Plug 'rust-lang/rust.vim'                                               " Rust language support
 call plug#end()
 
 silent! lua require'colors'.setup()
