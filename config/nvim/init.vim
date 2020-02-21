@@ -62,7 +62,6 @@ Plug 'justinmk/vim-sneak'                                               " Better
 Plug 'ryanoasis/vim-devicons'                                           " Icons
 Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
-Plug 'neovim/nvim-lsp'                                                  " Lsp setup
 Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy finder install
 Plug 'yuki-ycino/fzf-preview.vim'                                       " Better plugin for fzf
@@ -70,9 +69,9 @@ call plug#end()
 
 silent! lua require'colors'.setup()
 silent! lua require'colorizer'.setup()
-silent! lua require'lsp'.setup()
 silent! lua require'fzf'.setup()
 
+let g:lua_tree_ignore = ['.git', 'node_modules']
 nnoremap <silent> <C-n> :LuaTreeToggle<CR>
 nnoremap <silent> <leader>n :LuaTreeRefresh<CR>
 

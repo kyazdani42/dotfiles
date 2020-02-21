@@ -14,17 +14,7 @@ local HIGHLIGHT_GROUPS = {
     Search = { bg = '#4c4b65', fg = 'default' },
     IncSearch = { bg = '#4c4b65', fg= 'default' },
     MatchParen = { gui = 'bold,underline', fg = '#a77eca', bg = 'default' },
-    EndOfBuffer = { bg = '#292d3e', fg = 'bg' },
-
-    LspDiagnosticsUnderline = { fg = 'green' },
-    LspDiagnosticsUnderlineInformation = { gui = 'underline' },
-    LspDiagnosticsUnderlineHint = { gui = 'underline' },
-    LspDiagnosticsError = { fg = '#ff5370' },
-    LspDiagnosticsUnderlineError = { gui = 'underline,bold' },
-    LspDiagnosticsHint = { fg = 'bg' },
-    LspDiagnosticsInformation = { fg = '#8796b0' },
-    LspDiagnosticsUnderlineWarning = { gui = 'underline' },
-    LspDiagnosticsWarning = { fg = 'bg' },
+    EndOfBuffer = { bg = '#292d3e', fg = 'bg' }
 }
 
 local function set_highlights()
