@@ -19,6 +19,8 @@ local function set_mappings()
     api.nvim_set_keymap('n', '<F1>', '', default_opt)
     api.nvim_set_keymap('i', '<F1>', '', default_opt)
 
+    api.nvim_set_keymap('n', '<C-u>', '<C-u>zz', default_opt)
+    api.nvim_set_keymap('n', '<C-f>', '<C-f>zz', default_opt)
     api.nvim_set_keymap('n', '{', '{zz', default_opt)
     api.nvim_set_keymap('n', '}', '}zz', default_opt)
     api.nvim_set_keymap('n', '(', '(zz', default_opt)
