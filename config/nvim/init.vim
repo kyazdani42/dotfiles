@@ -132,6 +132,7 @@ nnoremap <leader>rn  <Plug>(coc-rename)
 vnoremap <C-I>  <Plug>(coc-format-selected)
 nnoremap <C-I>  <Plug>(coc-format-selected)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> \ <C-w>o
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

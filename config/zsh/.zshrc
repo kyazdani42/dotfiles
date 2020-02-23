@@ -1,4 +1,4 @@
-[ $TERM != "screen-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
+[ $TERM != "tmux-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
 # configure oh my zsh
 export HISTFILE="$HOME/.cache/zsh/history"
 mkdir -p $HOME/.cache/zsh
