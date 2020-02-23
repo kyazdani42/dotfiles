@@ -32,7 +32,7 @@ font:
     style: Bold
 
   italic:
-    family: "Hack"
+    family: "IBM Plex Mono Medium"
     style: Italic
 
   size: 8

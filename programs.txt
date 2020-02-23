@@ -41,6 +41,7 @@ unclutter
 xwallpaper
 adobe-source-sans-pro-fonts
 adobe-source-code-pro-fonts
+ttf-ibm-plex
 ttf-dejavu
 ttf-font-awesome
 ttf-font-awesome-4
