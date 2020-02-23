@@ -1,20 +1,7 @@
-xset r rate 300 40 &	# set writing rate
-nm-applet & 			# Wifi tray
-sxhkd &					# launch key bindings
-mpd &					# Music daemon
-setbg &					# sets the background
-unclutter &				# Hides the cursor
-picom \
-	--inactive-dim 0.15 \
-	-r0 -o0 -l0 -t0 \
-	--backend glx \
-	--refresh-rate 60 \
-	--glx-no-stencil \
-	--glx-no-rebind-pixmap \
-	--use-damage \
-	-I 1 -O 1 \
-	--vsync \
-	--fade-exclude 'class_g = "Brave-browser"' \
-	--focus-exclude 'class_g = "Brave-browser"' \
-	--shadow-exclude 'class_g = "Brave-browser"' \
-	-b &
+xset r rate 300 40 &   # Set writing rate
+nm-applet &            # Wifi tray
+sxhkd &                # Launch key bindings
+mpd &                  # Music daemon
+setbg &                # Sets the background
+unclutter &            # Hides the cursor
+picom -b &             # Compositor
