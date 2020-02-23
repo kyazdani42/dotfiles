@@ -4,15 +4,15 @@ env:
 
 window:
   dimensions:
-    columns: 100
-    lines: 30
+    columns: 0
+    lines: 0
 
   padding:
-    x: 5
-    y: 2
+    x: 4
+    y: 0
 
   dynamic_padding: false
-  decorations: full
+  decorations: none
   startup_mode: Windowed
 
 scrolling:
@@ -39,7 +39,7 @@ font:
 
   offset:
     x: 0
-    y: -3
+    y: -2
 
   glyph_offset:
     x: 0
@@ -87,7 +87,6 @@ background_opacity: 1
 mouse:
   double_click: { threshold: 300 }
   triple_click: { threshold: 300 }
-
   hide_when_typing: false
 
   url:
@@ -98,16 +97,12 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
   save_to_clipboard: true
 
-dynamic_title: true
-
 cursor:
   style: Block
   unfocused_hollow: true
 
 live_config_reload: true
-
-enable_experimental_conpty_backend: false
-
+dynamic_title: true
 alt_send_esc: false
 
 debug:

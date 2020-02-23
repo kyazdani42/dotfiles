@@ -13,13 +13,13 @@ compositing-overline = over
 compositing-underline = over
 compositing-border = over
 
-format-foreground = #dfdfdf
-format-background = #cc292d3e
+format-foreground = #ffffff
+format-background = #292d3e
 
 [colors]
 background = #1c1f2b
 background-alt = #444444
-foreground = #dfdfdf
+foreground = #ffffff
 foreground-alt = #555555
 alert = #bd2c40
 focused = #404050
@@ -172,8 +172,8 @@ ramp-capacity-4 = 
 ramp-capacity-0-foreground = #823038
 ramp-capacity-1-foreground = #b87627
 ramp-capacity-2-foreground = #F9eD54
-ramp-capacity-3-foreground = #259B07
-ramp-capacity-4-foreground = #41af2A
+ramp-capacity-3-foreground = #35aB07
+ramp-capacity-4-foreground = #45cf7A
 
 [module/date]
 type = internal/date
