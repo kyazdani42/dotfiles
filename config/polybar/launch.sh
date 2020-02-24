@@ -1,1 +1,0 @@
-../../templates/tower/polybar/launch.sh

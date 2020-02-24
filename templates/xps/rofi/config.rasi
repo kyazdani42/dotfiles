@@ -1,0 +1,43 @@
+configuration {
+    show-icons:                     true;
+    font:                           "Cantarell 25";
+}
+
+* {
+    background-color:               transparent;
+    background:                     #292d3ece;
+    text-color:                     #ffffff;
+}
+
+window {
+    height:                         88%;
+    width:                          60%;
+    border:                         2px solid;
+    border-radius:                  3px;
+    border-color:                   #959dcb;
+}
+
+mainbox {
+    children:                       [ entry, listview ];
+    padding:                        20px 50px;
+    background-color:               @background;
+}
+
+entry {
+    expand:                         false;
+    margin:                         10px 400px;
+    horizontal-align:               0.5;
+}
+
+listview {
+    margin:                         10px 200px;
+}
+
+element {
+    padding:                        17px;
+}
+
+element selected {
+    background-color: #ffffff10;
+}
+
