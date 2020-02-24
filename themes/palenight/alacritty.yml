@@ -117,6 +117,8 @@ key_bindings:
   - { key: Copy,                    action: Copy                         }
 # allow control slash to send ++ so i can bind control / to comment in vim
   - { key: Slash,    mods: Control, chars: "++"                          }
+# allow control backslash to send right so i can complete zsh autocompletion easily
+  - { key: Backslash,mods: Control, chars: "\x1b[C"                      }
   - { key: L,        mods: Control, action: ClearLogNotice               }
   - { key: L,        mods: Control, chars: "\x0c"                        }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
