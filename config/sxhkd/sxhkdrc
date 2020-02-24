@@ -31,3 +31,6 @@ F12
 alt + shift + w
 	$BROWSER
 
+alt + s
+    echo cmd:toggle > /tmp/polybar_mqueue.*
+

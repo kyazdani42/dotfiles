@@ -3,7 +3,7 @@ set $mod Mod1
 
 floating_modifier $mod
 
-font pango:Noto Sans Mono 10
+font pango:Ibm Plex Mono Medium 10
 # in case there is a title
 title_align center
 # no border, no title bar
@@ -30,6 +30,9 @@ bindsym $mod+Tab workspace back_and_forth
 
 bindsym $mod+Return split h, exec --no-startup-id $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
 bindsym $mod+Shift+Return split v, exec --no-startup-id $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
+
+# disable clicking
+bindsym button1 nop
 
 # Contrain focused window
 floating_maximum_size 1500 x 1000
@@ -64,8 +67,8 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
-# bindsym $mod+t layout tabbed
-# bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
 
 # turn into floating scrathpad
 bindsym $mod+Control+s move scratchpad
@@ -88,7 +91,9 @@ set $red    #FF5555
 set $purple #BD93F9
 set $pink   #FF92D0
 set $bgCol  #292D3E
+set $bgDark #1c1f2b
 set $white  #FFFFFF
+set $dark_white #959dcb
 set $blue   #9AEDFE
 
 # for these 5 classes, colors can be, in the order:
@@ -107,11 +112,11 @@ set $blue   #9AEDFE
 # This only applies to single windows within a split container,
 # which are otherwise indistinguishable from single windows outside of a split container.
 
-client.focused          $bgCol $bgCol $bgCol $bgCol $bgCol
-client.focused_inactive $bgCol $bgCol $bgCol $bgCol $bgCol
-client.unfocused        $bgCol $bgCol $bgCol $bgCol $bgCol
-client.urgent           $red $red $red $red $red
+client.focused          $bgCol $bgDark $blue  $bgCol $bgCol
+client.focused_inactive $bgCol $bgDark $blue $bgCol $bgCol
+client.unfocused        $bgCol $bgCol $dark_white $bgCol $bgCol
 client.placeholder      $bgCol $bgCol $bgCol $bgCol $bgCol
+client.urgent           $red   $red   $red   $red   $red
 
 client.background       $bgCol
 
