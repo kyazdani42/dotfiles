@@ -1,0 +1,203 @@
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+throttle-input-for = 30
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-underline = over
+compositing-border = over
+
+[colors]
+background = #1c1f2b
+foreground = #ffffff
+foreground-alt = #555555
+cyan = #89ddff
+
+[bar/default]
+monitor = ${env:MONITOR}
+monitor-strict = false
+override-redirect = true
+offset-y = 10
+offset-x = 20
+width = 483
+height = 60
+background = ${colors.background}
+foreground = ${colors.foreground}
+font-0 = "Ibm Plex Mono Medium:size=20;1"
+font-1 = "UbuntuMono Nerd Font:size=15;2"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=25;2"
+font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=25;2"
+font-4 = "Font Awesome 5 Brands:pixelsize=25;2"
+enable-ipc = true
+modules-right = 
+
+[bar/date]
+inherit = bar/default
+modules-left = battery
+modules-center = date 
+modules-right = arch-aur-updates
+padding-right = 2
+
+[module/date]
+type = internal/date
+interval = 10
+date = %a %d
+time = %H:%M
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+label = "%date% %time%"
+
+[module/arch-aur-updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/check-all-updates.sh
+interval = 1000
+label = %output% 
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC0
+full-at = 100
+
+format-charging-prefix = " "
+format-charging-prefix-foreground = ${colors.foreground-alt}
+format-charging = <label-charging>
+label-charging = %percentage%%
+format-charging-foreground = ${colors.foreground}
+format-charging-background = ${colors.background}
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%%
+format-discharging-foreground = ${colors.foreground}
+format-discharging-background = ${colors.background}
+
+format-full-prefix = " "
+format-full-prefix-foreground = #a3c725
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-0-foreground = #823038
+ramp-capacity-1-foreground = #b87627
+ramp-capacity-2-foreground = #F9eD54
+ramp-capacity-3-foreground = #35aB07
+ramp-capacity-4-foreground = #45cf7A
+
+[bar/xwindow]
+inherit = bar/default
+modules-center = xwindow
+offset-y = 70
+
+[module/xwindow]
+type = internal/xwindow
+format-background = ${colors.background}
+label-maxlen = 28
+
+[bar/volume_and_controls]
+inherit = bar/default
+offset-y = 150
+separator = "    "
+modules-center = pavolume mpd
+
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/scripts/pavolume.sh --listen
+click-right = exec pavucontrol
+click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
+scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
+scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/mpd]
+type = internal/mpd
+; Host where mpd is running (either ip or domain name)
+; Can also be the full path to a unix socket where mpd is running.
+host = 127.0.0.1
+port = 6600
+format-online = <icon-prev> <toggle> <icon-next> <icon-random>
+icon-prev = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+icon-random = 
+; Used to display the state of random/repeat/repeatone/single
+; Only applies if <icon-[random|repeat|repeatone|single]> is used
+toggle-on-foreground = #c3e88d
+toggle-off-foreground = #676e95
+
+[bar/mpd]
+inherit = bar/default
+offset-y = 210
+modules-center = mpd_song
+
+[module/mpd_song]
+type = internal/mpd
+; Host where mpd is running (either ip or domain name)
+; Can also be the full path to a unix socket where mpd is running.
+host = 127.0.0.1
+port = 6600
+format-online = <label-song> 
+label-song =%artist% - %title%
+label-song-maxlen = 35
+label-song-ellipsis = true
+
+[bar/i3]
+inherit = bar/default
+modules-left = i3
+offset-y = 290
+
+[module/i3]
+type = internal/i3
+pin-workspaces = false
+strip-wsnumbers = false
+index-sort = false
+enable-click = false
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = false
+
+ws-icon-0 = "1;1"
+ws-icon-1 = "2;2"
+ws-icon-2 = "3;3"
+ws-icon-3 = "4;4"
+ws-icon-4 = "5;5"
+ws-icon-5 = "6;6"
+ws-icon-6 = "7;7"
+ws-icon-7 = "8;8"
+ws-icon-8 = "9;9"
+ws-icon-9 = "10;10"
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format = <label-state>
+
+label-focused = %icon%
+label-focused-padding = 2
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.cyan}
+label-focused-underline =
+
+label-unfocused = %icon%
+label-unfocused-padding = 2
+label-unfocused-background = ${colors.background}
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-underline =
+
+# vim:ft=dosini

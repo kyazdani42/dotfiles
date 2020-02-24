@@ -1,1 +1,1 @@
-../../templates/polybar/launch.xps.sh
+../../templates/tower/polybar/launch.sh
