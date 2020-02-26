@@ -15,14 +15,20 @@ compositing-border = over
 
 [colors]
 background = #1c1f2b
-foreground = #ffffff
-foreground-alt = #555555
-cyan = #89ddff
+foreground = ${xrdb:color15:#fff}
+foreground-alt = ${xrdb:color7:#abc}
+cyan = ${xrdb:color6:#5df}
+green = ${xrdb:color2:#6f6}
+dark-green = ${xrdb:color10:#3c6}
+dark-yellow = ${xrdb:color16:#fa6}
+yellow = ${xrdb:color3:#ff6}
+red = ${xrdb:color1:#f44}
 
 [bar/default]
 monitor = ${env:MONITOR}
 monitor-strict = false
 override-redirect = true
+enable-ipc = true
 offset-y = 10
 offset-x = 10
 width = 483
@@ -30,9 +36,8 @@ height = 40
 background = ${colors.background}
 foreground = ${colors.foreground}
 font-0 = "Ibm Plex Mono Medium:size=15;1"
-font-1 = "UbuntuMono Nerd Font:size=12;2"
-enable-ipc = true
-modules-right = 
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
+font-2 = "UbuntuMono Nerd Font:size=15;2"
 
 [bar/date]
 inherit = bar/default
@@ -78,7 +83,7 @@ format-discharging-foreground = ${colors.foreground}
 format-discharging-background = ${colors.background}
 
 format-full-prefix = " "
-format-full-prefix-foreground = #a3c725
+format-full-prefix-foreground = ${colors.green}
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
@@ -87,11 +92,11 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-0-foreground = #823038
-ramp-capacity-1-foreground = #b87627
-ramp-capacity-2-foreground = #F9eD54
-ramp-capacity-3-foreground = #35aB07
-ramp-capacity-4-foreground = #45cf7A
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1-foreground = ${colors.dark-yellow}
+ramp-capacity-2-foreground = ${colors.yellow}
+ramp-capacity-3-foreground = ${colors.dark-green}
+ramp-capacity-4-foreground = ${colors.green}
 
 [bar/xwindow]
 inherit = bar/default

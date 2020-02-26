@@ -1,6 +1,6 @@
 configuration {
     show-icons:                     true;
-    font:                           "Cantarell 25";
+    font:                           "Ibm Plex Mono Medium 25";
 }
 
 * {
@@ -34,7 +34,7 @@ listview {
 }
 
 element {
-    padding:                        17px;
+    padding:                        15px;
 }
 
 element selected {
