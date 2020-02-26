@@ -25,7 +25,7 @@ mainbox {
 
 entry {
     expand:                         false;
-    margin:                         10px 400px;
+    margin:                         10px;
     horizontal-align:               0.5;
 }
 

@@ -39,8 +39,6 @@ la-capitaine-icon-theme
 x-arc-shadow
 unclutter
 xwallpaper
-adobe-source-sans-pro-fonts
-adobe-source-code-pro-fonts
 ttf-ibm-plex
 ttf-dejavu
 ttf-font-awesome
@@ -50,16 +48,13 @@ ttf-monaco
 ttf-opensans
 ttf-symbola
 ttf-joypixels
-ttf-roboto-mono
-ttf-hack
-ttf-public-sans
 noto-fonts
 nerd-fonts-dejavu-complete
+nerd-fonts-source-code-pro
+nerd-fonts-ubuntu-mono
 mpd
 mpc
 ncmpcpp
-nerd-fonts-source-code-pro
-nerd-fonts-ubuntu-mono
 zsh
 dragon-drag-and-drop
 neovim
