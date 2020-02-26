@@ -24,28 +24,28 @@ dark-yellow = ${xrdb:color16:#fa6}
 yellow = ${xrdb:color3:#ff6}
 red = ${xrdb:color1:#f44}
 
-[bar/default]
+[bar/main]
 monitor = ${env:MONITOR}
-monitor-strict = false
-override-redirect = true
+monitor-strict = true
+override-redirect = false
 enable-ipc = true
-offset-y = 10
-offset-x = 10
-width = 483
-height = 40
+bottom = true
+width = 100%
+height = 39
 background = ${colors.background}
 foreground = ${colors.foreground}
-font-0 = "Ibm Plex Mono Medium:size=15;1"
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;2"
+padding-left = 2
+padding-right = 2
+font-0 = "Ibm Plex Mono Medium:size=13;1"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=11;2"
 font-2 = "UbuntuMono Nerd Font:size=15;2"
-
-[bar/date]
-inherit = bar/default
-modules-left = battery
-modules-center = date 
-modules-right = arch-aur-updates
-padding-left = 1
-padding-right = 1
+separator = "  "
+modules-left = xwindow 
+modules-center = i3
+modules-right = date pavolume battery arch-aur-updates 
+tray-position = right
+tray-detached = false
+tray-background = ${colors.background}
 
 [module/date]
 type = internal/date
@@ -60,7 +60,22 @@ label = "%date% %time%"
 type = custom/script
 exec = ~/.config/polybar/scripts/check-all-updates.sh
 interval = 1000
-label = %output% 
+label =  %output%
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+
+[module/xwindow]
+type = internal/xwindow
+format-background = ${colors.background}
+label-maxlen = 50
+
+[module/pavolume]
+type = custom/script
+tail = true
+label = %output%
+exec = ~/.config/polybar/scripts/pavolume.sh --listen
+click-left = exec pavucontrol
+click-right = ~/.config/polybar/scripts/pavolume.sh --togmute
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
@@ -97,36 +112,6 @@ ramp-capacity-1-foreground = ${colors.dark-yellow}
 ramp-capacity-2-foreground = ${colors.yellow}
 ramp-capacity-3-foreground = ${colors.dark-green}
 ramp-capacity-4-foreground = ${colors.green}
-
-[bar/xwindow]
-inherit = bar/default
-modules-center = xwindow
-offset-y = 80
-
-[module/xwindow]
-type = internal/xwindow
-format-background = ${colors.background}
-label-maxlen = 28
-
-[bar/volume_and_controls]
-inherit = bar/default
-offset-y = 40
-padding-left = 1
-modules-center = i3
-modules-left = pavolume 
-tray-position = left
-
-[module/pavolume]
-type = custom/script
-tail = true
-label = %output%
-exec = ~/.config/polybar/scripts/pavolume.sh --listen
-click-right = exec pavucontrol
-click-left = ~/.config/polybar/scripts/pavolume.sh --togmute
-scroll-up = ~/.config/polybar/scripts/pavolume.sh --up
-scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
 
 [module/i3]
 type = internal/i3

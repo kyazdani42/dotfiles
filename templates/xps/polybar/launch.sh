@@ -8,13 +8,9 @@ while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 if type "xrandr"; then
     for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-        MONITOR=$m polybar -q --reload date &
-        MONITOR=$m polybar -q --reload xwindow &
-        MONITOR=$m polybar -q --reload volume_and_controls &
+        MONITOR=$m polybar -q --reload main &
     done
 else
-    polybar -q --reload date &
-    polybar -q --reload xwindow &
-    polybar -q --reload volume_and_controls &
+    polybar -q --reload main &
 fi
 
