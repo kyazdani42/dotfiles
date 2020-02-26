@@ -5,7 +5,7 @@ configuration {
 
 * {
     background-color:               transparent;
-    background:                     #292d3ece;
+    background:                     #292d3efa;
     text-color:                     #ffffff;
 }
 
