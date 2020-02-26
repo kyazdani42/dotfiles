@@ -13,11 +13,14 @@ alt + o
 alt + shift + o
 	dm-tool switch-to-greeter
 
+alt + shift + p
+    $HOME/.config/polybar/launch.sh
+
 alt + p
 	passwords
 
 alt + d
-    rofi_launch &
+    rofi_launch
 
 alt + shift + x
     shutdown-dialog
@@ -27,6 +30,9 @@ Print
 
 F12
 	gnome-screenshot -i
+
+alt + w
+    nautilus
 
 alt + shift + w
 	$BROWSER
