@@ -14,7 +14,7 @@ alt + shift + o
 	dm-tool switch-to-greeter
 
 alt + shift + p
-    $HOME/.config/polybar/launch.sh
+    $HOME/.config/polybar/launch.sh > /dev/null
 
 alt + p
 	passwords
