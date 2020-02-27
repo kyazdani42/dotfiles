@@ -1,1 +1,0 @@
-palenight/fzf.zsh

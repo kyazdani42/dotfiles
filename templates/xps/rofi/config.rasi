@@ -5,8 +5,10 @@ configuration {
 
 * {
     background-color:               transparent;
-    background:                     #292d3efa;
+    bg:                             #292d3efa;
     text-color:                     #ffffff;
+    selected-element-bg:            #ffffff10;
+    window-border-color:            #959dcb;
 }
 
 window {
@@ -14,13 +16,13 @@ window {
     width:                          50%;
     border:                         2px solid;
     border-radius:                  3px;
-    border-color:                   #959dcb;
+    border-color:                   @window-border-color;
 }
 
 mainbox {
     children:                       [ entry, listview ];
     padding:                        20px 100px;
-    background-color:               @background;
+    background-color:               @bg;
 }
 
 entry {
@@ -38,6 +40,6 @@ element {
 }
 
 element selected {
-    background-color: #ffffff10;
+    background-color:               @selected-element-bg;
 }
 
