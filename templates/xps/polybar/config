@@ -40,9 +40,9 @@ font-0 = "Ibm Plex Mono Medium:size=13;1"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=11;2"
 font-2 = "UbuntuMono Nerd Font:size=15;2"
 separator = "  "
-modules-left = xwindow 
+modules-left = date xwindow 
 modules-center = i3
-modules-right = date pavolume battery arch-aur-updates 
+modules-right = pavolume battery arch-aur-updates 
 tray-position = right
 tray-detached = false
 tray-background = ${colors.background}
