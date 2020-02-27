@@ -1,6 +1,7 @@
 *Xft.dpi: 125
 *Xft.font: xft:DejaVu Sans Mono:size=11
-Xcursor.theme: OSX-ElCap
+Xcursor.theme: volantes_cursors
+Xcursor.size: 16
 
 Xft.hinting: 1
 Xft.hintstyle: hintslight

@@ -41,9 +41,16 @@ cat <<EOF
 Installation is done, you might want to reboot your system
 ==========================================================
 POST INSTALL STEPS:                                        
-you may need to create a template for your system:
+Templates:
 - copy a folder in the templates folder
 - modify config files (font sizes, dpi level, width/heights)
 - run \`select_template YOUR_TEMPLATE\`
+
+Gtk:
+- install gtk cursor theme \`volantes cursors\`
+- install gtk theme \`juno palenight\`
+- install gtk icon theme \`la capitaine\`
+You can choose other themes but you'll need to change gtkrc configurations and xresources
+You might need to modify \`~/.icons/index.theme\` or \`/usr/share/icons/default/index.theme\` for setting cursors systemwide
 EOF
 

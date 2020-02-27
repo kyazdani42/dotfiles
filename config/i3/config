@@ -111,7 +111,7 @@ set_from_resource $cyan       color6    #9AEDFE
 # which are otherwise indistinguishable from single windows outside of a split container.
 
 client.focused          $bgDark $bgDark $cyan       $bgCol $bgCol
-client.focused_inactive $bgDark $bgDark $white-alt  $bgCol $cyan
+client.focused_inactive $bgDark $bgDark $white-alt  $bgCol $bgCol
 client.unfocused        $bgCol $bgCol   $white-alt  $bgCol $bgCol
 client.placeholder      $bgCol $bgCol   $white-alt  $bgCol $bgCol
 client.urgent           $red   $red     $red        $red   $red

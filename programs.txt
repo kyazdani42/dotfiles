@@ -35,8 +35,6 @@ cups
 fontconfig
 simple-shutdown-dialog
 xss-lock
-la-capitaine-icon-theme
-x-arc-shadow
 unclutter
 xwallpaper
 ttf-ibm-plex
