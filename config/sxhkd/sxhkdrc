@@ -17,7 +17,10 @@ alt + shift + p
     $HOME/.config/polybar/launch.sh > /dev/null
 
 alt + p
-	passwords
+	passmenu
+
+alt + c
+    rofi_dnd
 
 alt + d
     rofi_launch

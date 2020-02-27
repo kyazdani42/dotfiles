@@ -1,0 +1,2 @@
+#!/bin/sh
+fd -iHL . ~ | dmenu | xargs dragon-drag-and-drop &>/dev/null

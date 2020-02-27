@@ -79,6 +79,13 @@ SystemAccount=false" | sudo tee /var/lib/AccountsService/users/$USER &>/dev/null
 	fi
 }
 
+function dmenu_rofi() {
+    pushd /usr/bin
+    sudo rm -f dmenu >/dev/null
+    sudo ln -sf rofi dmenu >/dev/null
+    popd
+}
+
 function setup_dunst() {
 	sudo cp -f etc/notifications.service /usr/share/dbus-1/services/org.freedesktop.Notifications.service
 }
@@ -105,6 +112,7 @@ setup_lightdm
 setup_dunst
 setup_docker
 enable_docker_service
+dmenu_rofi
 
 printf "\x1b[1m** - installed all programs, check error.log to see if some programs have not been installed properly - **\x1b[0m\n\n"
 
