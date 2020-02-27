@@ -21,28 +21,27 @@ foreground-alt = ${xrdb:color7:#abc}
 cyan = ${xrdb:color6:#5df}
 green = ${xrdb:color2:#6f6}
 
-[bar/default]
+[bar/main]
 monitor = ${env:MONITOR}
 monitor-strict = false
-override-redirect = true
+override-redirect = false
+bottom = true
 enable-ipc = true
 offset-y = 10
 offset-x = 20
-width = 483
+width = 100%
 height = 60
 background = ${colors.background}
 foreground = ${colors.foreground}
 font-0 = "Ibm Plex Mono Medium:size=20;1"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=16;2"
 font-2 = "UbuntuMono Nerd Font:size=15;2"
-
-[bar/date]
-inherit = bar/default
-modules-left = pavolume
 padding-left = 1
-modules-center = date 
-modules-right = arch-aur-updates
 padding-right = 1
+separator = "  "
+modules-left = date xwindow
+modules-center = i3
+modules-right = pavolume mpd arch-aur-updates
 
 [module/date]
 type = internal/date
@@ -73,24 +72,10 @@ scroll-down = ~/.config/polybar/scripts/pavolume.sh --down
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 
-[bar/xwindow]
-inherit = bar/default
-modules-center = xwindow
-offset-y = 70
-
 [module/xwindow]
 type = internal/xwindow
 format-background = ${colors.background}
 label-maxlen = 28
-
-[bar/i3_mpc]
-inherit = bar/default
-offset-y = 130
-padding-left = 1
-modules-left = mpd
-modules-center = i3
-modules-right = 
-padding-right = 1
 
 [module/mpd]
 type = internal/mpd
@@ -98,17 +83,18 @@ type = internal/mpd
 ; Can also be the full path to a unix socket where mpd is running.
 host = 127.0.0.1
 port = 6600
-format-online = <icon-prev> <toggle> <icon-next> <icon-random>
+format-online = <icon-prev> <toggle> <icon-next> <icon-random> <label-song>
 icon-prev = 
 icon-stop = 
 icon-play = 
 icon-pause = 
 icon-next = 
 icon-random = 
-; Used to display the state of random/repeat/repeatone/single
-; Only applies if <icon-[random|repeat|repeatone|single]> is used
 toggle-on-foreground = ${colors.green}
 toggle-off-foreground = ${colors.foreground-alt}
+label-song =%artist% - %title%
+label-song-maxlen = 40
+label-song-ellipsis = true
 
 [module/i3]
 type = internal/i3
@@ -147,21 +133,5 @@ label-unfocused-padding = 2
 label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-underline =
-
-[bar/mpd_song]
-inherit = bar/default
-offset-y = 190
-modules-center = mpd_song
-
-[module/mpd_song]
-type = internal/mpd
-; Host where mpd is running (either ip or domain name)
-; Can also be the full path to a unix socket where mpd is running.
-host = 127.0.0.1
-port = 6600
-format-online = <label-song> 
-label-song =%artist% - %title%
-label-song-maxlen = 35
-label-song-ellipsis = true
 
 # vim:ft=dosini

@@ -22,7 +22,6 @@ popd >/dev/null
 
 pushd config/polybar >/dev/null
 ln -sf ../../templates/$template/polybar/config config
-ln -sf ../../templates/$template/polybar/launch.sh launch.sh
 popd >/dev/null
 
 pushd config/rofi >/dev/null
