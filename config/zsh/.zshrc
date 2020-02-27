@@ -51,22 +51,6 @@ alias showpic="sxiv"
 # must be sourced after starship
 source $ZDOTDIR/zsh_vi_mode
 
-# fzf plugin for fast search
-if [ $(command -v fzf) ]; then
-    export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' ."
-    export FZF_PREVIEW_COMMAND="bat --decorations=never --theme=ansi-dark --color always {}"
-    source $ZDOTDIR/fzf.zsh
-
-    _fzf_compgen_path() {
-        fd --hidden --follow --exclude ".git" . "$1"
-    }
-
-    # Use fd to generate the list for directory completion
-    _fzf_compgen_dir() {
-        fd --type d --hidden --follow --exclude ".git" . "$1"
-    }
-fi
-
 # add syntax highlighting to zsh
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -83,10 +67,8 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
+# fzf plugin for fast search
 # `bindkey | grep fzf` for the key bindings
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-bindkey '^O' fzf-cd-widget
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ $(command -v fzf) ]; then
+    source $ZDOTDIR/fzf.zsh
+fi
