@@ -1,60 +1,47 @@
 *Xft.dpi: 160
 *Xft.font: xft:DejaVu Sans Mono:size=14
 Xcursor.theme: volantes_cursors
+Xcursor.size: 24
 
 Xft.hinting: 1
 Xft.hintstyle: hintslight
 Xft.antialias: 1
-Xft.rgba: rgb 
+Xft.rgba: rgb
 
-#define base00 #292d3e
-#define base01 #444267
-#define base02 #32374d
-#define base03 #676e95
-#define base04 #8796b0
-#define base05 #959dcb
-#define base06 #959dcb
-#define base07 #ffffff
-#define base08 #f07178
-#define base09 #f78c6c
-#define base0A #ffcb6b
-#define base0B #c3e88d
-#define base0C #89ddff
-#define base0D #82aaff
-#define base0E #c792ea
-#define base0F #ff5370
 
-*foreground:   base05
+*foreground:   #959dcb
 #ifdef background_opacity
-*background:   [background_opacity]base00
+*background:   [background_opacity]#292d3e
 #else
-*background:   base00
+*background:   #292d3e
 #endif
-*cursorColor:  base05
+*cursorColor:  #ffcb6b
 
-*color0:       base00
-*color1:       base08
-*color2:       base0B
-*color3:       base0A
-*color4:       base0D
-*color5:       base0E
-*color6:       base0C
-*color7:       base05
+*bg_dark:      #1c1f2b
+*color0:       #292d3e
+*color1:       #f07178
+*color2:       #c3e88d
+*color3:       #ffcb6b
+*color4:       #82aaff
+*color5:       #c792ea
+*color6:       #89ddff
+*color7:       #959dcb
 
-*color8:       base03
-*color9:       base08
-*color10:      base0B
-*color11:      base0A
-*color12:      base0D
-*color13:      base0E
-*color14:      base0C
-*color15:      base07
+*color8:       #676e95
+*color9:       #f07178
+*color10:      #c3e88d
+*color11:      #ffcb6b
+*color12:      #82aaff
+*color13:      #c792ea
+*color14:      #89ddff
+*color15:      #ffffff
 
 ! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
 ! use 'shell' template to set these if necessary
-*color16:      base09
-*color17:      base0F
-*color18:      base01
-*color19:      base02
-*color20:      base04
-*color21:      base06
+*color16:      #f78c6c
+*color17:      #ff5370
+*color18:      #444267
+*color19:      #32374d
+*color20:      #8796b0
+*color21:      #959dcb
+
