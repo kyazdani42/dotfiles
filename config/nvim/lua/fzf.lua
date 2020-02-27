@@ -4,6 +4,7 @@ local function setup()
     api.nvim_set_var('fzf_preview_command', 'bat --decorations never --theme=ansi-dark --color=always --style=grid {-1}')
     api.nvim_set_var('fzf_preview_filelist_command', 'rg --files --hidden --follow --no-messages -g \\!"* *"')
     api.nvim_set_var('fzf_preview_preview_key_bindings', 'ctrl-f:preview-page-down,ctrl-u:preview-page-up,?:toggle-preview')
+    api.nvim_set_var('fzf_preview_floating_window_winblend', 0)
 
     local opts = { nowait = true, noremap = true, silent = true }
     api.nvim_set_keymap('n', '<C-p>', ':FzfPreviewDirectoryFiles<CR>', opts)
