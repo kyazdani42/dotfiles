@@ -1,0 +1,38 @@
+#!/bin/bash
+
+[ $# != 1 ] && printf "\x1b[31;1mPlease run \`select_template TEMPLATE_NAME\`\x1b[0m\n" && exit 1
+
+# TODO: find folder in a better way
+[ -d "$HOME/.dotfiles" ] && pushd "$HOME/.dotfiles" >/dev/null
+[ -d "$HOME/dotfiles" ] && pushd "$HOME/.dotfiles" >/dev/null
+
+template="$1"
+if [ ! -d "./templates/$template" ]; then
+    printf "\x1b[31;1mIncorrect template name\x1b[0m\n"
+    echo "Must be one of:"
+    for tpl in $(ls templates); do
+        echo "- $tpl"
+    done
+    exit 1
+fi
+
+pushd config/alacritty >/dev/null
+ln -sf ../../templates/$template/alacritty/alacritty.yml alacritty.yml
+popd >/dev/null
+
+pushd config/polybar >/dev/null
+ln -sf ../../templates/$template/polybar/config config
+ln -sf ../../templates/$template/polybar/launch.sh launch.sh
+popd >/dev/null
+
+pushd config/rofi >/dev/null
+ln -sf ../../templates/$template/rofi/config.rasi config.rasi
+popd >/dev/null
+
+pushd xinit >/dev/null
+ln -sf ../templates/$template/xinit/Xresources Xresources
+popd >/dev/null
+
+xrdb -merge ~/.xinit/Xresources
+
+popd >/dev/null

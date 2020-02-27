@@ -33,18 +33,17 @@ nvim +PlugInstall +qa &>/dev/null
 nvim +PlugUpdate +qa &>/dev/null
 xrdb -merge ~/.xinit/Xresources
 
+./bin/select_template xps
+
 printf "\x1b[0m\n"
 
 cat <<EOF
 Installation is done, you might want to reboot your system
 ==========================================================
 POST INSTALL STEPS:                                        
-- When launching the system, you may need to adjust the dpi level 
-  of each monitor, launching set_dpis should do the trick
-- Modify font sizes in:
-  - alacritty/alacritty.yml
-  - polybar/config
-  - rofi/config.rasi
-  - xinit/Xresources
+you may need to create a template for your system:
+- copy a folder in the templates folder
+- modify config files (font sizes, dpi level, width/heights)
+- run \`select_template YOUR_TEMPLATE\`
 EOF
 
