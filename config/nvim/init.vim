@@ -111,11 +111,13 @@ nnoremap <silent> <C-p> :Files<CR>
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--prompt=""']}, <bang>0)
 nnoremap <silent> <leader>b :Buffers<CR>
+command! -bang -nargs=? -complete=dir Buffers
+    \ call fzf#vim#buffers({'options': ['--prompt=""']}, <bang>0)
 nnoremap <silent> <leader>p :Rg<CR>
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview(), <bang>0)
+  \   fzf#vim#with_preview({'options': ['--prompt=""', ], 'down': '50%'}), <bang>0)
 
 autocmd! FileType fzf set laststatus=0 noshowmode noruler nonumber norelativenumber
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler relativenumber
