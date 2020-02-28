@@ -50,7 +50,7 @@ lua require'init'.setup()
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'drewtempelmeyer/palenight.vim'                                    " Colorscheme
-Plug 'lifepillar/vim-solarized8'                                        " Colorscheme
+Plug 'camspiers/lens.vim'                                               " Resize windows on the fly
 Plug 'itchyny/lightline.vim'                                            " The lightline at the bottom
 Plug 'norcalli/nvim-colorizer.lua'                                      " Rgb/hex colorizer
 Plug 'tpope/vim-fugitive'                                               " Git integration
