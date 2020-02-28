@@ -74,6 +74,7 @@ silent! lua require'colorizer'.setup()
 silent! lua require'fzf'.setup()
 
 let g:lua_tree_ignore = ['.git', 'node_modules']
+let g:lua_tree_follow = 1
 nnoremap <silent> <C-n> :LuaTreeToggle<CR>
 nnoremap <silent> <leader>n :LuaTreeRefresh<CR>
 
