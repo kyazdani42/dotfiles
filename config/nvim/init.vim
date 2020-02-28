@@ -64,8 +64,7 @@ Plug 'airblade/vim-gitgutter'                                           " Little
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
 Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
 Plug 'kyazdani42/highlight.lua'                                         " Highlight experiments using treesitter
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }       " Fuzzy finder install
-Plug 'yuki-ycino/fzf-preview.vim'                                       " Better plugin for fzf
+Plug 'junegunn/fzf.vim'                                                 " fzf wrapper
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}      " Lsp
 Plug 'rust-lang/rust.vim'                                               " Rust language support
 call plug#end()
@@ -107,6 +106,20 @@ function! LightlineFilename()
   return expand('%:t') !=# '' ? WebDevIconsGetFileTypeSymbol(@%) . ' ' . @% : '[No Name]'
 endfunction
 
+let g:fzf_layout = { 'down': '~25%' }
+nnoremap <silent> <C-p> :Files<CR>
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, {'options': ['--prompt=""']}, <bang>0)
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>p :Rg<CR>
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
+
+autocmd! FileType fzf set laststatus=0 noshowmode noruler nonumber norelativenumber
+  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler relativenumber
+
 set hidden           " TextEdit might fail if hidden is not set.
 set nobackup         " Some lsp have issues with backup files, see #649.
 set nowritebackup
@@ -121,16 +134,16 @@ inoremap <silent><expr> <c-space> coc#refresh()
 " position. Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
-nnoremap <silent> <leader>j <Plug>(coc-diagnostic-prev)
-nnoremap <silent> <leader>k <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>j <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
 
-nnoremap <silent> gd <Plug>(coc-definition)
-nnoremap <silent> gt <Plug>(coc-type-definition)
-nnoremap <silent> gi <Plug>(coc-implementation)
-nnoremap <silent> gr <Plug>(coc-references)
-nnoremap <leader>rn  <Plug>(coc-rename)
-vnoremap <C-I>  <Plug>(coc-format-selected)
-nnoremap <C-I>  <Plug>(coc-format-selected)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn  <Plug>(coc-rename)
+vmap <C-I>  <Plug>(coc-format-selected)
+nmap <C-I>  <Plug>(coc-format-selected)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> \ <C-w>o
 
