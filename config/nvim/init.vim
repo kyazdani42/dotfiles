@@ -16,8 +16,10 @@ set mousehide                  " Hide mouse while typing
 set linebreak                  " Do not break words
 set splitbelow splitright      " Splits open on the bottom or on the right
 set scrolloff=8                " Lines from the cursor
-set wildmode+=longest,full     " Command line completion mode
+set wildmode=full              " Command line completion mode
+set wildmenu                   " Command line completion mode
 set noincsearch                " Do not move cursor during search
+set inccommand=split           " Show effects of command as you type in a split
 set ignorecase                 " Ignore case
 set hlsearch                   " Highlight search results (enforce)
 set confirm                    " Disable 'no write'
