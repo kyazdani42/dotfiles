@@ -7,9 +7,6 @@ super + {Down,Up}
 XF86MonBrightness{Down,Up}
 	xbacklight -{dec,inc} 5
 
-alt + o
-	betterlockscreen -l blur
-
 alt + shift + o
 	dm-tool switch-to-greeter
 

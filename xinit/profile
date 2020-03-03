@@ -1,3 +1,5 @@
+#!/bin/sh
+
 BINARIES=(
 # programs binaries
 "$HOME/.deno/bin"
@@ -9,12 +11,12 @@ BINARIES=(
 "$HOME/.local/workbin"
 )
 
-for path in "${BINARIES[@]}"; do
-	[ -d "$path" ] && export PATH="$path:$PATH"
+for p in "${BINARIES[@]}"; do
+	[ -d "$p" ] && export PATH="$p:$PATH"
 done
 
-eval "$(ssh-agent -s)"
-ssh-add "$HOME/.ssh/id_rsa.pub"
+[ $(command -v "ssg-agent") ] && eval "$(ssh-agent -s)"
+[ $(command -v "ssg-add") ] && [ -d "$HOME/.ssh/id_rsa.pub" ] && ssh-add "$HOME/.ssh/id_rsa.pub"
 
 export LESSHISTFILE="-"
 export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
@@ -27,4 +29,9 @@ export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="brave"
+
+if [ $(tty | grep "tty") ] && [ ! $(pgrep Xorg) ]; then
+    killall -9 i3 &>/dev/null
+    startx
+fi
 

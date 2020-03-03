@@ -5,13 +5,19 @@ if ! ./install-arch.sh; then exit 1; fi
 [ "$SHELL" != "/usr/bin/zsh" ] && chsh -s /usr/bin/zsh
 
 printf "\x1b[1m- Initialize home folders\n"
-rm -rf $HOME/{Pictures,.xinit}
-ln -s $PWD/xinit $HOME/.xinit
+rm -rf $HOME/Pictures
 ln -s $PWD/Pictures $HOME/Pictures
 rm -rf $HOME/.local/bin
 ln -sf $PWD/bin $HOME/.local/bin
 mkdir -p $HOME/.config
 cp Pictures/mountain_deer.jpg ~/.config/wallpaper
+
+echo "- Linking X startup scripts"
+ln -sf $PWD/xinit/Xresources $HOME/.Xresources
+ln -sf $PWD/xinit/profile $HOME/.profile
+ln -sf $PWD/xinit/profile $HOME/.zprofile
+ln -sf $PWD/xinit/xinitrc $HOME/.xinitrc
+ln -sf $PWD/xinit/Xmodmap $HOME/.Xmodmap
 
 echo "- Linking \$XDG_CONFIG_HOME configuration files"
 for file in config/*; do
@@ -31,7 +37,7 @@ if command -v yarn >/dev/null; then
 fi
 nvim +PlugInstall +qa &>/dev/null
 nvim +PlugUpdate +qa &>/dev/null
-xrdb -merge ~/.xinit/Xresources
+xrdb -merge ~/.Xresources
 
 ./bin/select_template xps
 

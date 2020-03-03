@@ -50,40 +50,11 @@ function install_programs() {
 	fc-cache >/dev/null
 }
 
-
-function check_service() {
-	sudo systemctl status $1 > /dev/null;
-	return $?
-}
-
-function enable_service() {
-	sudo systemctl enable $1 &>/dev/null
-}
-
-function start_service() {
-	sudo systemctl start $1 &>/dev/null
-}
-
-function setup_lightdm() {
-	if ! check_service lightdm
-	then
-		enable_service lightdm
-		sudo rm -rf /etc/lightdm; sudo cp -fr etc/lightdm /etc/lightdm
-		sudo cp Pictures/tower_violet_blue.jpg $(find /usr/share/lightdm-webkit/themes -name 'background.*')
-		sudo cp Pictures/user.png /var/lib/AccountsService/icons/$USER.png
-		echo "[User]
-Session=i3
-XSession=i3
-Icon=/var/lib/AccountsService/icons/$USER.png
-SystemAccount=false" | sudo tee /var/lib/AccountsService/users/$USER &>/dev/null
-	fi
-}
-
 function dmenu_rofi() {
-    pushd /usr/bin
+    pushd /usr/bin >/dev/null
     sudo rm -f dmenu >/dev/null
     sudo ln -sf rofi dmenu >/dev/null
-    popd
+    popd >/dev/null
 }
 
 function setup_dunst() {
@@ -97,6 +68,18 @@ function setup_docker() {
 	fi
 }
 
+function check_service() {
+	return sudo systemctl status $1 >/dev/null
+}
+
+function enable_service() {
+	sudo systemctl enable $1 &>/dev/null
+}
+
+function start_service() {
+	sudo systemctl start $1 &>/dev/null
+}
+
 function enable_docker_service() {
 	if ! check_service docker
 	then
@@ -108,7 +91,6 @@ function enable_docker_service() {
 update_system
 install_yay
 install_programs
-setup_lightdm
 setup_dunst
 setup_docker
 enable_docker_service
