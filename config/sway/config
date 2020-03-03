@@ -1,0 +1,186 @@
+# TODO:
+# bindsym $mod+c exec rofi_dnd (dnd program ?)
+# setup locking
+# bar tray not working (waybar)
+# dim unfocused alacritty instances (it seems only opacity works...)
+
+# Mod1 is Alt, Mod4 is Windows
+set $mod Mod1
+
+font pango:Ibm Plex Mono Medium 12
+
+# in case there is a title
+title_align center
+# no border, no title bar
+default_border pixel 1
+# borders on floating to make it easier to resize
+default_floating_border pixel 11
+# the focus only changes when clicking
+focus_follows_mouse no
+
+for_window [app_id="Nautilus"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [instance="gpick"] floating enable
+for_window [instance="simplescreenrecorder"] floating enable
+
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term $TERMINAL
+set $menu rofi_launch
+
+# Output and bg
+output eDP-1 bg ~/.config/wallpaper fill
+output eDP-1 pos 0 0 res 1920x1080
+
+# gtk
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Juno-palenight'
+    gsettings set $gnome-schema icon-theme 'la-capitaine'
+    gsettings set $gnome-schema cursor-theme 'volantes_cursors'
+    gsettings set $gnome-schema cursor-size 16
+    gsettings set $gnome-schema font-name 'DejaVu Sans 12'
+}
+
+### Idle configuration
+#
+# Example configuration:
+#
+# exec swayidle -w \
+#          timeout 300 'swaylock -f -c 000000' \
+#          timeout 600 'swaymsg "output * dpms off"' \
+#               resume 'swaymsg "output * dpms on"' \
+#          before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+
+# Input configuration
+input type:keyboard {
+        xkb_layout us
+        xkb_options ctrl:nocaps
+        repeat_delay 300
+        repeat_rate 50
+}
+
+input type:touchpad {
+        tap enabled
+        natural_scroll disabled
+        dwt enabled
+        pointer_accel 0.2 # set mouse sensitivity (between -1 and 1)
+}
+
+seat * hide_cursor 4000
+
+### Key bindings
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+Return split v, exec $term
+
+bindsym $mod+w exec nautilus
+bindsym $mod+Shift+w exec $BROWSER
+bindsym $mod+p exec passmenu
+bindsym Print exec grim -g "$(slurp)"
+bindsym $mod+d exec $menu
+bindsym $mod+Shift+q kill
+bindsym button1 nop
+bindsym xf86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute
+bindsym xf86AudioLowerVolume exec amixer -q sset Master 3%- unmute
+bindsym xf86AudioMute exec amixer -q sset Master toggle
+bindsym $mod+s exec [ $(pgrep waybar) ] && killall -9 waybar || waybar &
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+# Reload the configuration file
+bindsym $mod+Shift+F2 reload
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+x exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# go to mode
+bindsym $mod+Shift+z split h
+bindsym $mod+Shift+v split v
+
+bindsym $mod+f fullscreen
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+# Scratchpad:
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
+exec xrdb -merge $HOME/.Xresources
+exec waybar &
+exec nm-applet &
+# exec $HOME/.config/sway/inactive-window-dimming.py -o 0.2 &
+
+# Resizing containers:
+mode "resize" {
+    bindsym $left resize shrink width 10px
+        bindsym $down resize grow height 10px
+        bindsym $up resize shrink height 10px
+        bindsym $right resize grow width 10px
+        bindsym $mod+Shift+r mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Shift+r mode "resize"
+
+# Colors
+set $bgDark     #1c1f2b
+set $bgCol      #292d3e
+set $white      #FFFFFF
+set $white-alt  #959dcb
+set $red        #f07178
+set $cyan       #89ddff
+
+client.focused          $bgDark  $bgDark  $cyan       $bgCol   $bgCol
+client.focused_inactive $bgDark  $bgDark  $white-alt  $bgCol   $bgCol
+client.unfocused        $bgCol   $bgCol   $white-alt  $bgCol   $bgCol
+client.placeholder      $bgCol   $bgCol   $white-alt  $bgCol   $bgCol
+client.urgent           $red     $red     $red        $red     $red
+
+client.background       $bgCol
+
+include /etc/sway/config.d/*
+
+# vim: ft=i3config

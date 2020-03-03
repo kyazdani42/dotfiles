@@ -1,0 +1,51 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 40,
+    "modules-left": ["clock", "sway/window", "sway/mode"],
+    "modules-center": ["sway/workspaces"],
+    "modules-right": ["pulseaudio", "battery", "tray"],
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{name}"
+    },
+    "sway/mode": {
+        "format": "<span>{}</span>"
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 100
+    },
+    "clock": {
+        "timezone": "Europe/Paris",
+        "format": "{:%a %d %H:%M}"
+    },
+    "battery": {
+        "tooltip": false,
+        "states": {
+            "full": 100,
+            "good": 80,
+            "half": 50,
+            "warning": 30,
+            "critical": 15
+        },
+        "format-full": "{capacity}% <span foreground='#c3e88d'>{icon}</span>",
+        "format-good": "{capacity}% <span foreground='#c3e88d'>{icon}</span>",
+        "format-half": "{capacity}% <span foreground='#ffcb6b'>{icon}</span>",
+        "format-warning": "{capacity}% <span foreground='#f78c6c'>{icon}</span>",
+        "format-critical": "{capacity}% <span foreground='#f07178'>{icon}</span>",
+        "format-plugged": "{capacity}% <span foreground='#959dcb'></span>",
+        "format-charging": "{capacity}% <span foreground='#959dcb'></span>",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "pulseaudio": {
+        "scroll-step": 3,
+        "format": "{volume}% <span foreground='#676e95'>{icon}</span>",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "tooltip": false
+    }
+}

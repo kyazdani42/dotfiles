@@ -1,0 +1,56 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "Ibm Plex Mono Medium", "Font Awesome 5 Free";
+    font-size: 17px;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: #1c1f2b;
+    color: #ffffff;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+#workspaces button {
+    padding: 0 11px;
+    background-color: #1c1f2b;
+    color: #ffffff;
+}
+
+#workspaces button.focused {
+    color: #89ddff;
+}
+
+#workspaces button.urgent {
+    color: #f07178;
+}
+
+#window {
+    margin-left: 10px;
+}
+
+#mode {
+    color: #ffcb6b;
+    margin-left: 15px;
+}
+
+#clock {
+    margin-left: 15px; 
+    margin-right: 10px; 
+}
+
+#battery {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+#pulseaudio {}
+
+#pulseaudio.muted {}
+
+#tray {}
+
