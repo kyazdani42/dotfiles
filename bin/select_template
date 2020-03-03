@@ -32,6 +32,6 @@ pushd xinit >/dev/null
 ln -sf ../templates/$template/xinit/Xresources Xresources
 popd >/dev/null
 
-xrdb -merge ~/.xinit/Xresources
+xrdb -merge $HOME/.Xresources
 
 popd >/dev/null

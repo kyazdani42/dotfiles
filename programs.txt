@@ -40,10 +40,8 @@ ttf-font-awesome-4
 ttf-inconsolata
 ttf-monaco
 ttf-opensans
-ttf-symbola
 ttf-joypixels
 noto-fonts
-nerd-fonts-dejavu-complete
 nerd-fonts-source-code-pro
 nerd-fonts-ubuntu-mono
 mpd

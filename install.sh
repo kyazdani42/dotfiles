@@ -12,6 +12,8 @@ ln -sf $PWD/bin $HOME/.local/bin
 mkdir -p $HOME/.config
 cp Pictures/mountain_deer.jpg ~/.config/wallpaper
 
+./bin/select_template xps
+
 echo "- Linking X startup scripts"
 ln -sf $PWD/xinit/Xresources $HOME/.Xresources
 ln -sf $PWD/xinit/profile $HOME/.profile
@@ -37,9 +39,7 @@ if command -v yarn >/dev/null; then
 fi
 nvim +PlugInstall +qa &>/dev/null
 nvim +PlugUpdate +qa &>/dev/null
-xrdb -merge ~/.Xresources
-
-./bin/select_template xps
+xrdb -merge $HOME/.Xresources
 
 printf "\x1b[0m\n"
 

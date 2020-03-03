@@ -68,10 +68,6 @@ function setup_docker() {
 	fi
 }
 
-function check_service() {
-	return sudo systemctl status $1 >/dev/null
-}
-
 function enable_service() {
 	sudo systemctl enable $1 &>/dev/null
 }
@@ -81,7 +77,7 @@ function start_service() {
 }
 
 function enable_docker_service() {
-	if ! check_service docker
+	if ! sudo systemctl status docker >/dev/null
 	then
 		enable_service docker
 		start_service docker
