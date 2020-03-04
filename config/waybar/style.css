@@ -52,5 +52,9 @@ window#waybar.hidden {
 
 #pulseaudio.muted {}
 
+#custom-updates {
+    margin-right: 15px;
+}
+
 #tray {}
 

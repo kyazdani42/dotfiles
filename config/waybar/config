@@ -4,7 +4,7 @@
     "height": 40,
     "modules-left": ["clock", "sway/window", "sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["pulseaudio", "battery", "tray"],
+    "modules-right": ["pulseaudio", "battery", "tray", "custom/updates"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -47,5 +47,11 @@
         },
         "on-click": "pavucontrol",
         "tooltip": false
+    },
+    "custom/updates": {
+        "exec": "$HOME/.config/polybar/scripts/check-all-updates.sh",
+        "interval": 120,
+        "tooltip": false,
+        "format": "{} <span foreground='#959dcb' size='small'></span>" 
     }
 }

@@ -152,7 +152,6 @@ bindsym $mod+minus scratchpad show
 exec xrdb -merge $HOME/.Xresources
 exec waybar &
 exec nm-applet &
-# exec $HOME/.config/sway/inactive-window-dimming.py -o 0.2 &
 
 # Resizing containers:
 mode "resize" {
