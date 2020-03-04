@@ -77,6 +77,10 @@ silent! lua require'colorizer'.setup()
 silent! lua require'fzf'.setup()
 
 let g:lua_tree_ignore = ['.git', 'node_modules']
+let g:lua_tree_auto_open = 1
+let g:lua_tree_show_folders = 1
+let g:lua_tree_show_git_icons = 1
+let g:lua_tree_auto_close = 1
 let g:lua_tree_follow = 1
 nnoremap <silent> <C-n> :LuaTreeToggle<CR>
 nnoremap <silent> <leader>n :LuaTreeRefresh<CR>
@@ -107,21 +111,25 @@ let g:lightline = {
       \ }
 
 function! LightlineFilename()
-  return expand('%:t') !=# '' ? WebDevIconsGetFileTypeSymbol(@%) . ' ' . @% : '[No Name]'
+    if expand('%:t') !=# ''
+        if exists('*WebDevIconsGetFileTypeSymbol')
+            return WebDevIconsGetFileTypeSymbol(@%) . ' ' . @%
+        else
+            return @%
+        endif
+    else
+        return '[No Name]'
+    endif
 endfunction
 
 let g:fzf_layout = { 'down': '~25%' }
 nnoremap <silent> <C-p> :Files<CR>
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--prompt=""']}, <bang>0)
 nnoremap <silent> <leader>b :Buffers<CR>
-command! -bang -nargs=? -complete=dir Buffers
-    \ call fzf#vim#buffers({'options': ['--prompt=""']}, <bang>0)
 nnoremap <silent> <leader>p :Rg<CR>
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview({'options': ['--prompt=""', ], 'down': '50%'}), <bang>0)
+  \   fzf#vim#with_preview({'down': '50%'}), <bang>0)
 
 autocmd! FileType fzf set laststatus=0 noshowmode noruler nonumber norelativenumber
   \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler relativenumber

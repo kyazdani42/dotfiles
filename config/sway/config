@@ -1,6 +1,5 @@
 # TODO:
 # bindsym $mod+c exec rofi_dnd (dnd program ?)
-# setup locking
 # bar tray not working (waybar)
 # dim unfocused alacritty instances (it seems only opacity works...)
 
@@ -85,6 +84,7 @@ bindsym $mod+Shift+Return split v, exec $term
 
 bindsym $mod+w exec nautilus
 bindsym $mod+Shift+w exec $BROWSER
+bindsym $mod+Shift+o exec swaylock -i ~/pictures/tower_violet_blue.jpg
 bindsym $mod+p exec passmenu
 bindsym Print exec grim -g "$(slurp)"
 bindsym $mod+d exec $menu
