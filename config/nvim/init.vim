@@ -76,14 +76,17 @@ silent! lua require'colors'.setup()
 silent! lua require'colorizer'.setup()
 silent! lua require'fzf'.setup()
 
-let g:lua_tree_ignore = ['.git', 'node_modules']
-let g:lua_tree_auto_open = 1
-let g:lua_tree_show_folders = 1
-let g:lua_tree_show_git_icons = 1
-let g:lua_tree_auto_close = 1
-let g:lua_tree_follow = 1
 nnoremap <silent> <C-n> :LuaTreeToggle<CR>
 nnoremap <silent> <leader>n :LuaTreeRefresh<CR>
+let g:lua_tree_ignore = ['.git', 'node_modules']
+let g:lua_tree_auto_open = 1
+let g:lua_tree_auto_close = 1
+let g:lua_tree_follow = 1
+let g:lua_tree_show_icons = {
+            \ 'git': 1,
+            \ 'folders': 1,
+            \ 'files': 1
+            \}
 
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>

@@ -11,9 +11,7 @@ font pango:Ibm Plex Mono Medium 12
 # in case there is a title
 title_align center
 # no border, no title bar
-default_border pixel 1
-# borders on floating to make it easier to resize
-default_floating_border pixel 11
+default_border none
 # the focus only changes when clicking
 focus_follows_mouse no
 
@@ -33,7 +31,6 @@ set $menu rofi_launch
 
 # Output and bg
 output eDP-1 bg ~/.config/wallpaper fill
-output eDP-1 pos 0 0 res 1920x1080
 
 # gtk
 set $gnome-schema org.gnome.desktop.interface
@@ -151,16 +148,16 @@ bindsym $mod+minus scratchpad show
 
 exec xrdb -merge $HOME/.Xresources
 exec waybar &
-exec nm-applet &
+exec nm-applet --indicator &
 
 # Resizing containers:
 mode "resize" {
     bindsym $left resize shrink width 10px
-        bindsym $down resize grow height 10px
-        bindsym $up resize shrink height 10px
-        bindsym $right resize grow width 10px
-        bindsym $mod+Shift+r mode "default"
-        bindsym Escape mode "default"
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+    bindsym $mod+Shift+r mode "default"
+    bindsym Escape mode "default"
 }
 bindsym $mod+Shift+r mode "resize"
 

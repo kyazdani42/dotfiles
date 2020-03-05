@@ -4,7 +4,7 @@
     "height": 40,
     "modules-left": ["clock", "sway/window", "sway/mode"],
     "modules-center": ["sway/workspaces"],
-    "modules-right": ["pulseaudio", "battery", "tray", "custom/updates"],
+    "modules-right": ["pulseaudio", "battery", "custom/updates", "tray"],
     "sway/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -41,7 +41,7 @@
     },
     "pulseaudio": {
         "scroll-step": 3,
-        "format": "{volume}% <span foreground='#676e95'>{icon}</span>",
+        "format": "{volume}% <span foreground='#959dcb'>{icon}</span>",
         "format-icons": {
             "default": ["", "", ""]
         },
@@ -53,5 +53,9 @@
         "interval": 120,
         "tooltip": false,
         "format": "{} <span foreground='#959dcb' size='small'></span>" 
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 20
     }
 }

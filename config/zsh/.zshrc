@@ -1,15 +1,36 @@
 [ $TERM != "tmux-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
-# configure oh my zsh
-export HISTFILE="$HOME/.cache/zsh/history"
-mkdir -p $HOME/.cache/zsh
-ZSH_THEME=""
-export ZSH="$HOME/.config/zsh/oh-my-zsh"
-plugins=(git docker colored-man-pages)
 
-# launch oh my zsh
-source $ZSH/oh-my-zsh.sh
+mkdir -p $HOME/.cache/zsh
+export HISTFILE="$HOME/.cache/zsh/history"
+HISTSIZE=50000
+SAVEHIST=10000
+
+## History command configuration
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt inc_append_history     # add commands to HISTFILE in order of execution
+setopt share_history          # share command history data
+
+export LSCOLORS=Exfxcxdxbxegedabagacad
+
+source $ZDOTDIR/completion.zsh
+autoload -U compaudit compinit
+autoload -U colors && colors
+ZSH_COMPDUMP="${ZDOTDIR:-~}/.zcompdump"
+compinit -u -C -d "${ZSH_COMPDUMP}"
+
+autoload -Uz is-at-least
+## jobs
+setopt long_list_jobs
+# recognize comments
+setopt interactivecomments
 
 fpath+=${ZDOTDIR:-~}/.zsh_functions
+fpath+=${ZDOTDIR:-~}/zsh-completions/src
+rm -f ${ZDOTDIR:-~}/.zcompdump; compinit
 
 # open stuff mac style
 function open() {
@@ -32,18 +53,23 @@ alias la="exa -la --git"
 alias lt="exa -Tla --git"
 alias rm="rm -v"
 alias mkdir="mkdir -v"
-alias dnd="dragon-drag-and-drop"
 alias mus="ncmpcpp -c ~/.config/ncmpcpp/config"
+
+## NOTE: dnd is a X program not working in wayland
+# alias dnd="dragon-drag-and-drop"
 
 # git aliases
 alias gitbeauty="git log --all --graph --oneline"
 alias gpp="git push origin HEAD"
+alias gp="git push"
+alias gl="git pull"
+alias ga="git add"
+alias gc="git commit -m"
+alias gca="git commit --amend"
 
 # tmux aliases
 alias tls="tmux list-sessions"
 alias tka="tmux kill-session -a"
-
-alias showpic="sxiv"
 
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"

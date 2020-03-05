@@ -24,7 +24,7 @@ export ZDOTDIR="$HOME/.config/zsh"
 export INPUTRC="$HOME/.config/inputrc"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
-
+export MANPAGER="nvim -c 'set ft=man' -"
 # default programs
 export EDITOR="nvim"
 export TERMINAL="alacritty"
@@ -32,7 +32,7 @@ export BROWSER="firefox"
 
 # if [ $(tty | grep "tty") ] && [ ! $(pgrep Xorg) ]; then
 #     killall -9 i3 &>/dev/null
-#     startx &>/dev/null
+#     exec startx &>/dev/null
 # fi
 
 # wayland
@@ -45,4 +45,3 @@ export XDG_CURRENT_DESKTOP=Unity
 if [ "$(tty)" = "/dev/tty1" ]; then
     exec sway &>/dev/null
 fi
-
