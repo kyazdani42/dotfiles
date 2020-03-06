@@ -18,7 +18,7 @@ set splitbelow splitright      " Splits open on the bottom or on the right
 set scrolloff=8                " Lines from the cursor
 set wildmode=full              " Command line completion mode
 set wildmenu                   " Command line completion mode
-set noincsearch                " Do not move cursor during search
+set incsearch                  " Move cursor during search
 set inccommand=split           " Show effects of command as you type in a split
 set ignorecase                 " Ignore case
 set hlsearch                   " Highlight search results (enforce)
@@ -29,6 +29,7 @@ set tabstop=4                  " Tabs are 4 spaces long
 set shiftwidth=4               " Number of space for autoindent
 set expandtab                  " expand tab into space by default
 set clipboard^=unnamedplus     " Use system clipboard
+set termguicolors
 
 " Retrieve last position in a file: https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -51,7 +52,6 @@ lua require'init'.setup()
 " Plugins {{{
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'drewtempelmeyer/palenight.vim'                                    " Colorscheme
 Plug 'camspiers/lens.vim'                                               " Resize windows on the fly
 Plug 'itchyny/lightline.vim'                                            " The lightline at the bottom
 Plug 'norcalli/nvim-colorizer.lua'                                      " Rgb/hex colorizer
@@ -64,13 +64,16 @@ Plug 'justinmk/vim-sneak'                                               " Better
 Plug 'ryanoasis/vim-devicons'                                           " Icons
 Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
-Plug 'mboughaba/i3config.vim'
+Plug 'kyazdani42/nvim-palenight.lua'                                    " My colorscheme
 Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
-Plug 'kyazdani42/highlight.lua'                                         " Highlight experiments using treesitter
+" Plug 'kyazdani42/highlight.lua'                                         " Highlight experiments using treesitter
 Plug 'junegunn/fzf.vim'                                                 " fzf wrapper
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}      " Lsp
 Plug 'rust-lang/rust.vim'                                               " Rust language support
+Plug 'tbastos/vim-lua'
 call plug#end()
+
+colorscheme palenight
 
 silent! lua require'colors'.setup()
 silent! lua require'colorizer'.setup()
@@ -163,6 +166,9 @@ vmap <C-I>  <Plug>(coc-format-selected)
 nmap <C-I>  <Plug>(coc-format-selected)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> \ <C-w>o
+
+" tab opens/closes folds
+nnoremap <silent> <tab> :normal za<cr> 
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)

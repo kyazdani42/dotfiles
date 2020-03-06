@@ -37,7 +37,7 @@ local function set_mappings()
     api.nvim_set_keymap('v', '][', '][zz', default_opt)
     api.nvim_set_keymap('v', '[]', '[]zz', default_opt)
     api.nvim_set_keymap('v', '%', '%zz', default_opt)
-
+    
     api.nvim_command('cabbrev W w')
 end
 
