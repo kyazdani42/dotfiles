@@ -30,18 +30,18 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 
-# if [ $(tty | grep "tty") ] && [ ! $(pgrep Xorg) ]; then
-#     killall -9 i3 &>/dev/null
-#     exec startx &>/dev/null
-# fi
+if [ $(tty | grep "tty") ] && [ ! $(pgrep Xorg) ]; then
+    killall -9 i3 &>/dev/null
+    exec startx &>/dev/null
+fi
 
 # wayland
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM=wayland-egl
-export GDK_BACKEND=wayland
-export CLUTTER_BACKEND=wayland
-export XDG_CURRENT_DESKTOP=Unity
-
-if [ "$(tty)" = "/dev/tty1" ]; then
-    exec sway &>/dev/null
-fi
+# export MOZ_ENABLE_WAYLAND=1
+# export QT_QPA_PLATFORM=wayland-egl
+# export GDK_BACKEND=wayland
+# export CLUTTER_BACKEND=wayland
+# export XDG_CURRENT_DESKTOP=Unity
+#
+# if [ "$(tty)" = "/dev/tty1" ]; then
+#     exec sway &>/dev/null
+# fi

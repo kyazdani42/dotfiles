@@ -53,10 +53,10 @@ alias la="exa -la --git"
 alias lt="exa -Tla --git"
 alias rm="rm -v"
 alias mkdir="mkdir -v"
+alias md="mkdir -p"
 alias mus="ncmpcpp -c ~/.config/ncmpcpp/config"
 
-## NOTE: dnd is a X program not working in wayland
-# alias dnd="dragon-drag-and-drop"
+alias dnd="dragon-drag-and-drop"
 
 # git aliases
 alias gitbeauty="git log --all --graph --oneline"
@@ -64,7 +64,7 @@ alias gpp="git push origin HEAD"
 alias gp="git push"
 alias gl="git pull"
 alias ga="git add"
-alias gc="git commit -m"
+alias gc="git commit"
 alias gca="git commit --amend"
 
 # tmux aliases

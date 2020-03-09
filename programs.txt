@@ -93,6 +93,8 @@ firefox
 gimp
 gpick
 fzf
+
+# wayland specific
 sway
 waybar
 wl-clipboard

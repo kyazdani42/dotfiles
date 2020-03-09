@@ -35,15 +35,16 @@ set termguicolors
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Disable autocommenting on newline: https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-autocmd BufNewFile,BufWinEnter * setlocal formatoptions-=cro
+au BufNewFile,BufWinEnter * setlocal formatoptions-=cro
 
-autocmd BufNewFile,BufRead *.tsx set syntax=typescript
-autocmd BufNewFile,BufRead *.jsx set syntax=javascript
+au BufNewFile,BufRead *.tsx set syntax=typescript
+au BufNewFile,BufRead *.jsx set syntax=javascript
 
-autocmd FileType c,cpp set tabstop=8 shiftwidth=8 noexpandtab
-autocmd FileType python set tabstop=4 shiftwidth=4 noexpandtab
-autocmd FileType markdown set tabstop=4 shiftwidth=4 expandtab
-autocmd FileType typescript,javascript set tabstop=2 shiftwidth=2 expandtab
+au FileType c,cpp set tabstop=8 shiftwidth=8 noexpandtab
+au FileType python set tabstop=4 shiftwidth=4 noexpandtab
+au FileType markdown set tabstop=4 shiftwidth=4 expandtab
+au FileType typescript,javascript set tabstop=2 shiftwidth=2 expandtab
+au FileType markdown set conceallevel=2
 
 lua require'init'.setup()
 
@@ -71,6 +72,8 @@ Plug 'junegunn/fzf.vim'                                                 " fzf wr
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}      " Lsp
 Plug 'rust-lang/rust.vim'                                               " Rust language support
 Plug 'tbastos/vim-lua'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 colorscheme palenight
@@ -127,6 +130,8 @@ function! LightlineFilename()
         return '[No Name]'
     endif
 endfunction
+
+let g:vim_markdown_folding_disabled = 1
 
 let g:fzf_layout = { 'down': '~25%' }
 nnoremap <silent> <C-p> :Files<CR>
@@ -190,5 +195,9 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " }}}
+
+nmap <C-c> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " vim: set sw=2 foldlevel=0 foldmethod=marker

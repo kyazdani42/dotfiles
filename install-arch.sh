@@ -25,6 +25,8 @@ function install_yay() {
 }
 
 function install() {
+    if ! egrep '^\#' "$1" &>/dev/null; then return; fi
+
 	if ! yay -Q | egrep "^$1" >/dev/null
 	then
 		printf "\r\e[K\x1b[32m** installing $1 **\x1b[0m"

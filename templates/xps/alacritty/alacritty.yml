@@ -35,7 +35,7 @@ font:
     family: "IBM Plex Mono Medium"
     style: Italic
 
-  size: 14
+  size: 8
 
   offset:
     x: 0
