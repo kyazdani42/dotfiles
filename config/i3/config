@@ -7,7 +7,10 @@ font pango:Ibm Plex Mono Medium 10
 # in case there is a title
 title_align center
 # no border, no title bar
-default_border none
+default_border pixel 2
+new_window pixel 2
+smart_borders on
+smart_gaps on
 # borders on floating to make it easier to resize
 default_floating_border pixel 11
 
@@ -41,10 +44,10 @@ bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
 
 # gaps
-bindsym $mod+m gaps inner current plus 10
-bindsym $mod+n gaps inner current minus 10
+bindsym $mod+m gaps inner current plus 5
+bindsym $mod+n gaps inner current minus 5
 bindsym $mod+Shift+d gaps inner current set 0
-bindsym $mod+Shift+f gaps inner current set 15
+bindsym $mod+Shift+f gaps inner current set 10
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -110,10 +113,10 @@ set_from_resource $cyan       color6    #9AEDFE
 # This only applies to single windows within a split container,
 # which are otherwise indistinguishable from single windows outside of a split container.
 
-client.focused          $bgDark $bgDark $cyan       $bgCol $bgCol
-client.focused_inactive $bgDark $bgDark $white-alt  $bgCol $bgCol
-client.unfocused        $bgCol $bgCol   $white-alt  $bgCol $bgCol
-client.placeholder      $bgCol $bgCol   $white-alt  $bgCol $bgCol
+client.focused          $bgDark $bgDark $cyan       $white-alt $white-alt
+client.focused_inactive $bgDark $bgDark $white-alt  $bgDark $bgDark
+client.unfocused        $bgCol $bgCol   $white-alt  $bgDark $bgDark
+client.placeholder      $bgCol $bgCol   $white-alt  $bgDark $bgDark
 client.urgent           $red   $red     $red        $red   $red
 
 client.background       $bgCol
