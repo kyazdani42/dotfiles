@@ -23,7 +23,7 @@ alt + d
     rofi_launch
 
 alt + shift + x
-    shutdown-dialog
+    shutdown_dialog
 
 Print
 	gnome-screenshot -a

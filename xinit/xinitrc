@@ -3,13 +3,13 @@
 xmodmap "$HOME/.Xmodmap"
 xrdb -merge "$HOME/.Xresources"
 
-xset r rate 300 40 &   # Set writing rate
-nm-applet &            # Wifi tray
-sxhkd &                # Launch key bindings
-mpd &                  # Music daemon
-setbg &                # Sets the background
-unclutter &            # Hides the cursor
-picom -b &             # Compositor
-notify_battery_level & # script to notify when level is too low
+xset r rate 300 40 &    # Set writing rate
+nm-applet --indicator & # Wifi tray
+sxhkd &                 # Launch key bindings
+mpd &                   # Music daemon
+setbg &                 # Sets the background
+unclutter &             # Hides the cursor
+picom -b &              # Compositor
+notify_battery_level &  # script to notify when level is too low
 
 exec i3

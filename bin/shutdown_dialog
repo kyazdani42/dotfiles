@@ -1,0 +1,11 @@
+#!/bin/sh
+
+action=$(echo "exit
+shutdown
+reboot
+" | dmenu)
+
+[ "$action" == "exit" ] && i3-msg exit
+[ "$action" == "shutdown" ] && shutdown now
+[ "$action" == "reboot" ] && reboot
+

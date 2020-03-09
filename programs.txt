@@ -30,7 +30,6 @@ pulseaudio
 pulseaudio-alsa
 cups
 fontconfig
-simple-shutdown-dialog
 unclutter
 xwallpaper
 ttf-ibm-plex
