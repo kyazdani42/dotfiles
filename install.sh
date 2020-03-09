@@ -10,7 +10,7 @@ ln -s $PWD/Pictures $HOME/Pictures
 rm -rf $HOME/.local/bin
 ln -sf $PWD/bin $HOME/.local/bin
 mkdir -p $HOME/.config
-cp Pictures/mountain_deer.jpg ~/.config/wallpaper
+cp Pictures/wall/mountain_deer.jpg ~/.config/wallpaper
 
 ./bin/select_template xps
 
