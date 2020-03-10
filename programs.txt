@@ -23,7 +23,7 @@ gdb
 rofi
 pavucontrol
 polybar
-gnome-screenshot
+scrot
 feh
 pass
 pulseaudio
@@ -86,7 +86,6 @@ ripgrep
 rxvt-unicode
 vlc
 zathura
-nautilus
 brave
 firefox
 gimp

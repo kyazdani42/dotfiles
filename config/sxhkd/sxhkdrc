@@ -26,13 +26,10 @@ alt + shift + x
     shutdown_dialog
 
 Print
-	gnome-screenshot -a
+    scrot -q 100
 
 F12
-	gnome-screenshot -i
-
-alt + w
-    nautilus
+    scrot -q 100 -s -l style=solid,width=2 -d 2
 
 alt + shift + w
 	$BROWSER

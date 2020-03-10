@@ -3,6 +3,8 @@
 xmodmap "$HOME/.Xmodmap"
 xrdb -merge "$HOME/.Xresources"
 
+systemctl --user import-environment DISPLAY
+
 xset r rate 300 40 &    # Set writing rate
 nm-applet --indicator & # Wifi tray
 sxhkd &                 # Launch key bindings

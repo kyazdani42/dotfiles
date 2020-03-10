@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "350x4-20+60"
+    geometry = "300x4-10+10"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -41,7 +41,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.).
-    transparency = 20
+    transparency = 00
 
     # The height of the entire notification.  If the height is smaller
     # than the font height and padding combined, it will be raised
@@ -64,7 +64,7 @@
     frame_width = 0
 
     # Defines color of the frame around the notification window.
-    frame_color = "#BD93F9"
+    frame_color = "#676e95"
 
     # Define a color for the separator.
     # possible values are:
@@ -82,11 +82,11 @@
     # Set to 0 to disable.
     # A client can set the 'transient' hint to bypass this. See the rules
     # section for how to disable this if necessary
-    idle_threshold = 120
+    idle_threshold = 60
 
     ### Text ###
 
-    font = Cantarell 10
+    font = Ibm Plex Sans Medium 10
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -126,7 +126,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "%s\n%b"
+    format = "%a: %s\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -143,7 +143,7 @@
 
     # When word_wrap is set to no, specify where to make an ellipsis in long lines.
     # Possible values are "start", "middle" and "end".
-    ellipsize = middle
+    ellipsize = end
 
     # Ignore newlines '\n' in notifications.
     ignore_newline = no
@@ -160,7 +160,7 @@
     ### Icons ###
 
     # Align icons left/right/off
-    icon_position = off
+    icon_position = left
 
     # Scale larger icons down to this size, set to 0 to disable
     max_icon_size = 32
@@ -183,13 +183,13 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/chromium --new-window
+    browser = /usr/bin/firefox --new-window
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
 
     # Define the title of the windows spawned by dunst
-    title = Dunst
+    title = Notification
 
     # Define the class of the windows spawned by dunst
     class = Dunst
@@ -197,7 +197,7 @@
     # Print a notification on startup.
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
-    startup_notification = false
+    startup_notification = true
 
     # Manage dunst's desire for talking
     # Can be one of the following values:
@@ -275,26 +275,22 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-	background = "#242735"
-    foreground = "#ffffff"
-    timeout = 10
-    # Icon for notifications with low urgency, uncomment to enable
-    #icon = /path/to/icon
+	background = "#ffffff"
+    foreground = "#1c1f2b"
+    timeout = 6
+    icon = /home/kiyan/pictures/bell.jpg
 
 [urgency_normal]
-	background = "#242735"
-    foreground = "#ffffff"
-    timeout = 8
-    # Icon for notifications with normal urgency, uncomment to enable
-    #icon = /path/to/icon
+	background = "#ffffff"
+    foreground = "#1c1f2b"
+    timeout = 6
+    icon = /home/kiyan/pictures/bell.jpg
 
 [urgency_critical]
-    background = "#a92a3b"
+    background = "#ff5370"
     foreground = "#ffffff"
-    frame_color = "#ff0000"
     timeout = 0
-    # Icon for notifications with critical urgency, uncomment to enable
-    #icon = /path/to/icon
+    icon = /home/kiyan/pictures/bell-alert.png
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
