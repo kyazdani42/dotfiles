@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if ! ./install-arch.sh; then exit 1; fi
 

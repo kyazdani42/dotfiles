@@ -1,12 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-function update_system() {
+update_system() {
 	printf "\e[1mupdating your system\e[0m\nThis might take some time...\n"
 	sudo pacman -Syu --noconfirm &>/dev/null
 	printf "\e[1;35mDone !\e[0m\n\n"
 }
 
-function install_yay() {
+install_yay() {
 	if ! command -v yay >/dev/null
 	then
 		echo "** installing yay **"
@@ -24,7 +24,7 @@ function install_yay() {
 	fi
 }
 
-function install() {
+install() {
     if ! egrep '^\#' "$1" &>/dev/null; then return; fi
 
 	if ! yay -Q | egrep "^$1" >/dev/null
@@ -43,7 +43,7 @@ function install() {
 	fi
 }
 
-function install_programs() {
+install_programs() {
 	while read file; do
 		install $file
 	done <programs.txt
@@ -52,33 +52,33 @@ function install_programs() {
 	fc-cache >/dev/null
 }
 
-function dmenu_rofi() {
+dmenu_rofi() {
     pushd /usr/bin >/dev/null
     sudo rm -f dmenu >/dev/null
     sudo ln -sf rofi dmenu >/dev/null
     popd >/dev/null
 }
 
-function setup_dunst() {
+setup_dunst() {
 	sudo cp -f etc/notifications.service /usr/share/dbus-1/services/org.freedesktop.Notifications.service
 }
 
-function setup_docker() {
+setup_docker() {
 	if ! groups | grep docker >/dev/null; then
 		sudo groupadd docker >/dev/null
 		sudo usermod -aG docker $USER
 	fi
 }
 
-function enable_service() {
+enable_service() {
 	sudo systemctl enable $1 &>/dev/null
 }
 
-function start_service() {
+start_service() {
 	sudo systemctl start $1 &>/dev/null
 }
 
-function enable_docker_service() {
+enable_docker_service() {
 	if ! sudo systemctl status docker >/dev/null
 	then
 		enable_service docker

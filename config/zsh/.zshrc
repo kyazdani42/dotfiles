@@ -55,6 +55,10 @@ alias rm="rm -v"
 alias mkdir="mkdir -v"
 alias md="mkdir -p"
 alias mus="ncmpcpp -c ~/.config/ncmpcpp/config"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 alias dnd="dragon-drag-and-drop"
 

@@ -20,7 +20,7 @@ reloadSink() {
     active_sink=$(pacmd list-sinks | awk '/* index:/{print $3}')
 }
 
-function volUp {
+volUp() {
 
     getCurVol
 
@@ -54,7 +54,7 @@ function volUp {
     fi
 }
 
-function volDown {
+volDown() {
 
     pactl set-sink-volume "$active_sink" "-$inc%"
     getCurVol
@@ -71,11 +71,11 @@ function volDown {
 
 }
 
-function getSinkInputs {
+getSinkInputs() {
     input_array=$(pacmd list-sink-inputs | grep -B 4 "sink: $1 " | awk '/index:/{print $2}')
 }
 
-function volSync {
+volSync() {
     getSinkInputs "$active_sink"
     getCurVol
 
@@ -85,11 +85,11 @@ function volSync {
     done
 }
 
-function getCurVol {
+getCurVol() {
     curVol=$(pacmd list-sinks | grep -A 15 "index: $active_sink$" | grep 'volume:' | grep -E -v 'base volume:' | awk -F : '{print $3}' | grep -o -P '.{0,3}%'| sed s/.$// | tr -d ' ')
 }
 
-function volMute {
+volMute() {
     case "$1" in
         mute)
             pactl set-sink-mute "$active_sink" 1
@@ -110,13 +110,13 @@ function volMute {
 
 }
 
-function volMuteStatus {
+volMuteStatus() {
     curStatus=$(pacmd list-sinks | grep -A 15 "index: $active_sink$" | awk '/muted/{ print $2}')
 }
 
 # Prints output for bar
 # Listens for events for fast update speed
-function listen {
+listen() {
     firstrun=0
 
     pactl subscribe 2>/dev/null | {
@@ -144,7 +144,7 @@ function listen {
     }
 }
 
-function output() {
+output() {
     reloadSink
     getCurVol
     volMuteStatus
@@ -154,7 +154,7 @@ function output() {
     else
         echo " $curVol%"
     fi
-} #}}}
+}
 
 reloadSink
 case "$1" in
