@@ -25,6 +25,7 @@ export INPUTRC="$HOME/.config/inputrc"
 export WGETRC="$HOME/.config/wget/wgetrc"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 export MANPAGER="nvim -c 'set ft=man' -"
+export DENO_DIR="$HOME/.config/deno"
 # default programs
 export EDITOR="nvim"
 export TERMINAL="alacritty"
