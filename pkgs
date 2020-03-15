@@ -7,15 +7,16 @@ xorg-xdpyinfo
 xorg-xrandr
 xclip
 xdotool
+sxhkd
+sxiv
+picom
+xwallpaper
 networkmanager
-network-manager-applet-indicator
+network-manager-applet
 i3-gaps
 clang
 valgrind
 dunst
-sxhkd
-sxiv
-picom
 tar
 shellcheck
 lldb
@@ -31,7 +32,6 @@ pulseaudio-alsa
 cups
 fontconfig
 unclutter
-xwallpaper
 ttf-ibm-plex
 ttf-dejavu
 ttf-font-awesome
@@ -48,7 +48,7 @@ mpc
 ncmpcpp
 zsh
 dragon-drag-and-drop
-neovim
+neovim-nightly
 tree
 zip
 unzip
@@ -83,7 +83,6 @@ transmission-gtk
 pastel
 exa
 ripgrep
-rxvt-unicode
 vlc
 zathura
 brave
@@ -91,12 +90,3 @@ firefox
 gimp
 gpick
 fzf
-
-# wayland specific
-sway
-waybar
-wl-clipboard
-swaylock
-swaylock-blur
-grim
-slurp

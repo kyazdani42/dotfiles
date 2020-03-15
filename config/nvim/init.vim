@@ -23,6 +23,7 @@ set inccommand=split           " Show effects of command as you type in a split
 set ignorecase                 " Ignore case
 set hlsearch                   " Highlight search results (enforce)
 set confirm                    " Disable 'no write'
+set nowrap                     " Do not wrap lines
 set mouse=n                    " Enable mouse
 set smartindent                " auto indent on new line (brackets for instance)
 set tabstop=4                  " Tabs are 4 spaces long
@@ -37,8 +38,8 @@ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\
 " Disable autocommenting on newline: https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
 au BufNewFile,BufWinEnter * setlocal formatoptions-=cro
 
-au BufNewFile,BufRead *.tsx set syntax=typescript
-au BufNewFile,BufRead *.jsx set syntax=javascript
+au BufNewFile,BufRead *.tsx set syntax=typescript.tsx
+au BufNewFile,BufRead *.jsx set syntax=javascript.jsx
 
 au FileType c,cpp set tabstop=8 shiftwidth=8 noexpandtab
 au FileType python set tabstop=4 shiftwidth=4 noexpandtab

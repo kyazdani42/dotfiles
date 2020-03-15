@@ -24,32 +24,18 @@ install_yay() {
 	fi
 }
 
-install() {
-    if ! egrep '^\#' "$1" &>/dev/null; then return; fi
-
-	if ! yay -Q | egrep "^$1" >/dev/null
-	then
-		printf "\r\e[K\x1b[32m** installing $1 **\x1b[0m"
-
-		if ! yay -Sy --noconfirm "$1" &>/dev/null
-		then
-			printf "\r\e[K\x1b[31m$1 was not installed\x1b[0m\n"
-			echo "$1 was not installed" >> error.log
-		else
-			printf "\r\e[K\x1b[32m-- $1 has been installed --\x1b[0m\n"
-		fi
-	else
-		printf "\r\e[K\x1b[35m$1 has already been installed\x1b[0m"
-	fi
-}
-
 install_programs() {
-	while read file; do
-		install $file
-	done <programs.txt
-	printf "\r\e[K"
-
-	fc-cache >/dev/null
+    sudo printf "\e[1mInstalling packages\e[0m\n"
+    yay -Sy --noconfirm --needed $(cat pkgs) &>/dev/null &
+    while [ "$(jobs | grep -i 'running')" ]; do
+        printf "\r\e[K\e[33;1m.\e[0m"
+        sleep 0.4;
+        printf "\r\e[K\e[33;1m.\e[32m.\e[0m"
+        sleep 0.4;
+        printf "\r\e[K\e[33;1m.\e[32m.\e[35m.\e[0m"
+        sleep 0.4;
+    done
+    printf "\n\n"
 }
 
 dmenu_rofi() {
@@ -95,6 +81,3 @@ enable_docker_service
 dmenu_rofi
 
 printf "\x1b[1m** - installed all programs, check error.log to see if some programs have not been installed properly - **\x1b[0m\n\n"
-
-# TODO: find a fix for that
-echo "Some programs might not be installed because of name issue: see \`pacman -Q | grep gdb\`\n"
