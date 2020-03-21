@@ -12,7 +12,7 @@ new_window pixel 2
 smart_borders on
 smart_gaps on
 # borders on floating to make it easier to resize
-default_floating_border pixel 11
+default_floating_border pixel 2
 
 # the focus only changes when clicking
 focus_follows_mouse no
@@ -22,10 +22,10 @@ bindsym $mod+F2 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+F2 restart
 
-for_window [class="Org.gnome.Nautilus" instance="org.gnome.Nautilus"] floating enable, resize set 1000 800, border pixel 11
-for_window [class="VirtualBox Manager" instance="VirtualBox Manager"] floating enable, resize set 2600 1600, border pixel 11
+for_window [class="Org.gnome.Nautilus" instance="org.gnome.Nautilus"] floating enable, resize set 1000 800, border pixel 2 
+for_window [class="VirtualBox Manager" instance="VirtualBox Manager"] floating enable, resize set 2600 1600, border pixel 2
 for_window [class="VirtualBox Machine" instance="VirtualBox Machine"] floating enable, resize set 1816 1094
-for_window [class="Pavucontrol" instance="pavucontrol"] floating enable, resize set 1200 600, border pixel 11
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable, resize set 1200 600, border pixel 2
 
 bindsym $mod+Tab workspace back_and_forth
 
