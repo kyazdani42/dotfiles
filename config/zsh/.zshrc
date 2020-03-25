@@ -1,4 +1,4 @@
-[ $TERM != "tmux-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
+# [ $TERM != "tmux-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
 
 mkdir -p $HOME/.cache/zsh
 export HISTFILE="$HOME/.cache/zsh/history"

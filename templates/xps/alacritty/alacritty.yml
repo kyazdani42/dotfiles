@@ -18,9 +18,6 @@ window:
 scrolling:
   history: 10000
   multiplier: 3
-  auto_scroll: true
-
-tabspaces: 8
 
 font:
   normal:
@@ -49,16 +46,24 @@ use_thin_strokes: true
 draw_bold_text_with_bright_colors: true
 
 colors:
+  vi_mode_cursor:
+   text: '#1b1e2b'
+   cursor: '#89ddff'
+
+  selection:
+   text: '#a6accd'
+   background: '#32374d'
+
   primary:
-    background: '#292d3e'
+    background: '#1b1e2b'
     foreground: '#959dcb'
 
   cursor:
-    text: '#292d3e'
+    text:   '#1b1e2b'
     cursor: '#ffcb6b'
 
   normal:
-    black:   '#292d3e'
+    black:   '#1b1e2b'
     red:     '#f07178'
     green:   '#c3e88d'
     yellow:  '#ffcb6b'
@@ -115,10 +120,10 @@ debug:
 key_bindings:
   - { key: Paste,                   action: Paste                        }
   - { key: Copy,                    action: Copy                         }
-# allow control slash to send ++ so i can bind control / to comment in vim
-  - { key: Slash,    mods: Control, chars: "++"                          }
-# allow control backslash to send right so i can complete zsh autocompletion easily
-  - { key: Backslash,mods: Control, chars: "\x1b[C"                      }
+  - { key: A,        mods: Control, action: ToggleViMode                 }
+  - { key: J,        mods: Control, mode: Vi, action: ToggleViMode       }
+  - { key: Slash,    mods: Control, chars: "++"                          } # allow control slash to send ++ so i can bind control / to comment in vim
+  - { key: Backslash,mods: Control, chars: "\x1b[C"                      } # allow control backslash to send right so i can complete zsh autocompletion easily
   - { key: L,        mods: Control, action: ClearLogNotice               }
   - { key: L,        mods: Control, chars: "\x0c"                        }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }

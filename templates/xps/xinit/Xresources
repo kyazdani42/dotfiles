@@ -11,14 +11,14 @@ Xft.rgba: rgb
 
 *foreground:   #959dcb
 #ifdef background_opacity
-*background:   [background_opacity]#292d3e
+*background:   [background_opacity]#1b1e2b
 #else
-*background:   #292d3e
+*background:   #1b1e2b
 #endif
 *cursorColor:  #ffcb6b
 
-*bg_dark:      #1c1f2b
-*color0:       #292d3e
+*bg_dark:      #1b1e2b
+*color0:       #1b1e2b
 *color1:       #f07178
 *color2:       #c3e88d
 *color3:       #ffcb6b

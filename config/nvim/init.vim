@@ -66,6 +66,7 @@ Plug 'justinmk/vim-sneak'                                               " Better
 Plug 'ryanoasis/vim-devicons'                                           " Icons
 Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
+Plug 'sheerun/vim-polyglot'
 Plug 'hardselius/warlock'
 Plug 'kyazdani42/nvim-palenight.lua'                                    " My colorscheme
 Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
@@ -84,6 +85,7 @@ silent! lua require'colors'.setup()
 silent! lua require'colorizer'.setup()
 silent! lua require'fzf'.setup()
 
+" Tree config
 nnoremap <silent> <C-n> :LuaTreeToggle<CR>
 nnoremap <silent> <leader>n :LuaTreeRefresh<CR>
 let g:lua_tree_ignore = ['.git', 'node_modules']
@@ -95,6 +97,12 @@ let g:lua_tree_show_icons = {
             \ 'folders': 1,
             \ 'files': 1
             \}
+" hi LuaTreeNormal guifg=#757ca1 guibg=#1b1e2b
+" hi LuaTreeExecFile gui=NONE guifg=#757ca1
+" hi LuaTreeImageFile gui=NONE guifg=#757ca1
+" hi LuaTreeSpecialFile gui=NONE guifg=#757ca1
+" hi LuaTreeFolderName gui=NONE guifg=#757ca1
+" hi LuaTreeSymlink gui=NONE guifg=#89ddff
 
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>

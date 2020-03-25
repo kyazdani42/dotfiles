@@ -284,19 +284,19 @@ isnt formated for different border radius */
 }
 
 .tab-content[selected="true"] {
-    background: #1a1f2b !important;
+    background: #1b1e2b !important;
 }
 
 /* Normal tabs design on hover */
 .tab-content:not([selected="true"]):hover {
     background-color: #89ddff !important;
-    color: #1a1f2b;
+    color: #1b1e2b;
 }
 
 /* Multiselect tabs design on hover */
 #tabbrowser-tabs .tabbrowser-tab .tab-background[multiselected="true"] {
     background-color: #89ddff !important;
-    color: #1a1f2b !important;
+    color: #1b1e2b !important;
 }
 /* Fixing Multiselect */
 .tab-background[multiselected="true"]:not([selected="true"]) > .tab-background-inner {
@@ -308,14 +308,14 @@ toolbar #tabs-newtab-button:not([disabled="true"]):not([checked]):not([open]):no
     border: 0 !important; 
     border-radius: 20px 20px 20px 20px !important;
     background-image: none !important;
-    background-color: #1a1f2b !important;
+    background-color: #1b1e2b !important;
 }
 
 toolbar #tabs-newtab-button:not([disabled="true"]):-moz-any([open], [checked], :hover:active) > .toolbarbutton-icon {
     border: 0 !important; 
     border-radius: 20px 20px 20px 20px !important;
     background-image: none !important;
-    background-color: #1a1f2b !important;
+    background-color: #1b1e2b !important;
 }
 
 /* SMOOTH AUTOHIDE TAB BAR 

@@ -14,7 +14,7 @@ compositing-underline = over
 compositing-border = over
 
 [colors]
-background = #1c1f2b
+background = #1b1e2b
 foreground = ${xrdb:color15:#fff}
 foreground-alt = ${xrdb:color7:#abc}
 cyan = ${xrdb:color6:#5df}
