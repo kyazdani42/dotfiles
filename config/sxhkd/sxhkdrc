@@ -1,11 +1,20 @@
 XF86Audio{Lower,Raise}Volume
-	amixer -q sset Master 3%{-,+} unmute
+	amixer -q sset Master 3%{-,+} unmute && \
+    notify-send -t 1000 \
+    -h string:x-canonical-private-synchronous:anything \
+    "volume: " "$(amixer sget Master mono | grep % | sed 's/.*\([0-9][0-9]%\).*/\1/')"
 
 super + {Down,Up}
-	amixer -q sset Master 3%{-,+} unmute
+	amixer -q sset Master 3%{-,+} unmute && \
+    notify-send -t 1000 \
+    -h string:x-canonical-private-synchronous:anything \
+    "volume: " "$(amixer sget Master mono | grep % | sed 's/.*\([0-9][0-9]%\).*/\1/')"
 
 XF86MonBrightness{Down,Up}
-	xbacklight -{dec,inc} 5
+	xbacklight -{dec,inc} 5 && \
+    notify-send -t 1000 \
+    -h string:x-canonical-private-synchronous:anything \
+    "brightness: $(xbacklight -get | cut -d '.' -f1)%"
 
 alt + shift + o
 	dm-tool switch-to-greeter
