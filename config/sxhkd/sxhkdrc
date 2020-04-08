@@ -1,26 +1,14 @@
 XF86Audio{Lower,Raise}Volume
-	amixer -q sset Master 3%{-,+} unmute && \
-    notify-send -t 1000 \
-    -h string:x-canonical-private-synchronous:anything \
-    "volume: " "$(amixer sget Master mono | grep % | sed 's/.*\([0-9][0-9]%\).*/\1/')"
+	amixer -q sset Master 3%{-,+} unmute && notify_sound_level
 
 super + {Down,Up}
-	amixer -q sset Master 3%{-,+} unmute && \
-    notify-send -t 1000 \
-    -h string:x-canonical-private-synchronous:anything \
-    "volume: " "$(amixer sget Master mono | grep % | sed 's/.*\([0-9][0-9]%\).*/\1/')"
+	amixer -q sset Master 3%{-,+} unmute && notify_sound_level 
 
 XF86MonBrightness{Down,Up}
-	xbacklight -{dec,inc} 5 && \
-    notify-send -t 1000 \
-    -h string:x-canonical-private-synchronous:anything \
-    "brightness: $(xbacklight -get | cut -d '.' -f1)%"
-
-alt + shift + o
-	dm-tool switch-to-greeter
+	xbacklight -{dec,inc} 5 && notify_brightness_level
 
 alt + shift + p
-    $HOME/.config/polybar/launch.sh > /dev/null
+    $HOME/.config/polybar/launch.sh
 
 alt + p
 	passmenu
@@ -32,13 +20,13 @@ alt + d
     rofi_launch
 
 alt + shift + x
-    shutdown_dialog
+    rofi_shutdown
 
 Print
-    scrot -q 100
+    take_screenshot fullscreen
 
 F12
-    scrot -q 100 -s -l style=solid,width=2 -d 2
+    take_screenshot
 
 alt + shift + w
 	$BROWSER

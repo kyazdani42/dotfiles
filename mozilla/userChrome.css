@@ -415,6 +415,15 @@ visibility: hidden;
     display: flex !important;
     flex-direction: column !important;
 }
+#urlbar > * {
+    max-height: var(--urlbar-height) !important;
+}
+#urlbar[breakout][breakout-extend] {
+    max-height: var(--urlbar-height) !important;
+}
+#urlbar[breakout][breakout-extend] > * {
+    max-height: var(--urlbar-height) !important;
+}
 #urlbar-input-container {
     height: 100%;
     order: 2;

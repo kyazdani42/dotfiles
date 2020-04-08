@@ -1,0 +1,8 @@
+#!/bin/sh
+
+vol="$(amixer get Master mono | grep -oE '[0-9]{1,2}%')"
+notify-send \
+    -t 1000 \
+    -h string:x-canonical-private-synchronous:anything \
+    "volume: " "$vol"
+

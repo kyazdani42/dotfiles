@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$1" == "fullscreen" ]; then
+    scrot -q 100
+else
+    # scrot is breaking when running interactively from a keypress
+    sleep 0.1
+    scrot -q 100 --select --line style=solid,width=2 2>/dev/null
+fi

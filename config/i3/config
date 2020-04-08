@@ -89,7 +89,6 @@ mode "resize" {
 	bindsym $mod+Shift+r mode "default"
 }
 
-
 set_from_resource $bgDark     bg_dark   #000000
 set_from_resource $bgCol      color0    #000000
 set_from_resource $white      color15   #FFFFFF
