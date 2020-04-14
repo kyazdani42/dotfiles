@@ -29,9 +29,8 @@ for_window [class="Pavucontrol" instance="pavucontrol"] floating enable, resize 
 
 bindsym $mod+Tab workspace back_and_forth
 
-exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-bindsym $mod+Return split h, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
-bindsym $mod+Shift+Return split v, exec $HOME/.config/alacritty/spawn-alacritty-cwd || $TERMINAL
+bindsym $mod+Return split h, exec spawn-alacritty-cwd || $TERMINAL
+bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd || $TERMINAL
 
 # disable clicking
 bindsym button1 nop

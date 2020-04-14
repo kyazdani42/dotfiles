@@ -13,7 +13,7 @@ window:
 
   dynamic_padding: false
   decorations: full
-  startup_mode: Windowed
+  startup_mode: Maximized
 
 scrolling:
   history: 10000

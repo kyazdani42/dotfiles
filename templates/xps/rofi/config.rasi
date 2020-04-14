@@ -5,7 +5,7 @@ configuration {
 
 * {
     background-color:               transparent;
-    bg:                             #292d3efa;
+    bg:                             #292d3e90;
     text-color:                     #ffffff;
     selected-element-bg:            #ffffff10;
     window-border-color:            #959dcb;
