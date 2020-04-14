@@ -3,7 +3,7 @@
 BINARIES=(
 # programs binaries
 "$HOME/.deno/bin"
-"$HOME/.cargo/bin"
+"$HOME/.local/share/cargo/bin"
 "$HOME/.config/yarn/bin"
 "$HOME/.pyenv/bin"
 # personnal binaries
@@ -18,14 +18,25 @@ done
 [ $(command -v "ssg-agent") ] && eval "$(ssh-agent -s)"
 [ $(command -v "ssg-add") ] && [ -d "$HOME/.ssh/id_rsa.pub" ] && ssh-add "$HOME/.ssh/id_rsa.pub"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
 export LESSHISTFILE="-"
-export GTK2_RC_FILES="$HOME/.config/gtk-2.0/gtkrc-2.0"
-export ZDOTDIR="$HOME/.config/zsh"
-export INPUTRC="$HOME/.config/inputrc"
-export WGETRC="$HOME/.config/wget/wgetrc"
-export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
+export HISTFILE="$XDG_CACHE_HOME/bash_history"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export PYTHONSTARTUP="$HOME/.local/bin/python_startup"
+export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export INPUTRC="$XDG_CONFIG_HOME/inputrc"
+export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export DENO_DIR="$XDG_CONFIG_HOME/deno"
 export MANPAGER="nvim -c 'set ft=man' -"
-export DENO_DIR="$HOME/.config/deno"
 # default programs
 export EDITOR="nvim"
 export TERMINAL="alacritty"

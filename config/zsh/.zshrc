@@ -60,6 +60,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias wget="wget --hsts-file='$HOME/.cache/wget-hsts'"
 
 alias dnd="dragon-drag-and-drop"
 
