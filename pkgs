@@ -21,7 +21,7 @@ tar
 shellcheck
 lldb
 gdb
-rofi
+rofi-git
 pavucontrol
 polybar
 scrot

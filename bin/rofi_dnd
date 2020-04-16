@@ -1,2 +1,2 @@
 #!/bin/sh
-fd -iHL . ~ | dmenu | xargs dragon-drag-and-drop &>/dev/null
+fd -iHL . ~ | rofi -dmenu -config "$XDG_CONFIG_HOME/rofi/dnd.rasi" | xargs dragon-drag-and-drop &>/dev/null

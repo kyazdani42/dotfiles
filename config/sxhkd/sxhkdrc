@@ -13,14 +13,14 @@ alt + shift + p
 alt + p
 	passmenu
 
-alt + c
-    rofi_dnd
-
 alt + d
-    rofi_launch
+    rofi_launch &
+
+alt + shift + d
+    rofi_dnd &
 
 alt + shift + x
-    rofi_shutdown
+    rofi_shutdown &
 
 Print
     take_screenshot fullscreen

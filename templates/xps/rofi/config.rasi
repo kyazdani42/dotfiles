@@ -1,45 +1,76 @@
 configuration {
     show-icons:                     true;
-    font:                           "Ibm Plex Mono Medium 20";
+    icon-theme:                    "la-capitaine";
+    font:                           "Ibm Plex Mono Medium 14";
+    display-drun: 					"";
+    fake-transparency:              false;
+    drun-display-format:            "{name}";
 }
 
 * {
+    bg:                             #292d3eea;
+    bg-light:                       #a6accd1a;
+    bg-dark:                        #1b1e2b;
     background-color:               transparent;
-    bg:                             #292d3e90;
-    text-color:                     #ffffff;
-    selected-element-bg:            #ffffff10;
-    window-border-color:            #959dcb;
+    text-color:                     #a6accd;
+    text-color-2:                   #676e95;
 }
 
 window {
-    height:                         88%;
-    width:                          50%;
-    border:                         2px solid;
+    height:                         76%;
+    width:                          60%;
+    border:                         0px solid;
     border-radius:                  3px;
     border-color:                   @window-border-color;
-}
-
-mainbox {
-    children:                       [ entry, listview ];
-    padding:                        20px 100px;
     background-color:               @bg;
 }
 
+mainbox {
+    children: [inputbar, listview];
+}
+
+inputbar {
+    text-color:        @text-color;
+    background-color:  @bg-dark;
+    padding:           16px;
+    border-radius:     15px;
+    margin:            40px 200px 0px;
+    children:          [prompt, entry];
+}
+
 entry {
-    expand:                         false;
-    margin:                         10px; 
-    horizontal-align:               0.5;
+    blink:              true;
+    placeholder:        "Search";
+    placeholder-color:  @text-color-2;
+    margin:             0px 8px;
+    text-color:         @text-color;
+}
+
+prompt {
+    font: "Noto Sans Mono 16";
+    text-color: @text-color-2;
 }
 
 listview {
-    margin:                         10px 100px;
+    margin: 40px 70px 16px;
+    spacing: 30px;
+    children: [element];
 }
 
 element {
-    padding:                        15px;
+    border-radius: 8px;
+    padding: 16px;
+    text-color: @text-color;
 }
-
 element selected {
-    background-color:               @selected-element-bg;
+    text-color: #fff;
+    background-color: @bg-dark;
 }
-
+element-icon {
+    size: 50px;
+}
+element-text {
+    margin: 0px 8px;
+    vertical-align: 0.5;
+}
+/* vim:ft=css

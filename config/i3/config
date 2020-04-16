@@ -45,7 +45,7 @@ bindsym $mod+Shift+v split v
 # gaps
 bindsym $mod+m gaps inner current plus 5
 bindsym $mod+n gaps inner current minus 5
-bindsym $mod+Shift+d gaps inner current set 0
+bindsym $mod+Shift+e gaps inner current set 0
 bindsym $mod+Shift+f gaps inner current set 10
 
 # kill focused window
