@@ -70,7 +70,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'hardselius/warlock'
 Plug 'kyazdani42/nvim-palenight.lua'                                    " My colorscheme
 Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
-" Plug 'kyazdani42/highlight.lua'                                         " Highlight experiments using treesitter
+if (exists("$NVIM_DEV"))
+    Plug 'kyazdani42/highlight.lua'                                         " Highlight experiments using treesitter
+endif
 Plug 'junegunn/fzf.vim'                                                 " fzf wrapper
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}      " Lsp
 Plug 'rust-lang/rust.vim'                                               " Rust language support

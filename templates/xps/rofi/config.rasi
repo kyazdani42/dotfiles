@@ -8,9 +8,9 @@ configuration {
 }
 
 * {
-    bg:                             #292d3eea;
+    bg:                             #292d3e8a;
     bg-light:                       #a6accd1a;
-    bg-dark:                        #1b1e2b;
+    bg-dark:                        #1b1e2b8a;
     background-color:               transparent;
     text-color:                     #a6accd;
     text-color-2:                   #676e95;

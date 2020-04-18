@@ -3,7 +3,7 @@
 xmodmap "$HOME/.Xmodmap"
 xrdb -merge "$HOME/.Xresources"
 
-systemctl --user import-environment DISPLAY
+systemctl --user import-environment DISPLAY XAUTHORITY
 
 xset r rate 300 40 &                # Set writing rate
 nm-applet &                         # Wifi tray
@@ -12,7 +12,7 @@ mpd &                               # Music daemon
 setbg &                             # Sets the background
 # randomize_bg &                     # randomizes backgrounds from pictures
 unclutter &                         # Hides the cursor
-picom -b &                          # Compositor
+picom --experimental-backends -b &  # Compositor
 notify_battery_level &              # script to notify when level is too low
 $HOME/.config/polybar/launch.sh &   # bar
 
