@@ -6,10 +6,10 @@ if ! ./install-arch.sh; then exit 1; fi
 
 printf "\x1b[1m- Initialize home folders\n"
 rm -rf $HOME/Pictures
-ln -s $PWD/Pictures $HOME/Pictures
+ln -s $PWD/Pictures $HOME/pictures
 rm -rf $HOME/.local/bin
 ln -sf $PWD/bin $HOME/.local/bin
-mkdir -p $HOME/.config
+mkdir -p $HOME/{dev,docs,music,.config}
 cp Pictures/wall/mountain_deer.jpg ~/.config/wallpaper
 
 ./bin/select_template xps
@@ -51,6 +51,9 @@ Templates:
 - copy a folder in the templates folder
 - modify config files (font sizes, dpi level, width/heights)
 - run \`select_template YOUR_TEMPLATE\`
+
+Dev:
+- install neovim git projects in ~/dev/nvim_dev
 
 Gtk:
 - install gtk cursor theme \`volantes cursors\`

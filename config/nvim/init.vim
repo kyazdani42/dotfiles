@@ -66,20 +66,16 @@ Plug 'justinmk/vim-sneak'                                               " Better
 Plug 'ryanoasis/vim-devicons'                                           " Icons
 Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
-Plug 'sheerun/vim-polyglot'
-Plug 'hardselius/warlock'
-Plug 'kyazdani42/nvim-palenight.lua'                                    " My colorscheme
-Plug 'kyazdani42/nvim-tree.lua'                                         " My tree
-if (exists("$NVIM_DEV"))
-    Plug 'kyazdani42/highlight.lua'                                         " Highlight experiments using treesitter
-endif
+Plug 'sheerun/vim-polyglot'                                             " Language color pack
 Plug 'junegunn/fzf.vim'                                                 " fzf wrapper
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}      " Lsp
 Plug 'rust-lang/rust.vim'                                               " Rust language support
-Plug 'tbastos/vim-lua'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
+Plug 'plasticboy/vim-markdown'                                          " Markdown support
 call plug#end()
+
+set runtimepath+=~/dev/nvim_dev/nvim-tree.lua
+set runtimepath+=~/dev/nvim_dev/nvim-palenight.lua
+set runtimepath+=~/dev/nvim_dev/nvim-treesitter
 
 colorscheme palenight
 

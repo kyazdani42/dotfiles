@@ -12,9 +12,8 @@ mpd &                               # Music daemon
 setbg &                             # Sets the background
 # randomize_bg &                     # randomizes backgrounds from pictures
 unclutter &                         # Hides the cursor
-picom --experimental-backends -b &  # Compositor
+picom -b &  # Compositor
 notify_battery_level &              # script to notify when level is too low
 $HOME/.config/polybar/launch.sh &   # bar
 
 exec i3
-# exec wingo
