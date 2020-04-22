@@ -28,6 +28,7 @@ for_window [class="VirtualBox Machine" instance="VirtualBox Machine"] floating e
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable, resize set 1200 600, border pixel 2
 for_window [class="MultiMC5" instance="multimc"] floating enable, resize set 1000 500, border pixel 2
 for_window [class="Minecraft 1.15.2" instance="Minecraft 1.15.2"] floating enable, border pixel 2
+for_window [class="Alacritty" instance="AlacrittyFloating"] floating enable, resize set 1000 400, border pixel 2
 
 bindsym $mod+Tab workspace back_and_forth
 
@@ -43,6 +44,8 @@ floating_maximum_size 1500 x 1000
 # go to mode
 bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
+
+bindsym $mod+c exec alacritty --class 'AlacrittyFloating' -e python
 
 # gaps
 bindsym $mod+m gaps inner current plus 5
