@@ -44,10 +44,8 @@ au BufNewFile,BufRead *.jsx set syntax=javascript.jsx
 au FileType c,cpp set tabstop=8 shiftwidth=8 noexpandtab
 au FileType python set tabstop=4 shiftwidth=4 noexpandtab
 au FileType markdown set tabstop=4 shiftwidth=4 expandtab
-au FileType typescript,javascript set tabstop=2 shiftwidth=2 expandtab
+au FileType typescript,javascript,lua set tabstop=2 shiftwidth=2 expandtab
 au FileType markdown set conceallevel=2
-
-lua require'init'.setup()
 
 " }}}
 
@@ -79,9 +77,9 @@ set runtimepath+=~/dev/nvim_dev/nvim-treesitter
 
 colorscheme palenight
 
-silent! lua require'colors'.setup()
-silent! lua require'colorizer'.setup()
-silent! lua require'fzf'.setup()
+lua require'colorizer'.setup()
+lua require'init'.setup()
+" lua require'nvim-treesitter.highlight'.setup()
 
 " Tree config
 nnoremap <silent> <C-n> :LuaTreeToggle<CR>
@@ -95,12 +93,6 @@ let g:lua_tree_show_icons = {
             \ 'folders': 1,
             \ 'files': 1
             \}
-" hi LuaTreeNormal guifg=#757ca1 guibg=#1b1e2b
-" hi LuaTreeExecFile gui=NONE guifg=#757ca1
-" hi LuaTreeImageFile gui=NONE guifg=#757ca1
-" hi LuaTreeSpecialFile gui=NONE guifg=#757ca1
-" hi LuaTreeFolderName gui=NONE guifg=#757ca1
-" hi LuaTreeSymlink gui=NONE guifg=#89ddff
 
 " Ctrl + / is outputing ++ (term configuration)
 nmap <silent> ++ :TComment<CR>
@@ -207,5 +199,3 @@ command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeIm
 nmap <C-c> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" vim: set sw=2 foldlevel=0 foldmethod=marker
