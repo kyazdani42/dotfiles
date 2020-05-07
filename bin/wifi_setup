@@ -1,0 +1,8 @@
+#!/bin/sh
+
+nmcli device wifi rescan
+
+nmcli -f SSID device wifi list  |
+sed '/SSID/d' | sed '/--/d' | sed '/^$/d' |
+rofi -dmenu -config "$XDG_CONFIG_HOME/rofi/wifi.rasi" |
+xargs nmcli device wifi connect

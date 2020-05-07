@@ -22,6 +22,9 @@ alt + shift + d
 alt + shift + x
     rofi_shutdown &
 
+super + w
+    wifi_setup &
+
 Print
     take_screenshot fullscreen
 

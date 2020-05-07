@@ -20,6 +20,10 @@ change (#navigator-toolbox) with your top bar (in this case #nav-bar) and use
     padding-top: 3px !important;
 }
 
+scrollbox {
+    background-color: #1b1e2b !important;
+}
+
 /* Fix the FUllscreen changing padding on other bars. */	
 :root[tabsintitlebar][sizemode="maximized"] #titlebar {
     -moz-appearance: none !important;
@@ -75,7 +79,7 @@ list-style-image: url(image/Fx-Browser-icon-oneColor-white.png) !important;}
     padding-inline-start: 0 !important;
     border: none !important;
     border-inline-start: none !important;
-    background: #292d3e;
+    background: #1b1e2b;
 }
 #PanelUI-button #PanelUI-menu-button .toolbarbutton-icon {
     opacity: 0.7 !important;
@@ -163,7 +167,7 @@ transform: rotateX(0);
     -moz-box-ordinal-group: 1 !important;	
 }
 #nav-bar-customization-target {
-    background-color: #292d3e !important;
+    background-color: #1b1e2b !important;
 }
 
 /* Search Bar */
@@ -236,7 +240,7 @@ transform: rotateX(0);
 }
 /* Main BAR */
 #navigator-toolbox {
-    background-color: #292d3e !important;
+    background-color: #1b1e2b !important;
     --tabs-border-color: none !important;
     --my-tab-min-width: 36px !important;
     --tabs-navbar-shadow-size: 0px  !important;
@@ -259,8 +263,9 @@ if you change --tab-min-height it doesnt work for fullcreen
 /* Remove the fill when loading on the tab which 
 isnt formated for different border radius */
 #tabbrowser-tabs {
-    --tab-loading-fill: #292d3e;
+    --tab-loading-fill: #1b1e2b;
     padding-left: 2px !important; /* fix the left tab being too close to the edge */
+    background-color: #1b1e2b;
 }
 
 /* Width of the tabs. Important to have Fadein or it breaks fonctionality */
@@ -276,27 +281,27 @@ isnt formated for different border radius */
 /* Selected tabs design */
 .tabbrowser-tab[selected="true"] {
     border: 0 !important;
-    background: #292d3e !important;
+    background: #1b1e2b !important;
 }
 
 .tab-background[selected="true"] {
-    background: #292d3e !important;
+    background: #1b1e2b !important;
 }
 
 .tab-content[selected="true"] {
-    background: #1b1e2b !important;
+    background: #292d3e !important;
 }
 
 /* Normal tabs design on hover */
 .tab-content:not([selected="true"]):hover {
     background-color: #89ddff !important;
-    color: #1b1e2b;
+    color: #292d3e;
 }
 
 /* Multiselect tabs design on hover */
 #tabbrowser-tabs .tabbrowser-tab .tab-background[multiselected="true"] {
     background-color: #89ddff !important;
-    color: #1b1e2b !important;
+    color: #292d3e !important;
 }
 /* Fixing Multiselect */
 .tab-background[multiselected="true"]:not([selected="true"]) > .tab-background-inner {
@@ -306,16 +311,15 @@ isnt formated for different border radius */
 /* Design of the plus/newtab button */
 toolbar #tabs-newtab-button:not([disabled="true"]):not([checked]):not([open]):not(:active):hover > .toolbarbutton-icon {
     border: 0 !important; 
-    border-radius: 20px 20px 20px 20px !important;
     background-image: none !important;
-    background-color: #1b1e2b !important;
+    background-color: #292d3e !important;
 }
 
 toolbar #tabs-newtab-button:not([disabled="true"]):-moz-any([open], [checked], :hover:active) > .toolbarbutton-icon {
     border: 0 !important; 
     border-radius: 20px 20px 20px 20px !important;
     background-image: none !important;
-    background-color: #1b1e2b !important;
+    background-color: #292d3e !important;
 }
 
 /* SMOOTH AUTOHIDE TAB BAR 
@@ -436,7 +440,7 @@ visibility: hidden;
     left:0;
     bottom: 69px !important;
     width: 100%;
-    background-color: #292d3e;
+    background-color: #1b1e2b;
     display: flex;
     flex-direction: column-reverse;
 }

@@ -14,7 +14,7 @@ compositing-underline = over
 compositing-border = over
 
 [colors]
-background = #1b1e2b
+background = #292d3e
 foreground = ${xrdb:color15:#fff}
 foreground-alt = ${xrdb:color7:#abc}
 cyan = ${xrdb:color6:#5df}
@@ -31,21 +31,19 @@ override-redirect = false
 enable-ipc = true
 bottom = true
 width = 100%
-height = 39
+height = 32
 background = ${colors.background}
 foreground = ${colors.foreground}
-padding-left = 2
-padding-right = 2
-font-0 = "Ibm Plex Mono Medium:size=13;1"
+padding-left = 3
+padding-right = 3
+font-0 = "Lato Medium:size=12;2"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=11;2"
-font-2 = "UbuntuMono Nerd Font:size=15;2"
-separator = "  "
+font-2 = "UbuntuMono Nerd Font:size=11;2"
+separator = "||"
 modules-left = date xwindow 
 modules-center = i3
-modules-right = pavolume battery arch-aur-updates 
-tray-position = right
-tray-detached = false
-tray-background = ${colors.background}
+modules-right = pavolume battery arch-aur-updates wifi
+module-margin = 2
 
 [module/date]
 type = internal/date
@@ -68,6 +66,16 @@ format-background = ${colors.background}
 type = internal/xwindow
 format-background = ${colors.background}
 label-maxlen = 50
+
+[module/wifi]
+type = custom/script
+tail = true
+label = %output%
+interval = 360
+exec = ~/.config/polybar/scripts/wifi.sh
+click-left = exec wifi_setup
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 
 [module/pavolume]
 type = custom/script
@@ -140,13 +148,13 @@ format-background = ${colors.background}
 format = <label-state>
 
 label-focused = %icon%
-label-focused-padding = 2
+label-focused-padding = 4
 label-focused-background = ${colors.background}
 label-focused-foreground = ${colors.cyan}
 label-focused-underline =
 
 label-unfocused = %icon%
-label-unfocused-padding = 2
+label-unfocused-padding = 4
 label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-underline =

@@ -23,7 +23,7 @@ set inccommand=split           " Show effects of command as you type in a split
 set ignorecase                 " Ignore case
 set hlsearch                   " Highlight search results (enforce)
 set confirm                    " Disable 'no write'
-set nowrap                     " Do not wrap lines
+" set nowrap                     " Do not wrap lines
 set mouse=n                    " Enable mouse
 set smartindent                " auto indent on new line (brackets for instance)
 set tabstop=4                  " Tabs are 4 spaces long
@@ -76,6 +76,7 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " use coc instead
 " Plug 'neovim/nvim-lsp'                                                  " Lsp support
 " Plug 'haorenW1025/completion-nvim'                                      " Lsp extension
+" Plug 'haorenW1025/diagnostic-nvim'                                      " Lsp extension
 call plug#end()
 
 "TODO remove this config when using nvim-lsp
@@ -94,8 +95,6 @@ nmap <silent> gt <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn  <Plug>(coc-rename)
-vmap <C-I>  <Plug>(coc-format-selected)
-nmap <C-I>  <Plug>(coc-format-selected)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> \ <C-w>o
 function! s:show_documentation()
@@ -126,11 +125,35 @@ colorscheme palenight
 lua require'colorizer'.setup()
 lua require'init'.setup()
 " lua require'lsp'.setup()
-" lua <<EOF
-" require'nvim-treesitter.configs'.setup {
-    
-" }
-" EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+      enable = false,
+      disable = {},
+  },
+  incremental_selection = {
+      enable = true,
+      disable = {},
+      keymaps = {
+        node_incremental = "n",
+        scope_incremental = "<leader>n",
+        node_decremental = "m"
+      }
+  },
+  node_movement = {
+      enable = false,
+      disable = {},
+      keymaps = {
+        move_up = "<leader>1",
+        move_down = "<leader>2",
+        move_left = "<leader>3",
+        move_right = "<leader>4",
+      }
+  },
+  ensure_installed = {} 
+}
+EOF
 
 " Tree config
 nnoremap <silent> <C-n> :LuaTreeToggle<CR>
