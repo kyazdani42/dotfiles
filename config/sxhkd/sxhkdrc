@@ -22,7 +22,7 @@ alt + shift + d
 alt + shift + x
     rofi_shutdown &
 
-super + w
+alt + w
     wifi_setup &
 
 Print
