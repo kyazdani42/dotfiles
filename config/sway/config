@@ -107,12 +107,12 @@ bindsym $mod+Shift+F2 reload
 bindsym $mod+Tab workspace back_and_forth
 floating_modifier $mod normal
 
-set $ws1 
-set $ws2 
-set $ws3 
-set $ws4 
-set $ws5 
-set $ws6 
+set $ws1 '1 - '
+set $ws2 '2 - '
+set $ws3 '3 - '
+set $ws4 '4 - '
+set $ws5 '5 - '
+set $ws6 '6 - '
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
