@@ -1,0 +1,22 @@
+max-visible=2
+anchor=top-right
+
+width=280
+height=200
+margin=16
+padding=16
+
+border-size=2
+border-color=#959dcb
+
+max-icon-size=32
+font="Lato Medium 10"
+background-color=#ffffff
+text-color=#32374d
+
+[urgency="low"]
+background-color=#ffffff90
+[urgency="high"]
+
+background-color=#ff5370
+text-color=#ffffff

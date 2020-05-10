@@ -38,17 +38,6 @@ install_programs() {
     printf "\n\n"
 }
 
-dmenu_rofi() {
-    pushd /usr/bin >/dev/null
-    sudo rm -f dmenu >/dev/null
-    sudo ln -sf rofi dmenu >/dev/null
-    popd >/dev/null
-}
-
-setup_dunst() {
-	sudo cp -f etc/notifications.service /usr/share/dbus-1/services/org.freedesktop.Notifications.service
-}
-
 setup_docker() {
 	if ! groups | grep docker >/dev/null; then
 		sudo groupadd docker >/dev/null
@@ -75,7 +64,6 @@ enable_docker_service() {
 update_system
 install_yay
 install_programs
-setup_dunst
 setup_docker
 enable_docker_service
 dmenu_rofi

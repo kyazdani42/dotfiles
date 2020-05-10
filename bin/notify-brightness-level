@@ -1,0 +1,8 @@
+#!/bin/sh
+
+makoctl dismiss -a
+
+notify-send -t 1200 \
+    -i $HOME/pictures/bell.jpg \
+    -u normal \
+    "brightness: $(brightnessctl i | grep '%' | cut -d ' ' -f4 | tr -d '()')"

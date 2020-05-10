@@ -1,61 +1,71 @@
 {
-    "layer": "top",
-    "position": "bottom",
-    "height": 40,
-    "modules-left": ["clock", "sway/window", "sway/mode"],
-    "modules-center": ["sway/workspaces"],
-    "modules-right": ["pulseaudio", "battery", "custom/updates", "tray"],
-    "sway/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{name}"
+  "layer": "top",
+  "position": "bottom",
+  "height": 33,
+  "modules-left": ["clock", "custom/separator", "sway/window", "sway/mode"],
+  "modules-center": ["sway/workspaces"],
+  "modules-right": [
+    "pulseaudio",
+    "custom/separator",
+    "battery",
+    "custom/separator",
+    "custom/updates",
+    "custom/separator",
+    "custom/wifi"
+  ],
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}"
+  },
+  "sway/mode": {
+    "format": "<span>{}</span>"
+  },
+  "clock": {
+    "timezone": "Europe/Paris",
+    "format": "{:%a %d %H:%M}"
+  },
+  "battery": {
+    "tooltip": false,
+    "states": {
+      "full": 100,
+      "good": 80,
+      "half": 50,
+      "warning": 30,
+      "critical": 15
     },
-    "sway/mode": {
-        "format": "<span>{}</span>"
+    "format-full": "{capacity}% <span foreground='#c3e88d'>{icon}</span>",
+    "format-good": "{capacity}% <span foreground='#c3e88d'>{icon}</span>",
+    "format-half": "{capacity}% <span foreground='#ffcb6b'>{icon}</span>",
+    "format-warning": "{capacity}% <span foreground='#f78c6c'>{icon}</span>",
+    "format-critical": "{capacity}% <span foreground='#f07178'>{icon}</span>",
+    "format-plugged": "{capacity}% <span foreground='#959dcb'></span>",
+    "format-charging": "{capacity}% <span foreground='#959dcb'></span>",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-icons": {
+      "default": ["", "", "", ""]
     },
-    "tray": {
-        "icon-size": 21,
-        "spacing": 100
-    },
-    "clock": {
-        "timezone": "Europe/Paris",
-        "format": "{:%a %d %H:%M}"
-    },
-    "battery": {
-        "tooltip": false,
-        "states": {
-            "full": 100,
-            "good": 80,
-            "half": 50,
-            "warning": 30,
-            "critical": 15
-        },
-        "format-full": "{capacity}% <span foreground='#c3e88d'>{icon}</span>",
-        "format-good": "{capacity}% <span foreground='#c3e88d'>{icon}</span>",
-        "format-half": "{capacity}% <span foreground='#ffcb6b'>{icon}</span>",
-        "format-warning": "{capacity}% <span foreground='#f78c6c'>{icon}</span>",
-        "format-critical": "{capacity}% <span foreground='#f07178'>{icon}</span>",
-        "format-plugged": "{capacity}% <span foreground='#959dcb'></span>",
-        "format-charging": "{capacity}% <span foreground='#959dcb'></span>",
-        "format-icons": ["", "", "", "", ""]
-    },
-    "pulseaudio": {
-        "scroll-step": 3,
-        "format": "{volume}% <span foreground='#959dcb'>{icon}</span>",
-        "format-icons": {
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol",
-        "tooltip": false
-    },
-    "custom/updates": {
-        "exec": "$HOME/.config/polybar/scripts/check-all-updates.sh",
-        "interval": 120,
-        "tooltip": false,
-        "format": "{} <span foreground='#959dcb' size='small'></span>" 
-    },
-    "tray": {
-        "icon-size": 20,
-        "spacing": 20
-    }
+    "on-click": "pavucontrol",
+    "tooltip": false
+  },
+  "custom/updates": {
+    "exec": "$HOME/.config/waybar/scripts/check-all-updates.sh",
+    "interval": 120,
+    "tooltip": false,
+    "format": " {}"
+  },
+  "custom/separator": {
+    "format": "||",
+    "interval": "once",
+    "tooltip": false
+  },
+  "custom/wifi": {
+    "exec": "$HOME/.config/waybar/scripts/wifi.sh",
+    "interval": 360,
+    "tooltip": false,
+    "format": "{}"
+  }
 }

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+GR="\x1b[32;1m"
+RE="\x1b[0m"
+
+printf "${GR}- stashing changes${RE}\n"
+git stash &>/dev/null
+
+printf "${GR}- pulling changes${RE}\n"
+git pull &>/dev/null
+
+printf "${GR}- reset stash${RE}\n"
+git stash pop
+
+printf "${GR}- DONE - (resolve conflicts if any) ${RE}\n"
+

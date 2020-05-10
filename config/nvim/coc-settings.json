@@ -4,5 +4,6 @@
     "rust-analyzer.updates.channel": "nightly",
     "rust-analyzer.callInfo.full": true,
     "rust-analyzer.completion.postfix.enable": false,
-    "rust-analyzer.serverPath": "/usr/bin/rust-analyzer"
+    "rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
+    "rust-analyzer.inlayHints.chainingHints": false
 }

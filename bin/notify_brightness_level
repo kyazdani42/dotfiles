@@ -1,7 +1,0 @@
-#!/bin/sh
-
-brightness_level="$(xbacklight -get | cut -d '.' -f1)"
-
-notify-send -t 1000 \
-    -h string:x-canonical-private-synchronous:anything \
-    "brightness: ${brightness_level}%"

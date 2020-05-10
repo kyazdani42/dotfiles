@@ -1,5 +1,0 @@
-#!/usr/bin/zsh
-
-[ -f "$HOME/.gcloud/path.zsh.inc" ] && . "$HOME/.gcloud/path.zsh.inc"
-[ -f "$HOME/.gcloud/completion.zsh.inc" ] && . "$HOME/.gcloud/completion.zsh.inc"
-

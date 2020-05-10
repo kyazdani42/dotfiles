@@ -1,38 +1,31 @@
-# TODO:
-# bindsym $mod+c exec rofi_dnd (dnd program ?)
-# bar tray not working (waybar)
-# dim unfocused alacritty instances (it seems only opacity works...)
-
 # Mod1 is Alt, Mod4 is Windows
 set $mod Mod1
 
-font pango:Ibm Plex Mono Medium 12
+set $term alacritty
 
-# in case there is a title
+font pango:Lato Medium 12
 title_align center
-# no border, no title bar
 default_border none
-# the focus only changes when clicking
+focus_follows_mouse no
+default_border pixel 2
+default_floating_border pixel 3
+smart_borders on
+smart_gaps on
 focus_follows_mouse no
 
-for_window [app_id="Nautilus"] floating enable
-for_window [app_id="pavucontrol"] floating enable
-for_window [instance="gpick"] floating enable
-for_window [instance="simplescreenrecorder"] floating enable
-
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-
-set $term $TERMINAL
-set $menu rofi_launch
-
-# Output and bg
 output eDP-1 bg ~/.config/wallpaper fill
+floating_maximum_size 1920 x 1080
+seat * hide_cursor 4000
+exec waybar &
+exec mako &
+exec swayidle -w \
+         timeout 300 'lock' \
+         timeout 600 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'lock'
 
-# gtk
+############################# GTK #####################################
+
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
@@ -43,64 +36,63 @@ exec_always {
     gsettings set $gnome-schema font-name 'DejaVu Sans 12'
 }
 
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' \
-#               resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
+############################# INPUT #####################################
 
+# TODO: key modifier to output french map
 # Input configuration
 input type:keyboard {
         xkb_layout us
         xkb_options ctrl:nocaps
         repeat_delay 300
-        repeat_rate 50
+        repeat_rate 40
 }
 
 input type:touchpad {
         tap enabled
         natural_scroll disabled
         dwt enabled
-        pointer_accel 0.2 # set mouse sensitivity (between -1 and 1)
+        pointer_accel -0.0 # set mouse sensitivity (between -1 and 1)
+        scroll_factor 1.0
 }
 
-seat * hide_cursor 4000
+####################### KEY BINDINGS ####################################
 
-### Key bindings
+# TODO bindsym Mod4+p exec passmenu (and setup passmenu properly)
 
-bindsym $mod+Return exec $term
-bindsym $mod+Shift+Return split v, exec $term
+# TODO bindsym $mod+Shift+d -> drag n drop picker
+# TODO bindsym $mod+d       -> launcher
+# TODO bindsym $mod+w       -> wifi menu
+# TODO bindsym $mod+Shift+x -> shutdown dialog
 
-bindsym $mod+w exec nautilus
-bindsym $mod+Shift+w exec $BROWSER
-bindsym $mod+Shift+o exec swaylock -i ~/pictures/tower_violet_blue.jpg
-bindsym $mod+p exec passmenu
-bindsym Print exec grim -g "$(slurp)"
-bindsym $mod+d exec $menu
-bindsym $mod+Shift+q kill
 bindsym button1 nop
-bindsym xf86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute
-bindsym xf86AudioLowerVolume exec amixer -q sset Master 3%- unmute
-bindsym xf86AudioMute exec amixer -q sset Master toggle
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+w exec $BROWSER
+bindsym $mod+Shift+o exec lock
+
+bindsym $mod+Return split h, exec spawn-alacritty-cwd
+bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd
+bindsym $mod+c exec alacritty --title='floating' -e python
+bindsym $mod+p exec pavucontrol
+
+bindsym Print exec take-screenshot "fullscreen"
+bindsym F11 exec take-screenshot "clipboard"
+bindsym F12 exec take-screenshot
+
 bindsym $mod+s exec [ $(pgrep waybar) ] && killall -9 waybar || waybar &
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
-# Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
-# mouse button for dragging.
-floating_modifier $mod normal
-# Reload the configuration file
-bindsym $mod+Shift+F2 reload
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+x exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+bindsym $mod+Shift+p exec sh -c 'killall -9 waybar; waybar &'
+
+bindsym xf86MonBrightnessDown exec brightnessctl s 10%- && notify-brightness-level
+bindsym xf86MonBrightnessUp exec brightnessctl s +10% && notify-brightness-level
+bindsym xf86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute && notify-sound-level
+bindsym xf86AudioLowerVolume exec amixer -q sset Master 3%- unmute && notify-sound-level
+bindsym xf86AudioMute exec amixer -q sset Master toggle && notify-sound-level
+
+######################### WINDOW SPECIFIC #################################
+
+set $left h
+set $down j
+set $up k
+set $right l
 
 bindsym $mod+$left focus left
 bindsym $mod+$down focus down
@@ -110,26 +102,33 @@ bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Shift+F2 reload
+bindsym $mod+Tab workspace back_and_forth
+floating_modifier $mod normal
+
+set $ws1 
+set $ws2 
+set $ws3 
+set $ws4 
+set $ws5 
+set $ws6 
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
 
 # go to mode
 bindsym $mod+Shift+z split h
@@ -139,18 +138,21 @@ bindsym $mod+f fullscreen
 bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+s floating toggle
 bindsym $mod+space focus mode_toggle
 
 # Scratchpad:
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+Control+s move scratchpad
+bindsym $mod+Control+Return scratchpad show
 
-exec xrdb -merge $HOME/.Xresources
-exec waybar &
-exec nm-applet --indicator &
+# gaps
+bindsym $mod+m gaps inner current plus 5
+bindsym $mod+n gaps inner current minus 5
+bindsym $mod+Shift+e gaps inner current set 0
+bindsym $mod+Shift+f gaps inner current set 10
 
 # Resizing containers:
+bindsym $mod+Shift+r mode "resize"
 mode "resize" {
     bindsym $left resize shrink width 10px
     bindsym $down resize grow height 10px
@@ -159,23 +161,37 @@ mode "resize" {
     bindsym $mod+Shift+r mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+r mode "resize"
 
 # Colors
-set $bgDark     #1c1f2b
-set $bgCol      #292d3e
+set $bg         #1b1e2b
 set $white      #FFFFFF
 set $white-alt  #959dcb
 set $red        #f07178
 set $cyan       #89ddff
 
-client.focused          $bgDark  $bgDark  $cyan       $bgCol   $bgCol
-client.focused_inactive $bgDark  $bgDark  $white-alt  $bgCol   $bgCol
-client.unfocused        $bgCol   $bgCol   $white-alt  $bgCol   $bgCol
-client.placeholder      $bgCol   $bgCol   $white-alt  $bgCol   $bgCol
-client.urgent           $red     $red     $red        $red     $red
+client.focused          $bg  $bg  $cyan      $white-alt $white-alt
+client.focused_inactive $bg  $bg  $white-alt $bg        $bg
+client.unfocused        $bg  $bg  $white-alt $bg        $bg
+client.placeholder      $bg  $bg  $white-alt $bg        $bg
+client.urgent           $red $red $red       $red       $red
+client.background       $bg
 
-client.background       $bgCol
+for_window [app_id="steam"] floating enable, border pixel 3, move to workspace $ws5
+
+for_window [class="MultiMC5" instance="multimc"] floating enable, resize set 1000 500, border pixel 3, move to workspace $ws5
+for_window [class="Minecraft 1.15.2" instance="Minecraft 1.15.2"] floating enable, border pixel 3, move to workspace $ws5
+
+for_window [app_id="transmission"] floating enable, border pixel 3, move to workspace $ws4
+
+for_window [app_id="firefox"] border none, move to workspace $ws2
+
+for_window [app_id="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
+
+for_window [title="floating"] floating enable, resize set 1000 400, border pixel 3
+for_window [title="dev"] floating enable, border pixel 3
+
+# x apps
+for_window [shell=".*"] title_format "%title :: %shell"
 
 include /etc/sway/config.d/*
 

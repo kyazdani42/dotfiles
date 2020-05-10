@@ -8,5 +8,4 @@ $ cd .dotfiles && ./install.sh
 ```
 
 ![alt text](.github/screen.png?raw=true "screenshot")
-![alt text](.github/rofi.png?raw=true "screenshot2")
 

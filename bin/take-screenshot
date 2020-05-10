@@ -1,0 +1,11 @@
+#!/bin/sh
+
+d="$(date | awk '{print $1"_"$2"_"$3"_"$4"_"$5}' | tr ':' '.')"
+
+if [ "$1" == "fullscreen" ]; then
+    grim -t png "$HOME/pictures/$d.png"
+elif [ "$1" == "clipboard" ]; then
+    grim -g "$(slurp)" - | wl-copy
+else
+    grim -g "$(slurp)" "$HOME/pictures/$d.png"
+fi

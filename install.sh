@@ -10,16 +10,10 @@ ln -s $PWD/Pictures $HOME/pictures
 rm -rf $HOME/.local/bin
 ln -sf $PWD/bin $HOME/.local/bin
 mkdir -p $HOME/{dev,docs,music,.config}
-cp Pictures/wall/mountain_deer.jpg ~/.config/wallpaper
+cp Pictures/wall/bonsai.png ~/.config/wallpaper
 
-./bin/select_template xps
-
-echo "- Linking X startup scripts"
-ln -sf $PWD/xinit/Xresources $HOME/.Xresources
-ln -sf $PWD/xinit/profile $HOME/.profile
-ln -sf $PWD/xinit/profile $HOME/.zprofile
-ln -sf $PWD/xinit/xinitrc $HOME/.xinitrc
-ln -sf $PWD/xinit/Xmodmap $HOME/.Xmodmap
+ln -sf $PWD/zprofile $HOME/.zprofile
+ln -sf "alacritty-$(cat /etc/hostname).yml" $PWD/config/alacritty/alacritty.yml
 
 echo "- Linking \$XDG_CONFIG_HOME configuration files"
 for file in config/*; do
@@ -31,14 +25,13 @@ done
 
 echo "- Linking vimrc"
 rm -f $HOME/.vimrc
-ln -sf $PWD/etc/vimrc $HOME/.vimrc
-sudo cp -f etc/vimrc /etc/vimrc
+sudo cp -f $PWD/etc/vimrc /etc/vimrc
 
 if command -v yarn >/dev/null; then
     yarn -s config set prefix "$HOME/.config/yarn" &>/dev/null
 fi
-nvim +PlugInstall +qa &>/dev/null
-nvim +PlugUpdate +qa &>/dev/null
+
+nvim +PlugInstall +qa &>/dev/null &
 xrdb -merge $HOME/.Xresources
 
 printf "\x1b[0m\n"
@@ -47,19 +40,8 @@ cat <<EOF
 Installation is done, you might want to reboot your system
 ==========================================================
 POST INSTALL STEPS:                                        
-Templates:
-- copy a folder in the templates folder
-- modify config files (font sizes, dpi level, width/heights)
-- run \`select_template YOUR_TEMPLATE\`
-
-Dev:
 - install neovim git projects in ~/dev/nvim_dev
-
-Gtk:
-- install gtk cursor theme \`volantes cursors\`
 - install gtk theme \`juno palenight\`
-- install gtk icon theme \`la capitaine\`
-You can choose other themes but you'll need to change gtkrc configurations and xresources
-You might need to modify \`~/.icons/index.theme\` or \`/usr/share/icons/default/index.theme\` for setting cursors systemwide
+- Modify \`~/.icons/index.theme\` or \`/usr/share/icons/default/index.theme\` for setting cursors systemwide
 EOF
 

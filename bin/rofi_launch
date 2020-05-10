@@ -1,3 +1,0 @@
-#!/bin/sh
-
-rofi -drun-display-format {name} -modi drun -show drun -show-icons

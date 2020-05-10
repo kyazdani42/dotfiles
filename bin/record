@@ -1,0 +1,5 @@
+#!/bin/sh
+
+d="$(date | awk '{print $1"_"$2"_"$3"_"$4"_"$5}' | tr ':' '.')"
+
+wf-recorder -g "$(slurp)" -f "$XDG_DATA_HOME/$d.mkv"

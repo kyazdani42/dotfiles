@@ -136,19 +136,20 @@ require'nvim-treesitter.configs'.setup {
       enable = true,
       disable = {},
       keymaps = {
+        init_selection = "<leader>n",
         node_incremental = "n",
         scope_incremental = "<leader>n",
         node_decremental = "m"
       }
   },
   node_movement = {
-      enable = false,
+      enable = true,
       disable = {},
       keymaps = {
-        move_up = "<leader>1",
-        move_down = "<leader>2",
-        move_left = "<leader>3",
-        move_right = "<leader>4",
+        parent_scope = "trk",
+        child_scope = "trj",
+        next_scope = "trl",
+        previous_scope = "trh",
       }
   },
   ensure_installed = {} 
