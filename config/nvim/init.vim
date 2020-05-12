@@ -118,9 +118,10 @@ command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeIm
 
 set runtimepath+=~/dev/nvim_dev/nvim-tree.lua
 set runtimepath+=~/dev/nvim_dev/nvim-palenight.lua
+set runtimepath+=~/dev/nvim_dev/blue-moon
 set runtimepath+=~/dev/nvim_dev/nvim-treesitter
 
-colorscheme palenight
+colorscheme blue-moon
 
 lua require'colorizer'.setup()
 lua require'init'.setup()
@@ -175,7 +176,7 @@ let g:sneak#label = 1
 hi! link Sneak Normal
 
 let g:lightline = {
-      \ 'colorscheme': 'palenight',
+      \ 'colorscheme': 'blue-moon',
       \ 'active': {
       \   'left': [
       \     ['mode'], [ 'filename' ], ['git', 'blame'],

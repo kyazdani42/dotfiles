@@ -4,6 +4,7 @@ BINARIES=(
 # programs binaries
 "$HOME/.deno/bin"
 "$HOME/.local/share/cargo/bin"
+"$HOME/.local/share/go/bin"
 "$HOME/.config/yarn/bin"
 "$HOME/.pyenv/bin"
 # personnal binaries
@@ -26,6 +27,7 @@ export LESSHISTFILE="-"
 export HISTFILE="$XDG_CACHE_HOME/bash_history"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export GOPATH="$XDG_DATA_HOME/go"
 export PYTHONSTARTUP="$HOME/.local/bin/python_startup"
 export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"

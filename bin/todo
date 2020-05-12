@@ -1,0 +1,60 @@
+#!/bin/bash
+
+TODO_PATH="$HOME/.local/share/todo.md"
+
+print_data() {
+    rg "\*\*$1\*\*" "$TODO_PATH" | sed "s/\*\*$1\*\* //"
+}
+
+error_get() {
+    printf "usage: $(basename $0) get [high-medium-low]\n"
+    exit 1
+}
+
+error() {
+    printf "usage: $(basename $0) [OPERATOR]\n"
+    exit 1
+}
+
+add() {
+    printf "a"
+}
+
+get() {
+    level="$1"
+    options=("high" "medium" "low")
+    PS3="Select a todo level: "
+    [ -z "$level" ] && select l in "${options[@]}"; do level=$l; break; done
+    printf "\n"
+
+    case "$level" in
+        "high")
+            printf "todo (high):\n"
+            print_data HI
+            ;;
+        "medium")
+            printf "todo (medium):\n"
+            print_data MED
+            ;;
+        "low")
+            printf "todo (low):\n"
+            print_data LOW
+            ;;
+        *)
+            error_get
+    esac
+}
+
+[ $# == 0 ] && error
+
+case "$1" in
+    "get")
+        get "$2"
+        ;;
+    "add")
+        ;;
+    "remove")
+        ;;
+    *)
+        error
+esac

@@ -1,0 +1,16 @@
+source creds
+
+set editor = "nvim"
+set header_cache = "~/.cache/mutt"
+
+set folder="imap://127.0.0.1:1143"
+set smtp_url = "smtp://127.0.0.1:1025"
+
+set spoolfile = "+INBOX"
+set record = "+Sent"
+set trash  = "+Trash"
+set postponed = "+Drafts"
+mailboxes =INBOX =Sent =Trash =Drafts =Spam
+
+source colors
+
