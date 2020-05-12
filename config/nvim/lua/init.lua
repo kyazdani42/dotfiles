@@ -42,6 +42,10 @@ function M.setup()
     for _, keymap in pairs(keymaps) do
       api.nvim_set_keymap(keymap.mod, keymap.lhs, keymap.rhs, keymap.opt or default_opt)
     end
+
+    require 'colorizer'.setup()
+    require 'statusline'.setup()
+    require 'ts'.setup()
 end
 
 return M

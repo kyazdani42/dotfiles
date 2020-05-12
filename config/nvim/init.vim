@@ -49,14 +49,13 @@ au FileType typescript,javascript,lua set tabstop=2 shiftwidth=2 expandtab
 au FileType markdown set conceallevel=2
 
 nmap <C-c> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 " Plugins {{{
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'camspiers/lens.vim'                                               " Resize windows on the fly
-Plug 'itchyny/lightline.vim'                                            " The lightline at the bottom
 Plug 'norcalli/nvim-colorizer.lua'                                      " Rgb/hex colorizer
 Plug 'tpope/vim-fugitive'                                               " Git integration
 Plug 'machakann/vim-highlightedyank'                                    " Highlight yanking
@@ -123,39 +122,7 @@ set runtimepath+=~/dev/nvim_dev/nvim-treesitter
 
 colorscheme blue-moon
 
-lua require'colorizer'.setup()
 lua require'init'.setup()
-" lua require'lsp'.setup()
-
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-      enable = false,
-      disable = {},
-  },
-  incremental_selection = {
-      enable = true,
-      disable = {},
-      keymaps = {
-        init_selection = "<leader>n",
-        node_incremental = "n",
-        scope_incremental = "<leader>n",
-        node_decremental = "m"
-      }
-  },
-  node_movement = {
-      enable = true,
-      disable = {},
-      keymaps = {
-        parent_scope = "trk",
-        child_scope = "trj",
-        next_scope = "trl",
-        previous_scope = "trh",
-      }
-  },
-  ensure_installed = {} 
-}
-EOF
 
 " Tree config
 nnoremap <silent> <C-n> :LuaTreeToggle<CR>
@@ -165,43 +132,15 @@ let g:lua_tree_auto_open = 1
 let g:lua_tree_auto_close = 1
 let g:lua_tree_follow = 1
 let g:lua_tree_show_icons = {
-            \ 'git': 1,
-            \ 'folders': 1,
-            \ 'files': 1
-            \}
+      \ 'git': 1,
+      \ 'folders': 1,
+      \ 'files': 1
+      \}
 
 let g:highlightedyank_highlight_duration = 300
 
 let g:sneak#label = 1
 hi! link Sneak Normal
-
-let g:lightline = {
-      \ 'colorscheme': 'blue-moon',
-      \ 'active': {
-      \   'left': [
-      \     ['mode'], [ 'filename' ], ['git', 'blame'],
-      \     [ 'readonly', 'modified' ]
-      \   ],
-      \   'right': [
-      \     [], [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ]
-      \   ],
-      \ },
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename'
-      \ },
-      \ }
-
-function! LightlineFilename()
-    if expand('%:t') !=# ''
-        if exists('*WebDevIconsGetFileTypeSymbol')
-            return WebDevIconsGetFileTypeSymbol(@%) . ' ' . @%
-        else
-            return @%
-        endif
-    else
-        return '[No Name]'
-    endif
-endfunction
 
 let g:vim_markdown_folding_disabled = 1
 
@@ -210,9 +149,9 @@ nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>p :Rg<CR>
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview({'down': '50%'}), <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+      \   fzf#vim#with_preview({'down': '50%'}), <bang>0)
 
 autocmd! FileType fzf set laststatus=0 noshowmode noruler nonumber norelativenumber
-  \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler relativenumber
+      \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler relativenumber
