@@ -1,5 +1,12 @@
 #!/bin/bash
 
+error() {
+    printf "usage: $(basename $0) [OPERATOR]\n"
+    exit 1
+}
+
+[ $# == 0 ] && error
+
 TODO_PATH="$HOME/.local/share/todo.md"
 
 print_data() {
@@ -9,15 +16,6 @@ print_data() {
 error_get() {
     printf "usage: $(basename $0) get [high-medium-low]\n"
     exit 1
-}
-
-error() {
-    printf "usage: $(basename $0) [OPERATOR]\n"
-    exit 1
-}
-
-add() {
-    printf "a"
 }
 
 get() {
@@ -45,15 +43,59 @@ get() {
     esac
 }
 
-[ $# == 0 ] && error
+error_add() {
+    printf "usage: $(basename $0) add [high-medium-low] [TODO]\n"
+    exit 1
+}
+
+add() {
+    level="$1"
+    options=("high" "medium" "low")
+    PS3="Select a todo level: "
+    [ -z "$level" ] && select l in "${options[@]}"; do level=$l; break; done
+    printf "\n"
+
+    todo="$2"
+    [ -z "$todo" ] && printf "What do you want to do ?\n" && read todo;
+
+    case "$level" in
+        "high")
+            echo "- **HI** $todo" >> "$TODO_PATH"
+            ;;
+        "medium")
+            echo "- **MED** $todo" >> "$TODO_PATH"
+            ;;
+        "low")
+            echo "- **LOW** $todo" >> "$TODO_PATH"
+            ;;
+        *)
+            error_add
+    esac
+
+    printf "new todo added to todolist\n"
+}
+
+remove() {
+    opt=`cat $TODO_PATH | sed 's/- \*\*HI\*\* //' | sed 's/- \*\*MED\*\* //' | sed 's/- \*\*LOW\*\* //'`
+    readarray -t options <<<"$opt"
+    PS3="Which todo do you want to remove ? "
+    select l in "${options[@]}"; do todo="$l"; break; done
+    printf "\n"
+
+    grep -F -v -- "$todo" "$TODO_PATH" > "$TODO_PATH.tmp" && mv "$TODO_PATH.tmp" "$TODO_PATH"
+
+    printf "Todo '$todo' properly removed from todolist\n"
+}
 
 case "$1" in
     "get")
         get "$2"
         ;;
     "add")
+        add "$2"
         ;;
     "remove")
+        remove "$2"
         ;;
     *)
         error

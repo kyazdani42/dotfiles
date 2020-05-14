@@ -115,10 +115,10 @@ command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeIm
 
 """ END TODO
 
-set runtimepath+=~/dev/nvim_dev/nvim-tree.lua
-set runtimepath+=~/dev/nvim_dev/nvim-palenight.lua
-set runtimepath+=~/dev/nvim_dev/blue-moon
-set runtimepath+=~/dev/nvim_dev/nvim-treesitter
+set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua
+set runtimepath+=~/dev/nvim_dev/plugs/nvim-palenight.lua
+set runtimepath+=~/dev/nvim_dev/plugs/blue-moon
+set runtimepath+=~/dev/nvim_dev/plugs/nvim-treesitter
 
 colorscheme blue-moon
 
@@ -136,6 +136,7 @@ let g:lua_tree_show_icons = {
       \ 'folders': 1,
       \ 'files': 1
       \}
+let g:lua_tree_bindings = { 'cd': '<C-]>' }
 
 let g:highlightedyank_highlight_duration = 300
 

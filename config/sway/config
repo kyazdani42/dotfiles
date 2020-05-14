@@ -59,9 +59,9 @@ input type:touchpad {
 # TODO bindsym Mod4+p exec passmenu (and setup passmenu properly)
 
 # TODO bindsym $mod+Shift+d -> drag n drop picker
-# TODO bindsym $mod+d       -> launcher
 # TODO bindsym $mod+w       -> wifi menu
 # TODO bindsym $mod+Shift+x -> shutdown dialog
+# TODO bindsym $mod+d       -> launcher
 
 bindsym button1 nop
 bindsym $mod+Shift+q kill
