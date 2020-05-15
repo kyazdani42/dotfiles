@@ -16,16 +16,6 @@ function M.setup()
         node_decremental = "m"
       }
     },
-    node_movement = {
-      enable = true,
-      disable = {},
-      keymaps = {
-        parent_scope = "trk",
-        child_scope = "trj",
-        next_scope = "trl",
-        previous_scope = "trh",
-      }
-    },
     ensure_installed = {} 
   }
 end

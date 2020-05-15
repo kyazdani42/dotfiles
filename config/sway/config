@@ -18,6 +18,7 @@ floating_maximum_size 1920 x 1080
 seat * hide_cursor 4000
 exec waybar &
 exec mako &
+exec runmailserver 2&>/dev/null &
 exec swayidle -w \
          timeout 300 'lock' \
          timeout 600 'swaymsg "output * dpms off"' \
