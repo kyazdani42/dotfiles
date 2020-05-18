@@ -16,7 +16,6 @@ bindkey "^J" vi-cmd-mode
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
-    echo "should create file" > /tmp/logfile
   if [[ ${KEYMAP} == vicmd ]] ||
      [[ $1 = 'block' ]]; then
     echo -ne '\e[1 q'

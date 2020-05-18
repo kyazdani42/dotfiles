@@ -22,7 +22,7 @@ exec runmailserver 2&>/dev/null &
 exec swayidle -w \
          timeout 300 'lock' \
          timeout 600 'swaymsg "output * dpms off"' \
-              resume 'swaymsg "output * dpms on"' \
+         resume 'swaymsg "output * dpms on"' \
          before-sleep 'lock'
 
 ############################# GTK #####################################
@@ -57,12 +57,10 @@ input type:touchpad {
 
 ####################### KEY BINDINGS ####################################
 
-# TODO bindsym Mod4+p exec passmenu (and setup passmenu properly)
-
 # TODO bindsym $mod+Shift+d -> drag n drop picker
-# TODO bindsym $mod+w       -> wifi menu
 # TODO bindsym $mod+Shift+x -> shutdown dialog
-# TODO bindsym $mod+d       -> launcher
+
+bindsym $mod+d exec wofi_drun
 
 bindsym button1 nop
 bindsym $mod+Shift+q kill
@@ -175,11 +173,6 @@ client.unfocused        $bg  $bg  $white-alt $bg        $bg
 client.placeholder      $bg  $bg  $white-alt $bg        $bg
 client.urgent           $red $red $red       $red       $red
 client.background       $bg
-
-for_window [app_id="steam"] floating enable, border pixel 3, move to workspace $ws5
-
-for_window [class="MultiMC5" instance="multimc"] floating enable, resize set 1000 500, border pixel 3, move to workspace $ws5
-for_window [class="Minecraft 1.15.2" instance="Minecraft 1.15.2"] floating enable, border pixel 3, move to workspace $ws5
 
 for_window [app_id="transmission"] floating enable, border pixel 3, move to workspace $ws4
 

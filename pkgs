@@ -1,5 +1,3 @@
-sxiv
-networkmanager
 clang
 valgrind
 tar
@@ -51,6 +49,8 @@ yarn
 npm
 nodejs
 net-tools
+wireless-tools
+iw
 fd
 bat
 alacritty-git

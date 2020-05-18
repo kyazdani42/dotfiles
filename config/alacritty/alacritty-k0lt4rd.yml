@@ -12,7 +12,7 @@ window:
     y: 0
 
   dynamic_padding: false
-  decorations: full
+  decorations: none
   startup_mode: Maximized
 
 scrolling:

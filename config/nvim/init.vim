@@ -58,7 +58,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'camspiers/lens.vim'                                               " Resize windows on the fly
 Plug 'norcalli/nvim-colorizer.lua'                                      " Rgb/hex colorizer
 Plug 'tpope/vim-fugitive'                                               " Git integration
-Plug 'machakann/vim-highlightedyank'                                    " Highlight yanking
 Plug 'tomtom/tcomment_vim'                                              " Comments
 Plug 'tpope/vim-surround'                                               " Change/delete surrounding char
 Plug 'junegunn/goyo.vim'                                                " Centers text
@@ -138,7 +137,7 @@ let g:lua_tree_show_icons = {
       \}
 let g:lua_tree_bindings = { 'cd': '<C-]>' }
 
-let g:highlightedyank_highlight_duration = 300
+au TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 300)
 
 let g:sneak#label = 1
 hi! link Sneak Normal

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+wofi \
+    --hide-scroll \
+    --insensitive \
+    --show drun \
+    --width 600 \
+    --height 700 \
+    --yoffset 150 \
+    --no-action \
+    --allow-images \
+    --xoffset 680 \
+    --style ~/.config/wofi/drun.css \
+    --prompt 'Search'

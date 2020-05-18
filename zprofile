@@ -30,7 +30,6 @@ export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export GOPATH="$XDG_DATA_HOME/go"
 export PYTHONSTARTUP="$HOME/.local/bin/python_startup"
 export NODE_REPL_HISTORY="$XDG_CACHE_HOME/node_repl_history"
-export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -52,5 +51,7 @@ export XDG_CURRENT_DESKTOP=Unity
 export XDG_SESSION_TYPE=wayland
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-	exec sway
+    export XDG_CURRENT_DESKTOP=sway
+	exec sway &>/tmp/sway.log
+    # exec wayfire -c ~/.config/wayfire/config.ini &>/tmp/wayfire.log
 fi

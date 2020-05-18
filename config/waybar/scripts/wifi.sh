@@ -1,6 +1,6 @@
 #!/bin/sh
 
-res="$(nmcli -t -f active,ssid dev wifi | egrep '^yes' | cut -d':' -f2)"
+res="$(iwlist wlp2s0 scan | grep ESSID | cut -d':' -f2 | tr -d '"')"
 
 if [ "$res" != "" ]; then
     printf "connected to \`$res\`"

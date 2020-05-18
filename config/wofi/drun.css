@@ -1,0 +1,40 @@
+* { outline-width: 0px; outline: none; }
+scrolledwindow undershoot.top, scrolledwindow undershoot.right, scrolledwindow undershoot.bottom, scrolledwindow undershoot.left { background-image: none; }
+
+window {
+  font: 18px "Iconsolata";
+  border: 2px solid #b8bcf3;
+}
+
+#outer-box {
+  margin: 24px;
+  background-color: #292d3e;
+}
+
+#input {
+  padding: 8px;
+  margin: 8px 32px;
+  background-color: #1b1e2b;
+}
+
+#input:focus {
+    border: none;
+}
+
+#inner-box {
+  margin: 16px 0px;
+  padding: 0px 16px;
+  background-color: #292d3e;
+}
+
+#entry {
+  padding: 16px;
+}
+
+#text:selected {
+  background-color: #1b1e2b;
+}
+
+#entry:selected {
+  background-color: #1b1e2b;
+}
