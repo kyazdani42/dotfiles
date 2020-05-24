@@ -45,3 +45,5 @@ if echo $ok | grep "success"; then
 else
     notify "Error connecting to $res: $ok" 2000 critical
 fi
+
+killall -9 waybar; waybar &
