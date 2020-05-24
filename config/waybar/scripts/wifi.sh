@@ -1,6 +1,6 @@
 #!/bin/sh
 
-res="$(iwlist wlp2s0 scan | grep ESSID | cut -d':' -f2 | tr -d '"')"
+res="$(nmcli device status | grep wlp2s0 | grep ' connected' | awk '{print $4}')"
 
 if [ "$res" != "" ]; then
     printf "connected to \`$res\`"

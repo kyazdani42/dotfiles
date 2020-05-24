@@ -1,0 +1,47 @@
+#!/bin/sh
+
+notify() {
+    makoctl dismiss -a
+    notify-send \
+        -u ${3:-normal} \
+        -t ${2:-600} \
+        "$1"
+}
+
+nmcli device wifi rescan
+{
+    nmcli device wifi list > $XDG_CACHE_HOME/wifi-list
+} &
+
+while [ "$(jobs | grep -i 'running')" ]; do
+    notify 'scanning wifi networks.'
+    sleep 0.4;
+    notify 'scanning wifi networks..'
+    sleep 0.4;
+    notify 'scanning wifi networks...'
+    sleep 0.4;
+done
+
+res="$(cat $XDG_CACHE_HOME/wifi-list | grep WPA | sed 's/\*/ /g' | awk '{print $2}' | wofi --dmenu --style ~/.config/wofi/drun.css --hide-scroll -p 'Select a network')"
+
+[ -z "$res" ] && exit $?
+
+{
+    nmcli device wifi connect "$res" &> $XDG_CACHE_HOME/wifi-result
+} &
+
+while [ "$(jobs | grep -i 'running')" ]; do
+    notify "connecting to $res."
+    sleep 0.4;
+    notify "connecting to $res.."
+    sleep 0.4;
+    notify "connecting to $res..."
+    sleep 0.4;
+done
+
+ok=$(cat $XDG_CACHE_HOME/wifi-result)
+if echo $ok | grep "success"; then
+    notify "successfully connected to $res" 2000
+else
+    notify "Error connecting to $res: $ok" 2000 critical
+fi

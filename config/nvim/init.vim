@@ -58,15 +58,17 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'camspiers/lens.vim'                                               " Resize windows on the fly
 Plug 'norcalli/nvim-colorizer.lua'                                      " Rgb/hex colorizer
 Plug 'tpope/vim-fugitive'                                               " Git integration
+Plug 'junegunn/fzf.vim'                                                 " fzf wrapper
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tomtom/tcomment_vim'                                              " Comments
 Plug 'tpope/vim-surround'                                               " Change/delete surrounding char
 Plug 'junegunn/goyo.vim'                                                " Centers text
 Plug 'justinmk/vim-sneak'                                               " Better fast search using 's
 Plug 'ryanoasis/vim-devicons'                                           " Icons
 Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
+Plug 'editorconfig/editorconfig-vim'                                    " File format for projects
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
 Plug 'sheerun/vim-polyglot'                                             " Language color pack
-Plug 'junegunn/fzf.vim'                                                 " fzf wrapper
 Plug 'rust-lang/rust.vim'                                               " Rust language support
 Plug 'plasticboy/vim-markdown'                                          " Markdown support
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
@@ -76,6 +78,10 @@ Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " Plug 'haorenW1025/completion-nvim'                                      " Lsp extension
 " Plug 'haorenW1025/diagnostic-nvim'                                      " Lsp extension
 call plug#end()
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:lens#disabled_filetypes = ['LuaTree', 'fzf']
+let g:lens#animate = 0
 
 "TODO remove this config when using nvim-lsp
 set hidden

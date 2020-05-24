@@ -14,11 +14,15 @@ smart_gaps on
 focus_follows_mouse no
 
 output eDP-1 bg ~/.config/wallpaper fill
+output DP-2 bg ~/.config/wallpaper fill
+output DP-2 res 3840x2160
+output DP-2 scale 1.5
 floating_maximum_size 1920 x 1080
 seat * hide_cursor 4000
 exec waybar &
 exec mako &
 exec runmailserver 2&>/dev/null &
+exec nm-applet &
 exec swayidle -w \
          timeout 300 'lock' \
          timeout 600 'swaymsg "output * dpms off"' \
@@ -61,6 +65,7 @@ input type:touchpad {
 # TODO bindsym $mod+Shift+x -> shutdown dialog
 
 bindsym $mod+d exec wofi_drun
+bindsym $mod+w exec wofi_wifi
 
 bindsym button1 nop
 bindsym $mod+Shift+q kill
@@ -119,6 +124,9 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
+
+workspace $ws1 output DP-2
+workspace $ws2 output eDP-1
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1

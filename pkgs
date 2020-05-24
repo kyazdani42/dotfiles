@@ -79,3 +79,5 @@ sway
 swayidle
 swaylock
 wf-recorder
+networkmanager
+network-manager-applet
