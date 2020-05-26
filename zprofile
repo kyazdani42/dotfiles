@@ -45,13 +45,11 @@ export BROWSER="firefox"
 
 export MOZ_ENABLE_WAYLAND=1
 export QT_QPA_PLATFORM=wayland-egl
-export GDK_BACKEND=wayland
 export CLUTTER_BACKEND=wayland
-export XDG_CURRENT_DESKTOP=Unity
+export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-    export XDG_CURRENT_DESKTOP=sway
-	exec sway &>/tmp/sway.log
+    exec sway &>/tmp/sway.log
     # exec wayfire -c ~/.config/wayfire/config.ini &>/tmp/wayfire.log
 fi

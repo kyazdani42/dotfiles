@@ -14,13 +14,13 @@ print_data() {
 }
 
 error_get() {
-    printf "usage: $(basename $0) get [high-medium-low]\n"
+    printf "usage: $(basename $0) get [high-medium-low-all]\n"
     exit 1
 }
 
 get() {
     level="$1"
-    options=("high" "medium" "low")
+    options=("high" "medium" "low", "all")
     PS3="Select a todo level: "
     [ -z "$level" ] && select l in "${options[@]}"; do level=$l; break; done
     printf "\n"
@@ -36,6 +36,14 @@ get() {
             ;;
         "low")
             printf "todo (low):\n"
+            print_data LOW
+            ;;
+        "all")
+            printf "todo (high):\n"
+            print_data HI
+            printf "\ntodo (medium):\n"
+            print_data MED
+            printf "\ntodo (low):\n"
             print_data LOW
             ;;
         *)
@@ -75,6 +83,10 @@ add() {
     printf "new todo added to todolist\n"
 }
 
+remove_entry() {
+    grep -F -v -- "$1" "$TODO_PATH" > "$TODO_PATH.tmp" && mv "$TODO_PATH.tmp" "$TODO_PATH"
+}
+
 remove() {
     opt=`cat $TODO_PATH | sed 's/- \*\*HI\*\* //' | sed 's/- \*\*MED\*\* //' | sed 's/- \*\*LOW\*\* //'`
     readarray -t options <<<"$opt"
@@ -82,14 +94,51 @@ remove() {
     select l in "${options[@]}"; do todo="$l"; break; done
     printf "\n"
 
-    grep -F -v -- "$todo" "$TODO_PATH" > "$TODO_PATH.tmp" && mv "$TODO_PATH.tmp" "$TODO_PATH"
-
+    remove_entry "$todo"
     printf "Todo '$todo' properly removed from todolist\n"
+}
+
+error_move() {
+    printf "todo: move error, wrong level type\n"
+    exit 1
+}
+
+move_element() {
+    remove_entry "$1"
+    echo "- **$2** $1" >> "$TODO_PATH"
+}
+
+move() {
+    opt=`cat $TODO_PATH | sed 's/- \*\*HI\*\* //' | sed 's/- \*\*MED\*\* //' | sed 's/- \*\*LOW\*\* //'`
+    readarray -t options <<<"$opt"
+    PS3="Which todo do you want to move ? "
+    select l in "${options[@]}"; do todo="$l"; break; done
+    printf "\n"
+
+    options=("high" "medium" "low")
+    PS3="Move to:"
+    select l in "${options[@]}"; do new_level="$l"; break; done
+
+    line=$(grep -n "$todo" "$TODO_PATH" | cut -d':' -f1)
+    case "$new_level" in
+        "high")
+            move_element "$todo" "HI";;
+        "medium")
+            move_element "$todo" "MED";;
+        "low")
+            move_element "$todo" "LOW";;
+        *)
+            error_move
+    esac
+    
 }
 
 case "$1" in
     "get")
         get "$2"
+        ;;
+    "move")
+        move "$2"
         ;;
     "add")
         add "$2"

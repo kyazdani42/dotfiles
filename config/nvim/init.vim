@@ -124,6 +124,7 @@ set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-palenight.lua
 set runtimepath+=~/dev/nvim_dev/plugs/blue-moon
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-treesitter
+set runtimepath+=~/dev/nvim_dev/plugs/nvim-web-devicons
 
 colorscheme blue-moon
 
