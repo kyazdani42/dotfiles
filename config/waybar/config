@@ -2,7 +2,7 @@
   "layer": "top",
   "position": "bottom",
   "height": 33,
-  "modules-left": ["clock", "custom/separator", "sway/window", "sway/mode"],
+  "modules-left": ["clock", "custom/separator", "sway/window", "custom/separator", "custom/todo", "sway/mode"],
   "modules-center": ["sway/workspaces"],
   "modules-right": [
     "pulseaudio",
@@ -57,8 +57,14 @@
     "tooltip": false,
     "format": " {}"
   },
+  "custom/todo": {
+    "exec": "$HOME/.config/waybar/scripts/todo_random.sh",
+    "interval": 360,
+    "tooltip": false,
+    "format": "🔖 {}"
+  },
   "custom/separator": {
-    "format": "||",
+    "format": "<span foreground='#42455d'>▰</span>",
     "interval": "once",
     "tooltip": false
   },
