@@ -8,7 +8,7 @@ almost_low=0
 low=0
 
 notif() {
-    notify-send -u "$1" -i "$2" "$3" &
+    notify-send -t 2000 -u "$1" -i "$2" "$3" &
 }
 
 while true; do
