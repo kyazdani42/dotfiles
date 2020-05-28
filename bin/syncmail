@@ -1,0 +1,12 @@
+#!/bin/sh
+
+offlineimap
+
+num_mail=$(ls ~/.cache/mail/INBOX/new | wc -l)
+
+if [ $num_mail == 0 ]; then
+    echo "no mail"
+else
+    notify-send -u normal -t 2000 "you have $num_mail unread mail"
+    echo "$num_mail"
+fi

@@ -1,0 +1,19 @@
+[general]
+accounts = protonmail
+
+[Account protonmail]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = Maildir
+localfolders = ~/.cache/mail
+
+[Repository Remote]
+type = IMAP
+remoteport = 1143
+remoteuser = yazdani.kiyan
+remotehost = localhost
+remotepassfile = ~/.local/share/imap_pass
+starttls = no
+ssl = no

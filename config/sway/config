@@ -76,6 +76,7 @@ bindsym $mod+Return split h, exec spawn-alacritty-cwd
 bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd
 bindsym $mod+c exec alacritty --title='floating' -e python
 bindsym $mod+p exec pavucontrol
+bindsym $mod+m exec alacritty -e neomutt
 
 bindsym Print exec take-screenshot "fullscreen"
 bindsym F11 exec take-screenshot "clipboard"
@@ -152,8 +153,8 @@ bindsym $mod+Control+s move scratchpad
 bindsym $mod+Control+Return scratchpad show
 
 # gaps
-bindsym $mod+m gaps inner current plus 5
-bindsym $mod+n gaps inner current minus 5
+bindsym $mod+g gaps inner current plus 5
+bindsym $mod+Shift+g gaps inner current minus 5
 bindsym $mod+Shift+e gaps inner current set 0
 bindsym $mod+Shift+f gaps inner current set 10
 

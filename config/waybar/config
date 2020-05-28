@@ -5,6 +5,8 @@
   "modules-left": ["clock", "custom/separator", "sway/window", "custom/separator", "custom/todo", "sway/mode"],
   "modules-center": ["sway/workspaces"],
   "modules-right": [
+    "custom/mail",
+    "custom/separator",
     "pulseaudio",
     "custom/separator",
     "battery",
@@ -73,5 +75,11 @@
     "interval": 360,
     "tooltip": false,
     "format": "{}"
+  },
+  "custom/mail": {
+      "exec": "syncmail",
+      "interval": 1200,
+      "tooltip": false,
+      "format": "  {}"
   }
 }
