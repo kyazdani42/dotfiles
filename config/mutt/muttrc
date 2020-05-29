@@ -7,11 +7,11 @@ set folder="~/.cache/mail"
 set smtp_url = "smtp://$smtp_user@127.0.0.1:1025"
 set ssl_force_tls = yes
 
-set spoolfile = "+INBOX"
-set record = "+Sent"
-set trash  = "+Trash"
-set postponed = "+Drafts"
-mailboxes =INBOX =Sent =Trash =Drafts =Spam
+set spoolfile = "+Inbox"
+set record = "+sent"
+set trash  = "+trash"
+set postponed = "+drafts"
+mailboxes =Inbox =sent =trash =drafts =spam
 
 set sort = 'reverse-date'
 set sleep_time = 0
