@@ -132,7 +132,7 @@ lua require'init'.setup()
 
 " Tree config
 nnoremap <silent> <C-n> :LuaTreeToggle<CR>
-nnoremap <silent> <leader>n :LuaTreeRefresh<CR>
+nnoremap <silent> <leader>r :LuaTreeRefresh<CR>
 let g:lua_tree_ignore = ['.git', 'node_modules']
 let g:lua_tree_auto_open = 1
 let g:lua_tree_auto_close = 1

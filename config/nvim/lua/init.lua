@@ -31,21 +31,30 @@ local keymaps = {
   -- Ctrl + / is outputing ++ (term configuration)
   { mod = 'n', lhs = '++', rhs = ':TComment<cr>', opt = { silent = true } },
   { mod = 'v', lhs = '++', rhs = ':TComment<cr>', opt = { silent = true } },
-  { mod = 'n', lhs = '<tab>', rhs = ':normal za<cr>', opt = { noremap = true, silent = true }}
+  { mod = 'n', lhs = '<tab>', rhs = ':normal za<cr>', opt = { noremap = true, silent = true }},
+
+  { mod = 't', lhs = '<C-k>', rhs = '<C-\\><C-n>', opt = { noremap = true } },
+  { mod = 't', lhs = '<C-w>h', rhs = '<C-\\><C-n><c-w>h', opt = { noremap = true } },
+  { mod = 't', lhs = '<C-w>j', rhs = '<C-\\><C-n><c-w>j', opt = { noremap = true } },
+  { mod = 't', lhs = '<C-w>k', rhs = '<C-\\><C-n><c-w>k', opt = { noremap = true } },
+  { mod = 't', lhs = '<C-w>l', rhs = '<C-\\><C-n><c-w>l', opt = { noremap = true } },
 }
 
 function M.setup()
-    local default_opt = { nowait = true, noremap = true }
+  local default_opt = { nowait = true, noremap = true }
 
-    api.nvim_command('cabbrev W w')
+  api.nvim_command('cabbrev W w')
+  api.nvim_command('cabbrev terminal vsplit term://zsh')
+  api.nvim_command('cabbrev term vsplit term://zsh')
+  api.nvim_command('autocmd TermOpen * startinsert')
 
-    for _, keymap in pairs(keymaps) do
-      api.nvim_set_keymap(keymap.mod, keymap.lhs, keymap.rhs, keymap.opt or default_opt)
-    end
+  for _, keymap in pairs(keymaps) do
+    api.nvim_set_keymap(keymap.mod, keymap.lhs, keymap.rhs, keymap.opt or default_opt)
+  end
 
-    require 'colorizer'.setup()
-    require 'statusline'.setup()
-    require 'ts'.setup()
+  require 'colorizer'.setup()
+  require 'statusline'.setup()
+  require 'ts'.setup()
 end
 
 return M
