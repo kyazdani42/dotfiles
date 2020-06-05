@@ -1,6 +1,6 @@
 #!/bin/sh
 
-mbsync -c "$XDG_CONFIG_HOME/isync/mbsyncrc" -a
+anthill &>/dev/null
 
 num_mail=$(ls ~/.cache/mail/Inbox/new | wc -l)
 
