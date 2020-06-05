@@ -2,7 +2,7 @@
 
 anthill &>/dev/null
 
-num_mail=$(ls ~/.cache/mail/Inbox/new | wc -l)
+num_mail=$(ls ~/.cache/mail/protonmail/Inbox/new | wc -l)
 
 if [ $num_mail == 0 ]; then
     echo "no mail"

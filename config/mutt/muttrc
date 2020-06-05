@@ -3,7 +3,7 @@ source creds
 set editor = "nvim"
 set header_cache = "~/.cache/mutt"
 
-set folder="~/.cache/mail"
+set folder="~/.cache/mail/protonmail"
 set smtp_url = "smtp://$smtp_user@127.0.0.1:1025"
 set ssl_force_tls = yes
 
