@@ -1,0 +1,13 @@
+#!/bin/sh
+
+exit_="→ Exit"
+shutdown="⏻ Shutdown"
+reboot="🔃 Reboot"
+
+action=$(echo -n "${exit_}
+${shutdown}
+${reboot}" | rofi -dmenu -config "$XDG_CONFIG_HOME/rofi/dialog.rasi")
+
+[ "$action" == "$exit_" ] && i3-msg exit
+[ "$action" == "$shutdown" ] && shutdown now
+[ "$action" == "$reboot" ] && reboot

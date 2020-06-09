@@ -66,6 +66,5 @@ install_yay
 install_programs
 setup_docker
 enable_docker_service
-dmenu_rofi
 
 printf "\x1b[1m** - installed all programs, check error.log to see if some programs have not been installed properly - **\x1b[0m\n\n"

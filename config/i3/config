@@ -1,0 +1,137 @@
+# Mod1 is Alt, Mod4 is Windows
+set $mod Mod1
+
+floating_modifier $mod
+
+font pango:Lato Medium 12
+# in case there is a title
+title_align center
+# no border, no title bar
+default_border pixel 1
+new_window pixel 1
+smart_borders on
+smart_gaps on
+# borders on floating to make it easier to resize
+default_floating_border pixel 3
+
+# the focus only changes when clicking
+focus_follows_mouse no
+
+# reload the configuration file
+bindsym $mod+F2 reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+F2 restart
+
+for_window [class="Org.gnome.Nautilus" instance="org.gnome.Nautilus"] floating enable, resize set 1000 800, border pixel 3 
+for_window [class="VirtualBox Manager" instance="VirtualBox Manager"] floating enable, resize set 2600 1600, border pixel 3
+for_window [class="VirtualBox Machine" instance="VirtualBox Machine"] floating enable, resize set 1816 1094
+for_window [class="Pavucontrol" instance="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
+for_window [class="MultiMC5" instance="multimc"] floating enable, resize set 1000 500, border pixel 3
+for_window [class="Minecraft 1.15.2" instance="Minecraft 1.15.2"] floating enable, border pixel 3
+for_window [class="Alacritty" instance="AlacrittyFloating"] floating enable, resize set 1000 400, border pixel 3
+for_window [class="Steam" instance="Steam"] floating enable, border pixel 3
+for_window [title="dev"] floating enable, border pixel 3
+for_window [class="firefox"] border none
+
+bindsym $mod+Tab workspace back_and_forth
+
+bindsym $mod+Return split h, exec spawn-alacritty-cwd || $TERMINAL
+bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd || $TERMINAL
+
+# disable clicking
+bindsym button1 nop
+
+# Contrain focused window
+floating_maximum_size 1500 x 1000
+
+# go to mode
+bindsym $mod+Shift+z split h
+bindsym $mod+Shift+v split v
+
+bindsym $mod+c exec alacritty --class 'AlacrittyFloating' -e python
+bindsym $mod+m exec alacritty -e 'neomutt'
+
+# gaps
+bindsym $mod+g gaps inner current plus 5
+bindsym $mod+Shift+g gaps inner current minus 5
+bindsym $mod+Shift+e gaps inner current set 0
+bindsym $mod+Shift+f gaps inner current set 10
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# enter fullscreen mode
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+# bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# turn into floating scrathpad
+bindsym $mod+Control+s move scratchpad
+bindsym $mod+Control+Return scratchpad show
+# toggle tiling / floating - reset from scratchpad
+bindsym $mod+Shift+s floating toggle
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+Shift+r mode "resize"
+mode "resize" {
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+	bindsym $mod+Shift+r mode "default"
+}
+
+# Colors
+set $bg         #1b1e2b
+set $white      #FFFFFF
+set $white-alt  #959dcb
+set $red        #f07178
+set $cyan       #89ddff
+
+client.focused          $bg  $bg  $cyan      $white-alt $white-alt
+client.focused_inactive $bg  $bg  $white-alt $bg        $bg
+client.unfocused        $bg  $bg  $white-alt $bg        $bg
+client.placeholder      $bg  $bg  $white-alt $bg        $bg
+client.urgent           $red $red $red       $red       $red
+client.background       $bg
+
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+
+# vim: ft=i3config

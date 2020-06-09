@@ -1,8 +1,7 @@
 #!/bin/sh
 
-makoctl dismiss -a
+brightness_level="$(xbacklight -get | cut -d '.' -f1)"
 
-notify-send -t 1200 \
-    -i $HOME/pictures/bell.jpg \
-    -u normal \
-    "brightness: $(brightnessctl i | grep '%' | cut -d ' ' -f4 | tr -d '()')"
+notify-send -t 1000 \
+    -h string:x-canonical-private-synchronous:anything \
+    "brightness: ${brightness_level}%"

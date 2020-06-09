@@ -1,11 +1,9 @@
 #!/bin/sh
 
-d="$(date | awk '{print $1"_"$2"_"$3"_"$4"_"$5}' | tr ':' '.')"
-
 if [ "$1" == "fullscreen" ]; then
-    grim -t png "$HOME/pictures/$d.png"
-elif [ "$1" == "clipboard" ]; then
-    grim -g "$(slurp)" - | wl-copy
+    scrot -q 100
 else
-    grim -g "$(slurp)" "$HOME/pictures/$d.png"
+    # scrot is breaking when running interactively from a keypress
+    sleep 0.1
+    scrot -q 100 --select --line style=solid,width=2 2>/dev/null
 fi

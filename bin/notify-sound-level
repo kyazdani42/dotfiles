@@ -1,11 +1,8 @@
 #!/bin/sh
 
-makoctl dismiss -a
-
 vol="$(amixer get Master mono | grep -oE '[0-9]{1,3}%')"
 notify-send \
-    -u normal \
-    -i $HOME/pictures/bell.jpg \
+    -h string:x-canonical-private-synchronous:anything \
     -t 1000 \
     "volume: " "$vol"
 

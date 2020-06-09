@@ -1,0 +1,22 @@
+#!/bin/sh
+
+nmcli device wifi rescan
+
+notify() {
+    notify-send -t 1000 -h string:x-canonical-private-synchronous:anything "$1"
+}
+
+nmcli -f SSID device wifi list > $XDG_CACHE_HOME/wifi_list &
+
+while [ "$(jobs | grep -i 'running')" ]; do
+    notify "loading wifi networks."
+    sleep 0.4;
+    notify "loading wifi networks.."
+    sleep 0.4;
+    notify "loading wifi networks..."
+    sleep 0.4;
+done
+
+cat $XDG_CACHE_HOME/wifi_list | sed '/SSID/d' | sed '/--/d' | sed '/^$/d' |
+rofi -dmenu -config "$XDG_CONFIG_HOME/rofi/wifi.rasi" |
+xargs nmcli device wifi connect

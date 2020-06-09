@@ -10,7 +10,7 @@ set spoolfile = "+Inbox"
 set record = "+sent"
 set trash  = "+trash"
 set postponed = "+drafts"
-mailboxes =Inbox =sent =trash =drafts =spam
+mailboxes =Inbox =sent =trash =drafts =spam =gmail
 
 set sort = 'reverse-date'
 set sleep_time = 0

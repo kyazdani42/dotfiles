@@ -3,7 +3,7 @@ url="127.0.0.1"
 port=1143
 user="yazdani.kiyan"
 pass_cmd="cat ~/.local/share/imap_pass"
-ssl_type=false
+with_tls=false
 folder="~/.cache/mail"
 
 [protonmail.mailboxes]
@@ -13,3 +13,4 @@ spam = { remote="Spam", local="spam" }
 drafts = { remote="Drafts", local="drafts" }
 trash = { remote="Trash", local="trash" }
 allmail = { remote="All Mail", local="allmail" }
+gmail = { remote="GMAIL", local="gmail" }

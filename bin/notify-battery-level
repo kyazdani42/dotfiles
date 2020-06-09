@@ -8,17 +8,17 @@ almost_low=0
 low=0
 
 notif() {
-    notify-send -t 2000 -u "$1" -i "$2" "$3" &
+    notify-send -u "$1" "$2" &
 }
 
 while true; do
     cap=$(cat $capacity_file)
     if [ $cap -le 15 ] && [ "$low" == "0" ]; then
         low=1
-        notif "critical" "$HOME/pictures/bell-alert.jpg" "LOW_BATTERY"
+        notif "critical" "LOW_BATTERY"
     elif [ $cap -le 30 ] && [ "$almost_low" == "0" ]; then
         almost_low=1
-        notif "normal" "$HOME/pictures/bell.jpg" "BATTERY < 30 %"
+        notif "normal" "BATTERY < 30 %"
     fi
 
     sleep $time;

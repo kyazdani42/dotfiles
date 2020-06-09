@@ -9,6 +9,7 @@ BINARIES=(
 "$HOME/.pyenv/bin"
 # personnal binaries
 "$HOME/.local/bin"
+"$HOME/.local/bin/bar"
 "$HOME/.local/workbin"
 )
 
@@ -16,8 +17,7 @@ for p in "${BINARIES[@]}"; do
 	[ -d "$p" ] && export PATH="$p:$PATH"
 done
 
-[ $(command -v "ssg-agent") ] && eval "$(ssh-agent -s)"
-[ $(command -v "ssg-add") ] && [ -d "$HOME/.ssh/id_rsa.pub" ] && ssh-add "$HOME/.ssh/id_rsa.pub"
+[ $(command -v "ssh-agent") ] && eval "$(ssh-agent -s)"
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -45,13 +45,6 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM=wayland-egl
-export CLUTTER_BACKEND=wayland
-export XDG_CURRENT_DESKTOP=sway
-export XDG_SESSION_TYPE=wayland
-
 if [ "$(tty)" = "/dev/tty1" ]; then
-    exec sway &>/tmp/sway.log
-    # exec wayfire -c ~/.config/wayfire/config.ini &>/tmp/wayfire.log
+    exec startx &>/tmp/startx.log
 fi

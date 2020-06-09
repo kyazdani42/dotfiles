@@ -81,3 +81,9 @@ swaylock
 wf-recorder
 networkmanager
 network-manager-applet
+i3-gaps
+rofi
+sxhkd
+i3lock
+polybar
+picom

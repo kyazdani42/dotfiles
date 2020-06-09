@@ -1,0 +1,41 @@
+XF86Audio{Lower,Raise}Volume
+	amixer -q sset Master 3%{-,+} unmute && notify-sound-level
+
+super + {Down,Up}
+	amixer -q sset Master 3%{-,+} unmute && notify-sound-level 
+
+XF86MonBrightness{Down,Up}
+	xbacklight -{dec,inc} 5 && notify-brightness-level
+
+alt + shift + p
+    polybar_launch.sh
+
+alt + p
+	passmenu
+
+alt + d
+    rofi_launch &
+
+alt + shift + d
+    rofi_dnd &
+
+alt + shift + x
+    rofi_shutdown &
+
+alt + w
+    rofi_wifi &
+
+alt + shift + o
+    lock
+
+Print
+    take-screenshot fullscreen
+
+F12
+    take-screenshot
+
+alt + shift + w
+	$BROWSER
+
+alt + s
+    echo cmd:toggle > /tmp/polybar_mqueue.*

@@ -1,33 +1,33 @@
 #!/bin/sh
 
-lpath="${XDG_CACHE_HOME}/bg"
-grim $lpath
+lpath="${XDG_CACHE_HOME}/bg.png"
+scrot $lpath
 convert -blur 0,10 $lpath $lpath
 
 tp="#ffffff00"
-swaylock \
+i3lock \
     -i $lpath \
-    -c "#1b1e2b" \
-    --bs-hl-color "#ff0000" \
-    --font "Lato Medium" \
-    --font-size "12" \
-    --indicator-idle-visible \
-    --indicator-radius 30 \
-    --indicator-thickness 3 \
-    --ring-color "#89ddff" \
-    --ring-clear-color "#c792ea" \
-    --ring-wrong-color "#f07178" \
-    -r \
-    --inside-color $tp \
-    --inside-clear-color $tp \
-    --inside-ver-color $tp \
-    --inside-wrong-color $tp \
-    --key-hl-color $tp \
-    --layout-bg-color $tp \
-    --layout-border-color $tp \
-    --layout-text-color $tp \
-    --text-color $tp \
-    --text-clear-color  $tp \
-    --text-ver-color $tp \
-    --text-wrong-color $tp
+    -c "#1b1e2b" # \
+    # --font "Lato Medium" \
+    # --font-size "12" # \
+    # --bs-hl-color "#ff0000" \
+    # --indicator-idle-visible \
+    # --indicator-radius 30 \
+    # --indicator-thickness 3 \
+    # --ring-color "#89ddff" \
+    # --ring-clear-color "#c792ea" \
+    # --ring-wrong-color "#f07178" \
+    # -r \
+    # --inside-color $tp \
+    # --inside-clear-color $tp \
+    # --inside-ver-color $tp \
+    # --inside-wrong-color $tp \
+    # --key-hl-color $tp \
+    # --layout-bg-color $tp \
+    # --layout-border-color $tp \
+    # --layout-text-color $tp \
+    # --text-color $tp \
+    # --text-clear-color  $tp \
+    # --text-ver-color $tp \
+    # --text-wrong-color $tp
 
