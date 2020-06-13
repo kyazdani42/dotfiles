@@ -43,18 +43,23 @@ local keymaps = {
 function M.setup()
   local default_opt = { nowait = true, noremap = true }
 
-  api.nvim_command('cabbrev W w')
-  api.nvim_command('cabbrev terminal vsplit term://zsh')
-  api.nvim_command('cabbrev term vsplit term://zsh')
-  api.nvim_command('autocmd TermOpen * startinsert')
+  api.nvim_exec([[
+  cabbrev W w
+  cabbrev terminal vsplit term://zsh
+  cabbrev term vsplit term://zsh
+  autocmd TermOpen * startinsert'
+  command! Format lua require'format'()
+  ]], '')
 
   for _, keymap in pairs(keymaps) do
     api.nvim_set_keymap(keymap.mod, keymap.lhs, keymap.rhs, keymap.opt or default_opt)
   end
 
+  require 'lsp'.setup()
   require 'colorizer'.setup()
   require 'statusline'.setup()
   require 'ts'.setup()
+  require 'plugs'.setup()
 end
 
 return M

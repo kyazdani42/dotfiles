@@ -1,5 +1,4 @@
 local api = vim.api
-local treesitter = require'nvim-treesitter'
 
 local M = {}
 
@@ -76,15 +75,6 @@ local function get_infos(bufnr)
   return string.format('%s %s:%s | %s | %s ', ft, row, col, percent, num_lines)
 end
 
-local function get_ts_node()
-  local ts = treesitter.statusline(30)
-  if #ts ~= 0 then
-    return ' '..ts..' |'
-  else
-    return ts
-  end
-end
-
 local function get_filename(bufnr)
   local fname = api.nvim_buf_get_name(bufnr)
   if #fname == 0 then
@@ -97,7 +87,7 @@ local function get_filename(bufnr)
   end
 
   fname = vim.fn.fnamemodify(fname, ':~')
-  
+
   return icon..fname
 end
 
@@ -111,13 +101,13 @@ function M.clear()
   end
 end
 
-local function format_status(mode, filename, git, ts, infos)
+local function format_status(mode, filename, git, infos)
   local left_side = mode.color..mode.val..'%#Normal# '..filename
-  local right_side =mode.color:gsub('MD', 'Info')..git..ts..infos..'%#Normal#'
+  local right_side =mode.color:gsub('MD', 'Info')..git..infos..'%#Normal#'
   local total_size = api.nvim_win_get_width(0)
 
   local padding = ' '
-  local padding = padding:rep(total_size - (#mode.val + #filename + #git + #ts + #infos + 1))
+  local padding = padding:rep(total_size - (#mode.val + #filename + #git + #infos + 1))
 
   return left_side..padding..right_side
 end
@@ -130,10 +120,9 @@ function M.update()
   local mode = get_mode(bufnr)
   local filename = get_filename(bufnr)
   local git = get_git(bufnr)
-  local ts = get_ts_node(bufnr)
   local infos = get_infos(bufnr)
 
-  local formatted_status = format_status(mode, filename, git, ts, infos)
+  local formatted_status = format_status(mode, filename, git, infos)
 
   return formatted_status
 end

@@ -1,6 +1,8 @@
 {
     "git.enableGutters": false,
     "git.realtimeGutters": false,
+    "tsserver.enableJavascript": false,
+    "go.enable": true,
     "rust-analyzer.updates.channel": "nightly",
     "rust-analyzer.callInfo.full": true,
     "rust-analyzer.completion.postfix.enable": false,

@@ -1,85 +1,42 @@
 local api = vim.api
-local lsp = require'nvim_lsp'
-local lsp_comp = require'completion'
-local lsp_diagnostic = require'diagnostic'
 local M = {}
 
-local keymaps = {
-  {
-    mod = 'i',
-    lhs = '<C-p>',
-    rhs = 'completion#trigger_completion()',
-    opt = { noremap = true, silent = true, expr = true }
-  },
-  {
-    mod = 'i',
-    lhs = '<C-n>',
-    rhs = 'completion#trigger_completion()',
-    opt = { noremap = true, silent = true, expr = true }
-  },
-  {
-    mod = 'n',
-    lhs = 'gd',
-    rhs = '<cmd>lua vim.lsp.buf.definition()<CR>',
-    opt = { noremap = true, silent = true }
-  },
-  {
-    mod = 'n',
-    lhs = '<leader>gd',
-    rhs = '<cmd>lua vim.lsp.buf.declaration()<CR>',
-    opt = { noremap = true, silent = true }
-  },
-  {
-    mod = 'n',
-    lhs = 'K',
-    rhs = '<cmd>lua vim.lsp.buf.hover()<CR>',
-    opt = { noremap = true, silent = true }
-  },
-  {
-    mod = 'n',
-    lhs = 'gr',
-    rhs = '<cmd>lua vim.lsp.buf.references()<CR>',
-    opt = { noremap = true, silent = true }
-  },
-  -- nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-  -- nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-  -- nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-  -- nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-  {
-    mod = 'n',
-    lhs = '<leader>j',
-    rhs = ':PrevDiagnosticCycle<cr>',
-    opt = { noremap = true, silent = true }
-  },
-  {
-    mod = 'n',
-    lhs = '<leader>k',
-    rhs = ':NextDiagnosticCycle<cr>',
-    opt = { noremap = true, silent = true }
-  }
+function M.show_doc()
+  local ft = api.nvim_buf_get_option(api.nvim_get_current_buf(), 'ft')
+  if ft == 'vim' or ft == 'help' then
+    vim.exec('h '..vim.fn.expand('<cword>'))
+  else
+    api.nvim_call_function("CocAction('doHover')")
+  end
+end
+
+local opts = {
+  completeopt = 'menuone,noinsert,noselect',
+  hidden = true,
+  backup = false,
+  writebackup = false,
+  cmdheight = 2,
+  updatetime = 300,
+  signcolumn = 'yes',
 }
 
 function M.setup()
-  lsp.sumneko_lua.setup {
-    on_attach = function()
-      lsp_comp.on_attach()
-      lsp_diagnostic.on_attach()
-    end
-  }
-
-  lsp.rust_analyzer.setup {
-    on_attach = lsp_comp.on_attach,
-    serverPath = "/usr/bin/rust-analyzer"
-  }
-
-  api.nvim_set_option('completeopt', 'menuone,noinsert,noselect')
-  api.nvim_set_var('diagnostic_enable_virtual_text', 0)
-  api.nvim_set_var('diagnostic_show_sign', 0)
-  api.nvim_set_var('diagnostic_insert_delay', 1)
-
-  for _, keymap in pairs(keymaps) do
-    api.nvim_set_keymap(keymap.mod, keymap.lhs, keymap.rhs, keymap.opt)
+  for name, value in pairs(opts) do
+    api.nvim_set_option(name, value)
   end
+
+  vim.api.nvim_exec([[
+    inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    nmap <silent> <leader>j <Plug>(coc-diagnostic-prev)
+    nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
+    nmap <silent> gd <Plug>(coc-definition)
+    nmap <silent> gr <Plug>(coc-references)
+    nmap <leader>rn  <Plug>(coc-rename)
+    nnoremap <silent> K :lua require'lsp'.show_doc()
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    command! -nargs=0 Format :call CocAction('format')
+    ]], '')
 end
 
 return M

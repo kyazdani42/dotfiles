@@ -23,7 +23,6 @@ set inccommand=split           " Show effects of command as you type in a split
 set ignorecase                 " Ignore case
 set hlsearch                   " Highlight search results (enforce)
 set confirm                    " Disable 'no write'
-" set nowrap                     " Do not wrap lines
 set mouse=n                    " Enable mouse
 set smartindent                " auto indent on new line (brackets for instance)
 set tabstop=4                  " Tabs are 4 spaces long
@@ -72,53 +71,9 @@ Plug 'sheerun/vim-polyglot'                                             " Langua
 Plug 'rust-lang/rust.vim'                                               " Rust language support
 Plug 'plasticboy/vim-markdown'                                          " Markdown support
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" TODO: these plugins don't work fine enought ATM
-" use coc instead
-" Plug 'neovim/nvim-lsp'                                                  " Lsp support
-" Plug 'haorenW1025/completion-nvim'                                      " Lsp extension
-" Plug 'haorenW1025/diagnostic-nvim'                                      " Lsp extension
 call plug#end()
 
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-let g:lens#disabled_filetypes = ['LuaTree', 'fzf']
-let g:lens#animate = 0
-
-"TODO remove this config when using nvim-lsp
-set hidden
-set nobackup
-set nowritebackup
-set cmdheight=2
-set updatetime=300
-set signcolumn=yes
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-nmap <silent> <leader>j <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gt <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn  <Plug>(coc-rename)
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-nnoremap <silent> \ <C-w>o
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=0 OR     :call CocAction('runCommand', 'editor.action.organizeImport')
-
-""" END TODO
+au TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 300)
 
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-palenight.lua
@@ -127,38 +82,12 @@ set runtimepath+=~/dev/nvim_dev/plugs/nvim-treesitter
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-web-devicons
 
 colorscheme blue-moon
-
 lua require'init'.setup()
 
-" Tree config
-nnoremap <silent> <C-n> :LuaTreeToggle<CR>
-nnoremap <silent> <leader>r :LuaTreeRefresh<CR>
-let g:lua_tree_ignore = ['.git', 'node_modules']
-let g:lua_tree_auto_open = 1
-let g:lua_tree_auto_close = 1
-let g:lua_tree_follow = 1
-let g:lua_tree_show_icons = {
-      \ 'git': 1,
-      \ 'folders': 1,
-      \ 'files': 1
-      \}
-let g:lua_tree_bindings = { 'cd': '<C-]>' }
-
-au TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 300)
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:lens#disabled_filetypes = ['LuaTree', 'fzf']
+let g:lens#animate = 0
 
 let g:sneak#label = 1
 hi! link Sneak Normal
-
 let g:vim_markdown_folding_disabled = 1
-
-let g:fzf_layout = { 'down': '~25%' }
-nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>p :Rg<CR>
-command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-      \   fzf#vim#with_preview({'down': '50%'}), <bang>0)
-
-autocmd! FileType fzf set laststatus=0 noshowmode noruler nonumber norelativenumber
-      \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler relativenumber
