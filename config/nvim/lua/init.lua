@@ -33,7 +33,8 @@ local keymaps = {
   { mod = 'v', lhs = '++', rhs = ':TComment<cr>', opt = { silent = true } },
   { mod = 'n', lhs = '<tab>', rhs = ':normal za<cr>', opt = { noremap = true, silent = true }},
 
-  { mod = 't', lhs = '<C-k>', rhs = '<C-\\><C-n>', opt = { noremap = true } },
+  -- TODO: find a way to map that but not on fzf
+  -- { mod = 't', lhs = '<C-k>', rhs = '<C-\\><C-n>', opt = { noremap = true } },
   { mod = 't', lhs = '<C-w>h', rhs = '<C-\\><C-n><c-w>h', opt = { noremap = true } },
   { mod = 't', lhs = '<C-w>j', rhs = '<C-\\><C-n><c-w>j', opt = { noremap = true } },
   { mod = 't', lhs = '<C-w>k', rhs = '<C-\\><C-n><c-w>k', opt = { noremap = true } },
@@ -47,7 +48,7 @@ function M.setup()
   cabbrev W w
   cabbrev terminal vsplit term://zsh
   cabbrev term vsplit term://zsh
-  autocmd TermOpen * startinsert'
+  autocmd TermOpen * startinsert
   command! Format lua require'format'()
   ]], '')
 
