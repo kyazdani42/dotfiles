@@ -4,7 +4,7 @@ local M = {}
 function M.show_doc()
   local ft = api.nvim_buf_get_option(api.nvim_get_current_buf(), 'ft')
   if ft == 'vim' or ft == 'help' then
-    vim.exec('h '..vim.fn.expand('<cword>'))
+    vim.api.nvim_exec('h '..vim.fn.expand('<cword>'), '')
   else
     api.nvim_call_function("CocAction('doHover')")
   end
@@ -33,7 +33,7 @@ function M.setup()
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gr <Plug>(coc-references)
     nmap <leader>rn  <Plug>(coc-rename)
-    nnoremap <silent> K :lua require'lsp'.show_doc()
+    nnoremap <silent> K :lua require'lsp'.show_doc()<CR>
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     command! -nargs=0 Format :call CocAction('format')
     ]], '')
