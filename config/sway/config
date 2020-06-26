@@ -14,9 +14,9 @@ smart_gaps on
 focus_follows_mouse no
 
 output eDP-1 bg ~/.config/wallpaper fill
-output DP-2 bg ~/.config/wallpaper fill
-output DP-2 res 3840x2160
-output DP-2 scale 1.5
+output DP-1 bg ~/.config/wallpaper fill
+output DP-1 res 3840x2160
+output DP-1 scale 1.5
 floating_maximum_size 1920 x 1080
 seat * hide_cursor 4000
 exec waybar &
@@ -75,7 +75,7 @@ bindsym $mod+Shift+o exec lock
 
 bindsym $mod+Return split h, exec spawn-alacritty-cwd
 bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd
-bindsym $mod+c exec alacritty --title='floating' -e python
+bindsym $mod+c exec alacritty --title='~#floating#~' -e python
 bindsym $mod+p exec pavucontrol
 bindsym $mod+m exec alacritty -e neomutt
 
@@ -190,8 +190,8 @@ for_window [app_id="firefox"] border none, move to workspace $ws2
 
 for_window [app_id="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
 
-for_window [title="floating"] floating enable, resize set 1000 400, border pixel 3
-for_window [title="dev"] floating enable, border pixel 3
+for_window [title="~#floating#~"] floating enable, resize set 1000 400, border pixel 3
+for_window [title="~#dev#~"] floating enable, border pixel 3
 
 # x apps
 for_window [shell=".*"] title_format "%title :: %shell"

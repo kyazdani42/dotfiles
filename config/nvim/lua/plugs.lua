@@ -19,6 +19,13 @@ local function setup_tree()
       noremap = true,
       silent = true
     })
+
+  vim.api.nvim_exec([[
+  augroup LuaTreeOverride
+    au!
+    au FileType LuaTree setlocal nowrap
+  augroup END
+  ]], '')
 end
 
 local function setup_fzf()

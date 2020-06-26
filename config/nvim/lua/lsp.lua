@@ -6,7 +6,7 @@ function M.show_doc()
   if ft == 'vim' or ft == 'help' then
     vim.api.nvim_exec('h '..vim.fn.expand('<cword>'), '')
   else
-    api.nvim_call_function("CocAction('doHover')")
+    api.nvim_call_function("CocAction", {'doHover'})
   end
 end
 

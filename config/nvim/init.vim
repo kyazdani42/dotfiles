@@ -31,6 +31,7 @@ set expandtab                  " expand tab into space by default
 set clipboard^=unnamedplus     " Use system clipboard
 set termguicolors
 set shortmess+=c
+syntax sync fromstart
 
 " Retrieve last position in a file: https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -54,7 +55,6 @@ nmap <C-c> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> tran
 " Plugins {{{
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'camspiers/lens.vim'                                               " Resize windows on the fly
 Plug 'norcalli/nvim-colorizer.lua'                                      " Rgb/hex colorizer
 Plug 'tpope/vim-fugitive'                                               " Git integration
 Plug 'junegunn/fzf.vim'                                                 " fzf wrapper
@@ -85,8 +85,6 @@ colorscheme blue-moon
 lua require'init'.setup()
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-let g:lens#disabled_filetypes = ['LuaTree', 'fzf']
-let g:lens#animate = 0
 
 let g:sneak#label = 1
 hi! link Sneak Normal
