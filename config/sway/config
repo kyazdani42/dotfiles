@@ -66,7 +66,7 @@ input type:touchpad {
 # TODO bindsym $mod+Shift+x -> shutdown dialog
 
 bindsym $mod+d exec wofi_drun
-bindsym $mod+w exec wofi_wifi
+bindsym $mod+Shift+u exec wofi_wifi
 
 bindsym button1 nop
 bindsym $mod+Shift+q kill
@@ -75,6 +75,7 @@ bindsym $mod+Shift+o exec lock
 
 bindsym $mod+Return split h, exec spawn-alacritty-cwd
 bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd
+bindsym $mod+Shift+d exec alacritty --working-directory="$HOME" --title='~#floating#~' -e lf
 bindsym $mod+c exec alacritty --title='~#floating#~' -e python
 bindsym $mod+p exec pavucontrol
 bindsym $mod+m exec alacritty -e neomutt
