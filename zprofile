@@ -45,6 +45,4 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 
-if [ "$(tty)" = "/dev/tty1" ]; then
-    exec startx &>/tmp/startx.log
-fi
+source session-$(hostname)-$(whoami).sh

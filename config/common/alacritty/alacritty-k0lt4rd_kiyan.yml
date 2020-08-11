@@ -7,6 +7,7 @@ window:
     columns: 0
     lines: 0
 
+  dynamic_title: true
   padding:
     x: 4
     y: 0
@@ -32,7 +33,7 @@ font:
     family: "IBM Plex Mono Medium"
     style: Italic
 
-  size: 11
+  size: 14
 
   offset:
     x: 0
@@ -85,7 +86,7 @@ colors:
     cyan:    '#89ddff'
     white:   '#ffffff'
 
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '#ffffff'
@@ -110,7 +111,6 @@ cursor:
   unfocused_hollow: true
 
 live_config_reload: true
-dynamic_title: true
 alt_send_esc: false
 
 debug:
