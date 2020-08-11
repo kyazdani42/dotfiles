@@ -1,0 +1,12 @@
+[submodule "config/common/nvim/autoload/vim-plug"]
+	path = config/common/nvim/autoload/vim-plug
+	url = https://github.com/junegunn/vim-plug
+[submodule "config/common/zsh/zsh-completions"]
+	path = config/common/zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions
+[submodule "config/common/zsh/zsh-autosuggestions"]
+	path = config/common/zsh/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "config/common/zsh/zsh-syntax-highlighting"]
+	path = config/common/zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting
