@@ -11,7 +11,7 @@ alt + shift + p
     polybar_launch.sh
 
 alt + p
-	passmenu
+	pavucontrol
 
 alt + d
     rofi_launch &
@@ -22,7 +22,7 @@ alt + shift + d
 alt + shift + x
     rofi_shutdown &
 
-alt + w
+alt + shift + u
     rofi_wifi &
 
 alt + shift + o

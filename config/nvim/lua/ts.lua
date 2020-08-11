@@ -4,8 +4,8 @@ local M = {}
 function M.setup()
   require'nvim-treesitter.configs'.setup {
     highlight = {
-      enable = false,
-      disable = {},
+      enable = true,
+      disable = {'lua'},
     },
     incremental_selection = {
       enable = true,
@@ -20,6 +20,7 @@ function M.setup()
     ensure_installed = {} 
   }
 
+  api.nvim_set_keymap('n', 'R', ':write | edit | TSBufEnable highlight<CR>', {});
   api.nvim_exec([[
     command! ToggleTsVtx lua require'ts'.toggle_ts_virt()
     hi TsVirtText guifg=#89ddff

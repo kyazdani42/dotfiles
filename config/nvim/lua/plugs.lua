@@ -3,12 +3,27 @@ local M = {}
 local function setup_tree()
   vim.g.lua_tree_ignore = { '.git', 'node_modules' }
   vim.g.lua_tree_auto_open = 1
-  vim.g.lua_tree_auto_close = 1
+  vim.g.lua_tree_auto_close = 0
   vim.g.lua_tree_follow = 1
   vim.g.lua_tree_show_icons = {
     git = 1,
     folders = 1,
     files = 1
+  }
+
+  vim.g.lua_tree_icons = {
+    default = '',
+    git= {
+      unstaged = "✗",
+      staged = "✓",
+      unmerged = "",
+      renamed = "➜",
+      untracked = "★"
+    },
+    folder = {
+      default = "",
+      open = ""
+    }
   }
 
   vim.api.nvim_set_keymap('n', '<C-n>', ':LuaTreeToggle<CR>', {
@@ -56,6 +71,8 @@ end
 function M.setup()
   setup_tree()
   setup_fzf()
+  vim.g.EditorConfig_exclude_patterns = {'fugitive://.*', 'scp://.*'}
+  vim.g.vim_markdown_folding_disabled = 1
 end
 
 return M

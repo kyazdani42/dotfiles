@@ -30,25 +30,29 @@ enable-ipc = true
 offset-y = 10
 offset-x = 20
 width = 100%
-height = 50
+height = 30
 background = ${colors.background}
 foreground = ${colors.foreground}
-font-0 = "Lato Medium:size=17;2"
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=16;2"
-font-2 = "UbuntuMono Nerd Font:size=15;2"
-font-3 = "NotoEmoji Nerd Font Mono:size=15;2"
+font-0 = "Lato Medium:size=12;2"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=11;2"
+font-2 = "UbuntuMono Nerd Font:size=10;2"
+font-3 = "NotoEmoji Nerd Font Mono:size=10;2"
 padding-left = 2
 padding-right = 2
-separator = "  ▰  "
-modules-left = date xwindow todo
+separator = %{F#a6accd}  /  %{F-}
+modules-left = date xwindow
 modules-center = i3
-modules-right = pavolume mpd mail arch-aur-updates wifi
+modules-right = pavolume battery mpd mail arch-aur-updates wifi
 
-[module/todo]
-type = custom/script
-exec = todo_random.sh
-interval = 360
-label = %{F#f86}🔖%{F-} %output%
+[module/battery]
+type = internal/battery
+label-charging = %percentage%% %{F#959dcb}
+format-discharging = <label-discharging> <ramp-capacity> 
+ramp-capacity-0 = %{F#f07178}
+ramp-capacity-1 = %{F#f78c6c}
+ramp-capacity-2 = %{F#ffcb6b}
+ramp-capacity-3 = %{F#c3e88d}
+ramp-capacity-4 = %{F#c3e88d}
 
 [module/wifi]
 type = custom/script

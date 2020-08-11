@@ -1,6 +1,6 @@
 configuration {
     show-icons:                     true;
-    font:                           "Ibm Plex Mono Medium 25";
+    font:                           "Lato Medium 17";
 }
 
 * {
@@ -30,7 +30,7 @@ entry {
 }
 
 listview {
-    margin:                         10px 300px;
+    margin:                         10px 100px;
 }
 
 element {

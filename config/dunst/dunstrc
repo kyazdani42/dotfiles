@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "350x4-10+10"
+    geometry = "280x4-10+10"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -86,7 +86,7 @@
 
     ### Text ###
 
-    font = Ibm Plex Sans Medium 10
+    font = Lato Medium 9
 
     # The spacing between lines.  If the height is smaller than the
     # font height, it will get raised to the font height.
@@ -278,19 +278,19 @@
 	background = "#ffffff"
     foreground = "#1c1f2b"
     timeout = 6
-    icon = /home/kiyan/pictures/bell.jpg
+    icon = /home/work/pictures/bell.jpg
 
 [urgency_normal]
 	background = "#ffffff"
     foreground = "#1c1f2b"
     timeout = 6
-    icon = /home/kiyan/pictures/bell.jpg
+    icon = /home/work/pictures/bell.jpg
 
 [urgency_critical]
     background = "#ff5370"
     foreground = "#ffffff"
     timeout = 0
-    icon = /home/kiyan/pictures/bell-alert.png
+    icon = /home/work/pictures/bell-alert.png
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.

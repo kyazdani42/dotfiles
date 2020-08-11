@@ -71,12 +71,12 @@ Plug 'sheerun/vim-polyglot'                                             " Langua
 Plug 'rust-lang/rust.vim'                                               " Rust language support
 Plug 'plasticboy/vim-markdown'                                          " Markdown support
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'nvim-treesitter/playground'
 call plug#end()
 
 au TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 300)
 
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua
-set runtimepath+=~/dev/nvim_dev/plugs/nvim-palenight.lua
 set runtimepath+=~/dev/nvim_dev/plugs/blue-moon
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-treesitter
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-web-devicons
@@ -84,8 +84,5 @@ set runtimepath+=~/dev/nvim_dev/plugs/nvim-web-devicons
 colorscheme blue-moon
 lua require'init'.setup()
 
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-
 let g:sneak#label = 1
 hi! link Sneak Normal
-let g:vim_markdown_folding_disabled = 1

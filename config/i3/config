@@ -3,7 +3,7 @@ set $mod Mod1
 
 floating_modifier $mod
 
-font pango:Lato Medium 12
+font pango:Lato Medium 9
 # in case there is a title
 title_align center
 # no border, no title bar
@@ -17,20 +17,15 @@ default_floating_border pixel 3
 # the focus only changes when clicking
 focus_follows_mouse no
 
+exec_always polybar_launch.sh
+
 # reload the configuration file
 bindsym $mod+F2 reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+F2 restart
 
-for_window [class="Org.gnome.Nautilus" instance="org.gnome.Nautilus"] floating enable, resize set 1000 800, border pixel 3 
-for_window [class="VirtualBox Manager" instance="VirtualBox Manager"] floating enable, resize set 2600 1600, border pixel 3
-for_window [class="VirtualBox Machine" instance="VirtualBox Machine"] floating enable, resize set 1816 1094
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
-for_window [class="MultiMC5" instance="multimc"] floating enable, resize set 1000 500, border pixel 3
-for_window [class="Minecraft 1.15.2" instance="Minecraft 1.15.2"] floating enable, border pixel 3
 for_window [class="Alacritty" instance="AlacrittyFloating"] floating enable, resize set 1000 400, border pixel 3
-for_window [class="Steam" instance="Steam"] floating enable, border pixel 3
-for_window [title="dev"] floating enable, border pixel 3
 for_window [class="firefox"] border none
 
 bindsym $mod+Tab workspace back_and_forth
@@ -99,12 +94,12 @@ mode "resize" {
 
 # Colors
 set $bg         #1b1e2b
-set $white      #FFFFFF
+set $white      #fbfbfb
 set $white-alt  #959dcb
-set $red        #f07178
-set $cyan       #89ddff
+set $red        #d06178
+set $cyan       #89bbdd
 
-client.focused          $bg  $bg  $cyan      $white-alt $white-alt
+client.focused          $bg  $bg  $cyan      $white-alt      $white-alt
 client.focused_inactive $bg  $bg  $white-alt $bg        $bg
 client.unfocused        $bg  $bg  $white-alt $bg        $bg
 client.placeholder      $bg  $bg  $white-alt $bg        $bg

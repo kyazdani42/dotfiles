@@ -1,4 +1,4 @@
-*Xft.dpi: 160
+*Xft.dpi: 125
 *Xft.font: xft:DejaVu Sans Mono:size=14
 Xcursor.theme: volantes_cursors
 Xcursor.size: 24
@@ -7,7 +7,6 @@ Xft.hinting: 1
 Xft.hintstyle: hintslight
 Xft.antialias: 1
 Xft.rgba: rgb
-
 
 *foreground:   #959dcb
 #ifdef background_opacity
