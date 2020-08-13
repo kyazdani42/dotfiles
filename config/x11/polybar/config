@@ -120,7 +120,7 @@ label-song-ellipsis = true
 
 [module/i3]
 type = internal/i3
-pin-workspaces = false
+pin-workspaces = true
 strip-wsnumbers = false
 index-sort = false
 enable-click = false
@@ -151,5 +151,11 @@ label-unfocused-padding = 2
 label-unfocused-background = ${colors.background}
 label-unfocused-foreground = ${colors.foreground}
 label-unfocused-underline =
+
+label-visible = %icon%
+label-visible-padding = 2
+label-visible-background = ${colors.background}
+label-visible-foreground = ${colors.foreground}
+label-visible-underline =
 
 # vim:ft=dosini

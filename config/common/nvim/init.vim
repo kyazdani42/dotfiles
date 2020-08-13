@@ -72,6 +72,7 @@ Plug 'rust-lang/rust.vim'                                               " Rust l
 Plug 'plasticboy/vim-markdown'                                          " Markdown support
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'nvim-treesitter/playground'
+Plug 'APZelos/blamer.nvim'
 call plug#end()
 
 au TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 300)
