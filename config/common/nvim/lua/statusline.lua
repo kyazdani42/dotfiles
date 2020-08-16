@@ -96,7 +96,7 @@ function M.clear()
   for _, win in ipairs(api.nvim_list_wins()) do
     local wbufnr =  api.nvim_win_get_buf(win)
     if wbufnr ~= bufnr then
-      api.nvim_win_set_option(win, 'statusline', ' ')
+      api.nvim_win_set_option(win, 'statusline', '%#VertSplit#'..string.rep('―', api.nvim_win_get_width(win)))
     end
   end
 end
