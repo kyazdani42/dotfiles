@@ -75,7 +75,7 @@ Plug 'nvim-treesitter/playground'
 Plug 'APZelos/blamer.nvim'
 call plug#end()
 
-au TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 300)
+au TextYankPost * silent! lua require'vim.highlight'.on_yank({ timeout=500 })
 
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua
 set runtimepath+=~/dev/nvim_dev/plugs/blue-moon

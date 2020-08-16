@@ -35,10 +35,12 @@ end
 
 local virt_enable = false
 
+local ns_id = api.nvim_create_namespace('TSVirtualText')
+
 function M.toggle_ts_virt()
   if virt_enable then
     virt_enable = false
-    api.nvim_buf_clear_namespace(0, 0, 0,-1)
+    api.nvim_buf_clear_namespace(0, ns_id, 0,-1)
   else
     virt_enable = true
     M.set_virt()
@@ -52,8 +54,8 @@ function M.set_virt()
   if not node_info or node_info == "" then return end
 
   local cursor = api.nvim_win_get_cursor(0)
-  api.nvim_buf_clear_namespace(0, 0, 0,-1)
-  api.nvim_buf_set_virtual_text(0, 0, cursor[1]-1, {{ node_info, "TsVirtText" }}, {})
+  api.nvim_buf_clear_namespace(0, ns_id, 0,-1)
+  api.nvim_buf_set_virtual_text(0, ns_id, cursor[1]-1, {{ node_info, "TsVirtText" }}, {})
 end
 
 return M
