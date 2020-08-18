@@ -12,9 +12,12 @@ local keymaps = {
   { mod = 'n', lhs = '<C-l>', rhs = '<C-w>l' },
   { mod = 'n', lhs = '<C-h>', rhs = '<C-w>h' },
 
+  { mod = 'n', lhs = '<leader>v', rhs = ':noh<CR>', opt = {silent=true} },
+
   { mod = 'n', lhs = 'j', rhs = 'gj' },
   { mod = 'n', lhs = 'k', rhs = 'gk' },
-  { mod = 'n', lhs = '<leader><leader>', rhs = '<c-^>' },
+  { mod = 'n', lhs = '<space><space>', rhs = '<c-^>' },
+  { mod = 'n', lhs = '<leader><leader>', rhs = ':tabnext<CR>' },
 
   { mod = 'n', lhs = 'Q', rhs = '' },
   { mod = 'n', lhs = '<F1>', rhs = '' },

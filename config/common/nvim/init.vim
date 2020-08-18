@@ -6,7 +6,7 @@
 
 " Configs {{{
 
-let mapleader = " "
+let mapleader = "\\"
 
 set relativenumber             " Relative numbers
 set showmatch                  " Show matching brackets/parenthesis

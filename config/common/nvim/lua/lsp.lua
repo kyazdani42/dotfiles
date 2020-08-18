@@ -28,12 +28,11 @@ function M.setup()
   vim.api.nvim_exec([[
     inoremap <silent><expr> <c-space> coc#refresh()
     inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-    nmap <silent> <leader>j <Plug>(coc-diagnostic-prev)
-    nmap <silent> <leader>k <Plug>(coc-diagnostic-next)
+    nmap <silent> <leader>s <Plug>(coc-diagnostic-prev)
+    nmap <silent> <leader>d <Plug>(coc-diagnostic-next)
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gr <Plug>(coc-references)
-    nmap <leader>rn  <Plug>(coc-rename)
     nnoremap <silent> K :lua require'lsp'.show_doc()<CR>
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     command! -nargs=0 Format :call CocAction('format')
