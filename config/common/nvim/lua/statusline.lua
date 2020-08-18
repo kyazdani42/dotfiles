@@ -81,24 +81,13 @@ local function get_filename(bufnr)
     return '[NO NAME]'
   end
 
-  local icon = ''
-  if vim.fn.exists('*WebDevIconsGetFileTypeSymbol') == 1 then
-    local icon = api.nvim_call_function('WebDevIconsGetFileTypeSymbol', { fname, false })
-  end
-
-  fname = vim.fn.fnamemodify(fname, ':~')
-
-  return icon..fname
+  return vim.fn.fnamemodify(fname, ':~')
 end
 
 function M.clear()
-  local bufnr = api.nvim_get_current_buf()
-  for _, win in ipairs(api.nvim_list_wins()) do
-    local wbufnr =  api.nvim_win_get_buf(win)
-    if wbufnr ~= bufnr then
-      api.nvim_win_set_option(win, 'statusline', '%#VertSplit#'..string.rep('―', api.nvim_win_get_width(win)))
-    end
-  end
+  local width = api.nvim_win_get_width(0)
+  local dashes = string.rep('―', width)
+  api.nvim_command('setlocal statusline=%#VertSplit#'..dashes)
 end
 
 local function format_status(mode, filename, git, infos)
@@ -107,7 +96,7 @@ local function format_status(mode, filename, git, infos)
   local total_size = api.nvim_win_get_width(0)
 
   local padding = ' '
-  local padding = padding:rep(total_size - (#mode.val + #filename + #git + #infos + 1))
+  padding = padding:rep(total_size - (#mode.val + #filename + #git + #infos + 1))
 
   return left_side..padding..right_side
 end
@@ -115,7 +104,6 @@ end
 function M.update()
   local bufnr = api.nvim_get_current_buf()
   if api.nvim_buf_get_option(bufnr, 'ft') == 'LuaTree' then return ' ' end
-  local win = api.nvim_get_current_win()
 
   local mode = get_mode(bufnr)
   local filename = get_filename(bufnr)
@@ -135,7 +123,7 @@ function M.setup()
 
   augroup StatusLine
     au!
-    au BufEnter,WinEnter,VimEnter * lua require'statusline'.clear()
+    au WinLeave,BufEnter,WinEnter,VimEnter * lua require'statusline'.clear()
     au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * setlocal statusline=%!Status()
   augroup END
   ]]

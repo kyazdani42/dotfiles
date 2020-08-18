@@ -63,7 +63,6 @@ Plug 'tomtom/tcomment_vim'                                              " Commen
 Plug 'tpope/vim-surround'                                               " Change/delete surrounding char
 Plug 'junegunn/goyo.vim'                                                " Centers text
 Plug 'justinmk/vim-sneak'                                               " Better fast search using 's
-Plug 'ryanoasis/vim-devicons'                                           " Icons
 Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
 Plug 'editorconfig/editorconfig-vim'                                    " File format for projects
 Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 

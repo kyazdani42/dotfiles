@@ -52,7 +52,6 @@ function M.setup()
   cabbrev terminal vsplit term://zsh
   cabbrev term vsplit term://zsh
   autocmd TermOpen * startinsert
-  command! Format lua require'format'()
   ]], '')
 
   for _, keymap in pairs(keymaps) do

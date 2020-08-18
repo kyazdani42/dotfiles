@@ -9,4 +9,3 @@ if [ "$updates" -gt 0 ]; then
 else
     echo "0"
 fi
-
