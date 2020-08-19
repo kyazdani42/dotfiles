@@ -123,7 +123,7 @@ function M.setup()
 
   augroup StatusLine
     au!
-    au WinLeave,BufEnter,WinEnter,VimEnter * lua require'statusline'.clear()
+    au TabEnter,WinLeave,BufEnter,WinEnter,VimEnter * lua require'statusline'.clear()
     au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * setlocal statusline=%!Status()
   augroup END
   ]]

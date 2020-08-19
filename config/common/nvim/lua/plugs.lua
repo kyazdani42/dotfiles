@@ -5,6 +5,7 @@ local function setup_tree()
   vim.g.lua_tree_auto_open = 1
   vim.g.lua_tree_auto_close = 0
   vim.g.lua_tree_follow = 1
+  vim.g.lua_tree_tab_open = 1
   vim.g.lua_tree_show_icons = {
     git = 1,
     folders = 1,
