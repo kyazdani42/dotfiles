@@ -2,8 +2,8 @@
 
 mkdir -p $HOME/.cache/zsh
 export HISTFILE="$HOME/.cache/zsh/history"
-HISTSIZE=50000
-SAVEHIST=10000
+HISTSIZE=500000
+SAVEHIST=100000
 
 ## History command configuration
 setopt extended_history       # record timestamp of command in HISTFILE

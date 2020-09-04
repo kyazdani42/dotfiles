@@ -3,16 +3,17 @@ env:
     TERM: xterm-256color
 
 window:
+  dynamic_title: true
   dimensions:
     columns: 0
     lines: 0
 
   padding:
     x: 4
-    y: 0
+    y: 8
 
   dynamic_padding: false
-  decorations: none
+  decorations: full
   startup_mode: Maximized
 
 scrolling:
@@ -32,11 +33,11 @@ font:
     family: "IBM Plex Mono Medium"
     style: Italic
 
-  size: 14
+  size: 10.5
 
   offset:
     x: 0
-    y: -2
+    y: -3
 
   glyph_offset:
     x: 0
@@ -85,7 +86,7 @@ colors:
     cyan:    '#89ddff'
     white:   '#ffffff'
 
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
   color: '#ffffff'
@@ -110,7 +111,6 @@ cursor:
   unfocused_hollow: true
 
 live_config_reload: true
-dynamic_title: true
 alt_send_esc: false
 
 debug:

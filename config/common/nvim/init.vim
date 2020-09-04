@@ -84,5 +84,6 @@ set runtimepath+=~/dev/nvim_dev/plugs/nvim-web-devicons
 colorscheme blue-moon
 lua require'init'.setup()
 
+let g:rooter_patterns = ['.git/', 'package.json', 'Cargo.toml']
 let g:sneak#label = 1
 hi! link Sneak Normal
