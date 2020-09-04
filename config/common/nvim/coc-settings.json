@@ -1,10 +1,11 @@
 {
-    "git.enableGutters": false,
-    "git.realtimeGutters": false,
     "tsserver.enableJavascript": true,
     "suggest.enablePreview": true,
     "go.enable": true,
+    "tsserver.enable": true,
+    "npm.binPath": "/usr/bin/yarn",
     "rust-analyzer.updates.channel": "nightly",
+    "coc.preferences.rootPatterns": ["node_modules", "Cargo.toml", ".git"],
     "rust-analyzer.callInfo.full": true,
     "rust-analyzer.completion.postfix.enable": false,
     "rust-analyzer.serverPath": "/usr/bin/rust-analyzer",
