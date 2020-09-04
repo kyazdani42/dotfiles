@@ -9,5 +9,5 @@ ${shutdown}
 ${reboot}" | rofi -dmenu -config "$XDG_CONFIG_HOME/rofi/dialog.rasi")
 
 [ "$action" == "$exit_" ] && i3-msg exit
-[ "$action" == "$shutdown" ] && shutdown now
+[ "$action" == "$shutdown" ] && systemctl poweroff -i
 [ "$action" == "$reboot" ] && reboot

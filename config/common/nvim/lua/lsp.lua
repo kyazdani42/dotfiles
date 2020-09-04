@@ -20,6 +20,15 @@ local opts = {
   signcolumn = 'yes',
 }
 
+function M.format()
+  local ft = api.nvim_buf_get_option(api.nvim_get_current_buf(), 'ft')
+  if ft == 'javascript' or ft == 'javascriptreact' then
+    api.nvim_exec('CocCommand eslint.executeAutofix', '')
+  else
+    api.nvim_call_function("CocAction", {'format'})
+  end
+end
+
 function M.setup()
   for name, value in pairs(opts) do
     api.nvim_set_option(name, value)
@@ -35,7 +44,8 @@ function M.setup()
     nmap <silent> gr <Plug>(coc-references)
     nnoremap <silent> K :lua require'lsp'.show_doc()<CR>
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    command! -nargs=0 Format :call CocAction('format')
+    command! -nargs=0 Eslint :CocAction('eslint.executeAutoFix')<CR>
+    command! -nargs=0 Format :lua require'lsp'.format()<CR>
     ]], '')
 end
 
