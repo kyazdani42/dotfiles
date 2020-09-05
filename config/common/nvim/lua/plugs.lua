@@ -82,6 +82,7 @@ function M.setup()
   setup_fzf()
   vim.g.EditorConfig_exclude_patterns = {'fugitive://.*', 'scp://.*'}
   vim.g.vim_markdown_folding_disabled = 1
+  vim.g.rooter_pattern = {'.git/', 'package.json', 'Cargo.toml'}
 end
 
 return M

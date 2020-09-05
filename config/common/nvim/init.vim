@@ -1,11 +1,3 @@
-" My Neovim Configuration "
-" ----------------------- "
-"  Yazdani Kiyan          "
-"  github.com/kyazdani42  "
-"-------------------------"
-
-" Configs {{{
-
 let mapleader = "\\"
 
 set relativenumber             " Relative numbers
@@ -31,7 +23,6 @@ set expandtab                  " expand tab into space by default
 set clipboard^=unnamedplus     " Use system clipboard
 set termguicolors
 set shortmess+=c
-syntax sync fromstart
 
 " Retrieve last position in a file: https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
 au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -48,42 +39,36 @@ au FileType markdown set tabstop=4 shiftwidth=4 expandtab
 au FileType typescript,javascript,lua set tabstop=2 shiftwidth=2 expandtab
 au FileType markdown set conceallevel=2
 
-nmap <C-c> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
-" Plugins {{{
+au TextYankPost * silent! lua require'vim.highlight'.on_yank({ timeout=500 })
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'norcalli/nvim-colorizer.lua'                                      " Rgb/hex colorizer
-Plug 'tpope/vim-fugitive'                                               " Git integration
-Plug 'junegunn/fzf.vim'                                                 " fzf wrapper
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'tomtom/tcomment_vim'                                              " Comments
-Plug 'tpope/vim-surround'                                               " Change/delete surrounding char
-Plug 'junegunn/goyo.vim'                                                " Centers text
-Plug 'justinmk/vim-sneak'                                               " Better fast search using 's
-Plug 'airblade/vim-gitgutter'                                           " Little infos in the gutter for git
-Plug 'editorconfig/editorconfig-vim'                                    " File format for projects
-Plug 'airblade/vim-rooter'                                              " Changes Vim working directory to project root 
-Plug 'sheerun/vim-polyglot'                                             " Language color pack
-Plug 'rust-lang/rust.vim'                                               " Rust language support
-Plug 'plasticboy/vim-markdown'                                          " Markdown support
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'nvim-treesitter/playground'
-Plug 'APZelos/blamer.nvim'
-call plug#end()
+Plug 'airblade/vim-gitgutter'                                      " Git infos in gutter
+Plug 'tpope/vim-fugitive'                                          " Git integration
+Plug 'APZelos/blamer.nvim'                                         " Git blame virtual text
 
-au TextYankPost * silent! lua require'vim.highlight'.on_yank({ timeout=500 })
+Plug 'junegunn/fzf.vim'                                            " fzf wrapper
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
+Plug 'tpope/vim-surround'                                          " Change/delete surrounding char
+Plug 'airblade/vim-rooter'                                         " Changes Vim working directory to project root 
+Plug 'tomtom/tcomment_vim'                                         " Comments
+Plug 'editorconfig/editorconfig-vim'                               " File format for projects
+
+Plug 'norcalli/nvim-colorizer.lua'                                 " Rgb/hex colorizer
+Plug 'sheerun/vim-polyglot'                                        " Language color pack
+
+Plug 'rust-lang/rust.vim'                                          " Rust language support
+Plug 'plasticboy/vim-markdown'                                     " Markdown support: TODO: remove when treesitter is ok with markdown
+
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " Lsp
+Plug 'nvim-treesitter/playground'                                  " Treesitter playground
+Plug 'michaelb/sniprun', {'do': 'bash install.sh'}                 " Run blocks of code :SnipRun
+call plug#end()
 
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua
 set runtimepath+=~/dev/nvim_dev/plugs/blue-moon
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-treesitter
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-web-devicons
+set runtimepath+=~/dev/nvim_dev/plugs/nvim-github
 
-colorscheme blue-moon
 lua require'init'.setup()
-
-let g:rooter_patterns = ['.git/', 'package.json', 'Cargo.toml']
-let g:sneak#label = 1
-hi! link Sneak Normal

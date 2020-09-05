@@ -48,6 +48,7 @@ function M.setup()
   local default_opt = { nowait = true, noremap = true }
 
   api.nvim_exec([[
+  colorscheme blue-moon
   cabbrev W w
   cabbrev terminal vsplit term://zsh
   cabbrev term vsplit term://zsh
@@ -63,6 +64,7 @@ function M.setup()
   require 'statusline'.setup()
   require 'ts'.setup()
   require 'plugs'.setup()
+  require 'nvim-github'.setup()
 end
 
 return M

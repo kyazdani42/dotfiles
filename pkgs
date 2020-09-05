@@ -20,7 +20,9 @@ ttf-monaco
 ttf-opensans
 ttf-joypixels
 noto-fonts
-nerd-fonts-source-code-pro nerd-fonts-ubuntu-mono mpd
+nerd-fonts-source-code-pro
+nerd-fonts-ubuntu-mono
+mpd
 mpc
 ncmpcpp
 zsh
