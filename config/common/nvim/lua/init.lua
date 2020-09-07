@@ -64,7 +64,8 @@ function M.setup()
   require 'statusline'.setup()
   require 'ts'.setup()
   require 'plugs'.setup()
-  require 'nvim-github'.setup()
+  require 'formatter'.setup()
+  -- require 'nvim-github'.setup()
 end
 
 return M

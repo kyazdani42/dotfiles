@@ -6,7 +6,7 @@ function M.show_doc()
   if ft == 'vim' or ft == 'help' then
     vim.api.nvim_exec('h '..vim.fn.expand('<cword>'), '')
   else
-    api.nvim_call_function("CocAction", {'doHover'})
+    vim.lsp.buf.signature_help()
   end
 end
 
@@ -20,29 +20,63 @@ local opts = {
   signcolumn = 'yes',
 }
 
-local function fmt(bufnr, cmd)
-  bufnr = bufnr or api.nvim_get_current_buf()
-  local current_file = api.nvim_buf_get_name(bufnr)
-  local stdout = vim.fn.system(cmd..current_file)
-  local as_lines = vim.fn.split(stdout, '\n')
-  table.remove(as_lines, 1)
-  table.remove(as_lines, 1)
-  local cursor = api.nvim_win_get_cursor(0)
-  api.nvim_buf_set_lines(bufnr, 0, -1, false, as_lines)
-  api.nvim_exec('w','')
-  api.nvim_win_set_cursor(0, cursor)
+local current_hovered_word = nil
+function M.hover()
+  local new_current_hovered_word = vim.fn.expand('<cword>')
+  if current_hovered_word ~= new_current_hovered_word and vim.fn.pumvisible() == 0 then
+    vim.lsp.buf.hover()
+  end
+  current_hovered_word = new_current_hovered_word
 end
 
-function M.format()
-  local bufnr = api.nvim_get_current_buf()
-  local ft = api.nvim_buf_get_option(bufnr, 'ft')
-  if ft == 'javascript' or ft == 'javascriptreact' then
-    api.nvim_exec('CocCommand eslint.executeAutofix', '')
-  elseif ft == 'rust' then
-    fmt(bufnr, 'rustfmt --emit stdout ')
-  else
-    api.nvim_call_function("CocAction", {'format'})
-  end
+local function on_attach()
+  require'completion'.on_attach()
+  require'diagnostic'.on_attach()
+end
+
+local function get_filetypes_config()
+  return {
+    { lsp_name = "bashls" },
+    { lsp_name = "cssls" },
+    { lsp_name = "gopls" },
+    { lsp_name = "html" },
+    { lsp_name = "jsonls" },
+    { lsp_name = "rust_analyzer" },
+    { lsp_name = "vimls" },
+    {
+      lsp_name = "sumneko_lua",
+      lsp_settings = {
+        Lua = {
+          diagnostics = {
+            globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth"},
+            disable = {"redefined-local"}
+          },
+          runtime = {version = "LuaJIT"}
+        }
+      }
+    },
+    {
+      lsp_name = "tsserver",
+      lsp_settings = {
+        cmd = {"typescript-language-server", "--stdio"},
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "javascript.jsx",
+          "typescript",
+          "typescriptreact",
+          "typescript.tsx"
+        },
+      }
+    },
+    -- TODO: diagnosticls fucks up i don't know why
+    -- require'nvim_lsp'.diagnosticls.setup{}
+  }
+end
+
+function M.references()
+  -- TODO: get references and script with them
+  vim.lsp.buf.references({ includeDeclaration = false })
 end
 
 function M.setup()
@@ -51,17 +85,35 @@ function M.setup()
   end
 
   vim.api.nvim_exec([[
-    inoremap <silent><expr> <c-space> coc#refresh()
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-    nmap <silent> <leader>s <Plug>(coc-diagnostic-prev)
-    nmap <silent> <leader>d <Plug>(coc-diagnostic-next)
-    nmap <silent> gd <Plug>(coc-definition)
-    nmap <silent> gy <Plug>(coc-type-definition)
-    nmap <silent> gr <Plug>(coc-references)
-    nnoremap <silent> K :lua require'lsp'.show_doc()<CR>
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    command! -nargs=0 Eslint :CocAction('eslint.executeAutoFix')<CR>
-    command! -nargs=0 Format :lua require'lsp'.format()<CR>
+    augroup NvimLspCmd
+    autocmd CursorHold * lua require'lsp'.hover()
+    augroup END
+    ]], "")
+  for _, lsp_config in ipairs(get_filetypes_config()) do
+    if lsp_config.lsp_name then
+      if lsp_config.lsp_settings then
+        require'nvim_lsp'[lsp_config.lsp_name].setup{
+          on_attach = on_attach,
+          settings = lsp_config.lsp_settings
+        }
+      else
+        require'nvim_lsp'[lsp_config.lsp_name].setup{
+          on_attach = on_attach,
+        }
+      end
+    end
+  end
+
+  vim.api.nvim_exec([[
+    inoremap <silent><expr> <c-space> completion#trigger_completion()
+    nnoremap <silent> K  :lua require'lsp'.show_doc()<CR>
+    nnoremap <silent> gr :lua require'lsp'.references()<CR>
+
+    nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+    nnoremap <silent> gy    <cmd>lua vim.lsp.buf.type_definition()<CR>
+
+    nnoremap <silent> <leader>s <cmd>PrevDiagnosticCycle<CR>
+    nnoremap <silent> <leader>d <cmd>NextDiagnosticCycle<CR>
     ]], '')
 end
 

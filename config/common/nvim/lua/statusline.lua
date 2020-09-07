@@ -48,7 +48,7 @@ local Modes = {
   ['!']   = { color = '%#STNormalFlatMD#', val = ' SHELL ' },
 }
 
-local function get_mode(bufnr)
+local function get_mode()
   local mode = api.nvim_get_mode().mode
   return Modes[mode] or { val = 'Unknown mode: ', color = '%#CursorLine#' }
 end
@@ -56,12 +56,8 @@ end
 local branch = vim.fn.system('git rev-parse --abbrev-ref HEAD'):sub(0, -2)
 local is_git = branch:match('fatal') == nil
 
-local function get_git(bufnr)
-  if is_git then
-    return branch .. ' |'
-  else
-    return ''
-  end
+local function get_git()
+  return is_git and branch..' |' or ''
 end
 
 local function get_infos(bufnr)
@@ -105,9 +101,9 @@ function M.update()
   local bufnr = api.nvim_get_current_buf()
   if api.nvim_buf_get_option(bufnr, 'ft') == 'LuaTree' then return ' ' end
 
-  local mode = get_mode(bufnr)
+  local mode = get_mode()
   local filename = get_filename(bufnr)
-  local git = get_git(bufnr)
+  local git = get_git()
   local infos = get_infos(bufnr)
 
   local formatted_status = format_status(mode, filename, git, infos)
@@ -130,7 +126,7 @@ function M.setup()
   api.nvim_exec(func, '')
 
   for name, c in pairs(Colors) do
-    api.nvim_command('hi def '..name..' gui=NONE guifg='..c.guifg..' guibg='..c.guibg)
+    api.nvim_exec('hi def '..name..' gui=NONE guifg='..c.guifg..' guibg='..c.guibg, '')
   end
 end
 

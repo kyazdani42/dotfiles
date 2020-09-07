@@ -7,6 +7,7 @@ set noshowmode                 " Do not output message on the bottom
 set mousehide                  " Hide mouse while typing
 set linebreak                  " Do not break words
 set splitbelow splitright      " Splits open on the bottom or on the right
+set updatetime=800
 set scrolloff=8                " Lines from the cursor
 set wildmode=full              " Command line completion mode
 set wildmenu                   " Command line completion mode
@@ -30,14 +31,10 @@ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\
 " Disable autocommenting on newline: https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
 au BufNewFile,BufWinEnter * setlocal formatoptions-=cro
 
-au BufNewFile,BufRead *.tsx set syntax=typescript.tsx
-au BufNewFile,BufRead *.jsx set syntax=javascript.jsx
-
 au FileType c,cpp set tabstop=8 shiftwidth=8 noexpandtab
 au FileType python set tabstop=4 shiftwidth=4 noexpandtab
-au FileType markdown set tabstop=4 shiftwidth=4 expandtab
-au FileType typescript,javascript,lua set tabstop=2 shiftwidth=2 expandtab
-au FileType markdown set conceallevel=2
+au FileType markdown set tabstop=4 shiftwidth=4 conceallevel=2
+au FileType typescriptreact,typescript,javascript,javascriptreact,lua set tabstop=2 shiftwidth=2
 
 au TextYankPost * silent! lua require'vim.highlight'.on_yank({ timeout=500 })
 
@@ -60,9 +57,14 @@ Plug 'sheerun/vim-polyglot'                                        " Language co
 Plug 'rust-lang/rust.vim'                                          " Rust language support
 Plug 'plasticboy/vim-markdown'                                     " Markdown support: TODO: remove when treesitter is ok with markdown
 
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'} " Lsp
+Plug 'neovim/nvim-lspconfig'                                       " Lsp configuration
+Plug 'nvim-lua/completion-nvim'                                    " Better lsp completion menu
+Plug 'nvim-lua/diagnostic-nvim'                                    " Better lsp diagnostics
+
 Plug 'nvim-treesitter/playground'                                  " Treesitter playground
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}                 " Run blocks of code :SnipRun
+
+Plug 'ThePrimeagen/vim-be-good'
 call plug#end()
 
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua
