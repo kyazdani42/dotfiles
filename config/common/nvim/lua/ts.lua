@@ -13,7 +13,7 @@ function M.setup()
       keymaps = {
         init_selection = "<leader>n",
         node_incremental = "n",
-        scope_incremental = "<leader>n",
+        scope_incremental = "<leader>m",
         node_decremental = "m"
       }
     },
@@ -26,10 +26,11 @@ function M.setup()
     hi TsVirtText guifg=#89ddff
     augroup TSVirtualText
       au!
-      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'ts'.set_virt()
+      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'ts'.ts_virt_text()
     augroup END
 
-    function
+    nnoremap <C-c> :lua require'ts'._hl_under_cursor()<CR>
+
   ]], '')
 end
 
@@ -37,17 +38,17 @@ local virt_enable = false
 
 local ns_id = api.nvim_create_namespace('TSVirtualText')
 
-function M.toggle_ts_virt()
+function M.toggle_ts_virt_text()
   if virt_enable then
     virt_enable = false
     api.nvim_buf_clear_namespace(0, ns_id, 0,-1)
   else
     virt_enable = true
-    M.set_virt()
+    M.ts_virt_text()
   end
 end
 
-function M.set_virt()
+function M.ts_virt_text()
   if not virt_enable then return end
 
   local node_info = require'nvim-treesitter'.statusline()
@@ -58,16 +59,19 @@ function M.set_virt()
   api.nvim_buf_set_virtual_text(0, ns_id, cursor[1]-1, {{ node_info, "TsVirtText" }}, {})
 end
 
-function M.list_hl()
+function M._hl_under_cursor()
   local ns = api.nvim_get_namespaces().treesitter_hl
-  local node = ts_utils.get_node_at_cursor(0, true)
-  local srow, scol, erow, ecol = node:range()
-  local extmarks = api.nvim_buf_get_extmarks(0, ns, {srow, scol}, {erow, ecol}, {})
-  for _, ext in ipairs(extmarks) do
-    -- extmark ID. There is no way to retrieve any hl data from it yet.
-    -- maybe put some work upstream if i have some time
-    print(vim.inspect(ext[1]))
-  end
+  local _, lnum, col = unpack(vim.fn.getcurpos())
+  local extmarks = api.nvim_buf_get_extmarks(0, ns, {lnum-1, col-1}, {lnum-1, -1}, { details = true })
+  local ext = extmarks[1]
+  local infos = ext[4]
+  -- TODO: find a way to get the extmark under cursor, for now leave it as is
+  if not infos then return print("[no hl group found]") end
+
+  local start = " ["..(ext[2]+1).."|"..ext[3].."]"
+  local end_ = "["..(infos.end_row+1).."|".. infos.end_col.."]"
+  local str = infos.hl_group..start.." -> "..end_
+  print(str)
 end
 
 return M

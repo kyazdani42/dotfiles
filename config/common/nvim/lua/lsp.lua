@@ -23,7 +23,7 @@ local opts = {
 local current_hovered_word = nil
 function M.hover()
   local new_current_hovered_word = vim.fn.expand('<cword>')
-  if current_hovered_word ~= new_current_hovered_word and vim.fn.pumvisible() == 0 then
+  if current_hovered_word ~= new_current_hovered_word then
     vim.lsp.buf.hover()
   end
   current_hovered_word = new_current_hovered_word

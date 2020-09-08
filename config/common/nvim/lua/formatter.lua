@@ -16,11 +16,16 @@ local function format_js()
 
     if has_prettier() then
       local formatted = vim.split(vim.fn.system("prettier "..current_file), '\n')
+      if vim.v.shell_error ~= 0 then
+        return
+      end
       api.nvim_buf_set_lines(bufnr, 0, -1, false, formatted)
+      vim.cmd('w')
     end
 
     if has_eslint() then
       vim.fn.system('eslint --fix '..current_file)
+      vim.cmd('edit!')
     end
 end
 
