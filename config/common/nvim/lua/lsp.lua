@@ -74,9 +74,28 @@ local function get_filetypes_config()
   }
 end
 
+local function format_refs(references)
+  local cwd = vim.loop.cwd()
+  local formatted = {}
+
+  for i, ref in ipairs(references) do
+    local format_uri = string.gsub(ref.uri, cwd, ''):gsub('file:///', '')
+    local range = ref.range
+    local scol, sline, ecol, eline = range.start.character, range.start.line, range['end'].character, range['end'].line
+    formatted[i] = format_uri.." ["..sline..", "..scol.."] -> ["..eline..", "..ecol.."] "
+  end
+
+  return formatted
+end
+
 function M.references()
-  -- TODO: get references and script with them
-  vim.lsp.buf.references({ includeDeclaration = false })
+  local params = vim.lsp.util.make_position_params()
+  local result = vim.lsp.buf_request_sync(0, 'textDocument/references', params)
+  if not result then return end
+
+  vim.cmd('vnew | wincmd J | resize 10')
+  local lines = format_refs(result[1].result)
+  api.nvim_buf_set_lines(0, 0, -1, false, lines)
 end
 
 function M.setup()

@@ -76,6 +76,7 @@ alias gc="git commit"
 alias gca="git commit --amend"
 alias gd="git diff"
 alias gck="git checkout"
+alias nvc="nvim ~/.config/nvim/"
 
 # tmux aliases
 alias tls="tmux list-sessions"

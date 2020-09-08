@@ -30,5 +30,8 @@ function fvim() {
 projects=$(find "$HOME/dev" -name .git | sed -E 's/.*\/dev\/(.*)\/\.git/\1/')
 
 function prj() {
-    cd "$HOME/dev/$(echo $projects | fzf)"
+    project=$(echo $projects | fzf)
+    if [ ! -z "$project" ]; then
+      cd "$HOME/dev/$project"
+    fi
 }
