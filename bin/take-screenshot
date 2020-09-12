@@ -1,5 +1,14 @@
 #!/bin/sh
 
+if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
+    if [ "$1" == "fullscreen" ]; then
+        grim -t jpeg ~/$(date +%Y-%m-%d_%H-%M-%S).jpg
+    else
+        grim -t jpeg -g "$(slurp)" ~/$(date +%Y-%m-%d_%H-%M-%S).jpg
+    fi
+    exit 0
+fi
+
 if [ "$1" == "fullscreen" ]; then
     scrot -q 100
 else

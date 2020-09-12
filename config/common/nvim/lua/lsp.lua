@@ -29,9 +29,9 @@ function M.hover()
   current_hovered_word = new_current_hovered_word
 end
 
-local function on_attach()
-  require'completion'.on_attach()
-  require'diagnostic'.on_attach()
+local function on_attach(client)
+  require'completion'.on_attach(client)
+  require'diagnostic'.on_attach(client)
 end
 
 local function get_filetypes_config()
@@ -103,11 +103,6 @@ function M.setup()
     api.nvim_set_option(name, value)
   end
 
-  vim.api.nvim_exec([[
-    augroup NvimLspCmd
-    autocmd CursorHold * lua require'lsp'.hover()
-    augroup END
-    ]], "")
   for _, lsp_config in ipairs(get_filetypes_config()) do
     if lsp_config.lsp_name then
       if lsp_config.lsp_settings then
@@ -124,6 +119,10 @@ function M.setup()
   end
 
   vim.api.nvim_exec([[
+    augroup NvimLspCmd
+      autocmd CursorHold * lua require'lsp'.hover()
+    augroup END
+
     inoremap <silent><expr> <c-space> completion#trigger_completion()
     nnoremap <silent> K  :lua require'lsp'.show_doc()<CR>
     nnoremap <silent> gr :lua require'lsp'.references()<CR>

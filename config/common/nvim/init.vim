@@ -64,7 +64,6 @@ Plug 'neovim/nvim-lspconfig'                                       " Lsp configu
 Plug 'nvim-lua/completion-nvim'                                    " Better lsp completion menu
 Plug 'nvim-lua/diagnostic-nvim'                                    " Better lsp diagnostics
 
-Plug 'nvim-treesitter/playground'                                  " Treesitter playground
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}                 " Run blocks of code :SnipRun
 
 Plug 'ThePrimeagen/vim-be-good'
@@ -75,5 +74,6 @@ set runtimepath+=~/dev/nvim_dev/plugs/blue-moon
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-treesitter
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-web-devicons
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-github
+set runtimepath+=~/dev/nvim_dev/plugs/playground
 
 lua require'init'.setup()
