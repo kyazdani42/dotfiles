@@ -61,7 +61,8 @@ local formatters = {
   typescriptreact = format_ts,
   rust = function() vim.cmd('RustFmt') end,
   html = function() save(); prettier_fmt() end,
-  css = function() save(); prettier_fmt() end
+  css = function() save(); prettier_fmt() end,
+  json = function() save(); prettier_fmt() end
 }
 
 function M.format()

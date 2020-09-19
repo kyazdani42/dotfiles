@@ -31,7 +31,6 @@ end
 
 local function on_attach(client)
   require'completion'.on_attach(client)
-  require'diagnostic'.on_attach(client)
 end
 
 local function get_filetypes_config()

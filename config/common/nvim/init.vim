@@ -62,7 +62,6 @@ Plug 'plasticboy/vim-markdown'                                     " Markdown su
 
 Plug 'neovim/nvim-lspconfig'                                       " Lsp configuration
 Plug 'nvim-lua/completion-nvim'                                    " Better lsp completion menu
-Plug 'nvim-lua/diagnostic-nvim'                                    " Better lsp diagnostics
 
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}                 " Run blocks of code :SnipRun
 
