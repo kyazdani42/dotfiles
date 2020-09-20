@@ -10,16 +10,6 @@ function M.show_doc()
   end
 end
 
-local opts = {
-  completeopt = 'menuone,noinsert,noselect',
-  hidden = true,
-  backup = false,
-  writebackup = false,
-  cmdheight = 2,
-  updatetime = 300,
-  signcolumn = 'yes',
-}
-
 local current_hovered_word = nil
 function M.hover()
   local new_current_hovered_word = vim.fn.expand('<cword>')
@@ -27,10 +17,6 @@ function M.hover()
     vim.lsp.buf.hover()
   end
   current_hovered_word = new_current_hovered_word
-end
-
-local function on_attach(client)
-  require'completion'.on_attach(client)
 end
 
 local function get_filetypes_config()
@@ -68,8 +54,22 @@ local function get_filetypes_config()
         },
       }
     },
-    -- TODO: diagnosticls fucks up i don't know why
-    -- require'nvim_lsp'.diagnosticls.setup{}
+    -- this still make neovim ask for 'override existing file...' and does not work
+    -- {
+    --   lsp_name = 'diagnosticls',
+    --   lsp_settings = {
+    --     filetypes = {
+    --       "javascript",
+    --       "javascriptreact",
+    --       "javascript.jsx",
+    --       "typescript",
+    --       "typescriptreact",
+    --       "typescript.tsx",
+    --       "lua",
+    --       "rust"
+    --     }
+    --   }
+    -- }
   }
 end
 
@@ -97,6 +97,16 @@ function M.references()
   api.nvim_buf_set_lines(0, 0, -1, false, lines)
 end
 
+local opts = {
+  completeopt = 'menuone,noinsert,noselect',
+  hidden = true,
+  backup = false,
+  writebackup = false,
+  cmdheight = 2,
+  updatetime = 300,
+  signcolumn = 'yes',
+}
+
 function M.setup()
   for name, value in pairs(opts) do
     api.nvim_set_option(name, value)
@@ -106,22 +116,18 @@ function M.setup()
     if lsp_config.lsp_name then
       if lsp_config.lsp_settings then
         require'nvim_lsp'[lsp_config.lsp_name].setup{
-          on_attach = on_attach,
+          on_attach = require'completion'.on_attach,
           settings = lsp_config.lsp_settings
         }
       else
         require'nvim_lsp'[lsp_config.lsp_name].setup{
-          on_attach = on_attach,
+          on_attach = require'completion'.on_attach
         }
       end
     end
   end
 
   vim.api.nvim_exec([[
-    augroup NvimLspCmd
-      autocmd CursorHold * lua require'lsp'.hover()
-    augroup END
-
     inoremap <silent><expr> <c-space> completion#trigger_completion()
     nnoremap <silent> K  :lua require'lsp'.show_doc()<CR>
     nnoremap <silent> gr :lua require'lsp'.references()<CR>
