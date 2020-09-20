@@ -32,16 +32,20 @@ function M.preview_ref(type)
   api.nvim_buf_set_option(preview_bufnr, 'modifiable', false)
 end
 
+function M.close()
+  api.nvim_win_close(vim.fn.bufwinid(preview_bufnr), true)
+  api.nvim_win_close(vim.fn.bufwinid(ref_bufnr), true)
+  vim.cmd "set laststatus=2"
+  api.nvim_set_current_win(vim.fn.bufwinid(main_buf))
+end
+
 function M.select_from_ref()
   local line = vim.split(api.nvim_get_current_line(), ' ')
   local file = line[1]
   local line_nb = line[4]
-  api.nvim_win_close(vim.fn.bufwinid(preview_bufnr), true)
-  api.nvim_win_close(vim.fn.bufwinid(ref_bufnr), true)
-  local winid = vim.fn.bufwinid(main_buf)
-  api.nvim_set_current_win(winid)
+  M.close()
   vim.cmd("e "..file)
-  api.nvim_win_set_cursor(winid, {tonumber(line_nb), 0})
+  api.nvim_win_set_cursor(vim.fn.bufwinid(main_buf), {tonumber(line_nb), 0})
 end
 
 function M.references_cb(err, _, results)
@@ -59,6 +63,8 @@ function M.references_cb(err, _, results)
       { mode = 'n', l = 'j', cmd = '<cmd>lua require"lsp_cbs.references".preview_ref("j")<CR>' },
       { mode = 'n', l = 'k', cmd = '<cmd>lua require"lsp_cbs.references".preview_ref("k")<CR>' },
       { mode = 'n', l = '<CR>', cmd = '<cmd>lua require"lsp_cbs.references".select_from_ref()<CR>' },
+      { mode = 'n', l = 'q', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
+      { mode = 'n', l = '<esc>', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
     },
     buf_options = {
       modifiable = false,
@@ -67,6 +73,8 @@ function M.references_cb(err, _, results)
       swapfile = false
     },
   }
+
+  vim.cmd "set laststatus=0"
 
   preview_bufnr = require'utils.buf'.make_buffer {
     where = 'preview',
