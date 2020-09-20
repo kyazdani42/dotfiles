@@ -87,13 +87,12 @@ local opts = {
   signcolumn = 'yes',
 }
 
-local function mapper(mode, key, result)
-  api.nvim_buf_set_keymap(0, mode, key, result, { noremap = true, silent = true })
-end
 
 local function on_attach(client)
   require'completion'.on_attach(client)
-  mapper('i', '<c-space>', 'completion#trigger_completion()')
+
+  local mapper = require'utils'.mapper
+  mapper('i', '<c-space>',  'completion#trigger_completion()')
   mapper('n', 'K',          '<cmd>lua require"lsp".show_doc()<CR>')
 
   mapper('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>')
@@ -101,8 +100,8 @@ local function on_attach(client)
   mapper('n', 'gy',         '<cmd>lua vim.lsp.buf.type_definition()<CR>')
   mapper('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
 
-  mapper('n', '<leader>s', '<cmd>lua require"lsp_cbs.diagnostics".prev()<CR>')
-  mapper('n', '<leader>d', '<cmd>lua require"lsp_cbs.diagnostics".next()<CR>')
+  mapper('n', '<leader>s',  '<cmd>lua require"lsp_cbs.diagnostics".prev()<CR>')
+  mapper('n', '<leader>d',  '<cmd>lua require"lsp_cbs.diagnostics".next()<CR>')
 end
 
 local function location_cb(err, _, result)

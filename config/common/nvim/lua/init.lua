@@ -65,6 +65,7 @@ function M.setup()
   require 'ts'.setup()
   require 'plugs'.setup()
   require 'formatter'.setup()
+  require 'fuzzy'.setup()
   -- require 'nvim-github'.setup()
 end
 

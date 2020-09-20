@@ -2,10 +2,6 @@ local api = vim.api
 
 local M = {}
 
-local function mapper(mode, key, result)
-  api.nvim_buf_set_keymap(0, mode, key, result, { noremap = true, silent = true })
-end
-
 local function get_all_mappings()
   local buf = api.nvim_buf_get_keymap(0, 'n')
   local global = api.nvim_get_keymap('n')
@@ -14,6 +10,7 @@ local function get_all_mappings()
     { lhs = 'h' },
     { lhs = 'j' },
     { lhs = 'k' },
+    { lhs = 'q' },
     { lhs = '<c-w>j' },
     { lhs = '<c-w>h' },
     { lhs = '<c-w>k' },
@@ -25,12 +22,18 @@ local function get_all_mappings()
   return vim.tbl_extend('force', buf, global, others)
 end
 
+local default_win_options = {
+  number = false,
+  relativenumber = false,
+}
+
 function M.make_buffer(options)
   local where = options.where or "bottom"
   local size = options.size or 10
   local lines = options.lines or {}
   local keymaps = options.keymaps or {}
   local buf_options = options.buf_options or {}
+  local win_options = options.win_options or default_win_options
   local with_keymap_reset_all = options.reset_keymaps
 
   if where == 'bottom' then
@@ -52,14 +55,18 @@ function M.make_buffer(options)
     api.nvim_buf_set_option(0, opt, value)
   end
 
+  for opt, value in pairs(win_options) do
+    api.nvim_win_set_option(0, opt, value)
+  end
+
   if with_keymap_reset_all then
     for _, keymap in ipairs(get_all_mappings()) do
-      mapper('n', keymap.lhs, '')
+      require'utils'.mapper('n', keymap.lhs, '')
     end
   end
 
   for _, keymap in ipairs(keymaps) do
-    mapper(keymap.mode, keymap.l, keymap.cmd)
+    require'utils'.mapper(keymap.mode, keymap.l, keymap.cmd)
   end
 
   return api.nvim_get_current_buf()
