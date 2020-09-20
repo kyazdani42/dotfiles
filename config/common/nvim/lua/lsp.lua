@@ -100,7 +100,9 @@ local function on_attach(client)
   mapper('n', 'gd',         '<cmd>lua vim.lsp.buf.definition()<CR>')
   mapper('n', 'gy',         '<cmd>lua vim.lsp.buf.type_definition()<CR>')
   mapper('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-  -- TODO: jump next diagnostic
+
+  mapper('n', '<leader>s', '<cmd>lua require"lsp_cbs.diagnostics".prev()<CR>')
+  mapper('n', '<leader>d', '<cmd>lua require"lsp_cbs.diagnostics".next()<CR>')
 end
 
 local function location_cb(err, _, result)
