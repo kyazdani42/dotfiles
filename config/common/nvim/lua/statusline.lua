@@ -129,7 +129,7 @@ function M.setup()
   augroup StatusLine
     au!
     au TabEnter,WinLeave,BufEnter,WinEnter,VimEnter * lua require'statusline'.clear()
-    au BufEnter * setlocal statusline=%!Status()
+    au BufEnter,VimEnter * setlocal statusline=%!Status()
     au DirChanged * lua require'statusline'.update_git()
   augroup END
   ]]

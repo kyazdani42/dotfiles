@@ -39,6 +39,12 @@ local function update_fuzzy()
     a.nvim_buf_set_option(bufnr.results, 'modifiable', true)
     a.nvim_buf_set_lines(bufnr.results, 0, -1, false, lines)
     a.nvim_buf_set_option(bufnr.results, 'modifiable', false)
+
+    if lines[1] then
+      a.nvim_buf_set_option(bufnr.preview, 'modifiable', true)
+      a.nvim_buf_set_lines(bufnr.preview, 0, -1, false, fn.readfile(lines[1]))
+      a.nvim_buf_set_option(bufnr.results, 'modifiable', false)
+    end
   end, 5)
 end
 
@@ -67,7 +73,7 @@ function M.fuze(type)
   bufnr.preview = require'utils.buf'.make_buffer {
     where = 'preview',
     reset_keymaps = true,
-    lines = {},
+    lines = data[1] and fn.readfile(data[1]) or {},
     buf_options = {
       modifiable = false,
       buftype = 'nofile',
@@ -76,6 +82,7 @@ function M.fuze(type)
     }
   }
   a.nvim_set_current_win(fn.bufwinid(bufnr.results))
+  a.nvim_buf_set_option(bufnr.preview, "ft", "")
 
   bufnr.line = require'utils.buf'.make_buffer {
     where = 'bottom',
@@ -84,6 +91,7 @@ function M.fuze(type)
     lines = {},
     keymaps = {
       { mode = 'i', l = '<esc>', cmd = '<cmd>lua require"fuzzy".close()<CR>' },
+      { mode = 'i', l = '<CR>',  cmd = '<cmd>lua require"fuzzy".close()<CR>' },
       { mode = 'i', l = '<C-p>', cmd = '' },
       { mode = 'i', l = '<C-k>', cmd = '' },
       { mode = 'i', l = '<C-n>', cmd = '' },
@@ -102,7 +110,7 @@ end
 
 function M.setup()
   vim.cmd "au FileType fuzzy set laststatus=0 | autocmd BufLeave <buffer> set laststatus=2"
-  require'utils'.mapper('n', '<leader>e', '<cmd>lua require"fuzzy".fuze("files")<CR>')
+  require'utils'.mapper('n', '<leader>e', '<cmd>lua require"fuzzy".fuze("files")<CR>', 'everywhere')
 end
 
 return M
