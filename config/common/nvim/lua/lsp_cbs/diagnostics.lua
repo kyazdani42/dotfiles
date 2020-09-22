@@ -10,6 +10,10 @@ end
 function M.prev()
   local diagnostics = vim.lsp.util.diagnostics_by_buf[vim.api.nvim_get_current_buf()]
 
+  if #diagnostics == 0 then
+    return require'utils'.warn("No diagnostics")
+  end
+
   if #diagnostics == 1 or current_diagnostic == 1 then
     current_diagnostic = #diagnostics
   else
@@ -22,6 +26,9 @@ end
 function M.next()
   local diagnostics = vim.lsp.util.diagnostics_by_buf[vim.api.nvim_get_current_buf()]
 
+  if #diagnostics == 0 then
+    return require'utils'.warn("No diagnostics")
+  end
   if #diagnostics == 1 or current_diagnostic >= #diagnostics then
     current_diagnostic = 1
   else

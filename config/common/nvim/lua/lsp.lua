@@ -106,7 +106,9 @@ end
 
 local function location_cb(err, _, result)
   if err then return api.nvim_err_writeln(err) end
-  if not result then return end
+  if not result then
+    return require'utils'.warn('No definition found')
+  end
 
   local res = vim.tbl_islist(result) and result[1] or result
   vim.lsp.util.jump_to_location(res)

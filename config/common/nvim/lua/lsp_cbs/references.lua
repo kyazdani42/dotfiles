@@ -50,7 +50,9 @@ end
 
 function M.references_cb(err, _, results)
   if err then return api.nvim_err_writeln(err) end
-  if not results or #results < 2 then return end
+  if not results or #results < 2 then
+    return require'utils'.warn("No reference found")
+  end
 
   main_buf = api.nvim_get_current_buf()
 
