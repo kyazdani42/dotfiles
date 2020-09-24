@@ -66,6 +66,8 @@ Plug 'nvim-lua/completion-nvim'                                    " Better lsp 
 Plug 'michaelb/sniprun', {'do': 'bash install.sh'}                 " Run blocks of code :SnipRun
 
 Plug 'ThePrimeagen/vim-be-good'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['typescript', 'javascript', 'html', 'json', 'css'] }
 call plug#end()
 
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua

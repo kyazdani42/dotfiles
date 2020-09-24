@@ -22,10 +22,10 @@ end
 local function get_filetypes_config()
   return {
     { lsp_name = "bashls" },
-    { lsp_name = "cssls" },
+    -- { lsp_name = "cssls" },
     { lsp_name = "gopls" },
-    { lsp_name = "html" },
-    { lsp_name = "jsonls" },
+    -- { lsp_name = "html" },
+    -- { lsp_name = "jsonls" },
     { lsp_name = "rust_analyzer" },
     { lsp_name = "vimls" },
     {
@@ -44,20 +44,21 @@ local function get_filetypes_config()
         }
       }
     },
-    {
-      lsp_name = "tsserver",
-      lsp_settings = {
-        cmd = {"typescript-language-server", "--stdio"},
-        filetypes = {
-          "javascript",
-          "javascriptreact",
-          "javascript.jsx",
-          "typescript",
-          "typescriptreact",
-          "typescript.tsx"
-        },
-      }
-    },
+    -- TSSERVER is borken with nvim-lsp
+    -- {
+    --   lsp_name = "tsserver",
+    --   lsp_settings = {
+    --     cmd = {"typescript-language-server", "--stdio"},
+    --     filetypes = {
+    --       "javascript",
+    --       "javascriptreact",
+    --       "javascript.jsx",
+    --       "typescript",
+    --       "typescriptreact",
+    --       "typescript.tsx"
+    --     },
+    --   }
+    -- },
     -- this still make neovim ask for 'override existing file...' and does not work
     -- {
     --   lsp_name = 'diagnosticls',
@@ -94,6 +95,7 @@ local function on_attach(client)
   local mapper = require'utils'.mapper
   mapper('i', '<c-space>',  'completion#trigger_completion()')
   mapper('n', 'K',          '<cmd>lua require"lsp".show_doc()<CR>')
+  mapper('n', '<c-K>',      '<cmd>lua require"lsp".hover()<CR>')
 
   mapper('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>')
   mapper('n', 'gd',         '<cmd>lua vim.lsp.buf.definition()<CR>')

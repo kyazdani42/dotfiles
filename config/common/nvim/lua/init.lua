@@ -67,6 +67,7 @@ function M.setup()
   require 'formatter'.setup()
   require 'fuzzy'.setup()
   -- require 'nvim-github'.setup()
+  require 'coc'.setup()
 end
 
 return M
