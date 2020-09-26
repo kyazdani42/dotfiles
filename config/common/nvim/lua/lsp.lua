@@ -26,7 +26,7 @@ local function get_filetypes_config()
     { lsp_name = "gopls" },
     -- { lsp_name = "html" },
     -- { lsp_name = "jsonls" },
-    { lsp_name = "rust_analyzer" },
+    -- { lsp_name = "rust_analyzer" },
     { lsp_name = "vimls" },
     {
       lsp_name = "sumneko_lua",

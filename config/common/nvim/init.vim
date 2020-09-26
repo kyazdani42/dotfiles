@@ -67,7 +67,7 @@ Plug 'michaelb/sniprun', {'do': 'bash install.sh'}                 " Run blocks 
 
 Plug 'ThePrimeagen/vim-be-good'
 
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['typescript', 'javascript', 'html', 'json', 'css'] }
+Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['typescript', 'javascript', 'html', 'json', 'css', 'rust'] }
 call plug#end()
 
 set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua
