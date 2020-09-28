@@ -1,7 +1,13 @@
 local api = vim.api
 local M = {}
 
+local synoff = function()
+  local filetypes = vim.fn.join({ "lua", "javascript", "javascripreact", "typescript", "typescriptreact", "c", "cpp", "query", "rust", "go", "json", "html", "css", "scheme", "sh", "fennel", "php", "python", "ruby", "toml" }, ",")
+  vim.cmd("au FileType "..filetypes.." set syn=off")
+end
+
 function M.setup()
+  synoff()
   require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,

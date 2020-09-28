@@ -34,6 +34,8 @@ au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\
 " Disable autocommenting on newline: https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
 au BufNewFile,BufWinEnter * setlocal formatoptions-=cro
 
+au FileType scheme set ft=query
+
 au FileType c,cpp set tabstop=8 shiftwidth=8 noexpandtab
 au FileType python set tabstop=4 shiftwidth=4 noexpandtab
 au FileType markdown set tabstop=4 shiftwidth=4 conceallevel=2
