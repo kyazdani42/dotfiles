@@ -19,6 +19,22 @@ function M.hover()
   current_hovered_word = new_current_hovered_word
 end
 
+local function get_lua_runtime()
+    local result = {};
+
+    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+        local lua_path = path .. "/lua/";
+        if vim.fn.isdirectory(lua_path) then
+            result[lua_path] = true
+        end
+    end
+
+    result[vim.fn.expand("$VIMRUNTIME/lua")] = true
+    result[vim.fn.expand("~/dev/nvim_dev/neovim/src/nvim/lua")] = true
+
+    return result;
+end
+
 local function get_filetypes_config()
   return {
     { lsp_name = "bashls" },
@@ -33,13 +49,12 @@ local function get_filetypes_config()
       lsp_settings = {
         Lua = {
           runtime = {version = "LuaJIT", path = vim.split(package.path, ';')},
+          completion = { keywordSnippet = "Disable" },
           diagnostics = {
             globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth"},
           },
           workspace = {
-            library = {
-              [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-            }
+            library = get_lua_runtime()
           }
         }
       }
