@@ -38,6 +38,9 @@ link_files() {
 
 link_files "common"
 
+git clone https://github.com/wbthomason/packer.nvim \
+ ~/.local/share/nvim/site/pack/packer/opt/packer.nvim
+
 echo "- Linking vimrc"
 rm -f $HOME/.vimrc
 sudo cp -f $PWD/etc/vimrc /etc/vimrc
@@ -62,8 +65,8 @@ cat <<EOF
 Installation is done, you might want to reboot your system
 ==========================================================
 POST INSTALL STEPS:                                        
-- run PlugInstall in neovim
-- install neovim git projects in ~/dev/nvim_dev
+- run PackerInstall and PackerCompile in neovim
+- install neovim git projects in ~/dev/plugins
 - install gtk theme \`juno palenight\`
 - Modify \`~/.icons/index.theme\` or \`/usr/share/icons/default/index.theme\` for setting cursors systemwide
 EOF

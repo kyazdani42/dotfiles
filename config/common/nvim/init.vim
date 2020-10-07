@@ -43,40 +43,4 @@ au FileType typescriptreact,typescript,javascript,javascriptreact,lua set tabsto
 
 au TextYankPost * silent! lua require'vim.highlight'.on_yank({ timeout=500 })
 
-call plug#begin('~/.config/nvim/plugged')
-Plug 'airblade/vim-gitgutter'                                      " Git infos in gutter
-Plug 'tpope/vim-fugitive'                                          " Git integration
-Plug 'APZelos/blamer.nvim'                                         " Git blame virtual text
-
-Plug 'junegunn/fzf.vim'                                            " fzf wrapper
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
-Plug 'tpope/vim-surround'                                          " Change/delete surrounding char
-Plug 'airblade/vim-rooter'                                         " Changes Vim working directory to project root 
-Plug 'tomtom/tcomment_vim'                                         " Comments
-Plug 'editorconfig/editorconfig-vim'                               " File format for projects
-
-Plug 'norcalli/nvim-colorizer.lua'                                 " Rgb/hex colorizer
-Plug 'sheerun/vim-polyglot'                                        " Language color pack
-
-Plug 'rust-lang/rust.vim'                                          " Rust language support
-Plug 'plasticboy/vim-markdown'                                     " Markdown support: TODO: remove when treesitter is ok with markdown
-
-Plug 'neovim/nvim-lspconfig'                                       " Lsp configuration
-Plug 'nvim-lua/completion-nvim'                                    " Better lsp completion menu
-
-Plug 'michaelb/sniprun', {'do': 'bash install.sh'}                 " Run blocks of code :SnipRun
-
-Plug 'ThePrimeagen/vim-be-good'
-
-Plug 'neoclide/coc.nvim', {'branch': 'release', 'for': ['typescript', 'javascript', 'html', 'json', 'css', 'rust'] }
-call plug#end()
-
-set runtimepath+=~/dev/nvim_dev/plugs/nvim-tree.lua
-set runtimepath+=~/dev/nvim_dev/plugs/blue-moon
-set runtimepath+=~/dev/nvim_dev/plugs/nvim-treesitter
-set runtimepath+=~/dev/nvim_dev/plugs/nvim-web-devicons
-set runtimepath+=~/dev/nvim_dev/plugs/nvim-github
-set runtimepath+=~/dev/nvim_dev/plugs/playground
-
-lua require'init'.setup()
+lua require 'init'

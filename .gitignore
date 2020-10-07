@@ -2,4 +2,5 @@
 error.log
 *zcomp*
 plug.vim
-
+plugin
+.netrwhist

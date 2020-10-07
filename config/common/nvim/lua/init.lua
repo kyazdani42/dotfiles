@@ -1,6 +1,4 @@
-local api = vim.api
-
-local M = {}
+require 'plugins'
 
 local keymaps = {
   { mod = '', lhs = '<C-j>', rhs = '', opt = {nowait = true} },
@@ -44,30 +42,20 @@ local keymaps = {
   { mod = 't', lhs = '<C-w>l', rhs = '<C-\\><C-n><c-w>l', opt = { noremap = true } },
 }
 
-function M.setup()
-  local default_opt = { nowait = true, noremap = true }
+local default_opt = { nowait = true, noremap = true }
 
-  api.nvim_exec([[
-  colorscheme blue-moon
+vim.api.nvim_exec([[
   cabbrev W w
   cabbrev terminal vsplit term://zsh
   cabbrev term vsplit term://zsh
   autocmd TermOpen * startinsert
   ]], '')
 
-  for _, keymap in pairs(keymaps) do
-    api.nvim_set_keymap(keymap.mod, keymap.lhs, keymap.rhs, keymap.opt or default_opt)
-  end
-
-  require 'lsp'.setup()
-  require 'colorizer'.setup()
-  require 'statusline'.setup()
-  require 'ts'.setup()
-  require 'plugs'.setup()
-  require 'formatter'.setup()
-  require 'fuzzy'.setup()
-  -- require 'nvim-github'.setup()
-  require 'coc'.setup()
+for _, keymap in pairs(keymaps) do
+  vim.api.nvim_set_keymap(keymap.mod, keymap.lhs, keymap.rhs, keymap.opt or default_opt)
 end
 
-return M
+require 'statusline'.setup()
+require 'formatter'.setup()
+require 'fuzzy'.setup()
+-- require 'nvim-github'.setup()
