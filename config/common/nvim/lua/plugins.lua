@@ -10,7 +10,8 @@ return require('packer').startup(function()
 
   use {
     '~/dev/plugins/nvim-tree.lua',
-    setup = function() require'tree-config'.setup() end
+    setup = function() require'tree-config'.setup() end,
+    requires = '~/dev/plugins/nvim-web-devicons'
   }
 
   use {

@@ -1,6 +1,3 @@
-[submodule "config/common/nvim/autoload/vim-plug"]
-	path = config/common/nvim/autoload/vim-plug
-	url = https://github.com/junegunn/vim-plug
 [submodule "config/common/zsh/zsh-completions"]
 	path = config/common/zsh/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
