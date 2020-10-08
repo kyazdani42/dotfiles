@@ -45,4 +45,6 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 
+[ -d "$HOME/dev/neovim" ] && export VIMRUNTIME="$HOME/dev/neovim/runtime"
+
 source session-$(hostname)-$(whoami).sh

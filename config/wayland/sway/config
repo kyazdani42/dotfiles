@@ -29,6 +29,8 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * dpms off"' \
          resume 'swaymsg "output * dpms on"' \
          before-sleep 'lock'
+exec /usr/bin/wl-paste -t text --watch clipman store
+exec /usr/bin/wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
 ############################# GTK #####################################
 
@@ -63,11 +65,12 @@ input type:touchpad {
 ####################### KEY BINDINGS ####################################
 
 # TODO bindsym $mod+Shift+d -> drag n drop picker
-# TODO bindsym $mod+Shift+x -> shutdown dialog
+bindsym $mod+Shift+x exec nwgbar -o 0
+bindsym $mod+d exec nwggrid -b '#292d3ef0'
 
-bindsym $mod+d exec wofi_drun
 bindsym $mod+Shift+u exec wofi_wifi
 
+bindsym $mod+y exec clipboard_manager
 bindsym button1 nop
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+w exec $BROWSER

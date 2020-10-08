@@ -1,0 +1,37 @@
+* { outline-width: 0px; outline: none; }
+scrolledwindow undershoot.top, scrolledwindow undershoot.right, scrolledwindow undershoot.bottom, scrolledwindow undershoot.left { background-image: none; }
+
+window {
+  font: 24px "Lato Medium";
+}
+
+#outer-box {
+  margin: 24px;
+  background-color: #292d3e;
+}
+
+#input {
+  padding: 0px;
+  margin: 0px;
+  background-color: #292d3e;
+  color: #282d3e;
+  border: none;
+}
+
+#inner-box {
+  margin: 16px 0px;
+  padding: 0px 16px;
+  background-color: #292d3e;
+}
+
+#entry {
+  padding: 50px;
+}
+
+#text:selected {
+  background-color: #1b1e2b;
+}
+
+#entry:selected {
+  background-color: #1b1e2b;
+}
