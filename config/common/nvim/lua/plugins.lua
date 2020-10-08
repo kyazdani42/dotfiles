@@ -10,16 +10,14 @@ return require('packer').startup(function()
 
   use {
     '~/dev/plugins/nvim-tree.lua',
-    setup = function() require'tree-config'.setup() end,
-    requires = '~/dev/plugins/nvim-web-devicons'
+    requires = {'~/dev/plugins/nvim-web-devicons'},
+    config = function() require'tree-config'.setup() end,
   }
 
+  use '~/dev/plugins/playground'
   use {
-    '~/dev/plugins/playground',
-    requires = {
-      '~/dev/plugins/nvim-treesitter',
-      config = function() require'ts'.setup() end
-    }
+    '~/dev/plugins/nvim-treesitter',
+    config = function() require'ts'.setup() end
   }
 
   use 'airblade/vim-gitgutter'
