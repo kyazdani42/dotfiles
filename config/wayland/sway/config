@@ -64,9 +64,8 @@ input type:touchpad {
 
 ####################### KEY BINDINGS ####################################
 
-# TODO bindsym $mod+Shift+d -> drag n drop picker
 bindsym $mod+Shift+x exec nwgbar -o 0
-bindsym $mod+d exec nwggrid -b '#292d3ef0'
+bindsym $mod+d exec nwggrid -o 1 -b '#1b1e2b'
 
 bindsym $mod+Shift+u exec wofi_wifi
 
@@ -78,6 +77,7 @@ bindsym $mod+Shift+o exec lock
 
 bindsym $mod+Return split h, exec spawn-alacritty-cwd
 bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd
+# TODO bindsym $mod+Shift+d -> drag n drop picker
 bindsym $mod+Shift+d exec alacritty --working-directory="$HOME" --title='~#floating#~' -e lf
 bindsym $mod+c exec alacritty --title='~#floating#~' -e python
 bindsym $mod+p exec pavucontrol

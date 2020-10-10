@@ -15,17 +15,17 @@ button {
 }
 
 button:hover {
-    background-color: #1b1e2b;
+    background-color: #292d3e;
     color: #ffffff;
 }
 
 button:focus {
-    background-color: #1b1e2b;
+    background-color: #393d4e;
     color: #ffffff;
 }
 
 #searchbox {
-    background-color: #1b1e2b;
+    background-color: #292d3e;
     color: #a6accd;
     border: none;
     margin-top: 20px;

@@ -8,7 +8,7 @@
 }
 
 window#waybar {
-    background-color: #1c1f2b;
+    background-color: #1b1e2b;
     color: #ffffff;
 }
 
@@ -18,7 +18,7 @@ window#waybar.hidden {
 
 #workspaces button {
     padding: 0 11px;
-    background-color: #1c1f2b;
+    background-color: #1b1e2b;
     color: #ffffff;
 }
 
@@ -41,7 +41,7 @@ window#waybar.hidden {
 }
 
 #battery {
-    background-color: #1a1f2b;
+    background-color: #1b1e2b;
 }
 
 #pulseaudio {}
