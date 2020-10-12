@@ -99,7 +99,7 @@ set $white-alt  #959dcb
 set $red        #d06178
 set $cyan       #89bbdd
 
-client.focused          $bg  $bg  $cyan      $white-alt      $white-alt
+client.focused          $bg  $bg  $cyan      $cyan      $cyan
 client.focused_inactive $bg  $bg  $white-alt $bg        $bg
 client.unfocused        $bg  $bg  $white-alt $bg        $bg
 client.placeholder      $bg  $bg  $white-alt $bg        $bg

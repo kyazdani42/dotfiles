@@ -83,7 +83,7 @@ end
 function M.ts_hl_groups()
   if not hl_virt_enable then return end
 
-  local ns = api.nvim_get_namespaces().treesitter_hl
+  local ns = api.nvim_get_namespaces()['treesitter/highlighter']
   local _, lnum, lcol = unpack(vim.fn.getcurpos())
   local extmarks = api.nvim_buf_get_extmarks(0, ns, {lnum-1, lcol-1}, {lnum-1, -1}, { details = true })
   local groups = {}

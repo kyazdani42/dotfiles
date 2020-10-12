@@ -25,12 +25,11 @@ function fvim() {
     nvim "$file"
 }
 
-# faster to load projects before the script
-# if creating new projects, just run a new shell
-projects=$(find "$HOME/dev" -name .git | sed -E 's/.*\/dev\/(.*)\/\.git/\1/')
-
 function prj() {
-    project=$(echo $projects | fzf)
+    project=$(\
+        fd -H 'git$' "$HOME/${1:-dev}" \
+        | sed -E 's/.*\/dev\/(.*)\/\.git/\1/' \
+        | fzf)
     if [ ! -z "$project" ]; then
       cd "$HOME/dev/$project"
     fi
