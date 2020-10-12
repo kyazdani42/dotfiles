@@ -2,7 +2,6 @@
 
 BINARIES=(
 # programs binaries
-"$HOME/.deno/bin"
 "$HOME/.local/share/cargo/bin"
 "$HOME/.local/share/go/bin"
 "$HOME/.config/yarn/bin"
@@ -10,7 +9,6 @@ BINARIES=(
 # personnal binaries
 "$HOME/.local/bin"
 "$HOME/.local/bin/bar"
-"$HOME/.local/workbin"
 )
 
 for p in "${BINARIES[@]}"; do
@@ -44,7 +42,5 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
-
-[ -d "$HOME/dev/neovim" ] && export VIMRUNTIME="$HOME/dev/neovim/runtime"
 
 source session-$(hostname)-$(whoami).sh

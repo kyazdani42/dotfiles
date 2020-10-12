@@ -22,6 +22,9 @@ function M.setup()
         node_decremental = "m"
       }
     },
+    indent = {
+      enable = true,
+    },
     ensure_installed = {}
   }
 

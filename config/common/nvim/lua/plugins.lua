@@ -25,7 +25,6 @@ return require('packer').startup(function()
   use 'APZelos/blamer.nvim'
   use 'tomtom/tcomment_vim'
   use 'tpope/vim-surround'
-  use 'sheerun/vim-polyglot'
   use 'rust-lang/rust.vim'
 
   use {
