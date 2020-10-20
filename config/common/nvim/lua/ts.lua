@@ -9,24 +9,24 @@ end
 function M.setup()
   synoff()
   require'nvim-treesitter.configs'.setup {
-    highlight = {
-      enable = true,
-    },
-    incremental_selection = {
-      enable = true,
-      disable = {},
-      keymaps = {
-        init_selection = "<leader>n",
-        node_incremental = "n",
-        scope_incremental = "<leader>m",
-        node_decremental = "m"
-      }
-    },
-    indent = {
-      enable = true,
-    },
-    ensure_installed = {}
-  }
+      highlight = {
+        enable = true,
+      },
+      incremental_selection = {
+        enable = true,
+        disable = {},
+        keymaps = {
+          init_selection = "<leader>n",
+          node_incremental = "n",
+          scope_incremental = "<leader>m",
+          node_decremental = "m"
+        }
+      },
+      indent = {
+        enable = true,
+      },
+      ensure_installed = 'all'
+    }
 
   api.nvim_set_keymap('n', 'R', ':write | edit | TSBufEnable highlight<CR>', {});
   api.nvim_exec([[

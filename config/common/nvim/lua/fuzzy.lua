@@ -35,17 +35,20 @@ local function update_fuzzy()
 
   -- We have to defer because vim do not have time to save undo history otherwise.
   -- Damn lua you are fast.
-  vim.defer_fn(function()
-    a.nvim_buf_set_option(bufnr.results, 'modifiable', true)
-    a.nvim_buf_set_lines(bufnr.results, 0, -1, false, lines)
-    a.nvim_buf_set_option(bufnr.results, 'modifiable', false)
-
-    if lines[1] then
-      a.nvim_buf_set_option(bufnr.preview, 'modifiable', true)
-      a.nvim_buf_set_lines(bufnr.preview, 0, -1, false, fn.readfile(lines[1]))
+  vim.defer_fn(
+    function()
+      a.nvim_buf_set_option(bufnr.results, 'modifiable', true)
+      a.nvim_buf_set_lines(bufnr.results, 0, -1, false, lines)
       a.nvim_buf_set_option(bufnr.results, 'modifiable', false)
-    end
-  end, 5)
+
+      if lines[1] then
+        a.nvim_buf_set_option(bufnr.preview, 'modifiable', true)
+        a.nvim_buf_set_lines(bufnr.preview, 0, -1, false, fn.readfile(lines[1]))
+        a.nvim_buf_set_option(bufnr.results, 'modifiable', false)
+      end
+    end,
+    5
+  )
 end
 
 function M.fuze(type)
@@ -58,51 +61,51 @@ function M.fuze(type)
   end
 
   bufnr.results = require'utils.buf'.make_buffer {
-    where = 'bottom',
-    size = 30,
-    lines = data,
-    reset_keymaps = true,
-    buf_options = {
-      modifiable = false,
-      buftype = 'nofile',
-      bufhidden = 'wipe',
-      swapfile = false,
-    },
-  }
+      where = 'bottom',
+      size = 30,
+      lines = data,
+      reset_keymaps = true,
+      buf_options = {
+        modifiable = false,
+        buftype = 'nofile',
+        bufhidden = 'wipe',
+        swapfile = false,
+      },
+    }
 
   bufnr.preview = require'utils.buf'.make_buffer {
-    where = 'preview',
-    reset_keymaps = true,
-    lines = data[1] and fn.readfile(data[1]) or {},
-    buf_options = {
-      modifiable = false,
-      buftype = 'nofile',
-      bufhidden = 'wipe',
-      swapfile = false,
+      where = 'preview',
+      reset_keymaps = true,
+      lines = data[1] and fn.readfile(data[1]) or {},
+      buf_options = {
+        modifiable = false,
+        buftype = 'nofile',
+        bufhidden = 'wipe',
+        swapfile = false,
+      }
     }
-  }
   a.nvim_set_current_win(fn.bufwinid(bufnr.results))
   a.nvim_buf_set_option(bufnr.preview, "ft", "")
 
   bufnr.line = require'utils.buf'.make_buffer {
-    where = 'bottom',
-    reset_keymaps = true,
-    size = 1,
-    lines = {},
-    keymaps = {
-      { mode = 'i', l = '<esc>', cmd = '<cmd>lua require"fuzzy".close()<CR>' },
-      { mode = 'i', l = '<CR>',  cmd = '<cmd>lua require"fuzzy".close()<CR>' },
-      { mode = 'i', l = '<C-p>', cmd = '' },
-      { mode = 'i', l = '<C-k>', cmd = '' },
-      { mode = 'i', l = '<C-n>', cmd = '' },
-      { mode = 'i', l = '<C-j>', cmd = '' },
-    },
-    buf_options = {
-      buftype = 'nofile',
-      bufhidden = 'wipe',
-      swapfile = false,
+      where = 'bottom',
+      reset_keymaps = true,
+      size = 1,
+      lines = {},
+      keymaps = {
+        { mode = 'i', l = '<esc>', cmd = '<cmd>lua require"fuzzy".close()<CR>' },
+        { mode = 'i', l = '<CR>',  cmd = '<cmd>lua require"fuzzy".close()<CR>' },
+        { mode = 'i', l = '<C-p>', cmd = '' },
+        { mode = 'i', l = '<C-k>', cmd = '' },
+        { mode = 'i', l = '<C-n>', cmd = '' },
+        { mode = 'i', l = '<C-j>', cmd = '' },
+      },
+      buf_options = {
+        buftype = 'nofile',
+        bufhidden = 'wipe',
+        swapfile = false,
+      }
     }
-  }
 
   a.nvim_buf_attach(bufnr.line, false, { on_lines = update_fuzzy })
   vim.cmd("echohl Directory | echo '"..luv.cwd():gsub(fn.expand('$HOME'), '~').."' | echohl Normal | set ft=fuzzy | startinsert")

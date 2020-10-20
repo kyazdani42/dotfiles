@@ -20,19 +20,19 @@ function M.hover()
 end
 
 local function get_lua_runtime()
-    local result = {};
+  local result = {};
 
-    for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
-        local lua_path = path .. "/lua/";
-        if vim.fn.isdirectory(lua_path) then
-            result[lua_path] = true
-        end
+  for _, path in pairs(vim.api.nvim_list_runtime_paths()) do
+    local lua_path = path .. "/lua/";
+    if vim.fn.isdirectory(lua_path) then
+      result[lua_path] = true
     end
+  end
 
-    result[vim.fn.expand("$VIMRUNTIME/lua")] = true
-    result[vim.fn.expand("~/dev/nvim_dev/neovim/src/nvim/lua")] = true
+  result[vim.fn.expand("$VIMRUNTIME/lua")] = true
+  result[vim.fn.expand("~/dev/nvim_dev/neovim/src/nvim/lua")] = true
 
-    return result;
+  return result;
 end
 
 local function get_filetypes_config()
@@ -51,7 +51,7 @@ local function get_filetypes_config()
           runtime = {version = "LuaJIT", path = vim.split(package.path, ';')},
           completion = { keywordSnippet = "Disable" },
           diagnostics = {
-            globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth"},
+            globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth", "use"},
           },
           workspace = {
             library = get_lua_runtime()
@@ -143,13 +143,13 @@ function M.setup()
     if lsp_config.lsp_name then
       if lsp_config.lsp_settings then
         require'nvim_lsp'[lsp_config.lsp_name].setup{
-          on_attach = on_attach,
-          settings = lsp_config.lsp_settings,
-        }
+            on_attach = on_attach,
+            settings = lsp_config.lsp_settings,
+          }
       else
         require'nvim_lsp'[lsp_config.lsp_name].setup{
-          on_attach = on_attach,
-        }
+            on_attach = on_attach,
+          }
       end
     end
   end

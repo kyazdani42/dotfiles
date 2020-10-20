@@ -63,16 +63,14 @@ return require('packer').startup(function()
   }
 
   use {
-    'nvim-lua/completion-nvim',
-    requires = {
-      'neovim/nvim-lspconfig',
-      config = function() require'lsp'.setup() end
-    }
+    'neovim/nvim-lspconfig',
+    requires = {'nvim-lua/completion-nvim'},
+    config = function() require'lsp'.setup() end
   }
 
   use {
-    'neoclide/coc.nvim', 
-    branch = 'release', 
+    'neoclide/coc.nvim',
+    branch = 'release',
     config = function() require'coc'.setup() end,
     ft = {
       'typescript',
