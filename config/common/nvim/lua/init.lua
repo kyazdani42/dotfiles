@@ -1,42 +1,51 @@
-vim.api.nvim_exec([[
-  let mapleader = "\\"
+local o = vim.o
+local g = vim.g
+local a = vim.api
 
-  set relativenumber             " Relative numbers
-  set showmatch                  " Show matching brackets/parenthesis
-  set cursorline                 " Highlight current line
-  set noshowmode                 " Do not output message on the bottom
-  set mousehide                  " Hide mouse while typing
-  set linebreak                  " Do not break words
-  set splitbelow splitright      " Splits open on the bottom or on the right
-  set updatetime=800
-  set scrolloff=8                " Lines from the cursor
-  set wildmode=full              " Command line completion mode
-  set wildmenu                   " Command line completion mode
-  set incsearch                  " Move cursor during search
-  set inccommand=split           " Show effects of command as you type in a split
-  set ignorecase                 " Ignore case
-  set hlsearch                   " Highlight search results (enforce)
-  set confirm                    " Disable 'no write'
-  set mouse=n                    " Enable mouse
-  set smartindent                " auto indent on new line (brackets for instance)
-  set tabstop=4                  " Tabs are 4 spaces long
-  set shiftwidth=4               " Number of space for autoindent
-  set expandtab                  " expand tab into space by default
-  set clipboard^=unnamedplus     " Use system clipboard
-  set termguicolors
-  set shortmess+=c
+g.mapleader = '\\'
+
+o.updatetime = 800
+o.foldlevelstart = 99
+o.termguicolors = true
+o.mouse= 'n' -- Enable mouse
+o.ignorecase = true -- Ignore case
+o.confirm = true -- Disable 'no write'
+o.scrolloff = 8 -- Lines from the cursor
+o.incsearch = true -- Move cursor during search
+o.splitright = true -- Splits open on the right
+o.splitbelow = true -- Splits open on the bottom
+o.wildmenu = true -- Command line completion mode
+o.wildmode = 'full' -- Command line completion mode
+o.hlsearch = true -- Highlight search results (enforce)
+o.showmatch = true -- Show matching brackets/parenthesis
+o.showmode = false -- Do not output message on the bottom
+o.inccommand = 'split' -- Show effects of command as you type in a split
+o.tabstop = 4 -- Tabs are 4 spaces long BO
+o.shiftwidth = 4 -- Number of space for autoindent BO
+o.expandtab = true -- expand tab into space by default
+o.clipboard = 'unnamedplus' -- Use system clipboard
+o.shortmess = vim.o.shortmess .. 'c'
+o.smartindent = true -- auto indent on new line (brackets for instance) BO
+o.formatoptions = o.formatoptions:gsub('[cro]', '')
+
+function _G.dump(...)
+  local objects = vim.tbl_map(vim.inspect, {...})
+  print(unpack(objects))
+end
+
+a.nvim_exec([[
+  " we have to set these window options here because vim.o won't accept them and vim.wo wont set for each window automatically
+  " and binding to an autocmd will mess with window that change those settings
+  set relativenumber
+  set cursorline
+  set linebreak
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
-  set foldlevelstart=99
 
-  " Retrieve last position in a file: https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
-  au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-  " Disable autocommenting on newline: https://stackoverflow.com/questions/6076592/vim-set-formatoptions-being-lost
-  au BufNewFile,BufWinEnter * setlocal formatoptions-=cro
+  " Disable autocommenting on newline and retrieve last position
+  au BufWinEnter * exec "normal! g'\""
 
   au FileType scheme set ft=query
-
   au FileType c,cpp set tabstop=8 shiftwidth=8 noexpandtab
   au FileType python set tabstop=4 shiftwidth=4 noexpandtab
   au FileType markdown set tabstop=4 shiftwidth=4 conceallevel=2
@@ -52,53 +61,37 @@ vim.api.nvim_exec([[
 
 require 'plugins'
 
-local keymaps = {
-  { mod = '', lhs = '<C-j>', rhs = '', opt = {nowait = true} },
-  { mod = 'i', lhs = '<C-j>', rhs = '<Esc>' },
-  { mod = 'v', lhs = '<C-j>', rhs = '<Esc>' },
-
-  { mod = 'n', lhs = '<C-j>', rhs = '<C-w>j' },
-  { mod = 'n', lhs = '<C-k>', rhs = '<C-w>k' },
-  { mod = 'n', lhs = '<C-l>', rhs = '<C-w>l' },
-  { mod = 'n', lhs = '<C-h>', rhs = '<C-w>h' },
-
-  { mod = 'n', lhs = '<leader>v', rhs = ':noh<CR>', opt = {silent=true} },
-
-  { mod = 'n', lhs = 'j', rhs = 'gj' },
-  { mod = 'n', lhs = 'k', rhs = 'gk' },
-  { mod = 'n', lhs = '<space><space>', rhs = '<c-^>' },
-  { mod = 'n', lhs = '<leader><leader>', rhs = ':tabnext<CR>' },
-
-  { mod = 'n', lhs = 'Q', rhs = '' },
-  { mod = 'n', lhs = '<F1>', rhs = '' },
-  { mod = 'i', lhs = '<F1>', rhs = '' },
-
-  { mod = 'n', lhs = '<C-u>', rhs = '<C-u>zz' },
-  { mod = 'n', lhs = '<C-d>', rhs = '<C-d>zz' },
-  { mod = 'n', lhs = '<C-f>', rhs = '<C-f>zz' },
-  { mod = 'n', lhs = '(', rhs = '(zz' },
-  { mod = 'n', lhs = ')', rhs = ')zz' },
-  { mod = 'v', lhs = '(', rhs = '(zz' },
-  { mod = 'v', lhs = ')', rhs = ')zz' },
-
-  -- Ctrl + / is outputing ++ (term configuration)
-  { mod = 'n', lhs = '++', rhs = ':TComment<cr>', opt = { silent = true } },
-  { mod = 'v', lhs = '++', rhs = ':TComment<cr>', opt = { silent = true } },
-  { mod = 'n', lhs = '<tab>', rhs = ':normal za<cr>', opt = { noremap = true, silent = true }},
-
-  -- TODO: find a way to map that but not on fzf
-  -- { mod = 't', lhs = '<C-k>', rhs = '<C-\\><C-n>', opt = { noremap = true } },
-  { mod = 't', lhs = '<C-w>h', rhs = '<C-\\><C-n><c-w>h', opt = { noremap = true } },
-  { mod = 't', lhs = '<C-w>j', rhs = '<C-\\><C-n><c-w>j', opt = { noremap = true } },
-  { mod = 't', lhs = '<C-w>k', rhs = '<C-\\><C-n><c-w>k', opt = { noremap = true } },
-  { mod = 't', lhs = '<C-w>l', rhs = '<C-\\><C-n><c-w>l', opt = { noremap = true } },
-}
-
-local default_opt = { nowait = true, noremap = true }
-
-for _, keymap in pairs(keymaps) do
-  vim.api.nvim_set_keymap(keymap.mod, keymap.lhs, keymap.rhs, keymap.opt or default_opt)
+local function map(mod, lhs, rhs, opt)
+  a.nvim_set_keymap(mod, lhs, rhs, opt or {})
 end
+
+map('', '<C-j>', '', { nowait=true })
+map('i', '<C-j>', '<ESC>', { nowait=true })
+map('v', '<C-j>', '<ESC>', { nowait=true })
+
+map('n', '<C-j>', '<C-w>j')
+map('n', '<C-k>', '<C-w>k')
+map('n', '<C-l>', '<C-w>l')
+map('n', '<C-h>', '<C-w>h')
+
+map('n', '<leader>v', ':noh<CR>', {silent=true} )
+
+map('n', 'j', 'gj')
+map('n', 'k', 'gk')
+map('n', '<space><space>', '<c-^>')
+map('n', '<leader><leader>', ':tabnext<CR>')
+
+map('n', 'Q', '')
+map('n', '<F1>', '')
+map('i', '<F1>', '')
+
+map('n', '<C-u>', '<C-u>zz')
+map('n', '<C-d>', '<C-d>zz')
+map('n', '<C-f>', '<C-f>zz')
+
+map('n', '++', ':TComment<cr>', { silent = true }) -- Ctrl + / is outputing ++ (term configuration)
+map('v', '++', ':TComment<cr>', { silent = true })
+map('n', '<tab>', ':normal za<cr>', { noremap = true, silent = true })
 
 require 'statusline'.setup()
 require 'formatter'.setup()
