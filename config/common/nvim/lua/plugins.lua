@@ -14,6 +14,12 @@ return require('packer').startup(function()
     config = function() require'tree-config'.setup() end,
   }
 
+  use {
+    'rafcamlet/nvim-luapad',
+    config = function() vim.g.luapad_preview = 0 end,
+    ft = {'lua'}
+  }
+
   use '~/dev/plugins/playground'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use {
