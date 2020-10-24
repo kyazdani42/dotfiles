@@ -21,7 +21,7 @@ return require('packer').startup(function()
     config = function() require'ts'.setup() end
   }
 
-  use 'TimUntersberger/neogit'
+  -- use 'TimUntersberger/neogit'
 
   use 'airblade/vim-gitgutter'
   use 'tpope/vim-fugitive'

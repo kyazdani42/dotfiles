@@ -110,7 +110,7 @@ local function on_attach(client)
   local mapper = require'utils'.mapper
   mapper('i', '<c-space>',  'completion#trigger_completion()')
   mapper('n', 'K',          '<cmd>lua require"lsp".show_doc()<CR>')
-  mapper('n', '<c-K>',      '<cmd>lua require"lsp".hover()<CR>')
+  mapper('n', '<leader>k',      '<cmd>lua require"lsp".hover()<CR>')
 
   mapper('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>')
   mapper('n', 'gd',         '<cmd>lua vim.lsp.buf.definition()<CR>')
