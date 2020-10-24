@@ -15,10 +15,13 @@ return require('packer').startup(function()
   }
 
   use '~/dev/plugins/playground'
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
   use {
     '~/dev/plugins/nvim-treesitter',
     config = function() require'ts'.setup() end
   }
+
+  use 'TimUntersberger/neogit'
 
   use 'airblade/vim-gitgutter'
   use 'tpope/vim-fugitive'

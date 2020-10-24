@@ -25,7 +25,25 @@ function M.setup()
       indent = {
         enable = true,
       },
-      ensure_installed = 'all'
+      ensure_installed = 'all',
+      textobjects = {
+        select = {
+          enable = true,
+          keymaps = {
+            ["<leader>V"] = "@function.outer", -- replace with block.inner and block.outer when its supported in more languages
+            ["<leader>v"] = "@function.inner"
+          }
+        },
+        swap = {
+          enable = true,
+          swap_next = {
+            ["<leader>f"] = "@parameter.inner", -- replace with block.inner when its supported in more languages
+          },
+          swap_previous = {
+            ["<leader>a"] = "@parameter.inner",
+          },
+        },
+      },
     }
 
   api.nvim_set_keymap('n', 'R', ':write | edit | TSBufEnable highlight<CR>', {});
