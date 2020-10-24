@@ -54,9 +54,6 @@ a.nvim_exec([[
   au TextYankPost * silent! lua require'vim.highlight'.on_yank({ timeout=500 })
 
   cabbrev W w
-  cabbrev terminal vsplit term://zsh
-  cabbrev term vsplit term://zsh
-  autocmd TermOpen * startinsert
   ]], '')
 
 require 'plugins'
