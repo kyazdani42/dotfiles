@@ -28,6 +28,21 @@ function _G.dump(...)
   print(unpack(objects))
 end
 
+local function nvim_set_au(au_type, where, dispatch)
+  vim.cmd(string.format("au! %s %s %s", au_type, where, dispatch))
+end
+
+-- Disable autocommenting on newline and retrieve last position
+nvim_set_au("BufWinEnter", "*", [[exec "normal! g'\""]])
+nvim_set_au("FileType", "scheme", "set ft=query")
+nvim_set_au("FileType", "c,cpp", "set tabstop=8 shiftwidth=4 noexpandtab")
+nvim_set_au("FileType", "python", "set tabstop=4 shiftwidth=4 noexpandtab")
+nvim_set_au("FileType", "markdown", "set tabstop=4 shiftwidth=4 conceallevel=2")
+nvim_set_au("FileType", "typescriptreact,typescript,javascript,javascriptreact,lua", "set tabstop=2 shiftwidth=2")
+nvim_set_au("TextYankPost", "*",  [[silent! lua require'vim.highlight'.on_yank({ timeout=500 })]])
+
+vim.cmd "cabbrev W w"
+
 a.nvim_exec([[
   " we have to set these window options here because vim.o won't accept them and vim.wo wont set for each window automatically
   " and binding to an autocmd will mess with window that change those settings
@@ -44,19 +59,6 @@ a.nvim_exec([[
   set expandtab " expand tab into space by default
   set shiftwidth=4 " Number of space for autoindent BO
   set tabstop=4 " Tabs are 4 spaces long BO
-
-  " Disable autocommenting on newline and retrieve last position
-  au BufWinEnter * exec "normal! g'\""
-
-  au FileType scheme set ft=query
-  au FileType c,cpp set tabstop=8 shiftwidth=8 noexpandtab
-  au FileType python set tabstop=4 shiftwidth=4 noexpandtab
-  au FileType markdown set tabstop=4 shiftwidth=4 conceallevel=2
-  au FileType typescriptreact,typescript,javascript,javascriptreact,lua set tabstop=2 shiftwidth=2
-
-  au TextYankPost * silent! lua require'vim.highlight'.on_yank({ timeout=500 })
-
-  cabbrev W w
   ]], '')
 
 require 'plugins'
@@ -65,16 +67,16 @@ local function map(mod, lhs, rhs, opt)
   a.nvim_set_keymap(mod, lhs, rhs, opt or {})
 end
 
-map('', '<C-j>', '', { nowait=true })
-map('i', '<C-j>', '<ESC>', { nowait=true })
-map('v', '<C-j>', '<ESC>', { nowait=true })
+map('', '<C-j>', '', { nowait = true })
+map('i', '<C-j>', '<ESC>', { nowait = true })
+map('v', '<C-j>', '<ESC>', { nowait = true })
 
 map('n', '<C-j>', '<C-w>j')
 map('n', '<C-k>', '<C-w>k')
 map('n', '<C-l>', '<C-w>l')
 map('n', '<C-h>', '<C-w>h')
 
-map('n', '<leader>v', ':noh<CR>', {silent=true} )
+map('n', '<leader>v', ':noh<CR>', { silent=true })
 
 map('n', 'j', 'gj')
 map('n', 'k', 'gk')
@@ -96,4 +98,3 @@ map('n', '<tab>', ':normal za<cr>', { noremap = true, silent = true })
 require 'statusline'.setup()
 require 'formatter'.setup()
 require 'fuzzy'.setup()
--- require 'nvim-github'.setup()
