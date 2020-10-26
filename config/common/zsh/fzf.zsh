@@ -5,8 +5,7 @@ export FZF_ALT_C_COMMAND="fd --type d -HLi . . 2>/dev/null"
 export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' . 2>/dev/null"
 export FZF_PREVIEW_COMMAND="bat --decorations=never --theme=ansi-dark --color always {} 2>/dev/null"
 
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source /etc/profile.d/fzf.zsh
 
 _fzf_compgen_path() {
     fd -HLi . "$1" 2>/dev/null
