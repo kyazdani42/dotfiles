@@ -36,9 +36,10 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'rust-lang/rust.vim'
 
+  use 'junegunn/fzf'
   use {
     'junegunn/fzf.vim',
-    setup = require'fuzzy'.setup_fzf
+    config = require'fuzzy'.setup_fzf,
   }
   use {
     'editorconfig/editorconfig',

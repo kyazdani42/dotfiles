@@ -20,13 +20,8 @@ o.hlsearch = true -- Highlight search results (enforce)
 o.showmatch = true -- Show matching brackets/parenthesis
 o.showmode = false -- Do not output message on the bottom
 o.inccommand = 'split' -- Show effects of command as you type in a split
-o.tabstop = 4 -- Tabs are 4 spaces long BO
-o.shiftwidth = 4 -- Number of space for autoindent BO
-o.expandtab = true -- expand tab into space by default
 o.clipboard = 'unnamedplus' -- Use system clipboard
 o.shortmess = vim.o.shortmess .. 'c'
-o.smartindent = true -- auto indent on new line (brackets for instance) BO
-o.formatoptions = o.formatoptions:gsub('[cro]', '')
 
 function _G.dump(...)
   local objects = vim.tbl_map(vim.inspect, {...})
@@ -41,6 +36,14 @@ a.nvim_exec([[
   set linebreak
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
+
+  " we have to set these local options here because vim.o won't accept them and vim.bo wont set for each buffer automatically
+  " and binding to and au will mess with buffers that need to change those settings
+  set formatoptions-=cro
+  set smartindent " auto indent on new line (brackets for instance) BO
+  set expandtab " expand tab into space by default
+  set shiftwidth=4 " Number of space for autoindent BO
+  set tabstop=4 " Tabs are 4 spaces long BO
 
   " Disable autocommenting on newline and retrieve last position
   au BufWinEnter * exec "normal! g'\""
