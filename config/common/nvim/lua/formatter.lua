@@ -24,41 +24,24 @@ local function prettier_fmt()
   return true
 end
 
-local function format_js()
+local function format_js_ts()
   local bufnr = api.nvim_get_current_buf();
   local current_file = api.nvim_buf_get_name(bufnr)
   save()
-
-  if not prettier_fmt() then
-    return
-  end
 
   if has_ex('eslint') then
-    vim.fn.system('eslint --fix '..current_file)
+    vim.fn.system('eslint --cache --fix '..current_file)
     vim.cmd('edit!')
-  end
-end
-
-local function format_ts()
-  local bufnr = api.nvim_get_current_buf();
-  local current_file = api.nvim_buf_get_name(bufnr)
-  save()
-
-  if not prettier_fmt() then
-    return
-  end
-
-  if has_ex('tslint') then
-    vim.fn.system('tslint --fix '..current_file)
-    vim.cmd('edit!')
+  else
+    prettier_fmt()
   end
 end
 
 local formatters = {
-  javascript = format_js,
-  javascriptreact = format_js,
-  typescript = format_ts,
-  typescriptreact = format_ts,
+  javascript = format_js_ts,
+  javascriptreact = format_js_ts,
+  typescript = format_js_ts,
+  typescriptreact = format_js_ts,
   rust = function() vim.cmd('RustFmt') end,
   html = function() save(); prettier_fmt() end,
   css = function() save(); prettier_fmt() end,

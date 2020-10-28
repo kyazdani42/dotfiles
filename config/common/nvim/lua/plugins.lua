@@ -84,7 +84,9 @@ return require('packer').startup(function()
     config = function() require'coc'.setup() end,
     ft = {
       'typescript',
+      'typescriptreact',
       'javascript',
+      'javascriptreact',
       'html',
       'json',
       'css',

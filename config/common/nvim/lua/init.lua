@@ -44,14 +44,6 @@ nvim_set_au("TextYankPost", "*",  [[silent! lua require'vim.highlight'.on_yank({
 vim.cmd "cabbrev W w"
 
 a.nvim_exec([[
-  " we have to set these window options here because vim.o won't accept them and vim.wo wont set for each window automatically
-  " and binding to an autocmd will mess with window that change those settings
-  set relativenumber
-  set cursorline
-  set linebreak
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-
   " we have to set these local options here because vim.o won't accept them and vim.bo wont set for each buffer automatically
   " and binding to and au will mess with buffers that need to change those settings
   set formatoptions-=cro
@@ -59,6 +51,14 @@ a.nvim_exec([[
   set expandtab " expand tab into space by default
   set shiftwidth=4 " Number of space for autoindent BO
   set tabstop=4 " Tabs are 4 spaces long BO
+
+  " we have to set these window options here because vim.o won't accept them and vim.wo wont set for each window automatically
+  " and binding to an autocmd will mess with window that change those settings
+  set relativenumber
+  set cursorline
+  set linebreak
+  set foldmethod=expr
+  set foldexpr=nvim_treesitter#foldexpr()
   ]], '')
 
 require 'plugins'
