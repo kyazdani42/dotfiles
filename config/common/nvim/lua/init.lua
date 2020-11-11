@@ -43,14 +43,17 @@ nvim_set_au("TextYankPost", "*",  [[silent! lua require'vim.highlight'.on_yank({
 
 vim.cmd "cabbrev W w"
 
+function _G.set_buffer_options()
+  vim.bo.formatoptions= vim.bo.formatoptions:gsub('[cro]', '')
+  vim.bo.smartindent = true
+end
+
+vim.cmd "au BufEnter * lua set_buffer_options()"
+
 a.nvim_exec([[
-  " we have to set these local options here because vim.o won't accept them and vim.bo wont set for each buffer automatically
-  " and binding to and au will mess with buffers that need to change those settings
-  set formatoptions-=cro
-  set smartindent " auto indent on new line (brackets for instance) BO
-  set expandtab " expand tab into space by default
-  set shiftwidth=4 " Number of space for autoindent BO
-  set tabstop=4 " Tabs are 4 spaces long BO
+  set expandtab
+  set shiftwidth=4
+  set tabstop=4
 
   " we have to set these window options here because vim.o won't accept them and vim.wo wont set for each window automatically
   " and binding to an autocmd will mess with window that change those settings

@@ -108,7 +108,8 @@ local function on_attach(client)
   require'completion'.on_attach(client)
 
   local mapper = require'utils'.mapper
-  mapper('i', '<c-space>',  'completion#trigger_completion()')
+  -- not working
+  -- mapper('i', '<c-space>',  '<esc>:call completion#trigger_completion()<CR>')
   mapper('n', 'K',          '<cmd>lua require"lsp".show_doc()<CR>')
   mapper('n', '<leader>k',      '<cmd>lua require"lsp".hover()<CR>')
 

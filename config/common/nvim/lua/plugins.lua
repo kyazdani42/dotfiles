@@ -1,6 +1,6 @@
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function()
+require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
 
   use {
@@ -8,10 +8,10 @@ return require('packer').startup(function()
     config = function() vim.cmd "colorscheme blue-moon" end
   }
 
+  use '~/dev/plugins/nvim-web-devicons'
   use {
     '~/dev/plugins/nvim-tree.lua',
-    requires = {'~/dev/plugins/nvim-web-devicons'},
-    config = function() require'tree-config'.setup() end,
+    config = function() require'tree-config'.setup() end
   }
 
   use {
