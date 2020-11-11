@@ -38,9 +38,13 @@ export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export DENO_DIR="$XDG_CONFIG_HOME/deno"
 export MANPAGER="nvim -c 'set ft=man' -"
+export PAGER="bat --decorations=never -l man"
 # default programs
 export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 
+export RFC_DIR="$XDG_CACHE_HOME/RFCs"
+
 source session-$(hostname)-$(whoami).sh
+source /usr/share/wikiman/widgets/widget.zsh
