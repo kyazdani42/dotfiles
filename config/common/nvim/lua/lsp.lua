@@ -36,29 +36,30 @@ local function get_lua_runtime()
 end
 
 local function get_filetypes_config()
+  -- everything is broken
   return {
-    { lsp_name = "bashls" },
+    -- { lsp_name = "bashls" },
     -- { lsp_name = "cssls" },
-    { lsp_name = "gopls" },
+    -- { lsp_name = "gopls" },
     -- { lsp_name = "html" },
     -- { lsp_name = "jsonls" },
     -- { lsp_name = "rust_analyzer" },
-    { lsp_name = "vimls" },
-    {
-      lsp_name = "sumneko_lua",
-      lsp_settings = {
-        Lua = {
-          runtime = {version = "LuaJIT", path = vim.split(package.path, ';')},
-          completion = { keywordSnippet = "Disable" },
-          diagnostics = {
-            globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth", "use"},
-          },
-          workspace = {
-            library = get_lua_runtime()
-          }
-        }
-      }
-    },
+    -- { lsp_name = "vimls" },
+    -- {
+    --   lsp_name = "sumneko_lua",
+    --   lsp_settings = {
+    --     Lua = {
+    --       runtime = {version = "LuaJIT", path = vim.split(package.path, ';')},
+    --       completion = { keywordSnippet = "Disable" },
+    --       diagnostics = {
+    --         globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth", "use"},
+    --       },
+    --       workspace = {
+    --         library = get_lua_runtime()
+    --       }
+    --     }
+    --   }
+    -- },
     -- TSSERVER is borken with nvim-lsp
     -- {
     --   lsp_name = "tsserver",
@@ -143,12 +144,12 @@ function M.setup()
   for _, lsp_config in ipairs(get_filetypes_config()) do
     if lsp_config.lsp_name then
       if lsp_config.lsp_settings then
-        require'nvim_lsp'[lsp_config.lsp_name].setup{
+        require'lspconfig'[lsp_config.lsp_name].setup{
             on_attach = on_attach,
             settings = lsp_config.lsp_settings,
           }
       else
-        require'nvim_lsp'[lsp_config.lsp_name].setup{
+        require'lspconfig'[lsp_config.lsp_name].setup{
             on_attach = on_attach,
           }
       end

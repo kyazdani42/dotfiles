@@ -14,9 +14,6 @@ smart_gaps on
 focus_follows_mouse no
 
 output eDP-1 bg ~/.config/wallpaper fill
-output DP-1 bg ~/.config/wallpaper fill
-output DP-1 res 3840x2160
-output DP-1 scale 1.5
 floating_maximum_size 1920 x 1080
 seat * hide_cursor 4000
 exec waybar &
@@ -37,7 +34,7 @@ exec /usr/bin/wl-paste -p -t text --watch clipman store -P --histpath="~/.local/
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Juno-palenight'
+    gsettings set $gnome-schema gtk-theme 'Nordic'
     gsettings set $gnome-schema icon-theme 'la-capitaine'
     gsettings set $gnome-schema cursor-theme 'volantes_cursors'
     gsettings set $gnome-schema cursor-size 16

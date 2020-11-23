@@ -33,13 +33,13 @@ width = 100%
 height = 30
 background = ${colors.background}
 foreground = ${colors.foreground}
-font-0 = "Lato Medium:size=12;2"
+font-0 = "Lato Medium:size=11;2"
 font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=11;2"
-font-2 = "UbuntuMono Nerd Font:size=10;2"
-font-3 = "NotoEmoji Nerd Font Mono:size=10;2"
+font-2 = "UbuntuMono Nerd Font:size=11;2"
+font-3 = "NotoEmoji Nerd Font Mono:size=11;2"
 padding-left = 2
 padding-right = 2
-separator = %{F#a6accd}  /  %{F-}
+separator = %{F#42455d}  ▰  %{F-}
 modules-left = date xwindow
 modules-center = i3
 modules-right = pavolume battery mpd mail arch-aur-updates wifi
@@ -78,7 +78,7 @@ label = "%date% %time%"
 type = custom/script
 exec = check-all-updates.sh
 interval = 1000
-label = %output% 
+label =   %output%
 format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 

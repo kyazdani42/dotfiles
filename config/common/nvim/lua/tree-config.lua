@@ -28,7 +28,7 @@ function M.setup()
   }
 
   vim.g.lua_tree_bindings = {
-    preview = { '<C-p>', '<C-b>', '<Tab>' }
+    preview = { '<Tab>' }
   }
 
   vim.api.nvim_set_keymap('n', '<C-n>', ':LuaTreeToggle<CR>', {

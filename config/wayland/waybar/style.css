@@ -2,7 +2,7 @@
     border: none;
     border-radius: 0;
     font-family: "Lato Medium", "Font Awesome 5 Free", "Font Awesome";
-    font-size: 16px;
+    font-size: 15px;
     min-height: 0;
     padding: 0px 5px;
 }
@@ -41,6 +41,7 @@ window#waybar.hidden {
 }
 
 #battery {
+    color: #fff;
     background-color: #1b1e2b;
 }
 

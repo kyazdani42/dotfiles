@@ -1,8 +1,8 @@
 {
   "layer": "top",
   "position": "bottom",
-  "height": 33,
-  "modules-left": ["clock", "custom/separator", "sway/window", "custom/separator", "custom/todo", "sway/mode"],
+  "height": 30,
+  "modules-left": ["clock", "custom/separator", "sway/window", "sway/mode"],
   "modules-center": ["sway/workspaces"],
   "modules-right": [
     "custom/mail",
@@ -54,16 +54,10 @@
     "tooltip": false
   },
   "custom/updates": {
-    "exec": "$HOME/.config/waybar/scripts/check-all-updates.sh",
+    "exec": "$HOME/.local/bin/bar/check-all-updates.sh",
     "interval": 120,
     "tooltip": false,
     "format": " {}"
-  },
-  "custom/todo": {
-    "exec": "$HOME/.config/waybar/scripts/todo_random.sh",
-    "interval": 360,
-    "tooltip": false,
-    "format": "🔖 {}"
   },
   "custom/separator": {
     "format": "<span foreground='#42455d'>▰</span>",
@@ -71,7 +65,7 @@
     "tooltip": false
   },
   "custom/wifi": {
-    "exec": "$HOME/.config/waybar/scripts/wifi.sh",
+    "exec": "$HOME/.local/bin/bar/wifi.sh",
     "interval": 360,
     "tooltip": false,
     "format": "{}"

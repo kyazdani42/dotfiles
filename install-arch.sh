@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+sudo echo
+
 update_system() {
 	printf "\e[1mupdating your system\e[0m\nThis might take some time...\n"
 	sudo pacman -Syu --noconfirm &>/dev/null
@@ -25,17 +27,9 @@ install_yay() {
 }
 
 install_programs() {
-    sudo printf "\e[1mInstalling packages\e[0m\n"
-    yay -Sy --noconfirm --needed $(cat pkgs) &>/dev/null &
-    while [ "$(jobs | grep -i 'running')" ]; do
-        printf "\r\e[K\e[33;1m.\e[0m"
-        sleep 0.4;
-        printf "\r\e[K\e[33;1m.\e[32m.\e[0m"
-        sleep 0.4;
-        printf "\r\e[K\e[33;1m.\e[32m.\e[35m.\e[0m"
-        sleep 0.4;
-    done
-    printf "\n\n"
+    sudo printf "\e[1mInstalling AUR packages\e[0m\n"
+    sudo pacman -Sy --noconfirm --needed $(cat pkgs/common)
+    yay -Sy --noconfirm --needed $(cat pkgs/aur)
 }
 
 setup_docker() {

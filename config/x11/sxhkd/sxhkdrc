@@ -14,13 +14,13 @@ alt + p
 	pavucontrol
 
 alt + d
-    rofi_launch &
+    nwggrid -o 1 -b '#1b1e2b' &
 
 alt + shift + d
-    rofi_dnd &
+    dmenu_dnd &
 
 alt + shift + x
-    rofi_shutdown &
+    nwgbar -o 0 &
 
 alt + shift + u
     rofi_wifi &

@@ -1,7 +1,7 @@
 [
   {
     "name": "Logout",
-    "exec": "swaymsg exit",
+    "exec": "i3-msg exit",
     "icon": "/home/kiyan/pictures/ferris-blue.png"
   },
   {

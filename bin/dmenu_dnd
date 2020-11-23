@@ -1,0 +1,14 @@
+#!/bin/sh
+
+SED_REGEX="\/home\/$(whoami)"
+
+selected=$(rg --files ~ | sed "s/${SED_REGEX}/~/g" | dmenu \
+    -p 'Select a file to drop' \
+    -fn 'Lato Medium:pixelsize=19' \
+    -nb '#0b0e1b' \
+    -nf '#a6accd' \
+    -sb '#292d3e' \
+    -sf '#90bbdd')
+
+[ -z "$selected" ] && exit 0
+dragon-drag-and-drop $(echo $selected | sed "s/~/${SED_REGEX}/g")

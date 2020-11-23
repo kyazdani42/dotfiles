@@ -1,6 +1,7 @@
 #!/bin/sh
 
-res="$(nmcli device status | grep wlp | grep ' connected' | awk '{print $4}')"
+station=$(iwctl station list | grep wl | awk '{print $1}')
+res="$(iwctl station $station show | grep 'Connected network' | awk '{print $3}')"
 
 if [ "$res" != "" ]; then
     printf "connected to \`$res\`"
