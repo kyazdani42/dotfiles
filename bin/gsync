@@ -1,0 +1,27 @@
+#!/bin/sh
+
+diff="$(git status --porcelain)"
+
+if [ "$diff" != "" ]; then
+    echo "You have changes. Please stash and run again."
+    exit 1
+fi
+
+git checkout master
+echo
+
+echo "Pulling master changes..."
+git pull origin master
+echo
+
+has_upstream="$(git remote -v | grep upstream)"
+[ "$has_upstream" == "" ] && exit
+
+echo "Fetching upstream changes..."
+git fetch upstream
+
+git merge upstream/master
+echo
+
+echo "Pushing to master..."
+git push origin master

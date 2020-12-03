@@ -25,6 +25,7 @@ ncmpcpp
 lm_sensors
 imagemagick
 ffmpeg
+libnotify
 
 fontconfig
 ttf-ibm-plex
@@ -74,6 +75,7 @@ dmenu
 i3-gaps
 i3lock
 sxhkd
+scrot
 picom
 
 xorg-server-xwayland
@@ -88,5 +90,6 @@ swaybg
 sway
 slurp
 mako
+grim
 pipewire
 libpipewire02

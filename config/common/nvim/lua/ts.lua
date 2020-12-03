@@ -11,7 +11,6 @@ function M.setup()
   require'nvim-treesitter.configs'.setup {
       highlight = {
         enable = true,
-        use_languagetree = true
       },
       incremental_selection = {
         enable = true,

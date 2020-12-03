@@ -143,9 +143,9 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+z split h
 bindsym $mod+Shift+v split v
 
-bindsym $mod+f fullscreen
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+Shift+f fullscreen
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+Shift+e layout toggle split
 
 bindsym $mod+Shift+s floating toggle
 bindsym $mod+space focus mode_toggle
@@ -155,10 +155,10 @@ bindsym $mod+Control+s move scratchpad
 bindsym $mod+Control+Return scratchpad show
 
 # gaps
-bindsym $mod+g gaps inner current plus 5
-bindsym $mod+Shift+g gaps inner current minus 5
-bindsym $mod+Shift+e gaps inner current set 0
-bindsym $mod+Shift+f gaps inner current set 10
+# bindsym $mod+g gaps inner current plus 5
+# bindsym $mod+Shift+g gaps inner current minus 5
+# bindsym $mod+Shift+e gaps inner current set 0
+# bindsym $mod+Shift+f gaps inner current set 10
 
 # Resizing containers:
 bindsym $mod+Shift+r mode "resize"
