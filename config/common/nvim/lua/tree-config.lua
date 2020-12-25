@@ -1,7 +1,7 @@
 local M = {}
 
 function M.setup()
-  vim.g.lua_tree_ignore = { '.git', 'node_modules' }
+  vim.g.lua_tree_ignore = { '.git', 'node_modules', 'dist' }
   vim.g.lua_tree_auto_open = 1
   vim.g.lua_tree_auto_close = 0
   vim.g.lua_tree_follow = 1

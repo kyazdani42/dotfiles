@@ -53,7 +53,7 @@ require('packer').startup(function()
 
   use {
     'airblade/vim-rooter',
-    setup = function()
+    config = function()
       vim.g.rooter_pattern = {
         '.git/',
         'package.json',

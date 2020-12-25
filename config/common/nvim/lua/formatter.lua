@@ -15,6 +15,7 @@ local function prettier_fmt()
 
   if has_ex('prettier') then
     local formatted = vim.split(vim.fn.system("prettier "..current_file), '\n')
+    formatted[#formatted] = nil
     if vim.v.shell_error ~= 0 then
       return false
     end
@@ -28,14 +29,8 @@ local function format_js_ts()
   local bufnr = api.nvim_get_current_buf();
   local current_file = api.nvim_buf_get_name(bufnr)
   save()
-
-  if has_ex('eslint') then
-    vim.fn.system('eslint --cache --fix '..current_file)
-    vim.cmd('edit!')
-  else
-    prettier_fmt()
-  end
-end
+  prettier_fmt()
+ end
 
 local formatters = {
   javascript = format_js_ts,
