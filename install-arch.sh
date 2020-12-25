@@ -29,7 +29,7 @@ install_yay() {
 install_programs() {
     sudo printf "\e[1mInstalling AUR packages\e[0m\n"
     sudo pacman -Sy --noconfirm --needed $(cat pkgs/common)
-    yay -Sy --noconfirm --needed $(cat pkgs/aur)
+    yay -Sy --needed $(cat pkgs/aur)
 }
 
 setup_docker() {

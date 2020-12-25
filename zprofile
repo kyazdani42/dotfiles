@@ -46,5 +46,5 @@ export BROWSER="firefox"
 
 export RFC_DIR="$XDG_CACHE_HOME/RFCs"
 
-source session-$(hostname)-$(whoami).sh
+source session-$(cat /etc/hostname)-$(whoami).sh
 source /usr/share/wikiman/widgets/widget.zsh

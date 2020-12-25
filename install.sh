@@ -25,7 +25,7 @@ mkdir -p $HOME/{dev,docs,music,videos,.config}
 cp Pictures/wall/bonsai.png ~/.config/wallpaper
 
 ln -sf $PWD/zprofile $HOME/.zprofile
-ln -sf "alacritty-$(hostname)_$(whoami).yml" $PWD/config/common/alacritty/alacritty.yml
+ln -sf "alacritty-$(cat /etc/hostname)_$(whoami).yml" $PWD/config/common/alacritty/alacritty.yml
 
 link_files() {
     print_bold "- linking $1 configuration files"
@@ -48,7 +48,7 @@ packer="$HOME/.local/share/nvim/site/pack/packer/opt/packer.nvim"
 nvim_plugs=("blue-moon" "nvim-tree.lua" "nvim-treesitter" "nvim-web-devicons" "playground")
 for repo in ${nvim_plugs[@]}; do
     folder="$HOME/dev/plugins/${repo}"
-    [ ! -d "$folder" ] && git clone "git@github.com:kyazdani/${repo}" "$folder"
+    [ ! -d "$folder" ] && git clone "git@github.com:kyazdani42/${repo}" "$folder"
 done
 
 print_bold "- linking vimrc"
