@@ -13,7 +13,7 @@ smart_borders on
 smart_gaps on
 focus_follows_mouse no
 
-output eDP-1 bg ~/.config/wallpaper fill
+output eDP-1 bg ~/.config/wallpaper fill 
 floating_maximum_size 1920 x 1080
 seat * hide_cursor 4000
 exec waybar &
@@ -79,6 +79,8 @@ bindsym $mod+Shift+d exec alacritty --working-directory="$HOME" --title='~#float
 bindsym $mod+c exec alacritty --title='~#floating#~' -e python
 bindsym $mod+p exec pavucontrol
 bindsym $mod+m exec alacritty -e neomutt
+
+bindsym $mod+semicolon exec alacritty --title='~#floating#~' -e zsh -c wut
 
 bindsym Print exec take-screenshot "fullscreen"
 bindsym F11 exec take-screenshot "clipboard"

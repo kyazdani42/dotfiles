@@ -1,0 +1,9 @@
+#!/bin/sh
+
+read -p 'show otp ? y/n: ' ans
+
+if [ "$ans" != "y" ]; then
+    pass | awk '{if(NR>1)print $2}' | grep -v otp | fzf | xargs pass | copy
+else
+    pass | awk '{if(NR>1)print $2}' | grep otp | fzf | xargs pass otp | copy
+fi

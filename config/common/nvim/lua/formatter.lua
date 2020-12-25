@@ -6,10 +6,11 @@ local function has_ex(ex)
 end
 
 local function save()
-  vim.cmd('w')
+  vim.cmd('w!')
 end
 
 local function prettier_fmt()
+  save()
   local bufnr = api.nvim_get_current_buf();
   local current_file = api.nvim_buf_get_name(bufnr)
 
@@ -33,14 +34,16 @@ local function format_js_ts()
  end
 
 local formatters = {
-  javascript = format_js_ts,
-  javascriptreact = format_js_ts,
-  typescript = format_js_ts,
-  typescriptreact = format_js_ts,
   rust = function() vim.cmd('RustFmt') end,
-  html = function() save(); prettier_fmt() end,
-  css = function() save(); prettier_fmt() end,
-  json = function() save(); prettier_fmt() end
+  go = function() print('No formatter installed for go.') end,
+  c = function() print('No formatter installed for c.') end,
+  javascript = prettier_fmt,
+  javascriptreact = prettier_fmt,
+  typescript = prettier_fmt,
+  typescriptreact = prettier_fmt,
+  html = prettier_fmt,
+  css = prettier_fmt,
+  json = prettier_fmt,
 }
 
 function M.format()

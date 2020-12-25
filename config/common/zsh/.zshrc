@@ -42,6 +42,8 @@ function open() {
 alias p="sudo pacman"
 alias ss="sudo systemctl"
 alias sss="sudo systemctl status"
+alias ssu="systemctl --user"
+alias ssuu="systemctl --user status"
 alias pacman="sudo pacman"
 alias vim="nvim"
 alias vi="nvim"

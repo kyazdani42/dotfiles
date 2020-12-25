@@ -39,13 +39,6 @@ function M.setup()
       noremap = true,
       silent = true
     })
-
-  vim.api.nvim_exec([[
-  augroup LuaTreeOverride
-    au!
-    au FileType LuaTree setlocal nowrap
-  augroup END
-  ]], '')
 end
 
 return M

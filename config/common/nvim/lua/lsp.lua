@@ -104,14 +104,13 @@ local opts = {
   signcolumn = 'yes',
 }
 
-
 local function on_attach(client)
   require'completion'.on_attach(client)
 
   local mapper = require'utils'.mapper
   -- not working
   -- mapper('i', '<c-space>',  '<esc>:call completion#trigger_completion()<CR>')
-  mapper('n', 'K',          '<cmd>lua require"lsp".show_doc()<CR>')
+  mapper('n', 'K',              '<cmd>lua require"lsp".show_doc()<CR>')
   mapper('n', '<leader>k',      '<cmd>lua require"lsp".hover()<CR>')
 
   mapper('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>')
@@ -144,12 +143,12 @@ function M.setup()
   for _, lsp_config in ipairs(get_filetypes_config()) do
     if lsp_config.lsp_name then
       if lsp_config.lsp_settings then
-        require'lspconfig'[lsp_config.lsp_name].setup{
+        require'lspconfig'[lsp_config.lsp_name].setup {
             on_attach = on_attach,
             settings = lsp_config.lsp_settings,
           }
       else
-        require'lspconfig'[lsp_config.lsp_name].setup{
+        require'lspconfig'[lsp_config.lsp_name].setup {
             on_attach = on_attach,
           }
       end

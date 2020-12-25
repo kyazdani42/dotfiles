@@ -8,7 +8,7 @@ local function jump(diagnostic)
 end
 
 function M.prev()
-  local diagnostics = vim.lsp.util.diagnostics_by_buf[vim.api.nvim_get_current_buf()]
+  local diagnostics = vim.lsp.diagnostic.get(vim.api.nvim_get_current_buf())
 
   if #diagnostics == 0 then
     return require'utils'.warn("No diagnostics")
@@ -24,7 +24,7 @@ function M.prev()
 end
 
 function M.next()
-  local diagnostics = vim.lsp.util.diagnostics_by_buf[vim.api.nvim_get_current_buf()]
+  local diagnostics = vim.lsp.diagnostic.get(vim.api.nvim_get_current_buf())
 
   if #diagnostics == 0 then
     return require'utils'.warn("No diagnostics")

@@ -9,7 +9,7 @@ local function format_refs(references)
     local format_uri = string.gsub(ref.uri, cwd, ''):gsub('file:///', '')
     local range = ref.range
     local sline = range.start.line+1
-    formatted[i] = format_uri.." on line "..sline
+    formatted[i] = format_uri.." l."..sline
   end
 
   return formatted
@@ -25,9 +25,13 @@ function M.preview_ref(type)
   end
   local line = vim.split(api.nvim_get_current_line(), ' ')
   local file = line[1]
-  local line_nb = line[4]
+  local line_nb = line[2]:sub(3)
+  local ok, f = pcall(vim.fn.readfile, file)
+  if not ok then
+    f = vim.fn.readfile('/'..file)
+  end
   api.nvim_buf_set_option(preview_bufnr, 'modifiable', true)
-  api.nvim_buf_set_lines(preview_bufnr, 0, -1, false, vim.fn.readfile(file))
+  api.nvim_buf_set_lines(preview_bufnr, 0, -1, false, f)
   api.nvim_win_set_cursor(vim.fn.bufwinid(preview_bufnr), { tonumber(line_nb), 0 })
   api.nvim_buf_set_option(preview_bufnr, 'modifiable', false)
 end
@@ -58,7 +62,7 @@ function M.references_cb(err, _, results)
 
   ref_bufnr = require'utils.buf'.make_buffer {
     where = 'bottom',
-    size = 10,
+    size = 15,
     lines = format_refs(results),
     reset_keymaps = true,
     keymaps = {
@@ -67,12 +71,17 @@ function M.references_cb(err, _, results)
       { mode = 'n', l = '<CR>', cmd = '<cmd>lua require"lsp_cbs.references".select_from_ref()<CR>' },
       { mode = 'n', l = 'q', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
       { mode = 'n', l = '<esc>', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
+      { mode = 'n', l = '<C-c>', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
+      { mode = 'n', l = '<C-j>', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
+    },
+    win_options = {
+      wrap = false
     },
     buf_options = {
       modifiable = false,
       buftype = 'nofile',
       bufhidden = 'wipe',
-      swapfile = false
+      swapfile = false,
     },
   }
 
