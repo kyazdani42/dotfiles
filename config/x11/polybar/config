@@ -14,8 +14,7 @@ compositing-underline = over
 compositing-border = over
 
 [colors]
-; TODO: find a way to manage that color (as its not part of the 16bit colorscheme)
-background = #1c1f2b
+background = #181a28
 foreground = ${xrdb:color15:#fff}
 foreground-alt = ${xrdb:color7:#abc}
 cyan = ${xrdb:color6:#5df}
@@ -30,13 +29,13 @@ enable-ipc = true
 offset-y = 10
 offset-x = 20
 width = 100%
-height = 30
+height = 50
 background = ${colors.background}
 foreground = ${colors.foreground}
-font-0 = "Lato Medium:size=11;2"
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=11;2"
-font-2 = "UbuntuMono Nerd Font:size=11;2"
-font-3 = "NotoEmoji Nerd Font Mono:size=11;2"
+font-0 = "Lato Medium:size=15;2"
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=15;2"
+font-2 = "UbuntuMono Nerd Font:size=15;2"
+font-3 = "NotoEmoji Nerd Font Mono:size=15;2"
 padding-left = 2
 padding-right = 2
 separator = %{F#42455d}  ▰  %{F-}

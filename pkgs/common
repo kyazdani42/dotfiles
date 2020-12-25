@@ -70,8 +70,10 @@ xorg-server
 xorg-xinit
 xorg-server-common
 xorg-xprop
+xorg-xrandr
 xdotool
 dmenu
+xwallpaper
 i3-gaps
 i3lock
 sxhkd

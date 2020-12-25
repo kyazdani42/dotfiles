@@ -17,7 +17,7 @@ window:
   startup_mode: Maximized
 
 scrolling:
-  history: 10000
+  history: 9999
   multiplier: 3
 
 font:
@@ -33,7 +33,7 @@ font:
     family: "IBM Plex Mono Medium"
     style: Italic
 
-  size: 14
+  size: 10.6
 
   offset:
     x: 0
