@@ -17,15 +17,14 @@ print_bold() {
 
 print_bold "- initialize home folders"
 
-rm -rf $HOME/Pictures
-ln -sf $PWD/Pictures $HOME/pictures
+rm -rf $HOME/{P,p}ictures
+ln -sfv $PWD/Pictures $HOME/pictures
 rm -rf $HOME/.local/bin
-ln -sf $PWD/bin $HOME/.local/bin
+ln -sfv $PWD/bin $HOME/.local/bin
 mkdir -p $HOME/{dev,docs,music,videos,.config}
 cp Pictures/wall/bonsai.png ~/.config/wallpaper
 
 ln -sf $PWD/zprofile $HOME/.zprofile
-ln -sf "alacritty-$(cat /etc/hostname)_$(whoami).yml" $PWD/config/common/alacritty/alacritty.yml
 
 link_files() {
     print_bold "- linking $1 configuration files"
@@ -70,12 +69,31 @@ do
         ln -sfv $PWD/x11/xinitrc ~/.xinitrc
         xrdb -merge $HOME/.Xresources
         link_files "x11"
+        break
     elif [ "$graphics" == "wayland" ]; then
         link_files "wayland"
+        break
     fi
-
-    break
 done
+
+session_file="bin/session-$(cat /etc/hostname)-$(whoami).sh"
+if [ ! -f "$session_file" ]; then
+    print_bold "select a graphic environment to setup session runner:"
+
+    if [ "$graphics" == "x11" ]; then
+        printf "#!/bin/sh\nif [ \"\$(tty)\" = \"/dev/tty1\" ]; then\n\texec startx &>/tmp/startx_\$(whoami).log\nfi\n" > "$session_file"
+        printf "#!/bin/sh\nif [ \"\$(tty)\" = \"/dev/tty1\" ]; then\n\texec startx &>/tmp/startx_\$(whoami).log\nfi\n"
+        chmod +x "$session_file"
+    elif [ "$graphics" == "wayland" ]; then
+        printf "#!/bin/sh\nexport MOZ_ENABLE_WAYLAND=1\nexport QT_QPA_PLATFORM=wayland-egl\nexport CLUTTER_BACKEND=wayland\nexport XDG_CURRENT_DESKTOP=sway\nexport XDG_SESSION_TYPE=wayland\nif [ \"\$(tty)\" = \"/dev/tty1\" ]; then\n\texec sway &>/tmp/sway.log\nfi\n" > "$session_file"
+        chmod +x "$session_file"
+    fi
+fi
+
+alacritty_config="config/common/alacritty/alacritty.yml"
+if [ ! -f "$alacritty_config" ]; then
+    cp "config/common/alacritty/config-base.yml" "$alacritty_config"
+fi
 
 cat <<EOF
 Installation is done, you might want to reboot your system

@@ -4,3 +4,4 @@ error.log
 plug.vim
 plugin
 .netrwhist
+bin/session-*
