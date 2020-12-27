@@ -22,7 +22,7 @@ ln -sfv $PWD/Pictures $HOME/pictures
 rm -rf $HOME/.local/bin
 ln -sfv $PWD/bin $HOME/.local/bin
 mkdir -p $HOME/{dev,docs,music,videos,.config}
-cp Pictures/wall/bonsai.png ~/.config/wallpaper
+cp Pictures/wall/samurai_river.jpg ~/.config/wallpaper
 
 ln -sf $PWD/zprofile $HOME/.zprofile
 
