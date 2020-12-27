@@ -14,13 +14,13 @@ alt + p
 	pavucontrol
 
 alt + d
-    nwggrid -o 1 -b '#1b1e2b' &
+    nwggrid -o 1 -b '#1b1e2b'
 
 alt + shift + d
     dmenu_dnd &
 
 alt + shift + x
-    nwgbar -o 0 &
+    nwgbar -o 0
 
 alt + shift + u
     rofi_wifi &
