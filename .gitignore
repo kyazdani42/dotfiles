@@ -5,3 +5,4 @@ plug.vim
 plugin
 .netrwhist
 bin/session-*
+config/common/nwg-launchers/nwgbar/bar.json

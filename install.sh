@@ -95,6 +95,12 @@ if [ ! -f "$alacritty_config" ]; then
     cp "config/common/alacritty/config-base.yml" "$alacritty_config"
 fi
 
+nwgbar_conf="config/common/nwg-launchers/nwgbar/bar.json"
+if [ ! -f "$nwgbar_conf" ]; then
+    cp "config/common/nwg-launchers/nwgbar/bar.tpl" "$nwgbar_conf"
+    sed -i "s/\$\$/$(whoami)/g" "$nwgbar_conf";
+fi
+
 cat <<EOF
 Installation is done, you might want to reboot your system
 ==========================================================
