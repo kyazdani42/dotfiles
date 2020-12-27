@@ -64,6 +64,7 @@ print_bold "select a graphic environment:"
 select graphics in x11 wayland
 do
     if [ "$graphics" == "x11" ]; then
+        cp $PWD/x11/Xresources.tpl $PWD/x11/Xresources
         ln -sfv $PWD/x11/Xresources ~/.Xresources
         ln -sfv $PWD/x11/Xmodmap ~/.Xmodmap
         ln -sfv $PWD/x11/xinitrc ~/.xinitrc
