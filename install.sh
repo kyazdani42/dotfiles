@@ -99,7 +99,12 @@ fi
 nwgbar_conf="config/common/nwg-launchers/nwgbar/bar.json"
 if [ ! -f "$nwgbar_conf" ]; then
     cp "config/common/nwg-launchers/nwgbar/bar.tpl" "$nwgbar_conf"
-    sed -i "s/\$\$/$(whoami)/g" "$nwgbar_conf";
+    sed -i "s/\\$\\$/$(whoami)/g" "$nwgbar_conf";
+fi
+
+polybar_conf="config/x11/polybar/config"
+if [ ! -f "$polybar_conf" ]; then
+    cp "config/x11/polybar/config.tpl" "$polybar_conf"
 fi
 
 cat <<EOF
