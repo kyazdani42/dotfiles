@@ -78,7 +78,6 @@ i3-gaps
 i3lock
 sxhkd
 scrot
-picom
 
 xorg-server-xwayland
 wayland
