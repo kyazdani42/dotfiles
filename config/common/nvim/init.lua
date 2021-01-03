@@ -36,6 +36,7 @@ end
 nvim_set_au("BufWinEnter", "*", [[exec "normal! g'\""]])
 nvim_set_au("TextYankPost", "*",  [[silent! lua require'vim.highlight'.on_yank({ timeout=500 })]])
 nvim_set_au("FileType", "scheme", "set ft=query")
+nvim_set_au("BufNewFile,BufRead", "*.gql", "set ft=graphql")
 nvim_set_au("FileType", "c,cpp", "set tabstop=8 shiftwidth=4 noexpandtab")
 nvim_set_au("FileType", "python", "set tabstop=4 shiftwidth=4 noexpandtab")
 nvim_set_au("FileType", "markdown", "set tabstop=4 shiftwidth=4 conceallevel=2")

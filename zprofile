@@ -38,7 +38,7 @@ export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export DENO_DIR="$XDG_CONFIG_HOME/deno"
 export MANPAGER="nvim -c 'set ft=man' -"
-export PAGER="bat --paging=never --decorations=never -l man"
+export PAGER="less"
 # default programs
 export EDITOR="nvim"
 export TERMINAL="alacritty"

@@ -4,15 +4,10 @@ set $mod Mod1
 floating_modifier $mod
 
 font pango:Lato Medium 9
-# in case there is a title
 title_align center
-# no border, no title bar
-default_border pixel 1
-new_window pixel 1
-smart_borders on
-smart_gaps on
-# borders on floating to make it easier to resize
+default_border pixel 2
 default_floating_border pixel 3
+smart_borders on
 
 # the focus only changes when clicking
 focus_follows_mouse no
@@ -26,7 +21,6 @@ bindsym $mod+Shift+F2 restart
 
 for_window [class="Pavucontrol" instance="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
 for_window [class="Alacritty" instance="AlacrittyFloating"] floating enable, resize set 1000 400, border pixel 3
-for_window [class="firefox"] border none
 
 bindsym $mod+Tab workspace back_and_forth
 
@@ -45,12 +39,6 @@ bindsym $mod+Shift+v split v
 
 bindsym $mod+c exec alacritty --class 'AlacrittyFloating' -e python
 bindsym $mod+m exec alacritty -e 'neomutt'
-
-# gaps
-bindsym $mod+g gaps inner current plus 5
-bindsym $mod+Shift+g gaps inner current minus 5
-bindsym $mod+Shift+e gaps inner current set 0
-bindsym $mod+Shift+f gaps inner current set 10
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -99,11 +87,11 @@ set $white-alt  #959dcb
 set $red        #d06178
 set $cyan       #89bbdd
 
-client.focused          $bg  $bg  $cyan      $cyan      $cyan
-client.focused_inactive $bg  $bg  $white-alt $bg        $bg
-client.unfocused        $bg  $bg  $white-alt $bg        $bg
-client.placeholder      $bg  $bg  $white-alt $bg        $bg
-client.urgent           $red $red $red       $red       $red
+client.focused          $cyan $bg   $bg        $bg        $cyan
+client.focused_inactive $bg   $bg   $white-alt $bg        $bg
+client.unfocused        $bg   $bg   $white-alt $bg        $bg
+client.placeholder      $bg   $bg   $white-alt $bg        $bg
+client.urgent           $red  $red  $red       $red       $red
 client.background       $bg
 
 set $ws1 1
@@ -129,4 +117,4 @@ bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 bindsym $mod+Shift+6 move container to workspace $ws6
 
-# vim: ft=i3config
+# vim: ft=conf
