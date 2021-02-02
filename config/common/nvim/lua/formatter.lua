@@ -10,6 +10,7 @@ local function save()
 end
 
 local function prettier_fmt()
+  local cursor_pos = api.nvim_win_get_cursor(0)
   save()
   local bufnr = api.nvim_get_current_buf();
   local current_file = api.nvim_buf_get_name(bufnr)
@@ -23,6 +24,7 @@ local function prettier_fmt()
     api.nvim_buf_set_lines(bufnr, 0, -1, false, formatted)
     save()
   end
+  api.nvim_win_set_cursor(0, cursor_pos)
   return true
 end
 

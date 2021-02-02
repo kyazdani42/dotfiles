@@ -87,9 +87,6 @@ alias tka="tmux kill-session -a"
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"
 
-# must be sourced after starship
-source $ZDOTDIR/zsh_vi_mode
-
 # add syntax highlighting to zsh
 source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -111,3 +108,8 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 if [ $(command -v fzf) ]; then
     source $ZDOTDIR/fzf.zsh
 fi
+
+source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.zsh
+bindkey -r "^J"
+bindkey -M vicmd -r "^J"
+bindkey -s "^J" "\e"

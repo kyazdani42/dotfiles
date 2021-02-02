@@ -8,7 +8,6 @@ function M.setup()
     set cmdheight=2
     set updatetime=300
     set shortmess+=c
-    set signcolumn=number
     fun! s:check_back_space() abort
       let col = col('.') - 1
       return !col || getline('.')[col - 1]  =~# '\s'

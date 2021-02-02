@@ -37,10 +37,13 @@ nvim_set_au("BufWinEnter", "*", [[exec "normal! g'\""]])
 nvim_set_au("TextYankPost", "*",  [[silent! lua require'vim.highlight'.on_yank({ timeout=500 })]])
 nvim_set_au("FileType", "scheme", "set ft=query")
 nvim_set_au("BufNewFile,BufRead", "*.gql", "set ft=graphql")
+nvim_set_au("BufNewFile,BufRead", ".eslintrc", "set ft=json")
+nvim_set_au("BufNewFile,BufRead", ".prettierrc", "set ft=json")
+nvim_set_au("BufNewFile,BufRead", ".swcrc", "set ft=json")
 nvim_set_au("FileType", "c,cpp", "set tabstop=8 shiftwidth=4 noexpandtab")
 nvim_set_au("FileType", "python", "set tabstop=4 shiftwidth=4 noexpandtab")
 nvim_set_au("FileType", "markdown", "set tabstop=4 shiftwidth=4 conceallevel=2")
-nvim_set_au("FileType", "typescriptreact,typescript,javascript,javascriptreact,lua", "set tabstop=2 shiftwidth=2")
+nvim_set_au("FileType", "typescriptreact,typescript,javascript,javascriptreact,lua,html", "set tabstop=2 shiftwidth=2")
 nvim_set_au("FileType", "LuaTree", "lua vim.api.nvim_buf_set_keymap(0, 'n', '<C-p>', ':wincmd l | :Files<CR>', {silent=true})")
 nvim_set_au("FileType", "LuaTree", "lua vim.api.nvim_buf_set_keymap(0, 'n', '<C-b>', ':wincmd l | :Buffers<CR>', {silent=true})")
 nvim_set_au("FileType", "LuaTree", "lua vim.api.nvim_buf_set_keymap(0, 'n', '<C-t>', ':wincmd l | :RG<CR>', {silent=true})")
@@ -66,6 +69,7 @@ a.nvim_exec([[
   set linebreak
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
+  set signcolumn=yes
   ]], '')
 
 require 'plugins'

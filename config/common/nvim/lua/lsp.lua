@@ -36,31 +36,29 @@ local function get_lua_runtime()
 end
 
 local function get_filetypes_config()
-  -- everything is broken
   return {
     -- { lsp_name = "bashls" },
     -- { lsp_name = "cssls" },
     -- { lsp_name = "gopls" },
     -- { lsp_name = "html" },
-    -- { lsp_name = "jsonls" },
     -- { lsp_name = "rust_analyzer" },
     -- { lsp_name = "vimls" },
-    -- {
-    --   lsp_name = "sumneko_lua",
-    --   lsp_settings = {
-    --     Lua = {
-    --       runtime = {version = "LuaJIT", path = vim.split(package.path, ';')},
-    --       completion = { keywordSnippet = "Disable" },
-    --       diagnostics = {
-    --         globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth", "use"},
-    --       },
-    --       workspace = {
-    --         library = get_lua_runtime()
-    --       }
-    --     }
-    --   }
-    -- },
-    -- TSSERVER is borken with nvim-lsp
+    {
+      lsp_name = "sumneko_lua",
+      lsp_settings = {
+        Lua = {
+          runtime = {version = "LuaJIT", path = vim.split(package.path, ';')},
+          completion = { keywordSnippet = "Disable" },
+          diagnostics = {
+            globals = {"vim", "map", "filter", "range", "reduce", "head", "tail", "nth", "use"},
+          },
+          workspace = {
+            library = get_lua_runtime()
+          }
+        }
+      }
+    },
+    -- Not as powerful as Coc (no completion for json config files for instance)
     -- {
     --   lsp_name = "tsserver",
     --   lsp_settings = {
@@ -68,28 +66,47 @@ local function get_filetypes_config()
     --     filetypes = {
     --       "javascript",
     --       "javascriptreact",
-    --       "javascript.jsx",
     --       "typescript",
     --       "typescriptreact",
-    --       "typescript.tsx"
     --     },
     --   }
     -- },
-    -- this still make neovim ask for 'override existing file...' and does not work
     -- {
-    --   lsp_name = 'diagnosticls',
+    --   lsp_name = "jsonls",
     --   lsp_settings = {
-    --     filetypes = {
-    --       "javascript",
-    --       "javascriptreact",
-    --       "javascript.jsx",
-    --       "typescript",
-    --       "typescriptreact",
-    --       "typescript.tsx",
-    --       "lua",
-    --       "rust"
-    --     }
+    --     filetypes = { "json" }
     --   }
+    -- },
+    -- DIAGNOSTICLS don't work because it misses some default function (manager.try_add). Maybe open an issue
+    -- {
+      -- lsp_name = 'diagnosticls',
+      -- lsp_settings = {
+        -- filetypes = {
+          -- "javascript",
+          -- "javascriptreact",
+          -- "javascript.jsx",
+          -- "typescript",
+          -- "typescriptreact",
+          -- "typescript.tsx",
+          -- "lua",
+          -- "rust"
+        -- },
+        -- initializationOptions = {
+        --   linters = {
+        --     luacheck = {
+        --       command = "luacheck",
+        --       args = { '-c', '.luacheckrc', '.' }
+        --     }
+        --   },
+        --   filetypes = {
+        --     lua = "luacheck"
+        --   },
+        --   formatters = {
+        --   },
+        --   formatFiletypes = {
+        --   }
+        -- }
+      -- }
     -- }
   }
 end

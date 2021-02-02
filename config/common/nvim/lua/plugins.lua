@@ -29,7 +29,14 @@ require('packer').startup(function()
 
   -- use 'TimUntersberger/neogit'
 
-  use 'airblade/vim-gitgutter'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    config = function() require('gitsigns').setup() end
+  }
+
   use 'tpope/vim-fugitive'
   use 'APZelos/blamer.nvim'
   use 'tomtom/tcomment_vim'

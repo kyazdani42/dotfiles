@@ -7,3 +7,6 @@
 [submodule "config/common/zsh/zsh-syntax-highlighting"]
 	path = config/common/zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
+[submodule "config/common/zsh/zsh-vi-mode"]
+	path = config/common/zsh/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode
