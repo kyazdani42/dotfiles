@@ -103,13 +103,6 @@ pastefinish() {
 zstyle :bracketed-paste-magic paste-init pasteinit
 zstyle :bracketed-paste-magic paste-finish pastefinish
 
-# fzf plugin for fast search
-# `bindkey | grep fzf` for the key bindings
-if [ $(command -v fzf) ]; then
-    source $ZDOTDIR/fzf.zsh
-fi
-
+export ZVM_VI_ESCAPE_BINDKEY="^J"
 source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.zsh
-bindkey -r "^J"
-bindkey -M vicmd -r "^J"
-bindkey -s "^J" "\e"
+zvm_after_init_commands+=("[ \$(command -v fzf) ] && source $ZDOTDIR/fzf.zsh")
