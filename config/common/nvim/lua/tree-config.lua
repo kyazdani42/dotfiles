@@ -4,6 +4,8 @@ function M.setup()
   vim.g.nvim_tree_ignore = { '.git', 'node_modules', 'dist' }
   vim.g.nvim_tree_auto_open = 1
   vim.g.nvim_tree_auto_close = 0
+  vim.g.nvim_tree_disable_netrw = 0
+  vim.g.nvim_tree_hijack_netrw = 1
   vim.g.nvim_tree_follow = 1
   vim.g.nvim_tree_tab_open = 1
   vim.g.nvim_tree_show_icons = {

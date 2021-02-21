@@ -118,7 +118,6 @@ local opts = {
   writebackup = false,
   cmdheight = 2,
   updatetime = 300,
-  signcolumn = 'yes',
 }
 
 local function on_attach(client)
@@ -151,7 +150,7 @@ end
 
 function M.setup()
   for name, value in pairs(opts) do
-    api.nvim_set_option(name, value)
+    vim.o[name] = value
   end
 
   vim.lsp.callbacks['textDocument/definition'] = location_cb
