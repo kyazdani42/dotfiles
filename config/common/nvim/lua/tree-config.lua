@@ -14,6 +14,12 @@ function M.setup()
     files = 1
   }
 
+  vim.g.nvim_tree_bindings = {
+    ["<C-p>"] = ":wincmd l | Files<CR>",
+    ["<C-t>"] = ":wincmd l | RG<CR>",
+    ["<C-b>"] = ":wincmd l | Buffers<CR>",
+  }
+
   vim.g.nvim_tree_icons = {
     default = '',
     git= {
