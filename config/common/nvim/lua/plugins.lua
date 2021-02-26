@@ -39,7 +39,19 @@ require('packer').startup(function()
 
   use 'tpope/vim-fugitive'
   use 'APZelos/blamer.nvim'
-  use 'tomtom/tcomment_vim'
+  use {
+    'b3nj5m1n/kommentary',
+    setup = function()
+      vim.g.kommentary_create_default_mappings = false
+    end,
+    config = function()
+      require('kommentary.config').configure_language("default", {
+          prefer_single_line_comments = true,
+      })
+      vim.api.nvim_set_keymap("n", "++", "<Plug>kommentary_line_default", {})
+      vim.api.nvim_set_keymap("v", "++", "<Plug>kommentary_visual_default", {})
+    end
+  }
   use 'tpope/vim-surround'
   use 'rust-lang/rust.vim'
 

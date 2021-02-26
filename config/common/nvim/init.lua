@@ -102,8 +102,6 @@ map('n', '<C-u>', '<C-u>zz')
 map('n', '<C-d>', '<C-d>zz')
 map('n', '<C-f>', '<C-f>zz')
 
-map('n', '++', ':TComment<cr>', { silent = true }) -- Ctrl + / is outputing ++ (term configuration)
-map('v', '++', ':TComment<cr>', { silent = true })
 map('n', '<tab>', ':normal za<cr>', { noremap = true, silent = true })
 
 require 'statusline'.setup()
