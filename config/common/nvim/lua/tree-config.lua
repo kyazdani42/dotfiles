@@ -1,5 +1,13 @@
 local M = {}
 
+function _G.move_or_open()
+  if #vim.api.nvim_list_wins() == 1 then
+    vim.cmd("vnew | wincmd h | vert resize 30 | wincmd l")
+  else
+    vim.cmd("wincmd l")
+  end
+end
+
 function M.setup()
   vim.g.nvim_tree_ignore = { '.git', 'node_modules', 'dist' }
   vim.g.nvim_tree_auto_open = 1
@@ -15,9 +23,9 @@ function M.setup()
   }
 
   vim.g.nvim_tree_bindings = {
-    ["<C-p>"] = ":wincmd l | Files<CR>",
-    ["<C-t>"] = ":wincmd l | RG<CR>",
-    ["<C-b>"] = ":wincmd l | Buffers<CR>",
+    ["<C-p>"] = ":call luaeval('move_or_open()') | Files<CR>",
+    ["<C-t>"] = ":call luaeval('move_or_open()') | RG<CR>",
+    ["<C-b>"] = ":call luaeval('move_or_open()') | Buffers<CR>",
   }
 
   vim.g.nvim_tree_icons = {
