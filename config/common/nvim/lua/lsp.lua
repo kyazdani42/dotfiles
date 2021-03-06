@@ -153,8 +153,8 @@ function M.setup()
     vim.o[name] = value
   end
 
-  vim.lsp.callbacks['textDocument/definition'] = location_cb
-  vim.lsp.callbacks['textDocument/references'] = require'lsp_cbs.references'.references_cb
+  -- vim.lsp.callbacks['textDocument/definition'] = location_cb
+  -- vim.lsp.callbacks['textDocument/references'] = require'lsp_cbs.references'.references_cb
 
   for _, lsp_config in ipairs(get_filetypes_config()) do
     if lsp_config.lsp_name then
