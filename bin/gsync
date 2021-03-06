@@ -20,7 +20,7 @@ has_upstream="$(git remote -v | grep upstream)"
 echo "Fetching upstream changes..."
 git fetch upstream
 
-git merge upstream/master
+git rebase upstream/master
 echo
 
 echo "Pushing to master..."
