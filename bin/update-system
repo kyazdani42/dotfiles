@@ -1,0 +1,4 @@
+#!/bin/sh
+
+yay -Syyu
+yay -Sy neovim-git

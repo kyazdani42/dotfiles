@@ -1,0 +1,21 @@
+#!/bin/sh
+
+cd ~/.dotfiles
+git stash
+git checkout master
+git pull origin master
+git stash pop
+
+update_repo() {
+    cd $1
+    git stash
+    git checkout master
+    gsync
+    git stash pop
+}
+
+update_repo "$HOME/dev/plugins/nvim-tree.lua"
+update_repo "$HOME/dev/plugins/blue-moon"
+update_repo "$HOME/dev/plugins/nvim-treesitter"
+update_repo "$HOME/dev/plugins/nvim-web-devicons"
+update_repo "$HOME/dev/plugins/playground"
