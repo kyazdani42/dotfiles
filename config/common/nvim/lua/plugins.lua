@@ -13,6 +13,10 @@ require('packer').startup(function()
     '~/dev/plugins/nvim-tree.lua',
     config = function() require'tree-config'.setup() end
   }
+  use {
+    'akinsho/nvim-bufferline.lua',
+    config = function() require'bufline' end
+  }
 
   use {
     'rafcamlet/nvim-luapad',
@@ -46,7 +50,7 @@ require('packer').startup(function()
     end,
     config = function()
       require('kommentary.config').configure_language("default", {
-          prefer_single_line_comments = true,
+        prefer_single_line_comments = true,
       })
       vim.api.nvim_set_keymap("n", "++", "<Plug>kommentary_line_default", {})
       vim.api.nvim_set_keymap("v", "++", "<Plug>kommentary_visual_default", {})

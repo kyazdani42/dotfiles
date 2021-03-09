@@ -102,6 +102,8 @@ map('n', '<C-f>', '<C-f>zz')
 
 map('n', '<tab>', ':normal za<cr>', { noremap = true, silent = true })
 
+map('n', '<leader>b', ':BufferLinePick<cr>', { silent = true })
+
 require 'statusline'.setup()
 require 'formatter'.setup()
 require 'fuzzy'.setup()
