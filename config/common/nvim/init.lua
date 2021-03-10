@@ -68,6 +68,8 @@ a.nvim_exec([[
   set foldmethod=expr
   set foldexpr=nvim_treesitter#foldexpr()
   set signcolumn=yes
+
+  command! Dnd :!dragon-drag-and-drop %
   ]], '')
 
 require 'plugins'
