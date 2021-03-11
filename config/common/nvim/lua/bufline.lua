@@ -21,7 +21,7 @@ local options = {
 
 local bg_def = '#1b1e2b'
 local bg_sel = '#121622'
-local fg_def = '#32374d'
+local fg_def = '#a6accd'
 
 local highlights =  {
   fill = {
@@ -84,17 +84,17 @@ local highlights =  {
   pick_selected = {
     guifg = '#89ddff',
     guibg = bg_sel,
-    gui = "bold"
+    gui = "bold,italic"
   },
   pick_visible = {
     guifg = '#89ddff',
     guibg = bg_def,
-    gui = "bold"
+    gui = "bold,italic"
   },
   pick = {
     guifg = '#89ddff',
     guibg = bg_def,
-    gui = "bold"
+    gui = "bold,italic"
   }
 }
 

@@ -30,6 +30,11 @@ require('packer').startup(function()
     '~/dev/plugins/nvim-treesitter',
     config = function() require'ts'.setup() end
   }
+  use {
+    'windwp/nvim-ts-autotag',
+    config = function() require'nvim-ts-autotag'.setup() end
+  }
+
 
   -- use 'TimUntersberger/neogit'
 
