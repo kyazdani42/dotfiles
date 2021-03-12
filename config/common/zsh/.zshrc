@@ -105,4 +105,5 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 export ZVM_VI_ESCAPE_BINDKEY="^J"
 source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.zsh
+export KEYTIMEOUT=0
 zvm_after_init_commands+=("[ \$(command -v fzf) ] && source $ZDOTDIR/fzf.zsh")
