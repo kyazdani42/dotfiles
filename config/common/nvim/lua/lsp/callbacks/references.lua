@@ -66,13 +66,13 @@ function M.references_cb(err, _, results)
     lines = format_refs(results),
     reset_keymaps = true,
     keymaps = {
-      { mode = 'n', l = 'j', cmd = '<cmd>lua require"lsp_cbs.references".preview_ref("j")<CR>' },
-      { mode = 'n', l = 'k', cmd = '<cmd>lua require"lsp_cbs.references".preview_ref("k")<CR>' },
-      { mode = 'n', l = '<CR>', cmd = '<cmd>lua require"lsp_cbs.references".select_from_ref()<CR>' },
-      { mode = 'n', l = 'q', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
-      { mode = 'n', l = '<esc>', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
-      { mode = 'n', l = '<C-c>', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
-      { mode = 'n', l = '<C-j>', cmd = '<cmd>lua require"lsp_cbs.references".close()<CR>' },
+      { mode = 'n', l = 'j', cmd = '<cmd>lua require"lsp.callbacks.references".preview_ref("j")<CR>' },
+      { mode = 'n', l = 'k', cmd = '<cmd>lua require"lsp.callbacks.references".preview_ref("k")<CR>' },
+      { mode = 'n', l = '<CR>', cmd = '<cmd>lua require"lsp.callbacks.references".select_from_ref()<CR>' },
+      { mode = 'n', l = 'q', cmd = '<cmd>lua require"lsp.callbacks.references".close()<CR>' },
+      { mode = 'n', l = '<esc>', cmd = '<cmd>lua require"lsp.callbacks.references".close()<CR>' },
+      { mode = 'n', l = '<C-c>', cmd = '<cmd>lua require"lsp.callbacks.references".close()<CR>' },
+      { mode = 'n', l = '<C-j>', cmd = '<cmd>lua require"lsp.callbacks.references".close()<CR>' },
     },
     win_options = {
       wrap = false

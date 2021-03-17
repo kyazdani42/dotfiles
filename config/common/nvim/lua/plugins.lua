@@ -99,7 +99,6 @@ require('packer').startup(function()
     config = function() require'nvim-ts-autotag'.setup() end
   }
 
-
   -- use 'TimUntersberger/neogit'
 
   use {
@@ -142,17 +141,6 @@ require('packer').startup(function()
   }
 
   use {
-    'airblade/vim-rooter',
-    config = function()
-      vim.g.rooter_pattern = {
-        '.git/',
-        'package.json',
-        'Cargo.toml'
-      }
-    end
-  }
-
-  use {
     'plasticboy/vim-markdown',
     setup = function() vim.g.vim_markdown_folding_disabled = 1 end
   }
@@ -162,10 +150,17 @@ require('packer').startup(function()
     config = function() require'colorizer'.setup() end
   }
 
+  --[[ use {
+    'hrsh7th/vim-vsnip'
+  } ]]
+
+  use {
+    'hrsh7th/nvim-compe',
+    config = require'compe-config'.setup
+  }
   use {
     'neovim/nvim-lspconfig',
-    requires = {'nvim-lua/completion-nvim'},
-    config = function() require'lsp'.setup() end
+    config = function() require'lsp.lsp'.setup() end,
   }
 
   use {
@@ -173,10 +168,7 @@ require('packer').startup(function()
     branch = 'release',
     config = function() require'coc'.setup() end,
     ft = {
-      'typescript',
-      'typescriptreact',
-      'javascript',
-      'javascriptreact',
+      'kotlin',
       'html',
       'json',
       'css',
