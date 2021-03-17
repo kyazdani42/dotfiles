@@ -41,26 +41,6 @@ local function on_attach(client, bufnr)
 
   buf_set_keymap('n', '<leader>s',  '<cmd>lua require"lsp.callbacks.diagnostics".prev()<CR>', opts)
   buf_set_keymap('n', '<leader>d',  '<cmd>lua require"lsp.callbacks.diagnostics".next()<CR>', opts)
-
-  -- if client.resolved_capabilities.document_formatting then
-    -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  -- elseif client.resolved_capabilities.document_range_formatting then
-    -- buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  -- end
-
-  -- Set autocommands conditional on server_capabilities
-  -- if client.resolved_capabilities.document_highlight then
-    -- vim.api.nvim_exec([[
-      -- hi LspReferenceRead cterm=bold ctermbg=red guibg=LightYellow
-      -- hi LspReferenceText cterm=bold ctermbg=red guibg=LightYellow
-      -- hi LspReferenceWrite cterm=bold ctermbg=red guibg=LightYellow
-      -- augroup lsp_document_highlight
-        -- autocmd! * <buffer>
-        -- autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        -- autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      -- augroup END
-    -- ]], false)
-  -- end
 end
 
 local function location_cb(err, _, result)
@@ -71,6 +51,65 @@ local function location_cb(err, _, result)
 
   local res = vim.tbl_islist(result) and result[1] or result
   vim.lsp.util.jump_to_location(res)
+end
+
+local eslint = {
+  lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+  lintStdin = true,
+  lintFormats = {"%f:%l:%c: %m"},
+  lintIgnoreExitCode = true,
+  formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+  formatStdin = true
+}
+
+local function eslint_config_exists()
+  local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
+
+  if not vim.tbl_isempty(eslintrc) then
+    return true
+  end
+
+  if vim.fn.filereadable("package.json") then
+    if vim.fn.json_decode(vim.fn.readfile("package.json"))["eslintConfig"] then
+      return true
+    end
+  end
+
+  return false
+end
+
+local function efm()
+  require "lspconfig".efm.setup {
+  on_attach = function(client)
+    client.resolved_capabilities.document_formatting = true
+    client.resolved_capabilities.goto_definition = false
+  end,
+  root_dir = function()
+    if not eslint_config_exists() then
+      return nil
+    end
+    return vim.fn.getcwd()
+  end,
+  settings = {
+    languages = {
+      javascript = {eslint},
+      javascriptreact = {eslint},
+      ["javascript.jsx"] = {eslint},
+      typescript = {eslint},
+      ["typescript.tsx"] = {eslint},
+      typescriptreact = {eslint}
+    }
+  },
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescript.tsx",
+    "typescriptreact"
+  },
+}
+
 end
 
 local function sumneko(cap)
@@ -104,7 +143,10 @@ end
 local function tsserver(cap)
   require'lspconfig'.tsserver.setup {
     capabilities = cap,
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+      on_attach(client, bufnr)
+    end,
     cmd = { "typescript-language-server", "--stdio" },
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   }
@@ -118,6 +160,7 @@ function M.setup()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
   sumneko(capabilities)
   tsserver(capabilities)
+  efm()
 end
 
 return M
