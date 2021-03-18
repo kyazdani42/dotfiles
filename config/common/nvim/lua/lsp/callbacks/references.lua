@@ -16,6 +16,7 @@ local function format_refs(references)
 end
 
 local main_buf = 0
+local main_win = 0
 local preview_bufnr = 0
 local ref_bufnr = 0
 
@@ -40,16 +41,16 @@ function M.close()
   api.nvim_win_close(vim.fn.bufwinid(preview_bufnr), true)
   api.nvim_win_close(vim.fn.bufwinid(ref_bufnr), true)
   vim.cmd "set laststatus=2"
-  api.nvim_set_current_win(vim.fn.bufwinid(main_buf))
+  api.nvim_set_current_win(main_win)
 end
 
 function M.select_from_ref()
   local line = vim.split(api.nvim_get_current_line(), ' ')
   local file = line[1]
-  local line_nb = line[4]
+  local line_nb = vim.split(line[2], '%.')[2]
   M.close()
   vim.cmd("e "..file)
-  api.nvim_win_set_cursor(vim.fn.bufwinid(main_buf), {tonumber(line_nb), 0})
+  api.nvim_win_set_cursor(main_win, { [1] = tonumber(line_nb), [2] = 0})
 end
 
 function M.references_cb(err, _, results)
@@ -59,6 +60,7 @@ function M.references_cb(err, _, results)
   end
 
   main_buf = api.nvim_get_current_buf()
+  main_win = api.nvim_get_current_win()
 
   ref_bufnr = require'utils.buf'.make_buffer {
     where = 'bottom',

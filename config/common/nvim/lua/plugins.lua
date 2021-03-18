@@ -53,19 +53,14 @@ require('packer').startup(function()
             color = "#C8CCD4",
             name = "mp4"
           },
-          out = {
-            icon = "",
-            color = "#C8CCD4",
-            name = "out"
-          },
           toml = {
             icon = "",
             color = "#61afef",
             name = "toml"
           },
           lock = {
-            icon = "",
-            color = "#DE6B74",
+            icon = "",
+            color = "#117cad",
             name = "lock"
           }
         }
@@ -117,7 +112,9 @@ require('packer').startup(function()
       vim.g.kommentary_create_default_mappings = false
     end,
     config = function()
-      require('kommentary.config').configure_language("default", {})
+      require('kommentary.config').configure_language("default", {
+        prefer_single_line_comments = true,
+      })
       vim.api.nvim_set_keymap("n", "++", "<Plug>kommentary_line_default", {})
       vim.api.nvim_set_keymap("v", "++", "<Plug>kommentary_visual_default", {})
     end
