@@ -69,7 +69,7 @@ local function eslint_config_exists()
     return true
   end
 
-  if vim.fn.filereadable("package.json") then
+  if vim.fn.filereadable("package.json") == 1 then
     if vim.fn.json_decode(vim.fn.readfile("package.json"))["eslintConfig"] then
       return true
     end
@@ -80,35 +80,35 @@ end
 
 local function efm()
   require "lspconfig".efm.setup {
-  on_attach = function(client)
-    client.resolved_capabilities.document_formatting = true
-    client.resolved_capabilities.goto_definition = false
-  end,
-  root_dir = function()
-    if not eslint_config_exists() then
-      return nil
-    end
-    return vim.fn.getcwd()
-  end,
-  settings = {
-    languages = {
-      javascript = {eslint},
-      javascriptreact = {eslint},
-      ["javascript.jsx"] = {eslint},
-      typescript = {eslint},
-      ["typescript.tsx"] = {eslint},
-      typescriptreact = {eslint}
-    }
-  },
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescript.tsx",
-    "typescriptreact"
-  },
-}
+    on_attach = function(client)
+      client.resolved_capabilities.document_formatting = true
+      client.resolved_capabilities.goto_definition = false
+    end,
+    root_dir = function()
+      if not eslint_config_exists() then
+        return nil
+      end
+      return vim.fn.getcwd()
+    end,
+    settings = {
+      languages = {
+        javascript = {eslint},
+        javascriptreact = {eslint},
+        ["javascript.jsx"] = {eslint},
+        typescript = {eslint},
+        ["typescript.tsx"] = {eslint},
+        typescriptreact = {eslint}
+      }
+    },
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescript.tsx",
+      "typescriptreact"
+    },
+  }
 
 end
 
@@ -155,6 +155,12 @@ end
 function M.setup()
   vim.lsp.handlers['textDocument/definition'] = location_cb
   vim.lsp.handlers['textDocument/references'] = require'lsp.callbacks.references'.references_cb
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      signs = false,
+      virtual_text = true,
+    }
+  )
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true

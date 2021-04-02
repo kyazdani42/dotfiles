@@ -2,7 +2,7 @@ local fzf_colors="16,hl:#ffcb6b,hl+:#89ddff,fg+:#ffffff,pointer:#89ddff"
 
 export FZF_DEFAULT_OPTS="--no-info --prompt=' ' -i --color=${fzf_colors} --height=25%"
 export FZF_ALT_C_COMMAND="fd --type d -HLi . . 2>/dev/null"
-export FZF_DEFAULT_COMMAND="rg --hidden -l "" -g '!.git' . 2>/dev/null"
+export FZF_DEFAULT_COMMAND="rg -L --hidden -l "" -g '!.git' . 2>/dev/null"
 export FZF_PREVIEW_COMMAND="bat --decorations=never --theme=ansi-dark --color always {} 2>/dev/null"
 
 source /etc/profile.d/fzf.zsh

@@ -18,14 +18,14 @@ return {
 
         source = {
           path = true;
-          treesitter = true;
           nvim_lsp = true;
           nvim_lua = true;
+          treesitter = true;
+          buffer = true;
 
           spell = false;
           tags = false;
           snippets_nvim = false;
-          buffer = false;
           calc = false;
           vsnip = false;
         };
