@@ -147,6 +147,11 @@ require('packer').startup(function()
     config = function() require'colorizer'.setup() end
   }
 
+  use {
+    'steelsojka/pears.nvim',
+    config = function() require'pears'.setup() end
+  }
+
   --[[ use {
     'hrsh7th/vim-vsnip'
   } ]]
@@ -168,8 +173,7 @@ require('packer').startup(function()
       'kotlin',
       'html',
       'json',
-      'css',
-      'rust'
+      'css'
     },
   }
 end)

@@ -43,7 +43,7 @@ nvim_set_au("BufNewFile,BufRead", ".swcrc", "set ft=json")
 nvim_set_au("FileType", "c,cpp", "set tabstop=8 shiftwidth=4 noexpandtab")
 nvim_set_au("FileType", "python", "set tabstop=4 shiftwidth=4 noexpandtab")
 nvim_set_au("FileType", "markdown", "set tabstop=4 shiftwidth=4 conceallevel=2")
-nvim_set_au("FileType", "typescriptreact,typescript,javascript,javascriptreact,lua,html,css", "set tabstop=2 shiftwidth=2")
+nvim_set_au("FileType", "typescriptreact,typescript,javascript,javascriptreact,lua,html,css,graphql", "set tabstop=2 shiftwidth=2")
 nvim_set_au("BufWritePost", "*.tex", ":silent !pdflatex % &>/dev/null")
 
 vim.cmd "cabbrev W w"
