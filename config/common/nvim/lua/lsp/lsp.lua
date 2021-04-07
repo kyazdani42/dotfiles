@@ -1,43 +1,23 @@
 local api = vim.api
 local M = {}
 
-function M.show_doc()
-  local ft = api.nvim_buf_get_option(api.nvim_get_current_buf(), 'ft')
-  if ft == 'vim' or ft == 'help' then
-    vim.api.nvim_exec('h '..vim.fn.expand('<cword>'), '')
-  else
-    vim.lsp.buf.signature_help()
-  end
-end
-
-local current_hovered_word = nil
-function M.hover()
-  local new_current_hovered_word = vim.fn.expand('<cword>')
-  if current_hovered_word ~= new_current_hovered_word then
-    vim.lsp.buf.hover()
-  end
-  current_hovered_word = new_current_hovered_word
-end
-
 local function on_attach(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   local opts = { noremap=true, silent=true }
-  -- buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  -- buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  -- buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  -- buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
-  buf_set_keymap('n', 'K',              '<cmd>lua require"lsp.lsp".show_doc()<CR>', opts)
-  buf_set_keymap('n', '<leader>k',      '<cmd>lua require"lsp.lsp".hover()<CR>', opts)
+  buf_set_keymap('n', 'K',              '<cmd>lua require"lspsaga.hover".render_hover_doc()<CR>', opts)
+  buf_set_keymap('n', '<leader>cc',     '<cmd>lua require"lspsaga.signaturehelp".signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader>ca',     '<cmd>lua require"lspsaga.codeaction".code_action()<CR>', opts)
+  buf_set_keymap('v', '<leader>ca',     '<cmd>lua require"lspsaga.codeaction".range_code_action()<CR>', opts)
+  buf_set_keymap('n', '<leader>gd',     '<cmd>lua require"lspsaga.provider".preview_definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>rn', '<cmd>lua require"lspsaga.rename".rename()<CR>', opts)
 
   buf_set_keymap('n', 'gr',         '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', 'gd',         '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'gD',         '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gd',         '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', 'gD',         '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gy',         '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', 'gi',         '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 
   buf_set_keymap('n', '<leader>s',  '<cmd>lua require"lsp.callbacks.diagnostics".prev()<CR>', opts)
   buf_set_keymap('n', '<leader>d',  '<cmd>lua require"lsp.callbacks.diagnostics".next()<CR>', opts)
@@ -158,7 +138,7 @@ function M.setup()
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
       signs = false,
-      virtual_text = true,
+      virtual_text = false,
     }
   )
 

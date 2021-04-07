@@ -4,7 +4,7 @@ local a = vim.api
 
 g.mapleader = '\\'
 
-o.updatetime = 800
+o.updatetime = 300
 o.foldlevelstart = 99
 o.termguicolors = true
 o.mouse= 'a' -- Enable mouse

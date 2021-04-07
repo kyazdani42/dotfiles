@@ -28,13 +28,6 @@ local function prettier_fmt()
   return true
 end
 
-local function format_js_ts()
-  local bufnr = api.nvim_get_current_buf();
-  local current_file = api.nvim_buf_get_name(bufnr)
-  save()
-  prettier_fmt()
- end
-
 local formatters = {
   rust = function() vim.cmd('RustFmt') end,
   go = function() print('No formatter installed for go.') end,

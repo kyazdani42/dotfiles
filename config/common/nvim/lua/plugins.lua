@@ -164,6 +164,10 @@ require('packer').startup(function()
     'neovim/nvim-lspconfig',
     config = function() require'lsp.lsp'.setup() end,
   }
+  use {
+    'glepnir/lspsaga.nvim',
+    config = function() require'lsp.saga'.setup() end
+  }
 
   use {
     'neoclide/coc.nvim',
