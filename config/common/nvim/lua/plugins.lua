@@ -170,6 +170,11 @@ require('packer').startup(function()
   }
 
   use {
+    'onsails/lspkind-nvim',
+    config = function() require'lspkind'.init() end
+  }
+
+  use {
     'neoclide/coc.nvim',
     branch = 'release',
     config = function() require'coc'.setup() end,
