@@ -62,7 +62,7 @@ local highlights =  {
     guibg = bg_sel
   },
   separator_visible = {
-    guifg = bf_def,
+    guifg = bg_def,
     guibg = bg_def
   },
   separator = {

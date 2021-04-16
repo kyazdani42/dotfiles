@@ -23,12 +23,8 @@ function M.setup()
     folders = 1,
     files = 1
   }
-
-  vim.g.nvim_tree_bindings = {
-    ["<C-p>"] = ":call luaeval('move_or_open()') | Files<CR>",
-    ["<C-t>"] = ":call luaeval('move_or_open()') | RG<CR>",
-    ["<C-b>"] = ":call luaeval('move_or_open()') | Buffers<CR>",
-  }
+  vim.g.nvim_tree_group_empty = 1
+  vim.g.nvim_tree_lsp_diagnostics = 1
 
   vim.g.nvim_tree_icons = {
     default = '',

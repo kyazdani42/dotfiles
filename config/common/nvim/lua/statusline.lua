@@ -108,7 +108,7 @@ end
 
 function M.update()
   local bufnr = api.nvim_get_current_buf()
-  if api.nvim_buf_get_option(bufnr, 'ft') == 'LuaTree' then return ' ' end
+  if api.nvim_buf_get_option(bufnr, 'ft') == 'NvimTree' then return ' ' end
 
   local mode = get_mode()
   local filename = get_filename(bufnr)

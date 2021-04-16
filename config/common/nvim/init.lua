@@ -22,6 +22,7 @@ o.showmode = false -- Do not output message on the bottom
 o.inccommand = 'split' -- Show effects of command as you type in a split
 o.clipboard = 'unnamedplus' -- Use system clipboard
 o.shortmess = vim.o.shortmess .. 'c'
+o.guifont = 'monospace:h15'
 
 function _G.dump(...)
   local objects = vim.tbl_map(vim.inspect, {...})

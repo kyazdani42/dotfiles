@@ -94,8 +94,6 @@ require('packer').startup(function()
     config = function() require'nvim-ts-autotag'.setup() end
   }
 
-  -- use 'TimUntersberger/neogit'
-
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
@@ -115,8 +113,8 @@ require('packer').startup(function()
       require('kommentary.config').configure_language("default", {
         prefer_single_line_comments = true,
       })
-      vim.api.nvim_set_keymap("n", "++", "<Plug>kommentary_line_default", {})
-      vim.api.nvim_set_keymap("v", "++", "<Plug>kommentary_visual_default", {})
+      vim.api.nvim_set_keymap("n", "++", "<Plug>kommentary_line_default", { silent = true })
+      vim.api.nvim_set_keymap("v", "++", "<Plug>kommentary_visual_default", { silent = true })
     end
   }
   use 'tpope/vim-surround'
