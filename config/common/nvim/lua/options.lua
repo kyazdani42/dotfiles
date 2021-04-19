@@ -2,6 +2,7 @@ local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
 
+-- o.debug = 'throw'
 o.updatetime = 300
 o.foldlevelstart = 99
 o.termguicolors = true
@@ -33,11 +34,20 @@ end
 
 vim.cmd "au BufNew * lua set_buffer_options()"
 
-wo.relativenumber = true
-wo.cursorline = true
-wo.linebreak = true
-wo.foldmethod = 'expr'
-wo.foldexpr = 'nvim_treesitter#foldexpr()'
-wo.signcolumn = 'yes'
+function _G.set_window_option()
+  local winnr = vim.api.nvim_get_current_win()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local bufname = vim.api.nvim_buf_get_name(bufnr)
+  if bufname:match("NvimTree") or bufname:match("fzf") then
+    return
+  end
+  wo[winnr].relativenumber = true
+  wo[winnr].cursorline = true
+  wo[winnr].linebreak = true
+  wo[winnr].foldmethod = 'expr'
+  wo[winnr].foldexpr = 'nvim_treesitter#foldexpr()'
+  wo[winnr].signcolumn = 'yes'
+end
+set_window_option()
 
--- vim.cmd "au WinNew,VimEnter *. lua set_window_options()"
+vim.cmd "au WinNew,VimEnter * lua vim.schedule(set_window_option)"

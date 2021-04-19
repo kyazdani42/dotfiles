@@ -20,7 +20,6 @@ exec waybar &
 exec mako &
 exec notify-battery-level &
 exec runmailserver 2&>/dev/null &
-exec nm-applet &
 exec swayidle -w \
          timeout 300 'lock' \
          timeout 600 'swaymsg "output * dpms off"' \
