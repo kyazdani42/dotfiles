@@ -70,11 +70,11 @@ require('packer').startup(function()
 
   use {
     '~/dev/plugins/nvim-tree.lua',
-    config = function() require'tree-config'.setup() end
+    config = function() require'plugins.nvim-tree' end
   }
   use {
     'akinsho/nvim-bufferline.lua',
-    config = function() require'bufline' end
+    config = function() require'plugins.bufferline' end
   }
 
   use {
@@ -84,10 +84,11 @@ require('packer').startup(function()
   }
 
   use '~/dev/plugins/playground'
+  use '~/dev/plugins/nvim-ts-context-commentstring'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use {
     '~/dev/plugins/nvim-treesitter',
-    config = function() require'ts'.setup() end
+    config = function() require'plugins.treesitter'.setup() end
   }
   use {
     'windwp/nvim-ts-autotag',
@@ -99,7 +100,7 @@ require('packer').startup(function()
     requires = {
       'nvim-lua/plenary.nvim'
     },
-    config = function() require('gitsigns').setup() end
+    config = function() require'gitsigns'.setup() end
   }
 
   use 'tpope/vim-fugitive'
@@ -123,7 +124,7 @@ require('packer').startup(function()
   use 'junegunn/fzf'
   use {
     'junegunn/fzf.vim',
-    config = require'fuzzy'.setup_fzf,
+    config = function() require'plugins.fzf' end,
   }
   use {
     'editorconfig/editorconfig',
@@ -156,7 +157,7 @@ require('packer').startup(function()
 
   use {
     'hrsh7th/nvim-compe',
-    config = require'compe-config'.setup
+    config = function() require 'plugins.compe' end
   }
   use {
     'neovim/nvim-lspconfig',

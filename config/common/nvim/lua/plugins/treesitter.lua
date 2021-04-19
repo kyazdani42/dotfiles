@@ -45,21 +45,24 @@ function M.setup()
           },
         },
       },
+      context_commentstring = {
+        enable = true,
+      }
     }
 
   api.nvim_set_keymap('n', 'R', ':write | edit | TSBufEnable highlight<CR>', {});
   api.nvim_exec([[
-    command! ToggleTsVtx lua require'ts'.toggle_ts_virt_text()
+    command! ToggleTsVtx lua require'plugins.treesitter'.toggle_ts_virt_text()
     hi TsVirtText guifg=#89ddff
     augroup TSVirtualText
       au!
-      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'ts'.ts_virt_text()
+      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'plugins.treesitter'.ts_virt_text()
     augroup END
 
-    command! ToggleTsHlGroups lua require'ts'.toggle_ts_hl_groups()
+    command! ToggleTsHlGroups lua require'plugins.treesitter'.toggle_ts_hl_groups()
     augroup TSVirtualTextHlGroups
       au!
-      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'ts'.ts_hl_groups()
+      au BufEnter,CursorMoved,CursorMovedI,WinEnter,CompleteDone,InsertEnter,InsertLeave * lua require'plugins.treesitter'.ts_hl_groups()
     augroup END
   ]], '')
 end

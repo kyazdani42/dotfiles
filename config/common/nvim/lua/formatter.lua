@@ -48,8 +48,6 @@ function M.format()
   fn()
 end
 
-function M.setup()
-  api.nvim_exec("command! -nargs=0 Format :lua require'formatter'.format()<CR>", "")
-end
+api.nvim_exec("command! -nargs=0 Format :lua require'formatter'.format()<CR>", "")
 
 return M
