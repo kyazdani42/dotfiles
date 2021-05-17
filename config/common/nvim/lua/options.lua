@@ -25,7 +25,7 @@ o.shortmess = vim.o.shortmess .. 'c'
 o.guifont = 'monospace:h15'
 
 local function setl(opt, value)
-  vim.cmd(":setlocal "..opt..(value and "="..value or ""))
+  vim.cmd(":set "..opt..(value and "="..value or ""))
 end
 
 -- BUFFER_OPTIONS
