@@ -1,7 +1,8 @@
 local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
+-- local wo = vim.wo
+-- local bo = vim.bo
 
+-- GLOBAL OPTIONS
 -- o.debug = 'throw'
 o.updatetime = 300
 o.foldlevelstart = 99
@@ -23,31 +24,21 @@ o.clipboard = 'unnamedplus' -- Use system clipboard
 o.shortmess = vim.o.shortmess .. 'c'
 o.guifont = 'monospace:h15'
 
-function _G.set_buffer_options()
-  local curbuf = vim.api.nvim_get_current_buf()
-  bo[curbuf].expandtab = true
-  bo[curbuf].shiftwidth = 4
-  bo[curbuf].tabstop = 4
-  bo[curbuf].formatoptions= 'tqj'
-  bo[curbuf].smartindent = true
+local function setl(opt, value)
+  vim.cmd(":setlocal "..opt..(value and "="..value or ""))
 end
 
-vim.cmd "au BufNew * lua set_buffer_options()"
+-- BUFFER_OPTIONS
+setl('expandtab')
+setl('shiftwidth', 4)
+setl('tabstop', 4)
+setl('formatoptions', 'tqj')
+setl('smartindent')
 
-function _G.set_window_option()
-  local winnr = vim.api.nvim_get_current_win()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local bufname = vim.api.nvim_buf_get_name(bufnr)
-  if bufname:match("NvimTree") or bufname:match("fzf") then
-    return
-  end
-  wo[winnr].relativenumber = true
-  wo[winnr].cursorline = true
-  wo[winnr].linebreak = true
-  wo[winnr].foldmethod = 'expr'
-  wo[winnr].foldexpr = 'nvim_treesitter#foldexpr()'
-  wo[winnr].signcolumn = 'yes'
-end
-set_window_option()
-
-vim.cmd "au WinNew,VimEnter * lua vim.schedule(set_window_option)"
+-- WINDOW_OPTIONS
+setl('relativenumber')
+setl('cursorline')
+setl('linebreak')
+setl('foldmethod', 'expr')
+setl('foldexpr', 'nvim_treesitter#foldexpr()')
+setl('signcolumn', 'yes')

@@ -84,8 +84,8 @@ require('packer').startup(function()
   }
 
   use '~/dev/plugins/playground'
-  use '~/dev/plugins/nvim-ts-context-commentstring'
   use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
   use {
     '~/dev/plugins/nvim-treesitter',
     config = function() require'plugins.treesitter'.setup() end
