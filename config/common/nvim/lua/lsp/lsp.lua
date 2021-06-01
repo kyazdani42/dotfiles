@@ -137,6 +137,7 @@ function M.setup()
   vim.lsp.handlers['textDocument/references'] = require'lsp.callbacks.references'.references_cb
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
+      underline = false,
       signs = false,
       virtual_text = false,
     }

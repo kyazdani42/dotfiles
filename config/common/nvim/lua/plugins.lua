@@ -53,11 +53,6 @@ require('packer').startup(function()
             color = "#C8CCD4",
             name = "mp4"
           },
-          toml = {
-            icon = "",
-            color = "#61afef",
-            name = "toml"
-          },
           lock = {
             icon = "",
             color = "#117cad",

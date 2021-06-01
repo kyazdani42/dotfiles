@@ -198,6 +198,7 @@ for_window [title="~#dev#~"] floating enable, border pixel 3
 # x apps
 for_window [shell=".*"] title_format "%title :: %shell"
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 include /etc/sway/config.d/*
 
 # vim: ft=i3config
