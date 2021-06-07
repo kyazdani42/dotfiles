@@ -139,7 +139,7 @@ function M.setup()
     vim.lsp.diagnostic.on_publish_diagnostics, {
       underline = false,
       signs = false,
-      virtual_text = false,
+      virtual_text = true,
     }
   )
 

@@ -11,7 +11,7 @@ end
 nvim_set_au("BufWinEnter", "*", [[exec "normal! g'\""]])
 nvim_set_au("TextYankPost", "*",  [[silent! lua require'vim.highlight'.on_yank({ timeout=500 })]])
 nvim_set_au("FileType", "scheme", "set ft=query")
-nvim_set_au("BufNewFile,BufRead", "*.gql", "set ft=graphql")
+nvim_set_au("BufNewFile,BufRead", "*.gql,*.graphql", "set ft=graphql")
 nvim_set_au("BufNewFile,BufRead", ".eslintrc", "set ft=json")
 nvim_set_au("BufNewFile,BufRead", ".prettierrc", "set ft=json")
 nvim_set_au("BufNewFile,BufRead", ".swcrc", "set ft=json")

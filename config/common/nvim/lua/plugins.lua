@@ -163,8 +163,5 @@ require('packer').startup(function()
     config = function() require'lsp.saga'.setup() end
   }
 
-  use {
-    'onsails/lspkind-nvim',
-    config = function() require'lspkind'.init() end
-  }
+  use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}, config = function() require'plugins.dap' end }
 end)

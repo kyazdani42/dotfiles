@@ -10,7 +10,7 @@ sxhkd &                             # Launch key bindings
 mpd &                               # Music daemon
 setbg &                             # Sets the background
 unclutter &                         # Hides the cursor
-picom -b &  # Compositor
+# picom -b &  # Compositor
 notify_battery_level &              # script to notify when level is too low
 
 exec i3

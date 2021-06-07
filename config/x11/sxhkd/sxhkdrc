@@ -20,7 +20,7 @@ alt + shift + d
     dmenu_dnd &
 
 alt + shift + x
-    nwgbar -o 0
+    nwgbar -o 0 &
 
 alt + shift + u
     rofi_wifi &

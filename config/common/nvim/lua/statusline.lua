@@ -18,6 +18,7 @@ local getColors = function()
 		['STInsertInfo'] = { guifg = '#b9a3eb', guibg='#1b1e2b' },
 		['STReplaceInfo'] = { guifg = '#d0e7d0', guibg='#1b1e2b' },
 		['STTermInfo'] = { guifg = '#959dcb', guibg='#1b1e2b' },
+		['STGitBranch'] = { gui = 'bold' },
 	}
 end
 
@@ -86,7 +87,7 @@ local function get_filename(bufnr)
 		return '[NO NAME]'
 	end
 
-	return vim.fn.fnamemodify(fname, ':~')
+	return vim.fn.fnamemodify(fname, ':t')
 end
 
 function M.clear()
@@ -96,8 +97,8 @@ function M.clear()
 end
 
 local function format_status(mode, filename, git, infos)
-	local left_side = mode.color..mode.val..'%#Normal# '..filename
-	local right_side =mode.color:gsub('MD', 'Info')..git..infos..'%#Normal#'
+  local left_side = mode.color..mode.val..'%#Normal# '..filename
+  local right_side =mode.color:gsub('MD', 'Info')..'%#STGitBranch#'..git..mode.color:gsub('MD', 'Info')..infos..'%#Normal#'
 	local total_size = api.nvim_win_get_width(0)
 
 	local padding = ' '
@@ -134,8 +135,11 @@ local func = [[
 ]]
 api.nvim_exec(func, '')
 
-for name, c in pairs(getColors()) do
-	api.nvim_exec('hi def '..name..' gui=NONE guifg='..c.guifg..' guibg='..c.guibg, '')
-end
+-- needed to avoid colors getting overriden by blue-moon because packer is async and this runs before otherwise
+vim.defer_fn(function()
+  for name, c in pairs(getColors()) do
+    vim.cmd('hi! def '..name..' gui='..(c.gui and c.gui or 'NONE')..' guifg='..(c.guifg and c.guifg or '')..' guibg='..(c.guibg and c.guibg or ''), '')
+  end
+end, 100)
 
 return M
