@@ -18,10 +18,12 @@ vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_show_icons = {
 	git = 1,
 	folders = 1,
-	files = 1
+	files = 1,
+  folder_arrows = 1
 }
 vim.g.nvim_tree_group_empty = 1
 vim.g.nvim_tree_lsp_diagnostics = 1
+vim.g.nvim_tree_hijack_cursor = 1
 
 vim.g.nvim_tree_icons = {
 	default = '',

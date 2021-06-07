@@ -1,13 +1,39 @@
-* {
-  scrollbar-width: thin !important;
+/* 
+  ___ _            _                 _   
+ / __(_)_ __  _ __| |___ _ _ ___ _ _| |_ 
+ \__ \ | '  \| '_ \ / -_) '_/ -_) ' \  _|
+ |___/_|_|_|_| .__/_\___|_| \___|_||_\__|
+ | __|____ __|_|                         
+ | _/ _ \ \ /                            
+ |_|\___/_\_\                            
+                                         
+*/
+
+:root{
+	scrollbar-width: none !important;
 }
 
-@-moz-document url(about:blank), url(about:newtab), url(about:home) {
-  html:not(#ublock0-epicker),
-  html:not(#ublock0-epicker) body,
-  #newtab-customize-overlay {
-    background: #1b1e2b !important;
+@-moz-document url(about:privatebrowsing) {
+	:root{
+		scrollbar-width: none !important;
+	}
+}
+
+@media (-moz-proton) {
+  @-moz-document url("about:home"), url("about:newtab") {
+    /** Activity Stream - Search Focus Border: like URL ***********************/
+    /* At DarkMode, Color */
+    body[style*="--newtab-background-color:rgba(28, 27, 34, 1);"],
+    body[style*="--newtab-background-color:rgba(42, 42, 46, 1);"] {
+      /* inner */
+      --newtab-focus-border: rgba(0, 221, 255, 0.5) !important; /* Original: #B5D3FF, Better color-mix(in srgb, #B5D3FF 70%, transparent) */
+      --newtab-focus-border-selected: rgba(0, 221, 255, 0.5) !important; /* Original: #B5D3FF */
+    }
+
+    /** Activity Stream - Web Site Icon: full size ****************************/
+    .top-site-outer .tile .icon-wrapper {
+      width:  100% !important; /* Original: 48px */
+      height: 100% !important; /* Original: 48px */
+    }
   }
 }
-
-/* :root */
