@@ -24,6 +24,13 @@ vim.g.nvim_tree_show_icons = {
 vim.g.nvim_tree_group_empty = 1
 vim.g.nvim_tree_lsp_diagnostics = 1
 vim.g.nvim_tree_hijack_cursor = 1
+vim.g.nvim_tree_window_picker_exclude = {
+  filetype = {
+    "packer",
+    "qf",
+    "Trouble"
+  }
+}
 
 vim.g.nvim_tree_icons = {
 	default = '',

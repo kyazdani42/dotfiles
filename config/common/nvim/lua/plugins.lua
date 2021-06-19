@@ -57,9 +57,26 @@ require('packer').startup(function()
             icon = "",
             color = "#117cad",
             name = "lock"
-          }
+          },
+          graphql = {
+            icon = "",
+            color = "#e632ad",
+            name = "graphql"
+          },
+          gql = {
+            icon = "",
+            color = "#e632ad",
+            name = "graphql"
+          },
         }
       }
+    end
+  }
+
+  use {
+    "folke/trouble.nvim",
+    config = function()
+      require("trouble").setup {}
     end
   }
 
@@ -95,7 +112,7 @@ require('packer').startup(function()
     requires = {
       'nvim-lua/plenary.nvim'
     },
-    config = function() require'gitsigns'.setup() end
+    config = function() require'plugins.gitsigns' end
   }
 
   use 'tpope/vim-fugitive'
