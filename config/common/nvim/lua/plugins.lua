@@ -181,4 +181,18 @@ require('packer').startup(function()
   }
 
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"}, config = function() require'plugins.dap' end }
+
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
+  use {
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup {
+        dimming = {
+          alpha = 0.3,
+          color = { "#a6accd" },
+        }
+      }
+    end
+  }
 end)
