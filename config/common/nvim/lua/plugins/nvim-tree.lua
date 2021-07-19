@@ -15,6 +15,7 @@ vim.g.nvim_tree_follow = 1
 vim.g.nvim_tree_tab_open = 1
 vim.g.nvim_tree_lint_lsp = 1
 vim.g.nvim_tree_gitignore = 1
+vim.g.nvim_tree_update_cwd = 1
 vim.g.nvim_tree_show_icons = {
 	git = 1,
 	folders = 1,
