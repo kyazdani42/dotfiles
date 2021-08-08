@@ -1,0 +1,18 @@
+#!/bin/bash
+
+station="$(iwctl station list | grep connected | awk '{print $1}')"
+if [ -z "$station" ]; then
+    echo "No wifi station found, exiting."
+    exit 1
+fi
+
+network="$(iwctl station ${station} get-networks \
+    | sed 's/\x1B\[[0-9;]*[JKmsu]//g' \
+    | sed '1,4d' \
+    | fzf \
+    | sed 's/>//g' \
+    | awk '{print $1}')"
+
+iwctl station "$station" connect "$network"
+
+
