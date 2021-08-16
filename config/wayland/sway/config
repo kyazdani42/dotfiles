@@ -13,7 +13,9 @@ smart_borders on
 smart_gaps on
 focus_follows_mouse no
 
-output eDP-1 bg ~/.config/wallpaper fill 
+output * bg ~/.config/wallpaper fill 
+output HDMI-A-1 pos 1920 0 scale 2
+
 floating_maximum_size 1920 x 1080
 seat * hide_cursor 4000
 exec waybar &
@@ -188,7 +190,7 @@ client.background       $bg
 
 for_window [app_id="transmission"] floating enable, border pixel 3, move to workspace $ws4
 
-for_window [app_id="firefox"] border none, move to workspace $ws2
+for_window [app_id="firefox"] border none
 
 for_window [app_id="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
 

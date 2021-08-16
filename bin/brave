@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/usr/bin/brave --enable-features=UseOzonePlatform --ozone-platform=wayland --force-device-scale-factor=1.2
