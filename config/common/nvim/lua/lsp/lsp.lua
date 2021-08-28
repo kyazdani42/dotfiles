@@ -58,6 +58,16 @@ local function eslint_config_exists()
   return false
 end
 
+local function deno_file_exists()
+  local is_deno = vim.loop.fs_access(vim.loop.cwd()..'/.deno-project', 'R')
+
+  if is_deno then
+    return true
+  end
+
+  return false
+end
+
 local function efm()
   require "lspconfig".efm.setup {
     on_attach = function(client)
@@ -132,6 +142,25 @@ local function tsserver(cap)
   }
 end
 
+local function denols()
+  require'lspconfig'.denols.setup {
+    cmd = { "deno", "lsp" },
+    filetypes = { "javascript", "typescript" },
+    init_options = {
+      enable = true,
+      lint = true,
+      unstable = false
+    },
+    handlers = vim.lsp.handlers,
+    root_dir = function()
+      if not deno_file_exists() then
+        return nil
+      end
+      return vim.fn.getcwd()
+    end,
+  }
+end
+
 function M.setup()
   vim.lsp.handlers['textDocument/definition'] = location_cb
   vim.lsp.handlers['textDocument/references'] = require'lsp.callbacks.references'.references_cb
@@ -148,6 +177,7 @@ function M.setup()
   sumneko(capabilities)
   tsserver(capabilities)
   efm()
+  denols()
 end
 
 return M

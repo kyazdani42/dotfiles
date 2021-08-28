@@ -1,11 +1,3 @@
-function _G.move_or_open()
-	if #vim.api.nvim_list_wins() == 1 then
-		vim.cmd("vnew | wincmd h | vert resize 30 | wincmd l")
-	else
-		vim.cmd("wincmd l")
-	end
-end
-
 vim.g.nvim_tree_ignore = { '.git', 'node_modules', 'dist' }
 vim.g.nvim_tree_auto_open = 1
 vim.g.nvim_tree_auto_close = 0

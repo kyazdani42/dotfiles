@@ -1,8 +1,6 @@
 local options = {
   view = "default",
   numbers = "none",
-  number_style = "superscript",
-  mappings = false,
   buffer_close_icon= '',
   modified_icon = '✗',
   close_icon = '',
