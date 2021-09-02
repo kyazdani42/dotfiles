@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 read -p "install system files and packages ? y/n: " system_install
 
 if [ "$system_install" == "y" ]; then
@@ -43,6 +45,12 @@ link_files "common"
 
 packer="$HOME/.local/share/nvim/site/pack/packer/opt/packer.nvim"
 [ ! -d "$packer" ] && git clone https://github.com/wbthomason/packer.nvim "$packer"
+
+echo "Cloning config and linking"
+pushd "$HOME/dev/" &>/dev/null
+git clone git@github.com:kyazdani42/nvim-config
+ln -sf "$HOME/dev/nvim-config" "$HOME/.config/nvim"
+popd &>/dev/null
 
 nvim_plugs=("blue-moon" "nvim-tree.lua" "nvim-treesitter" "nvim-web-devicons" "playground")
 for repo in ${nvim_plugs[@]}; do
