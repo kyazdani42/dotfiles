@@ -35,11 +35,11 @@ exec /usr/bin/wl-paste -p -t text --watch clipman store -P --histpath="~/.local/
 set $gnome-schema org.gnome.desktop.interface
 
 exec_always {
-    gsettings set $gnome-schema gtk-theme 'Nordic'
+    gsettings set $gnome-schema gtk-theme 'palenight'
     gsettings set $gnome-schema icon-theme 'la-capitaine'
     gsettings set $gnome-schema cursor-theme 'volantes_cursors'
     gsettings set $gnome-schema cursor-size 16
-    gsettings set $gnome-schema font-name 'DejaVu Sans 12'
+    gsettings set $gnome-schema font-name 'DejaVu Sans 10'
 }
 
 ############################# INPUT #####################################
@@ -130,9 +130,6 @@ bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
 bindsym $mod+6 workspace $ws6
-
-workspace $ws1 output DP-2
-workspace $ws2 output eDP-1
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1

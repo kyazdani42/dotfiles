@@ -91,7 +91,6 @@ if [ ! -f "$session_file" ]; then
 
     if [ "$graphics" == "x11" ]; then
         printf "#!/bin/sh\nif [ \"\$(tty)\" = \"/dev/tty1\" ]; then\n\texec startx &>/tmp/startx_\$(whoami).log\nfi\n" > "$session_file"
-        printf "#!/bin/sh\nif [ \"\$(tty)\" = \"/dev/tty1\" ]; then\n\texec startx &>/tmp/startx_\$(whoami).log\nfi\n"
         chmod +x "$session_file"
     elif [ "$graphics" == "wayland" ]; then
         printf "#!/bin/sh\nexport MOZ_ENABLE_WAYLAND=1\nexport QT_QPA_PLATFORM=wayland-egl\nexport CLUTTER_BACKEND=wayland\nexport XDG_CURRENT_DESKTOP=sway\nexport XDG_SESSION_TYPE=wayland\nif [ \"\$(tty)\" = \"/dev/tty1\" ]; then\n\texec sway &>/tmp/sway.log\nfi\n" > "$session_file"
