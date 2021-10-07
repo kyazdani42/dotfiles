@@ -1,5 +1,3 @@
-* { outline-width: 0px; outline: none; }
-
 button, label, image {
     font-family: 'Lato Medium';
     font-size: 18px;
@@ -44,4 +42,8 @@ button:focus {
 #description {
     margin-bottom: 70px;
     color: #a6accd;
+}
+
+grid {
+  background-color: #ffaaff;
 }
