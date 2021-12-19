@@ -6,17 +6,16 @@ height=200
 margin=16
 padding=16
 
-border-size=2
-border-color=#959dcb
+border-size=0
 
 max-icon-size=32
-font="Lato Medium 10"
+font=DejaVuSansMono Nerd Font Mono 13
 background-color=#ffffff
-text-color=#32374d
+text-color=#000000
 
 [urgency="low"]
-background-color=#ffffff90
-[urgency="high"]
+background-color=#ffffff
 
+[urgency="high"]
 background-color=#ff5370
 text-color=#ffffff
