@@ -105,5 +105,5 @@ export KEYTIMEOUT=0
 zvm_after_init_commands+=("[ \$(command -v fzf) ] && source $ZDOTDIR/fzf.zsh")
 
 export FNM_DIR="$HOME/.config/fnm"
-[ -x fnm ] && eval "$(fnm env)"
-[ -x zoxide ] && eval "$(zoxide init zsh)"
+[ -x "$(which fnm)" ] && eval "$(fnm env)"
+[ -x "$(which zoxide)" ] && eval "$(zoxide init zsh)"

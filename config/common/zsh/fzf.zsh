@@ -5,7 +5,8 @@ export FZF_ALT_C_COMMAND="fd --type d -HLi . . 2>/dev/null"
 export FZF_DEFAULT_COMMAND="rg -L --hidden -l "" -g '!.git' . 2>/dev/null"
 export FZF_PREVIEW_COMMAND="bat --decorations=never --theme=ansi-dark --color always {} 2>/dev/null"
 
-source /etc/profile.d/fzf.zsh
+source "$(fzf-share)/key-bindings.zsh"
+source "$(fzf-share)/completion.zsh"
 
 _fzf_compgen_path() {
     fd -HLi . "$1" 2>/dev/null
@@ -25,11 +26,12 @@ function fvim() {
 }
 
 function prj() {
+    _HOME=$(printf '%s\n' "$HOME" | sed -e 's/[]\/$*.^[]/\\&/g');
     project=$(\
-        fd -H 'git$' "$HOME/${1:-dev}" \
-        | sed -E 's/.*\/dev\/(.*)\/\.git/\1/' \
+        fd -H '\.git$' "$HOME" \
+        | sed -E "s/$_HOME\/(.*)\/\.git/\1/" \
         | fzf)
     if [ ! -z "$project" ]; then
-      cd "$HOME/dev/$project"
+      cd "$HOME/$project"
     fi
 }
