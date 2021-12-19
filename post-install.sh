@@ -50,11 +50,6 @@ for repo in ${nvim_plugs[@]}; do
     [ ! -d "$folder" ] && git clone "git@github.com:kyazdani42/${repo}" "$folder"
 done
 
-print_bold "- linking vimrc"
-
-rm -f $HOME/.vimrc
-sudo cp -f $PWD/etc/vimrc /etc/vimrc
-
 print_bold "select a graphic environment:"
 
 select graphics in x11 wayland
@@ -73,7 +68,7 @@ do
     fi
 done
 
-session_file="bin/session-$(cat /etc/hostname)-$(whoami).sh"
+session_file="bin/session-$(hostname)-$(whoami).sh"
 if [ ! -f "$session_file" ]; then
     print_bold "select a graphic environment to setup session runner:"
 
