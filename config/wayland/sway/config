@@ -22,7 +22,7 @@ seat * hide_cursor 4000
 exec waybar &
 exec mako &
 exec notify-battery-level &
-exec runmailserver 2&>/dev/null &
+# exec runmailserver 2&>/dev/null &
 
 exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
@@ -77,9 +77,9 @@ bindsym $mod+Shift+p exec sh -c 'kill -9 $(pgrep waybar); waybar &'
 
 bindsym xf86MonBrightnessDown exec brightnessctl s 10%- && notify-brightness-level
 bindsym xf86MonBrightnessUp exec brightnessctl s +10% && notify-brightness-level
-bindsym xf86AudioRaiseVolume exec amixer -q sset Master 3%+ unmute && notify-sound-level
-bindsym xf86AudioLowerVolume exec amixer -q sset Master 3%- unmute && notify-sound-level
-bindsym xf86AudioMute exec amixer -q sset Master toggle && notify-sound-level
+bindsym xf86AudioRaiseVolume exec pamixer -u -i 3 && notify-sound-level
+bindsym xf86AudioLowerVolume exec pamixer -u -d 3 && notify-sound-level
+bindsym xf86AudioMute exec pamixer -t && notify-sound-level
 
 ######################### WINDOW SPECIFIC #################################
 

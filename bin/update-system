@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-yay -Syyu
-yay -Sy neovim-git
