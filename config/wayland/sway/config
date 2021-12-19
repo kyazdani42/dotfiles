@@ -27,18 +27,6 @@ exec runmailserver 2&>/dev/null &
 exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
-############################# GTK #####################################
-
-set $gnome-schema org.gnome.desktop.interface
-
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'palenight'
-    gsettings set $gnome-schema icon-theme 'la-capitaine'
-    gsettings set $gnome-schema cursor-theme 'volantes_cursors'
-    gsettings set $gnome-schema cursor-size 16
-    gsettings set $gnome-schema font-name 'DejaVu Sans 12'
-}
-
 ############################# INPUT #####################################
 
 # Input configuration
