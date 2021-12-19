@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 d="$(date | awk '{print $1"_"$2"_"$3"_"$4"_"$5}' | tr ':' '.')"
 

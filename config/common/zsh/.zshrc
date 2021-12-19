@@ -39,16 +39,10 @@ function open() {
 }
 
 # unix aliases
-alias p="sudo pacman"
 alias ss="sudo systemctl"
 alias sss="sudo systemctl status"
 alias ssu="systemctl --user"
 alias ssuu="systemctl --user status"
-alias pacman="sudo pacman"
-alias vim="nvim"
-alias vi="nvim"
-alias v="nvim"
-alias vimdev="./build/bin/nvim"
 alias bat="bat --decorations never --theme=ansi-dark"
 alias l="exa -l"
 alias ls="exa"
@@ -109,5 +103,5 @@ export KEYTIMEOUT=0
 zvm_after_init_commands+=("[ \$(command -v fzf) ] && source $ZDOTDIR/fzf.zsh")
 
 export FNM_DIR="$HOME/.config/fnm"
-eval "$(fnm env)"
-eval "$(zoxide init zsh)"
+[ -x fnm ] && eval "$(fnm env)"
+[ -x zoxide ] && eval "$(zoxide init zsh)"

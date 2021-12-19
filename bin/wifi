@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 station="$(iwctl station list | grep connected | awk '{print $1}')"
 if [ -z "$station" ]; then

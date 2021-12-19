@@ -119,7 +119,7 @@ debug:
 key_bindings:
   - { key: Paste,                   action: Paste                        }
   - { key: Copy,                    action: Copy                         }
-  - { key: A,        mods: Control, action: ToggleViMode                 }
+  - { key: A,        mods: Aly,     action: ToggleViMode                 }
   - { key: J,        mods: Control, mode: Vi, action: ToggleViMode       }
   - { key: Slash,    mods: Control, chars: "++"                          } # allow control slash to send ++ so i can bind control / to comment in vim
   - { key: Backslash,mods: Control, chars: "\x1b[C"                      } # allow control backslash to send right so i can complete zsh autocompletion easily

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 sudo sh -c "echo ${1:-FF0000} > /sys/class/leds/system76::kbd_backlight/color_left"
 sudo sh -c "echo ${1:-FF0000} > /sys/class/leds/system76::kbd_backlight/color_right"

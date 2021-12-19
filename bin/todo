@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 error() {
     printf "usage: $(basename $0) [OPERATOR]\n"

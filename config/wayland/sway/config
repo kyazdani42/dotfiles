@@ -85,7 +85,7 @@ bindsym F11 exec take-screenshot "clipboard"
 bindsym F12 exec take-screenshot
 
 bindsym $mod+s exec [ $(pgrep waybar) ] && killall -9 waybar || waybar &
-bindsym $mod+Shift+p exec sh -c 'killall -9 waybar; waybar &'
+bindsym $mod+Shift+p exec sh -c 'kill -9 $(pgrep waybar); waybar &'
 
 bindsym xf86MonBrightnessDown exec brightnessctl s 10%- && notify-brightness-level
 bindsym xf86MonBrightnessUp exec brightnessctl s +10% && notify-brightness-level

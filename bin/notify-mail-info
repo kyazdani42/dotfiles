@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 folder="$XDG_CACHE_HOME/mail/Inbox/new"
 

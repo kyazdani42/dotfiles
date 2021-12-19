@@ -1,3 +1,3 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 alacritty --title='~#floating#~' -e clipman pick --print0 --tool=CUSTOM --tool-args="fzf --no-info --prompt=' ' -i --color=16,hl:#ffcb6b,hl+:#89ddff,fg+:#ffffff,pointer:#89ddff --bind 'tab:up' --read0"

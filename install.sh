@@ -15,7 +15,7 @@ print_bold() {
     printf "\x1b[1m$1\x1b[0m\n"
 }
 
-[ "$SHELL" != "/usr/bin/zsh" ] && chsh -s /usr/bin/zsh
+[ "$SHELL" != "/usr/bin/zsh" ] && chsh -s /usr/bin/zsh || echo
 
 print_bold "- initialize home folders"
 

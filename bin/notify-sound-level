@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 [ "$XDG_SESSION_TYPE" == "wayland" ] && makoctl dismiss -a
 
