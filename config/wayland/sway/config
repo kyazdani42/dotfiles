@@ -24,8 +24,8 @@ exec mako &
 exec notify-battery-level &
 exec runmailserver 2&>/dev/null &
 
-exec /usr/bin/wl-paste -t text --watch clipman store
-exec /usr/bin/wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+exec wl-paste -t text --watch clipman store
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
 
 ############################# GTK #####################################
 

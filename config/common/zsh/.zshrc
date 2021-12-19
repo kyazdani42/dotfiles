@@ -39,6 +39,7 @@ function open() {
 }
 
 # unix aliases
+alias update="sudo nixos-rebuild switch"
 alias ss="sudo systemctl"
 alias sss="sudo systemctl status"
 alias ssu="systemctl --user"

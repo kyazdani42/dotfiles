@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[ -x '/usr/bin/fd' ] && list=$(fd 'index.theme' /) || list=$(find / -name 'index.theme')
+[ -x "$(which fd)" ] && list=$(fd 'index.theme' /) || list=$(find / -name 'index.theme')
 
 printf "\n\x1b[32;1mGtk Themes:\x1b[0m\n"
 
