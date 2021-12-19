@@ -2,20 +2,9 @@
 
 set -euo pipefail
 
-read -p "install system files and packages ? y/n: " system_install
-
-if [ "$system_install" == "y" ]; then
-    if ! ./install-arch.sh; then
-        echo "something went wrong during install, please rerun the installer after checking the error log"
-        exit 1;
-    fi
-fi
-
 print_bold() {
     printf "\x1b[1m$1\x1b[0m\n"
 }
-
-[ "$SHELL" != "/usr/bin/zsh" ] && chsh -s /usr/bin/zsh || echo
 
 print_bold "- initialize home folders"
 
@@ -46,11 +35,14 @@ link_files "common"
 packer="$HOME/.local/share/nvim/site/pack/packer/opt/packer.nvim"
 [ ! -d "$packer" ] && git clone https://github.com/wbthomason/packer.nvim "$packer"
 
-echo "Cloning config and linking"
-pushd "$HOME/dev/" &>/dev/null
-git clone git@github.com:kyazdani42/nvim-config
-ln -sf "$HOME/dev/nvim-config" "$HOME/.config/nvim"
-popd &>/dev/null
+nvim_config="$HOME/dev/nvim-config" 
+if [ ! -d "$nvim_config" ]; then
+    echo "Cloning config and linking"
+    pushd "$HOME/dev/" &>/dev/null
+    git clone git@github.com:kyazdani42/nvim-config
+    ln -sf "$nvim_config" "$HOME/.config/nvim"
+    popd &>/dev/null
+fi
 
 nvim_plugs=("blue-moon" "nvim-tree.lua" "nvim-treesitter" "nvim-web-devicons" "playground")
 for repo in ${nvim_plugs[@]}; do
@@ -62,10 +54,6 @@ print_bold "- linking vimrc"
 
 rm -f $HOME/.vimrc
 sudo cp -f $PWD/etc/vimrc /etc/vimrc
-
-if command -v yarn >/dev/null; then
-    yarn -s config set prefix "$HOME/.config/yarn" &>/dev/null
-fi
 
 print_bold "select a graphic environment:"
 
@@ -113,6 +101,16 @@ polybar_conf="config/x11/polybar/config"
 if [ ! -f "$polybar_conf" ]; then
     cp "config/x11/polybar/config.tpl" "$polybar_conf"
 fi
+
+if command -v yarn >/dev/null; then
+    function yarn_path_config() {
+        yarn -s --use-yarnrc "$HOME/.config/yarn/config" \
+            config set $1 "$HOME/.config/yarn" &>/dev/null
+    }
+    yarn_path_config prefix
+    yarn_path_config global-folder
+fi
+
 
 cat <<EOF
 Installation is done, you might want to reboot your system
