@@ -79,7 +79,7 @@ alias nvc="nvim ~/.config/nvim/"
 alias tls="tmux list-sessions"
 alias tka="tmux kill-session -a"
 
-alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"
