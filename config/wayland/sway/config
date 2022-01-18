@@ -62,7 +62,7 @@ bindsym $mod+Return split h, exec spawn-alacritty-cwd
 bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd
 # TODO bindsym $mod+Shift+d -> drag n drop picker
 bindsym $mod+Shift+d exec alacritty --working-directory="$HOME" --title='~#floating#~' -e lf
-bindsym $mod+c exec alacritty --title='~#floating#~' -e python
+bindsym $mod+c exec alacritty --title='~#floating#~' -e clj
 bindsym $mod+p exec pavucontrol
 bindsym $mod+m exec alacritty -e neomutt
 

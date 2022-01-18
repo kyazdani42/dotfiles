@@ -78,6 +78,8 @@ alias tls="tmux list-sessions"
 alias tka="tmux kill-session -a"
 
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
+# TODO: remove when fixing the cli, used to work without the flags before
+alias nix-search="nix --experimental-features nix-command --extra-experimental-features flakes search nixpkgs"
 
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"
