@@ -1,3 +1,0 @@
-cmd dnd_sel $dragon-drag-and-drop $fs
-
-map <enter> dnd_sel
