@@ -173,6 +173,7 @@ client.background       $bg
 for_window [app_id="transmission"] floating enable, border pixel 3, move to workspace $ws4
 
 for_window [app_id="firefox"] border none
+for_window [title="Firefox — Sharing Indicator"] kill
 
 for_window [app_id="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
 
