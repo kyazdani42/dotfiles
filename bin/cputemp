@@ -1,11 +1,3 @@
 #!/usr/bin/env bash
 
-getCpuTemp() {
-	sensors | grep Core | awk '{print substr($3, 2, length($3)-5)}' | tr "\\n" " " | sed 's/ /°C  /g' | sed 's/  $//'
-}
-
-clear
-while true; do
-	printf "\r%s" "$(getCpuTemp)"
-	sleep 2
-done
+cat /sys/class/thermal/thermal_zone*/temp | sort -r | head -n 1 | head -c 2

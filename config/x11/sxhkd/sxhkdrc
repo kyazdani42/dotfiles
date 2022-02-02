@@ -22,9 +22,6 @@ alt + shift + d
 alt + shift + x
     nwgbar -o 0 &
 
-alt + shift + u
-    rofi_wifi &
-
 alt + shift + o
     lock
 

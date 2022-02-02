@@ -50,8 +50,6 @@ input type:touchpad {
 bindsym $mod+Shift+x exec nwgbar -o 0
 bindsym $mod+d exec nwggrid -o 1 -b '#1b1e2b'
 
-bindsym $mod+Shift+u exec wofi_wifi
-
 bindsym $mod+y exec clipboard_manager
 bindsym button1 nop
 bindsym $mod+Shift+q kill
