@@ -32,21 +32,21 @@ link_files() {
 
 link_files "common"
 
-packer="$HOME/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+packer="$HOME/.local/share/nvim/site/pack/packer/start/packer.nvim"
 [ ! -d "$packer" ] && git clone https://github.com/wbthomason/packer.nvim "$packer"
 
-nvim_config="$HOME/dev/nvim-config" 
+mkdir -p "$HOME/dev/nvim/plugins"
+
+nvim_config="$HOME/dev/nvim/config" 
 if [ ! -d "$nvim_config" ]; then
     echo "Cloning config and linking"
-    pushd "$HOME/dev/" &>/dev/null
-    git clone git@github.com:kyazdani42/nvim-config
+    git clone git@github.com:kyazdani42/nvim-config "$nvim_config"
     ln -sf "$nvim_config" "$HOME/.config/nvim"
-    popd &>/dev/null
 fi
 
 nvim_plugs=("blue-moon" "nvim-tree.lua" "nvim-treesitter" "nvim-web-devicons" "playground")
 for repo in ${nvim_plugs[@]}; do
-    folder="$HOME/dev/plugins/${repo}"
+    folder="$HOME/dev/nvim/plugins/${repo}"
     [ ! -d "$folder" ] && git clone "git@github.com:kyazdani42/${repo}" "$folder"
 done
 
