@@ -74,11 +74,15 @@ bindsym F12 exec take-screenshot
 bindsym $mod+s exec [ $(pgrep waybar) ] && killall -9 waybar || waybar &
 bindsym $mod+Shift+p exec sh -c 'kill -9 $(pgrep waybar); waybar &'
 
-bindsym xf86MonBrightnessDown exec brightnessctl s 10%- && notify-brightness-level
-bindsym xf86MonBrightnessUp exec brightnessctl s +10% && notify-brightness-level
-bindsym xf86AudioRaiseVolume exec pamixer -u -i 3 && notify-sound-level
-bindsym xf86AudioLowerVolume exec pamixer -u -d 3 && notify-sound-level
-bindsym xf86AudioMute exec pamixer -t && notify-sound-level
+bindsym XF86MonBrightnessUp exec lightctl raise
+bindsym XF86MonBrightnessDown exec lightctl lower
+
+bindsym XF86AudioRaiseVolume exec volumectl raise
+bindsym XF86AudioLowerVolume exec volumectl lower
+bindsym XF86AudioMute exec volumectl mute
+bindsym XF86AudioMicMute exec volumectl --mic mute
+
+exec "avizo-service"
 
 ######################### WINDOW SPECIFIC #################################
 

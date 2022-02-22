@@ -18,7 +18,7 @@ if [ "$with_pass" = "y" ]; then
     read -p "passphrase: " passphrase
     [ -z "$passphrase" ] && exit
 
-    sudo nmcli device wifi connect "$ssid" password "$passphrase"
+    nmcli device wifi connect "$ssid" password "$passphrase"
 else
-    sudo nmcli device wifi connect "$ssid"
+    nmcli device wifi connect "$ssid"
 fi
