@@ -15,6 +15,7 @@ window:
   dynamic_padding: false
   decorations: full
   startup_mode: Maximized
+  opacity: 1
 
 scrolling:
   history: 10000
@@ -90,8 +91,6 @@ bell:
   animation: EaseOutExpo
   duration: 0
   color: '#ffffff'
-
-background_opacity: 1
 
 mouse:
   double_click: { threshold: 300 }
