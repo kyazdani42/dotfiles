@@ -1,12 +1,12 @@
-[submodule "config/common/zsh/zsh-completions"]
-	path = config/common/zsh/zsh-completions
+[submodule "config/zsh/zsh-completions"]
+	path = config/zsh/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions
-[submodule "config/common/zsh/zsh-autosuggestions"]
-	path = config/common/zsh/zsh-autosuggestions
+[submodule "config/zsh/zsh-autosuggestions"]
+	path = config/zsh/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "config/common/zsh/zsh-syntax-highlighting"]
-	path = config/common/zsh/zsh-syntax-highlighting
+[submodule "config/zsh/zsh-syntax-highlighting"]
+	path = config/zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "config/common/zsh/zsh-vi-mode"]
-	path = config/common/zsh/zsh-vi-mode
+[submodule "config/zsh/zsh-vi-mode"]
+	path = config/zsh/zsh-vi-mode
 	url = https://github.com/jeffreytse/zsh-vi-mode

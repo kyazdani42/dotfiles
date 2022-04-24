@@ -1,10 +1,7 @@
-*plugged
 error.log
 *zcomp*
 plug.vim
 plugin
 .netrwhist
 bin/session-*
-config/common/nwg-launchers/nwgbar/bar.json
-config/x11/polybar/config
-Xresources
+config/nwg-launchers/nwgbar/bar.json

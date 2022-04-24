@@ -1,4 +1,4 @@
-# dotfiles i use on nixos
+# wayland based dotfiles i use on nixos
 
 ## **install**
 ```bash
@@ -7,4 +7,3 @@ $ cd dotfiles && ./post-install.sh
 ```
 
 ![alt text](.github/screen.png?raw=true "screenshot")
-

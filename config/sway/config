@@ -1,0 +1,192 @@
+# Mod1 is Alt, Mod4 is Windows
+set $mod Mod1
+
+set $term alacritty
+
+font pango:Lato Medium 12
+title_align center
+default_border none
+focus_follows_mouse no
+default_border pixel 2
+default_floating_border pixel 3
+smart_borders on
+smart_gaps on
+focus_follows_mouse no
+
+output * bg ~/.config/wallpaper fill 
+output eDP-1 pos 0 0
+output DP-1 pos 1920 0 scale 2
+
+floating_maximum_size 1920 x 1080
+seat * hide_cursor 4000
+seat * xcursor_theme volantes_cursors 16
+exec waybar &
+exec mako &
+exec notify-battery-level &
+# exec runmailserver 2&>/dev/null &
+
+exec wl-paste -t text --watch clipman store
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+
+############################# INPUT #####################################
+
+# Input configuration
+input type:keyboard {
+        xkb_layout us
+        xkb_options ctrl:nocaps,compose:lwin
+        repeat_delay 300
+        repeat_rate 40
+}
+
+input type:touchpad {
+        tap enabled
+        natural_scroll disabled
+        dwt enabled
+        pointer_accel -0.0 # set mouse sensitivity (between -1 and 1)
+        scroll_factor 1.0
+}
+
+####################### KEY BINDINGS ####################################
+
+bindsym $mod+Shift+x exec nwgbar -o 0
+bindsym $mod+d exec nwggrid -o 1 -b '#1b1e2b'
+
+bindsym $mod+y exec clipboard_manager
+bindsym button1 nop
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+w exec $BROWSER
+bindsym $mod+Shift+o exec lock
+
+bindsym $mod+Return split h, exec spawn-alacritty-cwd
+bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd
+# TODO bindsym $mod+Shift+d -> drag n drop picker
+bindsym $mod+Shift+d exec alacritty --working-directory="$HOME" --title='~#floating#~' -e lf
+bindsym $mod+c exec alacritty --title='~#floating#~' -e python
+bindsym $mod+p exec pavucontrol
+bindsym $mod+m exec alacritty -e neomutt
+
+bindsym $mod+semicolon exec alacritty --title='~#floating#~' -e wut
+
+bindsym Print exec take-screenshot "fullscreen"
+bindsym F11 exec take-screenshot "clipboard"
+bindsym F12 exec take-screenshot
+
+bindsym $mod+s exec [ $(pgrep waybar) ] && killall -9 waybar || waybar &
+bindsym $mod+Shift+p exec sh -c 'kill -9 $(pgrep waybar); waybar &'
+
+bindsym XF86MonBrightnessUp exec lightctl raise
+bindsym XF86MonBrightnessDown exec lightctl lower
+
+bindsym XF86AudioRaiseVolume exec volumectl raise
+bindsym XF86AudioLowerVolume exec volumectl lower
+bindsym XF86AudioMute exec volumectl mute
+bindsym XF86AudioMicMute exec volumectl --mic mute
+
+exec "avizo-service"
+
+######################### WINDOW SPECIFIC #################################
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+Shift+F2 reload
+bindsym $mod+Tab workspace back_and_forth
+floating_modifier $mod normal
+
+set $ws1 '1 - '
+set $ws2 '2 - '
+set $ws3 '3 - '
+set $ws4 '4 - 缾'
+set $ws5 '5 - '
+set $ws6 '6 - '
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+
+# go to mode
+bindsym $mod+Shift+z split h
+bindsym $mod+Shift+v split v
+
+bindsym $mod+Shift+f fullscreen
+bindsym $mod+Shift+t layout tabbed
+bindsym $mod+Shift+e layout toggle split
+
+bindsym $mod+Shift+s floating toggle
+bindsym $mod+space focus mode_toggle
+
+# Scratchpad:
+bindsym $mod+Control+s move scratchpad
+bindsym $mod+Control+Return scratchpad show
+
+# gaps
+# bindsym $mod+g gaps inner current plus 5
+# bindsym $mod+Shift+g gaps inner current minus 5
+# bindsym $mod+Shift+e gaps inner current set 0
+# bindsym $mod+Shift+f gaps inner current set 10
+
+# Resizing containers:
+bindsym $mod+Shift+r mode "resize"
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+    bindsym $mod+Shift+r mode "default"
+    bindsym Escape mode "default"
+}
+
+# Colors
+set $bg         #1b1e2b
+set $white      #FFFFFF
+set $white-alt  #959dcb
+set $red        #f07178
+set $cyan       #89ddff
+
+client.focused          $bg  $bg  $cyan      $white-alt $white-alt
+client.focused_inactive $bg  $bg  $white-alt $bg        $bg
+client.unfocused        $bg  $bg  $white-alt $bg        $bg
+client.placeholder      $bg  $bg  $white-alt $bg        $bg
+client.urgent           $red $red $red       $red       $red
+client.background       $bg
+
+for_window [app_id="transmission"] floating enable, border pixel 3, move to workspace $ws4
+
+for_window [app_id="firefox"] border none
+for_window [title="Firefox — Sharing Indicator"] kill
+
+for_window [app_id="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
+
+for_window [title="~#floating#~"] floating enable, resize set 1000 400, border pixel 3
+for_window [title="~#dev#~"] floating enable, border pixel 3
+
+# x apps
+for_window [shell=".*"] title_format "%title :: %shell"
+
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+include /etc/sway/config.d/*
+
+# vim: ft=i3config
