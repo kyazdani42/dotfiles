@@ -59,7 +59,7 @@ fi
 
 nwgbar_conf="config/nwg-launchers/nwgbar/bar.json"
 if [ ! -f "$nwgbar_conf" ]; then
-    cp "config/nwg-launchers/nwgbar/bar.tpl" "$nwgbar_conf"
+    cp "config/nwg-launchers/nwgbar/bar.template.json" "$nwgbar_conf"
     sed -i "s/\\$\\$/$(whoami)/g" "$nwgbar_conf";
 fi
 
