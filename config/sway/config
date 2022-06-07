@@ -23,7 +23,7 @@ seat * xcursor_theme volantes_cursors 16
 exec waybar &
 exec mako &
 exec notify-battery-level &
-exec git-dude ~/dev/work &
+# exec git-dude ~/dev/work &
 # exec runmailserver 2&>/dev/null &
 
 exec wl-paste -t text --watch clipman store
