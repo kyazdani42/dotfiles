@@ -55,6 +55,9 @@ bindsym $mod+y exec clipboard_manager
 bindsym button1 nop
 bindsym $mod+Shift+q kill
 bindsym $mod+Shift+w exec $BROWSER
+
+bindsym $mod+Shift+b exec brave --disable-pinch
+
 bindsym $mod+Shift+o exec lock
 
 bindsym $mod+Return split h, exec spawn-alacritty-cwd
