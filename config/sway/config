@@ -23,7 +23,6 @@ seat * xcursor_theme volantes_cursors 16
 exec waybar &
 exec mako &
 exec notify-battery-level &
-# exec git-dude ~/dev/work &
 # exec runmailserver 2&>/dev/null &
 
 exec wl-paste -t text --watch clipman store
@@ -72,7 +71,7 @@ bindsym Print exec take-screenshot "fullscreen"
 bindsym F11 exec take-screenshot "clipboard"
 bindsym F12 exec take-screenshot
 
-bindsym $mod+s exec [ $(pgrep waybar) ] && killall -9 waybar || waybar &
+bindsym $mod+s exec [ "$(pgrep waybar)" ] && kill -9 $(pgrep waybar) || waybar &
 bindsym $mod+Shift+p exec sh -c 'kill -9 $(pgrep waybar); waybar &'
 
 bindsym XF86MonBrightnessUp exec lightctl raise
@@ -176,7 +175,6 @@ client.background       $bg
 
 for_window [app_id="transmission"] floating enable, border pixel 3, move to workspace $ws4
 
-for_window [app_id="firefox"] border none
 for_window [title="Firefox — Sharing Indicator"] kill
 
 for_window [app_id="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
