@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+function format_git_roads() {
+    cat /dev/stdin \
+        | sed 's/\*/\x1b[34m●\x1b[0m/' \
+        | sed 's/|[^ ]*\//│╱/g' \
+        | sed 's/|/│/g' \
+        | sed 's/\\/╲/g' \
+        | delta
+}
+
+if [ "$1" == "--more" ]; then
+    format_string='%C(#cfcfbf)%h%Creset%C(auto)%d%Creset %s %C(#9492b7)(%cr) %C(#747297)<%ae>%Creset'
+else
+    format_string='%C(#cfcfbf)%h%Creset%C(auto)%d%Creset %s'
+fi
+
+git log --all --graph --oneline --color --pretty=format:"$format_string" | format_git_roads
