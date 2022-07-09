@@ -5,13 +5,15 @@
   "modules-left": ["clock", "custom/separator", "sway/window", "sway/mode"],
   "modules-center": ["sway/workspaces"],
   "modules-right": [
+    "custom/notification",
+    "custom/separator",
     "custom/thermal",
     "custom/separator",
     "pulseaudio",
     "custom/separator",
-    "battery",
+    "network",
     "custom/separator",
-    "network"
+    "battery",
   ],
   "sway/workspaces": {
     "disable-scroll": true,
@@ -72,5 +74,21 @@
     "interval": 5,
     "tooltip": false,
     "format": "{} °C"
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='#a6accd'></span><span foreground='#d06178'><sup></sup></span>",
+      "none": "<span foreground='#a6accd'></span>",
+      "dnd-notification": "<span foreground='#a6accd'></span><span foreground='#d06178'><sup></sup></span>",
+      "dnd-none": "<span foreground='#a6accd'></span>"
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }
