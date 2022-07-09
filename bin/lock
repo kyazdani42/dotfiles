@@ -1,37 +1,34 @@
 #!/usr/bin/env bash
 
 if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
-    lpath="${XDG_CACHE_HOME}/bg"
-    grim $lpath
-    convert -blur 0,10 $lpath $lpath
-
-    tp="#ffffff00"
+    tp="00000000"
     swaylock \
-        -i $lpath \
-        -c "#1b1e2b" \
-        --bs-hl-color "#ff0000" \
-        --font "Lato Medium" \
-        --font-size "12" \
-        --indicator-idle-visible \
-        --indicator-radius 30 \
-        --indicator-thickness 3 \
-        --ring-color "#89ddff" \
-        --ring-clear-color "#c792ea" \
-        --ring-wrong-color "#f07178" \
-        -r \
-        --inside-color $tp \
-        --inside-clear-color $tp \
-        --inside-ver-color $tp \
-        --inside-wrong-color $tp \
-        --key-hl-color $tp \
-        --layout-bg-color $tp \
-        --layout-border-color $tp \
-        --layout-text-color $tp \
-        --text-color $tp \
-        --text-clear-color  $tp \
-        --text-ver-color $tp \
-        --text-wrong-color $tp
-
+        --screenshots \
+        --clock \
+        --indicator \
+        --indicator-radius 120 \
+        --indicator-thickness 7 \
+        --effect-blur 7x5 \
+        --effect-vignette 0.5:0.5 \
+        --key-hl-color b9a3eb \
+        --text-color fbfbfb \
+        --ring-color 424760 \
+        --line-color 00000000 \
+        --inside-color 00000055 \
+        --separator-color $tp \
+        --fade-in 0.2 \
+        --inside-clear-color b8bcf320 \
+        --ring-clear-color 959dcb \
+        --text-clear-color b8bcf3 \
+        --line-clear-color $tp \
+        --inside-ver-color cfbfbf20 \
+        --text-ver-color fbfbfb \
+        --ring-ver-color cfbfbf \
+        --line-ver-color $tp \
+        --inside-wrong-color d0617820 \
+        --ring-wrong-color d06178 \
+        --text-wrong-color e61f44 \
+        --line-wrong-color $tp
 else
     lpath="${XDG_CACHE_HOME}/bg.png"
     scrot $lpath
