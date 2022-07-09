@@ -7,11 +7,15 @@ if [ "$diff" != "" ]; then
     exit 1
 fi
 
-git checkout master
+branch="main"
+has_main="$(git remote -v | grep main)"
+[ "$has_main" == "" ] && branch="master"
+
+git checkout $branch
 echo
 
 echo "Pulling master changes..."
-git pull origin master
+git pull origin $branch
 echo
 
 has_upstream="$(git remote -v | grep upstream)"
@@ -20,8 +24,8 @@ has_upstream="$(git remote -v | grep upstream)"
 echo "Fetching upstream changes..."
 git fetch upstream
 
-git rebase upstream/master
+git rebase upstream/$branch
 echo
 
 echo "Pushing to master..."
-git push origin master
+git push origin $branch
