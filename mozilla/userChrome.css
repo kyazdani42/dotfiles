@@ -8,6 +8,7 @@ body {
   position: absolute !important;
   bottom: 100% !important;
   background: #1b1e2b !important;
+  font-size: 15px !important;
 }
 /* tabs on bottom END */
 
@@ -58,4 +59,8 @@ body {
 
 #urlbar-input-container {
   border: 1px solid #292d3e !important;
+}
+
+#urlbar-input {
+  font-size: 15px !important;
 }
