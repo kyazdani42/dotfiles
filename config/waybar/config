@@ -61,6 +61,7 @@
   "network": {
     "format-ethernet": "connected via cable",
     "format-wifi": "connected to {}",
+    "format": "not connected",
     "on-click": "select-wifi"
   },
   "custom/mail": {
