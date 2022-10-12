@@ -80,6 +80,7 @@ alias tka="tmux kill-session -a"
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 # TODO: remove when fixing the cli, used to work without the flags before
 alias nix-search="nix --experimental-features nix-command --extra-experimental-features flakes search nixpkgs"
+alias nix-shell="nix-shell --run zsh"
 
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"
@@ -105,6 +106,4 @@ source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.zsh
 export KEYTIMEOUT=0
 zvm_after_init_commands+=("[ \$(command -v fzf) ] && source $ZDOTDIR/fzf.zsh")
 
-export FNM_DIR="$HOME/.config/fnm"
-[ -x "$(which fnm)" ] && eval "$(fnm env)"
 [ -x "$(which zoxide)" ] && eval "$(zoxide init zsh)"
