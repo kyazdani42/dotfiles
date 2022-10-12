@@ -55,5 +55,4 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 
-
 source session-$(cat /etc/hostname)-$(whoami).sh

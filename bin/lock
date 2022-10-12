@@ -1,40 +1,30 @@
 #!/usr/bin/env bash
 
-if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
-    tp="00000000"
-    swaylock \
-        --screenshots \
-        --clock \
-        --indicator \
-        --indicator-radius 120 \
-        --indicator-thickness 7 \
-        --effect-blur 7x5 \
-        --effect-vignette 0.5:0.5 \
-        --key-hl-color b9a3eb \
-        --text-color fbfbfb \
-        --ring-color 424760 \
-        --line-color 00000000 \
-        --inside-color 00000055 \
-        --separator-color $tp \
-        --fade-in 0.2 \
-        --inside-clear-color b8bcf320 \
-        --ring-clear-color 959dcb \
-        --text-clear-color b8bcf3 \
-        --line-clear-color $tp \
-        --inside-ver-color cfbfbf20 \
-        --text-ver-color fbfbfb \
-        --ring-ver-color cfbfbf \
-        --line-ver-color $tp \
-        --inside-wrong-color d0617820 \
-        --ring-wrong-color d06178 \
-        --text-wrong-color e61f44 \
-        --line-wrong-color $tp
-else
-    lpath="${XDG_CACHE_HOME}/bg.png"
-    scrot $lpath
-    convert -blur 0,10 $lpath $lpath
-
-    i3lock \
-        -i $lpath \
-        -c "#1b1e2b"
-fi
+tp="00000000"
+swaylock \
+  --screenshots \
+  --clock \
+  --indicator \
+  --indicator-radius 120 \
+  --indicator-thickness 7 \
+  --effect-blur 7x5 \
+  --effect-vignette 0.5:0.5 \
+  --key-hl-color b9a3eb \
+  --text-color fbfbfb \
+  --ring-color 424760 \
+  --line-color 00000000 \
+  --inside-color 00000055 \
+  --separator-color $tp \
+  --fade-in 0.2 \
+  --inside-clear-color b8bcf320 \
+  --ring-clear-color 959dcb \
+  --text-clear-color b8bcf3 \
+  --line-clear-color $tp \
+  --inside-ver-color cfbfbf20 \
+  --text-ver-color fbfbfb \
+  --ring-ver-color cfbfbf \
+  --line-ver-color $tp \
+  --inside-wrong-color d0617820 \
+  --ring-wrong-color d06178 \
+  --text-wrong-color e61f44 \
+  --line-wrong-color $tp

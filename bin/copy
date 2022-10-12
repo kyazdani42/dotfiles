@@ -1,22 +1,10 @@
 #!/usr/bin/env bash
 
 if [ ! -t 0 ]; then
-    if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
-        cat /dev/stdin | wl-copy
-    else
-        cat /dev/stdin | xclip -in -selection clipboard
-    fi
+    cat /dev/stdin | wl-copy
     exit
 fi
 
 [ $# != 1 ] || [ ! -f $1 ] && exit 1
 
-if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
-    cat $1 | wl-copy
-else
-    options=""
-    (echo $1 | grep -Eq ".png$") && options="-t image/png"
-    (echo $1 | grep ".jpe\?g$") && options="-t image/jpeg"
-
-    xclip -selection clipboard $options $1
-fi
+cat $1 | wl-copy
