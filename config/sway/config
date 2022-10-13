@@ -23,7 +23,7 @@ seat * xcursor_theme volantes_cursors 16
 exec swaync &
 exec waybar &
 exec notify-battery-level &
-# exec runmailserver 2&>/dev/null &
+exec gammastep &
 
 exec wl-paste -t text --watch clipman store
 exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"

@@ -11,6 +11,8 @@
     "custom/separator",
     "pulseaudio",
     "custom/separator",
+    "backlight",
+    "custom/separator",
     "network",
     "custom/separator",
     "battery",
@@ -63,12 +65,6 @@
     "format-wifi": "connected to {}",
     "format": "not connected",
     "on-click": "select-wifi"
-  },
-  "custom/mail": {
-      "exec": "syncmail",
-      "interval": 1200,
-      "tooltip": false,
-      "format": "  {}"
   },
   "custom/thermal": {
     "exec": "cputemp",
