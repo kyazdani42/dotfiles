@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-cat /sys/class/thermal/thermal_zone*/temp | sort -r | head -n 1 | head -c 2
+cpu_temp_file=$(grep 'x86' /sys/class/thermal/thermal_zone*/type | cut -d':' -f1 | sed 's/type/temp/')
+cat $cpu_temp_file | head -c 2

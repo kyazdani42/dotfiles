@@ -20,13 +20,12 @@ output DP-1 pos 1920 0 scale 2
 floating_maximum_size 1920 x 1080
 seat * hide_cursor 4000
 seat * xcursor_theme volantes_cursors 16
+
 exec swaync &
 exec waybar &
 exec notify-battery-level &
 exec gammastep &
-
-exec wl-paste -t text --watch clipman store
-exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
+exec wl-paste -pw wl-copy &
 
 ############################# INPUT #####################################
 
@@ -51,10 +50,9 @@ input type:touchpad {
 bindsym $mod+Shift+x exec nwgbar -o 0
 bindsym $mod+d exec nwggrid -o 1 -b '#1b1e2b'
 
-bindsym $mod+y exec clipboard_manager
 bindsym button1 nop
 bindsym $mod+Shift+q kill
-bindsym $mod+Shift+w exec $BROWSER
+bindsym $mod+Shift+w exec TZ=UTC $BROWSER
 
 bindsym $mod+Shift+b exec brave --disable-pinch
 
@@ -178,7 +176,7 @@ client.placeholder      $bg  $bg  $white-alt $bg        $bg
 client.urgent           $red $red $red       $red       $red
 client.background       $bg
 
-for_window [app_id="transmission"] floating enable, border pixel 3, move to workspace $ws4
+for_window [app_id="transmission"] floating enable, border pixel 3
 
 for_window [title="Firefox — Sharing Indicator"] kill
 

@@ -2,14 +2,15 @@
  * vim: ft=less
  */
 
-@define-color cc-bg rgba(0, 0, 0, 0.7);
+@define-color cc-bg rgba(27, 30, 43, 0.90);
 
 @define-color noti-border-color rgba(255, 255, 255, 0.15);
-@define-color noti-bg rgb(48, 48, 48);
-@define-color noti-bg-hover rgb(56, 56, 56);
-@define-color noti-bg-focus rgba(68, 68, 68, 0.6);
-@define-color noti-close-bg rgba(255, 255, 255, 0.1);
-@define-color noti-close-bg-hover rgba(255, 255, 255, 0.15);
+@define-color noti-bg #292d3e;
+@define-color noti-bg-hover #959dcb;
+@define-color noti-bg-focus @cc-bg;
+@define-color noti-close-bg #292d3e;
+@define-color noti-close-bg-hover #a6accd;
+@define-color main-border-color #292d3e;
 
 @define-color bg-selected rgb(0, 128, 255);
 
@@ -20,6 +21,7 @@
 .notification-row:focus,
 .notification-row:hover {
   background: @noti-bg-focus;
+  border-left: 2px solid @main-border-color;
 }
 
 .notification {
@@ -180,6 +182,7 @@
 
 .control-center {
   background: @cc-bg;
+  border-left: 2px solid @main-border-color;
 }
 
 .control-center-list {
@@ -192,5 +195,5 @@
 
 /* Window behind control center and on all other monitors */
 .blank-window {
-  background: alpha(black, 0.25);
+  background: alpha(#1b1e2b, 0.25);
 }

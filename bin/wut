@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 
-read -p 'show otp ? y/n: ' ans
+set -eo pipefail
 
-if [ "$ans" != "y" ]; then
-    pass | awk '{if(NR>1)print $2}' | grep -v otp | fzf | xargs pass | copy
+read -p 'otp ? y/n: ' ans
+
+function f() {
+  fzf --no-info --prompt=' ' -i --color=16,hl:#ffcb6b,hl+:#89ddff,fg+:#ffffff,pointer:#89ddff
+}
+
+pass="$(pass | awk '{if(NR>1)print $2}' | f)"
+
+if [ "$ans" == "y" ]; then
+  pass otp "$pass" | wl-copy -o
 else
-    pass | awk '{if(NR>1)print $2}' | grep otp | fzf | xargs pass otp | copy
+  pass "$pass" | head -n1 | wl-copy -o
 fi
