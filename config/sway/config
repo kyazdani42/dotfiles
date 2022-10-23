@@ -52,23 +52,22 @@ bindsym $mod+d exec nwggrid -o 1 -b '#1b1e2b'
 
 bindsym button1 nop
 bindsym $mod+Shift+q kill
+
 bindsym $mod+Shift+w exec TZ=UTC $BROWSER
-
 bindsym $mod+Shift+b exec brave --disable-pinch
-
 bindsym $mod+Shift+o exec lock
+bindsym $mod+p exec pavucontrol
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
 bindsym $mod+Return split h, exec spawn-alacritty-cwd
 bindsym $mod+Shift+Return split v, exec spawn-alacritty-cwd
+
 # TODO bindsym $mod+Shift+d -> drag n drop picker
-bindsym $mod+Shift+d exec alacritty --working-directory="$HOME" --title='~#floating#~' -e lf
-bindsym $mod+c exec alacritty --title='~#floating#~' -e python
-bindsym $mod+p exec pavucontrol
-bindsym $mod+m exec alacritty -e neomutt
-
-bindsym $mod+Shift+n exec swaync-client -t -sw
-
-bindsym $mod+semicolon exec alacritty --title='~#floating#~' -e wut
+bindsym $mod+Shift+d exec alacritty --working-directory="$HOME" --title='File Manager' -e lf
+bindsym $mod+c exec alacritty --title='Calculator' -e python
+bindsym $mod+m exec alacritty --title='Mail' -e neomutt
+bindsym $mod+r exec alacritty --title='News' -e newsboat
+bindsym $mod+semicolon exec alacritty --title='Password store' -e wut
 
 bindsym Print exec take-screenshot "fullscreen"
 bindsym F11 exec take-screenshot "clipboard"
@@ -182,8 +181,13 @@ for_window [title="Firefox — Sharing Indicator"] kill
 
 for_window [app_id="pavucontrol"] floating enable, resize set 1200 600, border pixel 3
 
-for_window [title="~#floating#~"] floating enable, resize set 1000 400, border pixel 3
 for_window [title="~#dev#~"] floating enable, border pixel 3
+
+for_window [title="Calculator"] floating enable, resize set 800 400, border pixel 3
+for_window [title="Mail"] floating enable, resize set 1600 950, border pixel 5
+for_window [title="News"] floating enable, resize set 1600 950, border pixel 5
+for_window [title="Password store"] floating enable, resize set 300 400, border pixel 3
+for_window [title="File Manager"] floating enable, resize set 1000 400, border pixel 3
 
 # x apps
 for_window [shell=".*"] title_format "%title :: %shell"

@@ -40,7 +40,7 @@ if [ ! -d "$nvim_config" ]; then
     ln -sf "$nvim_config" "$HOME/.config/nvim"
 fi
 
-nvim_plugs=("blue-moon" "nvim-tree.lua" "nvim-treesitter" "nvim-web-devicons" "playground")
+nvim_plugs=("blue-moon" "nvim-tree.lua" "nvim-treesitter" "nvim-web-devicons")
 for repo in ${nvim_plugs[@]}; do
     folder="$HOME/dev/nvim/plugins/${repo}"
     [ ! -d "$folder" ] && git clone "git@github.com:kyazdani42/${repo}" "$folder"

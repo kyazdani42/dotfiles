@@ -1,0 +1,30 @@
+max-items        200
+articlelist-title-format "%T: %u unread, %t total - %U"
+articlelist-format "%D . %t"
+
+feedlist-title-format "Feeds: %u unread, %t total
+feedlist-format "%u %t"
+
+bind-key l open
+bind-key h quit
+bind-key j down
+bind-key k up
+bind-key J next-feed
+bind-key K prev-feed
+bind-key q hard-quit
+bind-key G end
+bind-key g home
+
+color background          color0     default
+color listnormal          color7     default
+color listnormal_unread   color15    default
+color listfocus           color0     color4
+color listfocus_unread    color0     color4   bold
+color info                color12    color0
+color article             color15   default
+
+highlight article "^(Feed|Link|Title|Date|Author):.*$" color15 default
+highlight article "https?://[^ ]+" color15 default underline
+highlight article "\\[[0-9]+\\]" color10 default bold
+highlight article "\\[image\\ [0-9]+\\]" color10 default bold
+highlight feedlist "^─.*$" color6 color0 bold

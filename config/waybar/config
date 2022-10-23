@@ -7,6 +7,8 @@
   "modules-right": [
     "custom/notification",
     "custom/separator",
+    "custom/feed",
+    "custom/separator",
     "custom/thermal",
     "custom/separator",
     "pulseaudio",
@@ -71,6 +73,13 @@
     "interval": 5,
     "tooltip": false,
     "format": "{} °C"
+  },
+  "custom/feed": {
+    "exec": "update-rss",
+    "interval": 180,
+    "tooltip": false,
+    "format": "<span foreground='#E77D24'>參</span>{}",
+    "on-click": "alacritty --title='News' -e newsboat"
   },
   "custom/notification": {
     "tooltip": false,
