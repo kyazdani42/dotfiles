@@ -12,6 +12,6 @@
   {
     "name": "Shutdown",
     "exec": "systemctl -i poweroff",
-    "icon": "/home/$$/pictures/user.png"
+    "icon": "/home/$$/pictures/ferris-orange.png"
   }
 ]

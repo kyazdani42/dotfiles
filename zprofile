@@ -30,6 +30,7 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export INPUTRC="$XDG_CONFIG_HOME/inputrc"
 export WGETRC="$XDG_CONFIG_HOME/wget/wgetrc"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc-2.0
 
 # xdg data dirs
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"

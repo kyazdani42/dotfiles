@@ -79,7 +79,7 @@
     "interval": 180,
     "tooltip": false,
     "format": "<span foreground='#E77D24'>參</span>{}",
-    "on-click": "alacritty --title='News' -e newsboat"
+    "on-click": "alacritty --title='*News*' -e newsboat"
   },
   "custom/notification": {
     "tooltip": false,
