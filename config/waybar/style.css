@@ -1,48 +1,54 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-family: "Lato Medium", "NotoSansMono Nerd Font";
-    font-size: 15px;
-    min-height: 0;
-    padding: 0px 5px;
+  border: none;
+  border-radius: 0;
+  font-family: "Lato Medium", "NotoSansMono Nerd Font";
+  font-size: 15px;
+  min-height: 0;
+  padding: 0px 5px;
 }
 
 window#waybar {
-    background-color: #1b1e2b;
-    color: #ffffff;
+  background-color: #1b1e2b;
+  color: #ffffff;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 #workspaces button {
-    padding: 0 11px;
-    background-color: #1b1e2b;
-    color: #ffffff;
+  padding: 0 11px;
+  background-color: #1b1e2b;
+  color: #ffffff;
 }
 
 #workspaces button.focused {
-    color: #89ddff;
+  background-color: #292d3e;
+  color: #89ddff;
+}
+
+#workspaces button.persistent {
+  color: #474e6c;
 }
 
 #workspaces button.urgent {
-    color: #f07178;
+  background-color: #f07178;
+  color: #1b1e2b;
 }
 
 #window {
 }
 
 #mode {
-    color: #ffcb6b;
+  color: #ffcb6b;
 }
 
 #clock {
 }
 
 #battery {
-    color: #fff;
-    background-color: #1b1e2b;
+  color: #fff;
+  background-color: #1b1e2b;
 }
 
 #pulseaudio {}

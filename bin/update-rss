@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-newsboat -x reload
-newsboat -x print-unread | awk '{print $1}'
+newsboat -x reload 2&>/dev/null  || { echo "??"; exit; }
+newsboat -x print-unread | awk '{print $1}' 2>/dev/null || { echo "??"; exit; }

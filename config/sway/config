@@ -76,8 +76,8 @@ bindsym F12 exec take-screenshot
 bindsym $mod+s exec [ "$(pgrep waybar)" ] && kill -9 $(pgrep waybar) || waybar &
 bindsym $mod+Shift+p exec sh -c 'kill -9 $(pgrep waybar); waybar &'
 
-bindsym XF86MonBrightnessUp exec lightctl raise
-bindsym XF86MonBrightnessDown exec lightctl lower
+bindsym XF86MonBrightnessUp exec lightctl up
+bindsym XF86MonBrightnessDown exec lightctl down
 
 bindsym XF86AudioRaiseVolume exec volumectl raise
 bindsym XF86AudioLowerVolume exec volumectl lower
@@ -106,12 +106,12 @@ bindsym $mod+Shift+F2 reload
 bindsym $mod+Tab workspace back_and_forth
 floating_modifier $mod normal
 
-set $ws1 '1 - '
-set $ws2 '2 - '
-set $ws3 '3 - '
-set $ws4 '4 - 缾'
-set $ws5 '5 - '
-set $ws6 '6 - '
+set $ws1 '1'
+set $ws2 '2'
+set $ws3 '3'
+set $ws4 '4'
+set $ws5 '5'
+set $ws6 '6'
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1

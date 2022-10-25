@@ -1,6 +1,7 @@
 max-items        200
 articlelist-title-format "%T: %u unread, %t total - %U"
 articlelist-format "%D . %t"
+reload-threads 100
 
 feedlist-title-format "Feeds: %u unread, %t total
 feedlist-format "%u %t"
