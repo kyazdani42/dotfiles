@@ -13,7 +13,7 @@ smart_borders on
 smart_gaps on
 focus_follows_mouse no
 
-output * bg ~/.config/wallpaper fill 
+output * bg ~/pictures/wall/samurai_river.jpg fill 
 output eDP-1 pos 0 0
 output DP-1 pos 1920 0 scale 2
 
