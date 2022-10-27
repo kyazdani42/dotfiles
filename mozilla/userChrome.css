@@ -1,16 +1,7 @@
-/* tabs on bottom */
-body {
-  -moz-box-direction: reverse;
-}
-
 .urlbarView {
-  display: block !important;
-  position: absolute !important;
-  bottom: 100% !important;
   background: #1b1e2b !important;
   font-size: 15px !important;
 }
-/* tabs on bottom END */
 
 /* urlbar unscale focus */
 #urlbar[breakout][breakout-extend] {
