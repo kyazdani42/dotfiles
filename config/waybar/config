@@ -17,7 +17,7 @@
     "custom/separator",
     "network",
     "custom/separator",
-    "battery",
+    "battery"
   ],
   "sway/workspaces": {
     "disable-scroll": true,
@@ -71,9 +71,9 @@
     "tooltip": false
   },
   "network": {
-    "format-ethernet": "connected via cable",
-    "format-wifi": "connected to {}",
-    "format": "not connected",
+    "format-ethernet": "<span foreground='#a6accd'></span>",
+    "format-wifi": "<span foreground='#a6accd'></span> {}",
+    "format": "<span foreground='#a6accd'> 睊</span>",
     "on-click": "select-wifi"
   },
   "custom/thermal": {
