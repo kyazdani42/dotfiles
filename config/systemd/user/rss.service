@@ -1,0 +1,10 @@
+[Unit]
+Description=Runs newsboat rss synchronizer
+
+[Service]
+Restart=always
+RestartSec=300
+ExecStart=/run/current-system/sw/bin/newsboat -x reload
+
+[Install]
+WantedBy=default.target
