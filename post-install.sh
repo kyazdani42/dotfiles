@@ -31,5 +31,6 @@ fi
 ./install-scripts/neovim.sh
 ./install-scripts/yarn.sh
 ./install-scripts/dconf.sh
+./install-scripts/systemd.sh
 
 echo "Installation is done, you should restart your session"
