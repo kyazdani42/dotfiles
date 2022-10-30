@@ -1,3 +1,8 @@
 #!/usr/bin/env bash
 
-newsboat -x print-unread | awk '{print $1}' 2>/dev/null || { echo "??"; exit; }
+result=$(newsboat -x print-unread)
+if [[ "$result" =~ ^Error.* ]]; then
+  echo "??"
+else
+  echo $result | awk '{print $1}'
+fi

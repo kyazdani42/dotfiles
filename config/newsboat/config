@@ -16,7 +16,7 @@ bind-key q hard-quit
 bind-key G end
 bind-key g home
 
-color background          color0     default
+color background          color15    default
 color listnormal          color7     default
 color listnormal_unread   color15    default
 color listfocus           color0     color4
