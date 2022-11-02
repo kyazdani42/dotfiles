@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+CATEGORIES="$HOME/.local/bin/assets/archwiki-categories"
+
+printf "\x1b[1mSelect a category to open in the archwiki:\x1b[0m\n"
+
+result=$(cat "$CATEGORIES" | fzf)
+
+xdg-open "https://wiki.archlinux.org/title/Category:${result}"

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+[ ! -d "$1" ] && {
+  echo "Usage: mtsync FOLDER"
+  exit 1
+}
+
+SYNC_FOLDER=$(realpath "$1")
+
+# TODO: select only usb
+partitions=$(lsblk --raw | grep -v 'SWAP\|boot' | grep part | awk '{print $1}')
+
+echo "which partition to mount ?"
+
+select part in $partitions; do
+  MOUNT_DIR=$(mktemp -d)
+
+  echo "Mounting ${part} at ${MOUNT_DIR}"
+  sudo mount -rw /dev/"$part" "$MOUNT_DIR"
+
+  echo "Syncronizing ${SYNC_FOLDER} to ${part}"
+  echo "Proceed ? y/n: "
+  read -n should_proceed
+
+  [ "$should_proceed" == "y" ] && {
+    sudo rsync --archive "$SYNC_FOLDER" "$MOUNT_DIR"
+    sync
+  }
+done

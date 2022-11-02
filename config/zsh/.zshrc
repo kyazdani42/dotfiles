@@ -40,10 +40,10 @@ function open() {
 
 # unix aliases
 alias update="sudo nixos-rebuild switch"
-alias ss="sudo systemctl"
-alias sss="sudo systemctl status"
-alias ssu="systemctl --user"
-alias ssuu="systemctl --user status"
+alias sys="sudo systemctl"
+alias syss="sudo systemctl status"
+alias sysu="systemctl --user"
+alias sysus="systemctl --user status"
 alias bat="bat --decorations never --theme=ansi"
 alias l="exa -l"
 alias ls="exa"
