@@ -5,13 +5,13 @@ set -euo pipefail
 ./install-scripts/prepare-homedir.sh
 
 for config_file in config/*; do
-  link_name="$HOME/.config/$file"
+  link_name="$HOME/.$config_file"
   rm -rfv "$link_name"
-  target="$PWD/$file"
+  target="$PWD/$config_file"
   ln -sfv "$target" "$link_name"
 done
 
-session_file="bin/session-$(hostname)-$(whoami).sh"
+session_file="bin/session-$(cat /etc/hostname)-$(whoami).sh"
 if [ ! -f "$session_file" ]; then
     cp -v session-template.sh "$session_file"
     chmod +x "$session_file"

@@ -1,5 +1,3 @@
-# [ $TERM != "tmux-256color" ] && exec tmux -u -f $HOME/.config/tmux/tmux.conf
-
 mkdir -p $HOME/.cache/zsh
 export HISTFILE="$HOME/.cache/zsh/history"
 HISTSIZE=500000
@@ -74,10 +72,6 @@ alias gck="git checkout"
 alias nvc="nvim ~/.config/nvim/"
 alias nvsc="nvim ~/dev/scratch/scratch-\$RANDOM"
 
-# tmux aliases
-alias tls="tmux list-sessions"
-alias tka="tmux kill-session -a"
-
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
 # TODO: remove when fixing the cli, used to work without the flags before
 alias nix-search="nix --experimental-features nix-command --extra-experimental-features flakes search nixpkgs"
@@ -87,7 +81,7 @@ alias nix-shell="nix-shell --run zsh"
 [ $(command -v starship) ] && eval "$(starship init zsh)"
 
 # add syntax highlighting to zsh
-source $ZDOTDIR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $ZDOTDIR/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 source $ZDOTDIR/zsh-autosuggestions/zsh-autosuggestions.zsh
 # This speeds up pasting w/ autosuggest

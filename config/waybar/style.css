@@ -1,7 +1,7 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "Lato Medium", "NotoSansMono Nerd Font";
+  font-family: "Lato Medium", "NotoSans Nerd Font";
   font-size: 15px;
   min-height: 0;
   padding: 0px 5px;
@@ -44,6 +44,7 @@ window#waybar.hidden {
 }
 
 #clock {
+  color: #fff;
 }
 
 #battery {
@@ -51,13 +52,35 @@ window#waybar.hidden {
   background-color: #1b1e2b;
 }
 
-#pulseaudio {}
+#pulseaudio {
+  color: #fff;
+}
 
-#pulseaudio.muted {}
-
-#custom-updates {
+#pulseaudio.muted {
+  color: #fff;
 }
 
 #custom-notification {
   font-family: "NotoSansMono Nerd Font";
+}
+
+#custom-feed {
+  color: #fff;
+}
+
+#custom-thermal {
+  color: #fff;
+}
+
+#network {
+  color: #fff;
+}
+
+#backlight {
+  color: #fff;
+}
+
+#custom-separator {
+  margin: 0;
+  padding: 0;
 }

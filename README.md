@@ -1,4 +1,4 @@
-# wayland based dotfiles i use on nixos
+# wayland based dotfiles i use on arch
 
 ## **install**
 ```bash

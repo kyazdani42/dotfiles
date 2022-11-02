@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ $# = 0 ]; then
-    alacritty --title='~#floating#~' -e select-wifi 1
+    alacritty --title='*Wifi Menu*' -e select-wifi 1
     exit
 fi
 

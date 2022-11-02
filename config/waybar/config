@@ -35,6 +35,9 @@
   "sway/mode": {
     "format": "<span>{}</span>"
   },
+  "backlight": {
+    "format": "<span foreground='#ffff9b'> </span> {percent}%"
+  },
   "clock": {
     "timezone": "Europe/Paris",
     "format": "{:%a %d %H:%M}"
@@ -71,8 +74,8 @@
     "tooltip": false
   },
   "network": {
-    "format-ethernet": "<span foreground='#a6accd'></span>",
-    "format-wifi": "<span foreground='#a6accd'></span> {}",
+    "format-ethernet": "<span foreground='#a6accd'> </span>",
+    "format-wifi": "<span foreground='#a6accd'> </span> {}",
     "format": "<span foreground='#a6accd'> 睊</span>",
     "on-click": "select-wifi"
   },
@@ -86,7 +89,7 @@
     "exec": "update-rss",
     "interval": 180,
     "tooltip": false,
-    "format": "<span foreground='#E77D24'>參</span>{}",
+    "format": "<span foreground='#E77D24'>參</span> {}",
     "on-click": "alacritty --title='*News*' -e newsboat"
   },
   "custom/notification": {

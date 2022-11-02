@@ -188,6 +188,7 @@ for_window [title="\*Mail\*"] floating enable, resize set 1600 950, border pixel
 for_window [title="\*News\*"] floating enable, resize set 1600 950, border pixel 5
 for_window [title="\*Password Store\*"] floating enable, resize set 300 400, border pixel 3
 for_window [title="\*File Manager\*"] floating enable, resize set 1000 400, border pixel 3
+for_window [title="\*Wifi Menu\*"] floating enable, resize set 1200 400, border pixel 3
 
 # x apps
 for_window [shell=".*"] title_format "%title :: %shell"

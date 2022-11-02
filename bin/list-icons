@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-[ -x '/usr/bin/fd' ] && list=$(fd 'index.theme' /) || list=$(find / -name 'index.theme')
+[ -x $(command -v fd) ] && list=$(fd 'index.theme' /) || list=$(find / -name 'index.theme')
 
 printf "\n\x1b[32;1mIcon Themes:\x1b[0m\n"
 for theme in ${list}; do

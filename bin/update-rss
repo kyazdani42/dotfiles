@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 result=$(newsboat -x print-unread)
-if [[ "$result" =~ ^Error.* ]]; then
+if [[ "$result" =~ ^(Failed|Error).* ]]; then
   echo "??"
 else
   echo $result | awk '{print $1}'
