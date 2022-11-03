@@ -3,6 +3,7 @@
 set -euo pipefail
 
 ./install-scripts/prepare-homedir.sh
+./install-scripts/gitconfig.sh
 
 for config_file in config/*; do
   link_name="$HOME/.$config_file"
@@ -24,5 +25,6 @@ fi
 
 ./install-scripts/neovim.sh
 ./install-scripts/systemd.sh
+./install-scripts/gitconfig.sh
 
 echo "Installation is done, you should restart your session"
