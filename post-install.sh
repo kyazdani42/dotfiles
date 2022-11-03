@@ -22,9 +22,9 @@ if [ ! -f "$alacritty_config" ]; then
     cp -v "config/alacritty/config-base.yml" "$alacritty_config"
 fi
 
-nwgbar_conf="config/nwg-launchers/nwgbar/bar.json"
+nwgbar_conf="config/nwg-bar/bar.json"
 if [ ! -f "$nwgbar_conf" ]; then
-    cp -v "config/nwg-launchers/nwgbar/bar.template.json" "$nwgbar_conf"
+    cp -v "config/nwg-bar/bar.template.json" "$nwgbar_conf"
     sed -i "s/\\$\\$/$(whoami)/g" "$nwgbar_conf";
 fi
 

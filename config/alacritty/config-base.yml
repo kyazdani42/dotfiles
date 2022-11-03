@@ -31,7 +31,7 @@ font:
     style: Bold
 
   italic:
-    family: "IBM Plex Mono Medium"
+    family: "Roboto"
     style: Italic
 
   size: 12.8

@@ -1,0 +1,31 @@
+* { outline-width: 0px; outline: none; }
+
+#bar {
+  /* affects top/bottom & left/right alignment */
+  margin: 30px;
+}
+
+button, image {
+  font-family: 'Lato Medium';
+  font-size: 18px;
+  color: #a6accd;
+}
+
+button {
+  padding: 24px 64px;
+  margin: 8px;
+  border: 1px solid #1b1e2b;
+  color: #a6accd;
+}
+
+button:hover, button:focus {
+  background-color: #424760;
+  border: 1px solid #676e96;
+  color: #fff;
+}
+
+window {
+  background-color: rgba(27, 30, 43, 0.9);
+  padding: 16px;
+  border-radius: 10px;
+}
