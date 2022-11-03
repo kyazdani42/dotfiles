@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+run_sway() {
+  [ $(command -v sway) ] && {
+    export XDG_CURRENT_DESKTOP=sway
+    export MOZ_ENABLE_WAYLAND=1
+    export QT_QPA_PLATFORM=wayland-egl
+    export CLUTTER_BACKEND=wayland
+    export XDG_SESSION_TYPE=wayland
+    export _JAVA_AWT_WM_NONREPARENTING=1
+    export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+    exec sway &>/tmp/sway.log
+  }
+}
+
+if [ -z "$WAYLAND_DISPLAY" ]; then
+  case $(tty) in
+    /dev/tty1)
+      run_sway
+      ;;
+  esac
+fi

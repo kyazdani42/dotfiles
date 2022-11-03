@@ -3,5 +3,4 @@ error.log
 plug.vim
 plugin
 .netrwhist
-bin/session-*
 config/nwg-bar/bar.json

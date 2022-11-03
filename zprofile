@@ -45,7 +45,6 @@ export HISTFILE="$XDG_CACHE_HOME/bash_history"
 export RFC_DIR="$XDG_CACHE_HOME/RFCs"
 
 export PYTHONSTARTUP="$HOME/.local/bin/python_startup"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 export LESSHISTFILE="-"
 export MANPAGER='nvim +Man!'
@@ -56,4 +55,4 @@ export EDITOR="nvim"
 export TERMINAL="alacritty"
 export BROWSER="firefox"
 
-source session-$(cat /etc/hostname)-$(whoami).sh
+source start_session

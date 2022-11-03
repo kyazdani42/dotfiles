@@ -11,12 +11,6 @@ for config_file in config/*; do
   ln -sfv "$target" "$link_name"
 done
 
-session_file="bin/session-$(cat /etc/hostname)-$(whoami).sh"
-if [ ! -f "$session_file" ]; then
-    cp -v session-template.sh "$session_file"
-    chmod +x "$session_file"
-fi
-
 alacritty_config="config/alacritty/alacritty.yml"
 if [ ! -f "$alacritty_config" ]; then
     cp -v "config/alacritty/config-base.yml" "$alacritty_config"

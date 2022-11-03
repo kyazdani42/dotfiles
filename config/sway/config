@@ -193,7 +193,9 @@ for_window [title="\*Wifi Menu\*"] floating enable, resize set 1200 400, border 
 # x apps
 for_window [shell=".*"] title_format "%title :: %shell"
 
-exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP MOZ_ENABLE_WAYLAND \
+  QT_QPA_PLATFORM CLUTTER_BACKEND XDG_SESSION_TYPE _JAVA_AWT_WM_NONREPARENTING XAUTHORITY
+
 include /etc/sway/config.d/*
 
 # vim: ft=i3config
