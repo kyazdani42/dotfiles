@@ -23,7 +23,6 @@ if [ ! -f "$nwgbar_conf" ]; then
 fi
 
 ./install-scripts/neovim.sh
-./install-scripts/yarn.sh
 ./install-scripts/systemd.sh
 
 echo "Installation is done, you should restart your session"
