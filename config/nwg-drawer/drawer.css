@@ -9,7 +9,7 @@ window {
 entry {
   background-color: #1b1e2b;
   padding: 8px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   color: #fff;
   border-radius: 30px;
 }
@@ -21,7 +21,7 @@ image {
 }
 
 button {
-  border: 1px solid #1b1e2b;
+  border: 2px solid #1b1e2b;
   border-radius: 10px;
   padding: 16px 24px;
   margin: 8px;
@@ -30,6 +30,6 @@ button {
 
 button:hover, button:focus {
   background-color: #424760;
-  border: 1px solid #676e96;
+  border: 2px solid #676e96;
   color: #fff;
 }
