@@ -4,3 +4,4 @@ plug.vim
 plugin
 .netrwhist
 config/nwg-bar/bar.json
+gtkfilechooser.ini
