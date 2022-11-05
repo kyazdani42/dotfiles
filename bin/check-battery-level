@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+CAPACITY=$(cat /sys/class/power_supply/BAT0/capacity)
+STATUS=$(cat /sys/class/power_supply/BAT0/status)
+LOW15=$(systemctl --user show-environment | grep BAT_LOW_15)
+LOW30=$(systemctl --user show-environment | grep BAT_LOW_30)
+
+notify() {
+  echo "Sending notification for battery at ${CAPACITY}%"
+  notify-send -t 5000 -u "$1" "battery at ${CAPACITY}%" &
+}
+
+[ "$STATUS" == "Charging" ] || [ "$STATUS" == "Full" ] && {
+  systemctl --user unset-environment BAT_LOW_15 BAT_LOW_30
+  echo "Battery is charging"
+  exit 0
+}
+
+[ $CAPACITY -le 15 ] && [ -z "$LOW15" ] && {
+  systemctl --user set-environment BAT_LOW_15=1 BAT_LOW_30=1
+  notify "critical" 
+  exit 0
+}
+
+[ $CAPACITY -le 30 ] && [ -z "$LOW30" ] && {
+  systemctl --user set-environment BAT_LOW_30=1
+  notify "normal"
+  exit 0
+}
+
+echo "Battery is discharing and is at ${CAPACITY}%"

@@ -6,7 +6,8 @@ if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
         exec alacritty
     else
         pid="$(echo "$instance" | grep "pid" | cut -d':' -f2 | tr -d ', ')"
-        exec alacritty --working-directory "$(readlink -e /proc/"$(pgrep -P $pid | tail -n1)"/cwd)"
+        SHELL_CWD="$(readlink -e /proc/"$(pgrep -P $pid | tail -n1)"/cwd)"
+        exec alacritty --working-directory "$SHELL_CWD"
     fi
 else
     ACTIVE_WINDOW=$(xdotool getactivewindow)

@@ -23,7 +23,6 @@ seat * xcursor_theme volantes_cursors 16
 
 exec swaync &
 exec waybar &
-exec notify-battery-level &
 exec gammastep &
 exec wl-paste -pw wl-copy &
 

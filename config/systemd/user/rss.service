@@ -1,5 +1,5 @@
 [Unit]
-Description=Runs newsboat rss synchronizer
+Description=newsboat rss synchronizer
 
 [Service]
 Restart=always

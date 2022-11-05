@@ -1,0 +1,10 @@
+[Unit]
+Description=battery level check
+
+[Service]
+Restart=always
+RestartSec=300
+ExecStart=/home/{{USER}}/.local/bin/check-battery-level
+
+[Install]
+WantedBy=default.target
