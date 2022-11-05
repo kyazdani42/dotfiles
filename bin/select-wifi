@@ -5,20 +5,11 @@ if [ $# = 0 ]; then
     exit
 fi
 
-nmcli device wifi rescan
-wifis="$(nmcli device wifi list)"
+iwctl station wlan0 scan
 
 fzf_args="--color=16,hl:#ffcb6b,hl+:#89ddff,fg+:#ffffff,pointer:#89ddff"
-ssid="$(echo "$wifis" | tail -n +2 | sed '/^\*/d' | fzf --no-info $fzf_args | awk '{print $2}')"
+ssid="$(iwctl station wlan0 get-networks | tail -n +5 | fzf --ansi --no-info $fzf_args | tr -d '>' | awk '{print $1}')"
 
 [ -z "$ssid" ] && exit
 
-read -p "with passphrase? y/n: " with_pass
-if [ "$with_pass" = "y" ]; then
-    read -p "passphrase: " passphrase
-    [ -z "$passphrase" ] && exit
-
-    nmcli device wifi connect "$ssid" password "$passphrase"
-else
-    nmcli device wifi connect "$ssid"
-fi
+iwctl station wlan0 connect "$ssid"

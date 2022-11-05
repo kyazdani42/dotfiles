@@ -38,8 +38,8 @@ function open() {
 
 # unix aliases
 alias update="sudo nixos-rebuild switch"
-alias sys="sudo systemctl"
-alias syss="sudo systemctl status"
+alias sys="systemctl"
+alias syss="systemctl status"
 alias sysu="systemctl --user"
 alias sysus="systemctl --user status"
 alias bat="bat --decorations never --theme=ansi"
