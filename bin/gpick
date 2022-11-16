@@ -2,5 +2,5 @@
 
 grim -g "$(slurp -p)" -t ppm - | \
     convert - -format '%[pixel:p{0,0}]' txt:- | \
-    egrep '\#.{6} ' | \
+    grep -E '#.{6} ' | \
     awk '{print "rgb: "$2"\nhex: "$3}'

@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-diff="$(git status --porcelain)"
+set -eo pipefail
 
-if [ "$diff" != "" ]; then
-    echo "You have changes. Please stash and run again."
-    exit 1
+[ -n "$(git status --porcelain)" ] && {
+  echo "[gsync] You have changes. Please stash and run again."
+  exit 1
+}
+
+if [ $(git remote -v | grep main) ]; then
+  branch="main"
+else
+  branch="master"
 fi
-
-branch="main"
-has_main="$(git remote -v | grep main)"
-[ "$has_main" == "" ] && branch="master"
 
 git checkout $branch
 echo
@@ -18,8 +20,7 @@ echo "Pulling master changes..."
 git pull origin $branch
 echo
 
-has_upstream="$(git remote -v | grep upstream)"
-[ "$has_upstream" == "" ] && exit
+[ -z "$(git remote -v | grep upstream)" ] && exit
 
 echo "Fetching upstream changes..."
 git fetch upstream

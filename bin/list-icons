@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-[ -x $(command -v fd) ] && list=$(fd 'index.theme' /) || list=$(find / -name 'index.theme')
+list=$(find / -name 'index.theme' 2>/dev/null)
 
 printf "\n\x1b[32;1mIcon Themes:\x1b[0m\n"
 for theme in ${list}; do
     icontheme="$(cat $theme | grep -A1 "Icon Theme" | grep Name | cut -d'=' -f2)"
     [ ! -z "$icontheme" ] && echo "$(dirname $theme): $icontheme"
 done | sort -u | sed -e 's/\/.*\//- /g' | sed 's/:/:\x1b[1;37m/g' | sed 's/$/\x1b[0m/g'
-

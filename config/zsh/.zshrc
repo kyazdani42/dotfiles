@@ -31,13 +31,14 @@ fpath+=${ZDOTDIR:-~}/zsh-completions/src
 rm -f ${ZDOTDIR:-~}/.zcompdump; compinit
 
 # open stuff mac style
-function open() {
-    &>/dev/null xdg-open $1 &
+open() {
+  for file in $@; do
+    &>/dev/null xdg-open $file &
     disown
+  done
 }
 
 # unix aliases
-alias update="sudo nixos-rebuild switch"
 alias sys="systemctl"
 alias syss="systemctl status"
 alias sysu="systemctl --user"
@@ -73,9 +74,7 @@ alias nvc="nvim ~/.config/nvim/"
 alias nvsc="nvim ~/dev/scratch/scratch-\$RANDOM"
 
 alias yarn="yarn --use-yarnrc $XDG_CONFIG_HOME/yarn/config"
-# TODO: remove when fixing the cli, used to work without the flags before
-alias nix-search="nix --experimental-features nix-command --extra-experimental-features flakes search nixpkgs"
-alias nix-shell="nix-shell --run zsh"
+alias ip="ip -c=always"
 
 # the prompt
 [ $(command -v starship) ] && eval "$(starship init zsh)"
