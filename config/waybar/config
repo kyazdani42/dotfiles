@@ -58,7 +58,7 @@
     "format-critical": "{capacity}% <span foreground='#f07178'>{icon}</span>",
     "format-plugged": "{capacity}% <span foreground='#959dcb'></span>",
     "format-charging": "{capacity}% <span foreground='#959dcb'></span>",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": [" ", " ", " ", " ", " "]
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",

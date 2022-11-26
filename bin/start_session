@@ -5,11 +5,13 @@ run_sway() {
     export XDG_CURRENT_DESKTOP=sway
     export MOZ_ENABLE_WAYLAND=1
     export QT_QPA_PLATFORM=wayland-egl
+    export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
     export QT_QPA_PLATFORMTHEME=qt5ct
     export CLUTTER_BACKEND=wayland
     export XDG_SESSION_TYPE=wayland
     export _JAVA_AWT_WM_NONREPARENTING=1
     export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+    export SDL_VIDEODRIVER=wayland
     exec sway &>/tmp/sway.log
   }
 }
