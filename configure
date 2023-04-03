@@ -12,11 +12,6 @@ for config_file in config/*; do
   ln -sfv "$target" "$link_name"
 done
 
-alacritty_config="config/alacritty/alacritty.yml"
-[ ! -f "$alacritty_config" ] && {
-  cp -v "config/alacritty/config-base.yml" "$alacritty_config"
-}
-
 nwgbar_conf="config/nwg-bar/bar.json"
 [ ! -f "$nwgbar_conf" ] && {
   cp -v "config/nwg-bar/bar.template.json" "$nwgbar_conf"

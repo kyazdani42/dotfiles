@@ -2,12 +2,16 @@
 
 if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
     instance="$(swaymsg -t get_tree | grep -A 40 'focused": true' | grep -B1 'Alacritty')"
-    if [ "$instance" == "" ]; then
+    if [ -z "$instance" ]; then
         exec alacritty
     else
         pid="$(echo "$instance" | grep "pid" | cut -d':' -f2 | tr -d ', ')"
         SHELL_CWD="$(readlink -e /proc/"$(pgrep -P $pid | tail -n1)"/cwd)"
-        exec alacritty --working-directory "$SHELL_CWD"
+        if [ ! -z "$SHELL_CWD" ]; then
+          exec alacritty --working-directory "$SHELL_CWD"
+        else
+          exec alacritty
+        fi
     fi
 else
     ACTIVE_WINDOW=$(xdotool getactivewindow)

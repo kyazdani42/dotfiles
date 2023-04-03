@@ -16,6 +16,7 @@ window:
   decorations: full
   startup_mode: Maximized
   opacity: 1
+  decorations_theme_variant: None
 
 scrolling:
   history: 10000
@@ -31,10 +32,10 @@ font:
     style: Bold
 
   italic:
-    family: "Roboto"
+    family: "RobotoMono Nerd Font"
     style: Italic
 
-  size: 12.8
+  size: 12
 
   offset:
     x: 0
@@ -106,7 +107,6 @@ cursor:
   unfocused_hollow: true
 
 live_config_reload: true
-alt_send_esc: false
 
 debug:
     render_time: false

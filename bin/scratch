@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+ext=${1:-""}
+
+[ ! -z "$ext" ] && {
+  file="$(ls ~/dev/scratch | grep -E "${ext}\$")"
+  file=${file:-~/dev/scratch/$RANDOM.$ext}
+}
+
+file=${file:-~/dev/scratch/$RANDOM}
+vim "$file"

@@ -2,7 +2,12 @@
 
 set -eo pipefail
 
-read -p 'otp ? y/n: ' ans
+if [[ "$1" =~ ^--.* ]]; then
+  ans="$([ "$1" == "--otp" ] && echo "y" || echo "")"
+else
+  read -p 'otp ? y/n: ' ans
+fi
+
 
 function f() {
   fzf --no-info --prompt=' ' -i --color=16,hl:#ffcb6b,hl+:#89ddff,fg+:#ffffff,pointer:#89ddff

@@ -61,7 +61,7 @@
     "format-icons": [" ", " ", " ", " ", " "]
   },
   "pulseaudio": {
-    "format": "{icon} {volume}%",
+    "format": "{icon}  {volume}%",
     "format-icons": {
       "default": ["", "", "", ""]
     },
@@ -75,7 +75,7 @@
   },
   "network": {
     "format-ethernet": "<span foreground='#a6accd'> </span>",
-    "format-wifi": "<span foreground='#a6accd'> </span> {}",
+    "format-wifi": "<span foreground='#a6accd'>  </span> {}",
     "format": "<span foreground='#a6accd'> 睊</span>",
     "on-click": "select-wifi"
   },
