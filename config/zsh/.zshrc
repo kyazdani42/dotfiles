@@ -60,6 +60,7 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias wget="wget --hsts-file='$HOME/.cache/wget-hsts'"
 alias irssi="irssi --config="$XDG_CONFIG_HOME"/irssi/config --home="$XDG_DATA_HOME"/irssi"
+alias yay="yay --color=always"
 
 # git aliases
 alias gpp="git push origin HEAD"

@@ -74,9 +74,9 @@
     "tooltip": false
   },
   "network": {
-    "format-ethernet": "<span foreground='#a6accd'> </span>",
-    "format-wifi": "<span foreground='#a6accd'>  </span> {}",
-    "format": "<span foreground='#a6accd'> 睊</span>",
+    "format-ethernet": "<span foreground='#a6accd'>󰈁</span>",
+    "format-wifi": "<span foreground='#a6accd'>󰖩 </span> {}",
+    "format": "<span foreground='#a6accd'>󰈂 󰖪</span>",
     "on-click": "select-wifi"
   },
   "custom/thermal": {
@@ -89,17 +89,17 @@
     "exec": "update-rss",
     "interval": 180,
     "tooltip": false,
-    "format": "<span foreground='#E77D24'>參</span> {}",
+    "format": "<span foreground='#E77D24'>󰑬</span> {}",
     "on-click": "alacritty --title='*News*' -e newsboat"
   },
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
     "format-icons": {
-      "notification": "<span foreground='#a6accd'></span><span foreground='#d06178'><sup></sup></span>",
-      "none": "<span foreground='#a6accd'></span>",
-      "dnd-notification": "<span foreground='#a6accd'></span><span foreground='#d06178'><sup></sup></span>",
-      "dnd-none": "<span foreground='#a6accd'></span>"
+      "notification": "<span foreground='#a6accd'>󰚢</span><span foreground='#d06178'><sup></sup></span>",
+      "none": "<span foreground='#a6accd'>󰍡</span>",
+      "dnd-notification": "<span foreground='#a6accd'>󰚢</span><span foreground='#d06178'><sup></sup></span>",
+      "dnd-none": "<span foreground='#a6accd'>󱙍</span>"
     },
     "return-type": "json",
     "exec-if": "which swaync-client",

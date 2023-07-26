@@ -14,9 +14,6 @@ smart_gaps on
 focus_follows_mouse no
 
 output * bg ~/pictures/wall/samurai_river.jpg fill 
-output eDP-1 pos 0 0
-output DP-1 pos 1920 0 scale 2
-output HDMI-A-2 pos 1920 0 scale 4
 
 floating_maximum_size 1920 x 1080
 seat * hide_cursor 4000
@@ -45,7 +42,7 @@ input type:touchpad {
 }
 
 input type:mouse {
-  pointer_accel -1
+  pointer_accel 0
   dwt enabled
 }
 
@@ -200,6 +197,8 @@ for_window [shell=".*"] title_format "%title :: %shell"
 
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP MOZ_ENABLE_WAYLAND \
   QT_QPA_PLATFORM CLUTTER_BACKEND XDG_SESSION_TYPE _JAVA_AWT_WM_NONREPARENTING XAUTHORITY
+
+exec_always kanshi
 
 include /etc/sway/config.d/*
 
