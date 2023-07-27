@@ -5,3 +5,4 @@ plugin
 .netrwhist
 config/nwg-bar/bar.json
 gtkfilechooser.ini
+config/dconf/user

@@ -12,7 +12,7 @@ run_sway() {
     export _JAVA_AWT_WM_NONREPARENTING=1
     export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
     export SDL_VIDEODRIVER=wayland
-    exec sway &>/tmp/sway.log
+    exec sway &>/tmp/$(whoami)-sway.log
   }
 }
 

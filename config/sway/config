@@ -86,6 +86,8 @@ bindsym XF86AudioLowerVolume exec volumectl lower
 bindsym XF86AudioMute exec volumectl mute
 bindsym XF86AudioMicMute exec volumectl --mic mute
 
+bindsym $mod+backslash resize set width 30
+bindsym $mod+Shift+backslash resize set height 30
 exec "avizo-service"
 
 ######################### WINDOW SPECIFIC #################################

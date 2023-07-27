@@ -21,5 +21,6 @@ nwgbar_conf="config/nwg-bar/bar.json"
 ./install-scripts/neovim.sh
 ./install-scripts/systemd.sh
 ./install-scripts/gitconfig.sh
+./install-scripts/dconf.sh
 
 echo "Installation is done, you should restart your session"

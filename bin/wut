@@ -13,7 +13,7 @@ function f() {
   fzf --no-info --prompt=' ' -i --color=16,hl:#ffcb6b,hl+:#89ddff,fg+:#ffffff,pointer:#89ddff
 }
 
-pass="$(ls ~/.local/share/password-store | sed 's/\.gpg//g' | grep -v recovery | f)"
+pass="$(pushd ~/.local/share/password-store >/dev/null && fd -t f | sed 's/\.gpg//g' | f)"
 
 if [ "$ans" == "y" ]; then
   pass otp "$pass" | wl-copy -o
