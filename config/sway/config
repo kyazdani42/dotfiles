@@ -54,7 +54,7 @@ bindsym $mod+d exec nwg-drawer -o 1 -nocats
 bindsym button1 nop
 bindsym $mod+Shift+q kill
 
-bindsym $mod+Shift+w exec TZ=UTC $BROWSER
+bindsym $mod+Shift+w exec update-ff-user-pref && $BROWSER
 bindsym $mod+Shift+b exec brave --disable-pinch
 bindsym $mod+Shift+o exec lock
 bindsym $mod+p exec pavucontrol

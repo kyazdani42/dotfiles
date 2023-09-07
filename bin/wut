@@ -16,7 +16,7 @@ function f() {
 pass="$(pushd ~/.local/share/password-store >/dev/null && fd -t f | sed 's/\.gpg//g' | f)"
 
 if [ "$ans" == "y" ]; then
-  pass otp "$pass" | wl-copy -o
+  pass otp "$pass" | wl-copy
 else
-  pass "$pass" | head -n1 | wl-copy -o
+  pass "$pass" | head -n1 | wl-copy
 fi

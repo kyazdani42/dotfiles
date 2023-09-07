@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+output=$(swaymsg -t get_outputs | jq '[.[]|select(.focused==true)][0].rect')
+ff_profile=$(cat .mozilla/firefox/profiles.ini | grep default-release | grep Path | cut -d '=' -f2)
+if [ $(echo $output | jq '.width') -gt 1920 ]; then
+  echo "user_pref(\"layout.css.devPixelsPerPx\", \"2.0\");" > ~/.mozilla/firefox/$ff_profile/user.js
+else
+  echo "user_pref(\"layout.css.devPixelsPerPx\", \"1.2\");" > ~/.mozilla/firefox/$ff_profile/user.js
+fi
