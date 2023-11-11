@@ -1,18 +1,7 @@
 #!/usr/bin/env bash
 
-if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
-    if [ "$1" == "fullscreen" ]; then
-        grim -t jpeg ~/$(date +%Y-%m-%d_%H-%M-%S).jpg
-    else
-        grim -t jpeg -g "$(slurp)" ~/$(date +%Y-%m-%d_%H-%M-%S).jpg
-    fi
-    exit 0
-fi
-
 if [ "$1" == "fullscreen" ]; then
-    scrot -q 100
+  grim -t jpeg ~/$(date +%Y-%m-%d_%H-%M-%S).jpg
 else
-    # scrot is breaking when running interactively from a keypress
-    sleep 0.1
-    scrot -q 100 --select --line style=solid,width=2 2>/dev/null
+  grim -t jpeg -g "$(slurp)" ~/$(date +%Y-%m-%d_%H-%M-%S).jpg
 fi

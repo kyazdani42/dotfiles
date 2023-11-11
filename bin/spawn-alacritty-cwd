@@ -1,44 +1,14 @@
 #!/usr/bin/env bash
 
-if [ "$XDG_SESSION_TYPE" == 'wayland' ]; then
-    instance="$(swaymsg -t get_tree | grep -A 40 'focused": true' | grep -B1 'Alacritty')"
-    if [ -z "$instance" ]; then
-        exec alacritty
-    else
-        pid="$(echo "$instance" | grep "pid" | cut -d':' -f2 | tr -d ', ')"
-        SHELL_CWD="$(readlink -e /proc/"$(pgrep -P $pid | tail -n1)"/cwd)"
-        if [ ! -z "$SHELL_CWD" ]; then
-          exec alacritty --working-directory "$SHELL_CWD"
-        else
-          exec alacritty
-        fi
-    fi
+instance="$(swaymsg -t get_tree | grep -A 40 'focused": true' | grep -B1 'Alacritty')"
+if [ -z "$instance" ]; then
+  exec alacritty
 else
-    ACTIVE_WINDOW=$(xdotool getactivewindow)
-    ACTIVE_WM_CLASS=$(xprop -id $ACTIVE_WINDOW | grep WM_CLASS)
-
-    if [[ $ACTIVE_WM_CLASS == *"Alacritty"* ]]; then
-        # Get PID. If _NET_WM_PID isn't set, bail.
-        PID=$(xprop -id $ACTIVE_WINDOW | grep _NET_WM_PID | grep -oP "\d+")
-        if [[ "$PID" == "" ]]; then
-            exit 1
-        fi
-
-        # Get first child of terminal
-        CHILD_PID=$(pgrep -P $PID)
-        if [[ "$PID" == "" ]]; then
-            exit 1
-        fi
-
-        # Get current directory of child. The first child should be the shell.
-        pushd "/proc/${CHILD_PID}/cwd"
-        SHELL_CWD=$(pwd -P)
-        popd
-
-        # Start alacritty with the working directory
-        alacritty --working-directory $SHELL_CWD
-
-    else
-        exit 1
-    fi
+  pid="$(echo "$instance" | grep "pid" | cut -d':' -f2 | tr -d ', ')"
+  SHELL_CWD="$(readlink -e /proc/"$(pgrep -P $pid | tail -n1)"/cwd)"
+  if [ ! -z "$SHELL_CWD" ]; then
+    exec alacritty --working-directory "$SHELL_CWD"
+  else
+    exec alacritty
+  fi
 fi
