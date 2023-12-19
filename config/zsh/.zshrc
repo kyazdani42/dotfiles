@@ -101,4 +101,6 @@ source $ZDOTDIR/zsh-vi-mode/zsh-vi-mode.zsh
 export KEYTIMEOUT=0
 zvm_after_init_commands+=("[ \$(command -v fzf) ] && source $ZDOTDIR/fzf.zsh")
 
+[ -f "venv/bin/activate" ] && source venv/bin/activate
+
 [ -x "$(which zoxide)" ] && eval "$(zoxide init zsh)"

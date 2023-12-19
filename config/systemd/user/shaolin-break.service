@@ -1,0 +1,10 @@
+[Unit]
+Description=Notify every 40 minutes to take a break
+
+[Service]
+Restart=always
+RestartSec=2400
+ExecStart=/usr/bin/notify-send "Shaolin says take some time please"
+
+[Install]
+WantedBy=default.target
