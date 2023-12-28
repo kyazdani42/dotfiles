@@ -1,0 +1,136 @@
+live_config_reload = true
+
+[bell]
+animation = "EaseOutExpo"
+color = "#ffffff"
+duration = 0
+
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#292d3e"
+blue = "#b8bcf3"
+cyan = "#89ddff"
+green = "#d0e7d0"
+magenta = "#b9a3eb"
+red = "#e61f44"
+white = "#ffffff"
+yellow = "#cfcfbf"
+
+[colors.cursor]
+cursor = "#a6accd"
+text = "#1b1e2b"
+
+[colors.normal]
+black = "#1b1e2b"
+blue = "#959dcb"
+cyan = "#89bbdd"
+green = "#b4c4b4"
+magenta = "#a9a3db"
+red = "#d06178"
+white = "#a6accd"
+yellow = "#b4b4b4"
+
+[colors.primary]
+background = "#1b1e2b"
+foreground = "#ffffff"
+
+[colors.selection]
+background = "#32374d"
+text = "#a6accd"
+
+[colors.vi_mode_cursor]
+cursor = "#89ddff"
+text = "#1b1e2b"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "Warn"
+persistent_logging = false
+print_events = false
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12
+
+[font.bold]
+family = "monospace"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "RobotoMono Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "monospace"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = -2
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "Paste"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "Copy"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "A"
+mods = "Alt"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "J"
+mode = "Vi"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "++"
+key = "Slash"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\u001B[C"
+key = "Backslash"
+mods = "Control"
+
+[mouse]
+hide_when_typing = false
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "full"
+decorations_theme_variant = "None"
+dynamic_padding = false
+dynamic_title = true
+opacity = 1
+startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 0
+lines = 0
+
+[window.padding]
+x = 4
+y = 0
