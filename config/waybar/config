@@ -22,7 +22,7 @@
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
-    "persistent_workspaces": {
+    "persistent-workspaces": {
       "1": [],
       "2": [],
       "3": [],
@@ -30,7 +30,7 @@
       "5": [],
       "6": []
     },
-    "format": "{name}"
+    "format": "{value}"
   },
   "sway/mode": {
     "format": "<span>{}</span>"

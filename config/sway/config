@@ -21,7 +21,7 @@ seat * xcursor_theme volantes_cursors 32
 
 exec swaync &
 exec waybar &
-exec gammastep &
+exec gammastep -O 2500 &
 
 ############################# INPUT #####################################
 
